@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Link>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Tentang>
  */
-class LinkFactory extends Factory
+class TagFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +18,6 @@ class LinkFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'desc' => fake()->realText(100),
-            'img' => 'logo-putih.png',
         ];
     }
 }

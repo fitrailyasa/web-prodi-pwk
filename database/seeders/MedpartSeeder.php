@@ -12,6 +12,6 @@ class MedpartSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        \App\Models\Medpart::factory(10)->create();
     }
 }

@@ -15,10 +15,7 @@ class AdminDashboardController extends Controller
     {
         $users = User::all()->count();
         $links = link::all()->count();
-        $eras = Era::all()->count();
-        $categories = Category::all()->count();
-        $datas = Data::all()->count();
 
-        return view('admin.dashboard', compact('users', 'links', 'eras', 'categories', 'datas'));
+        return view('admin.dashboard', compact('users', 'links'));
     }
 }

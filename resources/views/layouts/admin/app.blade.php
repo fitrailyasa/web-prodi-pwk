@@ -55,6 +55,10 @@
             background-color: rgb(80, 80, 80);
         }
 
+        .aktif {
+            background-color: rgb(165, 165, 165);
+        }
+
         /* .aktif {
             background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
         }
@@ -123,7 +127,8 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a style="color: gray;" href="{{ route('dashboard') }}">Admin</a></li>
+                                <li class="breadcrumb-item"><a style="color: gray;"
+                                        href="{{ route('dashboard') }}">Admin</a></li>
                                 <li class="breadcrumb-item active">{{ $title ?? '' }}</li>
                             </ol>
                         </div>

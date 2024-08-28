@@ -12,6 +12,6 @@ class BeritaSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        \App\Models\Berita::factory(10)->create();
     }
 }

@@ -12,6 +12,6 @@ class TentangSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        \App\Models\Tentang::factory(10)->create();
     }
 }

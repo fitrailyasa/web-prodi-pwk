@@ -11,11 +11,11 @@
             <!-- small box -->
             <div class="small-box bg-dark">
                 <div class="inner">
-                    <h3>{{ $datas }}</h3>
+                    <h3>1000</h3>
 
                     <p>{{ __('Data') }}</p>
                 </div>
-                <a href="{{ route('admin.data.index') }}" class="small-box-footer">More info <i
+                <a href="{{ route('admin.jadwal.index') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -24,11 +24,11 @@
             <!-- small box -->
             <div class="small-box bg-secondary">
                 <div class="inner">
-                    <h3>{{ $categories }}</h3>
+                    <h3>500</h3>
 
                     <p>{{ __('Data') }}</p>
                 </div>
-                <a href="{{ route('admin.category.index') }}" class="small-box-footer">More info <i
+                <a href="{{ route('admin.kategori.index') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -37,11 +37,11 @@
             <!-- small box -->
             <div class="small-box bg-dark">
                 <div class="inner">
-                    <h3>{{ $eras }}</h3>
+                    <h3>200</h3>
 
                     <p>{{ __('Data') }}</p>
                 </div>
-                <a href="{{ route('admin.era.index') }}" class="small-box-footer">More info <i
+                <a href="{{ route('admin.berita.index') }}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -50,7 +50,7 @@
             <!-- small box -->
             <div class="small-box bg-secondary">
                 <div class="inner">
-                    <h3>{{ $links }}</h3>
+                    <h3>100</h3>
 
                     <p>{{ __('Data') }}</p>
                 </div>

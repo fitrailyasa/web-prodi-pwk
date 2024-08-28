@@ -12,6 +12,6 @@ class LayananSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        \App\Models\Layanan::factory(10)->create();
     }
 }

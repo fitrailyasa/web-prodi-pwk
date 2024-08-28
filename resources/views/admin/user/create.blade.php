@@ -1,5 +1,5 @@
 <!-- Tombol untuk membuka modal -->
-<button role="button" class="btn btn-sm mx-1 btn-primary" data-bs-toggle="modal" data-bs-target=".formCreate"><i
+<button role="button" class="btn btn-sm mx-1 btn-dark" data-bs-toggle="modal" data-bs-target=".formCreate"><i
         class="fas fa-plus"></i><span class="d-none d-sm-inline"> {{ __('Tambah') }}</span></button>
 
 <!-- Modal -->
@@ -93,7 +93,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Tutup') }}</button>
-                <button type="submit" class="btn btn-primary">{{ __('Simpan') }}</button>
+                <button type="submit" class="btn btn-dark">{{ __('Simpan') }}</button>
             </div>
             </form>
         </div>

@@ -12,6 +12,6 @@ class LinkSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        \App\Models\Link::factory(10)->create();
     }
 }

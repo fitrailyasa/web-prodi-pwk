@@ -17,7 +17,9 @@ class TentangFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->name(),
+            'desc' => fake()->realText(100),
+            'img' => 'logo-putih.png',
         ];
     }
 }

@@ -31,9 +31,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a class="btn btn-success" href="{{ asset('assets/template/jadwal-template.xlsx') }}"
+                <a class="btn btn-secondary" href="{{ asset('assets/template/jadwal-template.xlsx') }}"
                     download="jadwal-template.xlsx">{{ __('Download Format') }}</a>
-                <button type="submit" class="btn btn-primary">{{ __('Simpan') }}</button>
+                <button type="submit" class="btn btn-dark">{{ __('Simpan') }}</button>
             </div>
             </form>
         </div>

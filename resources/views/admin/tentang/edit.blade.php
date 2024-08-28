@@ -1,5 +1,5 @@
 <!-- Tombol untuk membuka modal -->
-<button role="button" class="btn btn-sm btn-warning mr-2" data-bs-toggle="modal"
+<button role="button" class="btn btn-sm btn-secondary mr-2" data-bs-toggle="modal"
     data-bs-target=".formEdit{{ $tentang->id }}"><i class="fas fa-edit"></i><span class="d-none d-sm-inline">
         {{ __('Edit') }}</span></button>
 
@@ -8,7 +8,8 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             @if (auth()->user()->role == 'admin')
-                <form method="POST" action="{{ route('admin.tentang.update', $tentang->id) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.tentang.update', $tentang->id) }}"
+                    enctype="multipart/form-data">
             @endif
             @csrf
             @method('PUT')
@@ -25,8 +26,8 @@
                         <div class="mb-3">
                             <label class="form-label">{{ __('Name') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="name" name="name" id="name" value="{{ old('name', $tentang->name) }}"
-                                required>
+                                placeholder="name" name="name" id="name"
+                                value="{{ old('name', $tentang->name) }}" required>
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -68,7 +69,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Tutup') }}</button>
-                <button type="submit" class="btn btn-primary">{{ __('Simpan') }}</button>
+                <button type="submit" class="btn btn-dark">{{ __('Simpan') }}</button>
             </div>
             </form>
         </div>
