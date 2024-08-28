@@ -34,7 +34,7 @@ class AdminLayananController extends Controller
 
         $counter = ($layanans->currentPage() - 1) * $layanans->perPage() + 1;
 
-        return view("admin.Layanan.index", compact('Layanans', 'counter', 'search', 'perPage'));
+        return view("admin.layanan.index", compact('layanans', 'counter', 'search', 'perPage'));
     }
 
     public function import(Request $request)

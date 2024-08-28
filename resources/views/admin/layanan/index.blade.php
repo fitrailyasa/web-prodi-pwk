@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        layanan
+        Layanan
     </x-slot>
 
     <!-- Button Form Create -->

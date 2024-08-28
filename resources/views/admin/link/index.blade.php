@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        link
+        Link
     </x-slot>
 
     <!-- Button Form Create -->

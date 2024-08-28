@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        medpart
+        Medpart
     </x-slot>
 
     <!-- Button Form Create -->

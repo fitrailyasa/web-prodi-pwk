@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        kategori
+        Kategori
     </x-slot>
 
     <!-- Button Form Create -->

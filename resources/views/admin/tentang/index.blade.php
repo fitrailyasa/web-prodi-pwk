@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        tentang
+        Tentang
     </x-slot>
 
     <!-- Button Form Create -->

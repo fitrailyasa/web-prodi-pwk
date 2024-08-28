@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        staff
+        Staff
     </x-slot>
 
     <!-- Button Form Create -->

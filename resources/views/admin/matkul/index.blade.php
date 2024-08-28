@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        matkul
+        Matkul
     </x-slot>
 
     <!-- Button Form Create -->

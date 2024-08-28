@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        alumni
+        Alumni
     </x-slot>
 
     <!-- Button Form Create -->

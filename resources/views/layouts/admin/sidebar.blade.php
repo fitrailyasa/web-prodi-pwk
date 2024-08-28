@@ -23,7 +23,7 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-header text-white">MENU</li> 
+                    <li class="nav-header text-white">MENU</li>
                     <li class="nav-item">
                         <a href="{{ route('admin.user.index') }}"
                             class="nav-link text-white {{ Request::routeIs('admin.user.index') ? 'aktif' : '' }}">
@@ -34,8 +34,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.data.index') }}"
-                            class="nav-link text-white {{ Request::routeIs('admin.data.index') ? 'aktif' : '' }}">
+                        <a href="{{ route('admin.berita.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.berita.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-list-alt"></i>
                             <p>
                                 Berita
@@ -47,13 +47,22 @@
                             class="nav-link text-white {{ Request::routeIs('admin.tag.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-list-alt"></i>
                             <p>
+                                Tag
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.jadwal.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.jadwal.index') ? 'aktif' : '' }}">
+                            <i class="nav-icon fas fa-list-alt"></i>
+                            <p>
                                 Jadwal Kuliah
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.category.index') }}"
-                            class="nav-link text-white {{ Request::routeIs('admin.category.index') ? 'aktif' : '' }}">
+                        <a href="{{ route('admin.alumni.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.alumni.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-list-alt"></i>
                             <p>
                                 Alumni
@@ -61,8 +70,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.era.index') }}"
-                            class="nav-link text-white {{ Request::routeIs('admin.era.index') ? 'aktif' : '' }}">
+                        <a href="{{ route('admin.kategori.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.kategori.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-list-alt"></i>
                             <p>
                                 Kategori
@@ -70,8 +79,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.era.index') }}"
-                            class="nav-link text-white {{ Request::routeIs('admin.era.index') ? 'aktif' : '' }}">
+                        <a href="{{ route('admin.layanan.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.layanan.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-list-alt"></i>
                             <p>
                                 Layanan
@@ -79,8 +88,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.era.index') }}"
-                            class="nav-link text-white {{ Request::routeIs('admin.era.index') ? 'aktif' : '' }}">
+                        <a href="{{ route('admin.staff.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.staff.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-list-alt"></i>
                             <p>
                                 Staff
