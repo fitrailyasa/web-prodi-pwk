@@ -44,7 +44,7 @@
                 <th>{{ __('Img') }}</th>
                 <th>{{ __('Desc') }}</th>
                 <th>{{ __('Era') }}</th>
-                <th>{{ __('Franchise') }}</th>
+                <th>{{ __('link') }}</th>
                 <th>{{ __('Action') }}</th>
             </tr>
         </thead>
@@ -97,7 +97,7 @@
                     </td>
                     <td>{{ $category->desc ?? '-' }}</td>
                     <td>{{ $category->era->name ?? '-' }}</td>
-                    <td>{{ $category->franchise->name ?? '-' }}</td>
+                    <td>{{ $category->link->name ?? '-' }}</td>
                     <td class="manage-row">
                         @if (auth()->user()->role == 'admin')
                             @if ($category->trashed())
@@ -120,7 +120,7 @@
                 <th>{{ __('Img') }}</th>
                 <th>{{ __('Desc') }}</th>
                 <th>{{ __('Era') }}</th>
-                <th>{{ __('Franchise') }}</th>
+                <th>{{ __('link') }}</th>
                 <th>{{ __('Action') }}</th>
             </tr>
             <tr>

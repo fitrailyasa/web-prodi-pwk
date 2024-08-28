@@ -5,30 +5,30 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Data;
 use App\Models\Category;
-use App\Models\Franchise;
+use App\Models\link;
 
-class ClientFranchiseController extends Controller
+class ClientlinkController extends Controller
 {
     public function index()
     {
-        $franchises = Franchise::withoutTrashed()->paginate(12);
-        return view('client.franchise.index', compact('franchises'));
+        $links = link::withoutTrashed()->paginate(12);
+        return view('client.link.index', compact('links'));
     }
 
     public function show(string $category)
     {
-        $franchise = Franchise::where('slug', $category)->withoutTrashed()->firstOrFail();
-        $categories = Category::where('franchise_id', $franchise->id)->withoutTrashed()->paginate(12);
+        $link = link::where('slug', $category)->withoutTrashed()->firstOrFail();
+        $categories = Category::where('link_id', $link->id)->withoutTrashed()->paginate(12);
 
-        return view('client.franchise.show', compact('franchise', 'categories'));
+        return view('client.link.show', compact('link', 'categories'));
     }
 
     public function category(string $category, string $data)
     {
         $category = Category::where('slug', $data)->withoutTrashed()->firstOrFail();
         $datas = Data::where('category_id', $category->id)->withoutTrashed()->paginate(30);
-        $franchise = Franchise::findOrFail($category->franchise_id);
+        $link = link::findOrFail($category->link_id);
 
-        return view('client.franchise.category-detail', compact('datas', 'category', 'franchise'));
+        return view('client.link.category-detail', compact('datas', 'category', 'link'));
     }
 }

@@ -15,13 +15,7 @@
 .aktif,
 .footer {
     color: white;
-    background-color: #000000;
-    background-image: linear-gradient(
-        225deg,
-        #000000 0%,
-        #12085f 50%,
-        #000000 100%
-    ) !important;
+    background-color: #bdbdbd;
 }
 
 .modal-content {

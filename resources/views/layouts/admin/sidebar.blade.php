@@ -2,9 +2,9 @@
 <aside class="main-sidebar elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link border-bottom">
-        <img src="{{ asset('assets/favicon/favicon.ico') }}" alt="Logo" class="brand-image img-circle elevation-3 bg-white"
+        <img src="{{ asset('assets/img/logo-full-putih.png') }}" alt="Logo" class="brand-image d-inline-block"
             style="opacity: .8">
-        <span class="brand-text font-weight-bold text-white">TOKUSATSU</span>
+        {{-- <span class="brand-text text-white">PWK ITERA</span> --}}
     </a>
 
     <!-- Sidebar -->
@@ -23,14 +23,7 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('beranda') }}" class="nav-link text-white">
-                            <i class="nav-icon fas fa-home"></i>
-                            <p>
-                                Home
-                            </p>
-                        </a>
-                    </li>
+                    <li class="nav-header text-white">MENU</li> 
                     <li class="nav-item">
                         <a href="{{ route('admin.user.index') }}"
                             class="nav-link text-white {{ Request::routeIs('admin.user.index') ? 'aktif' : '' }}">
@@ -43,18 +36,18 @@
                     <li class="nav-item">
                         <a href="{{ route('admin.data.index') }}"
                             class="nav-link text-white {{ Request::routeIs('admin.data.index') ? 'aktif' : '' }}">
-                            <i class="nav-icon fas fa-database"></i>
+                            <i class="nav-icon fas fa-list-alt"></i>
                             <p>
-                                Data
+                                Berita
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin.tag.index') }}"
                             class="nav-link text-white {{ Request::routeIs('admin.tag.index') ? 'aktif' : '' }}">
-                            <i class="nav-icon fas fa-tag"></i>
+                            <i class="nav-icon fas fa-list-alt"></i>
                             <p>
-                                Tag
+                                Jadwal Kuliah
                             </p>
                         </a>
                     </li>
@@ -63,29 +56,48 @@
                             class="nav-link text-white {{ Request::routeIs('admin.category.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-list-alt"></i>
                             <p>
-                                Category
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.franchise.index') }}"
-                            class="nav-link text-white {{ Request::routeIs('admin.franchise.index') ? 'aktif' : '' }}">
-                            <i class="nav-icon fas fa-tv"></i>
-                            <p>
-                                Franchise
+                                Alumni
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin.era.index') }}"
                             class="nav-link text-white {{ Request::routeIs('admin.era.index') ? 'aktif' : '' }}">
-                            <i class="nav-icon fas fa-flag"></i>
+                            <i class="nav-icon fas fa-list-alt"></i>
                             <p>
-                                Era
+                                Kategori
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.era.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.era.index') ? 'aktif' : '' }}">
+                            <i class="nav-icon fas fa-list-alt"></i>
+                            <p>
+                                Layanan
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.era.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.era.index') ? 'aktif' : '' }}">
+                            <i class="nav-icon fas fa-list-alt"></i>
+                            <p>
+                                Staff
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.link.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.link.index') ? 'aktif' : '' }}">
+                            <i class="nav-icon fas fa-list-alt"></i>
+                            <p>
+                                Media Sosial
                             </p>
                         </a>
                     </li>
                 @endif
+                <li class="nav-header text-white">KELUAR</li>
                 <li class="nav-item">
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" hidden>
                         @csrf

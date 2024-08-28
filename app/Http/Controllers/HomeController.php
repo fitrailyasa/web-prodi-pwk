@@ -14,10 +14,10 @@ class HomeController extends Controller
         return view('client.index', compact('categories'));
     }
 
-    public function show(string $franchiseSlug, string $categorySlug)
+    public function show(string $linkSlug, string $categorySlug)
     {
-        $category = Category::whereHas('franchise', function ($query) use ($franchiseSlug) {
-            $query->where('slug', $franchiseSlug);
+        $category = Category::whereHas('link', function ($query) use ($linkSlug) {
+            $query->where('slug', $linkSlug);
         })->where('slug', $categorySlug)->firstOrFail();
         $datas = $category->datas()
             ->withoutTrashed()

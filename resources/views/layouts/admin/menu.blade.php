@@ -4,7 +4,8 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         @if (auth()->user()->role == 'admin')
             <li class="nav-item">
-                <a href="{{ route('admin.dashboard') }}" class="nav-link text-white {{ Request::routeIs('admin.dashboard') ? 'aktif' : '' }}">
+                <a href="{{ route('admin.dashboard') }}"
+                    class="nav-link text-white {{ Request::routeIs('admin.dashboard') ? 'aktif' : '' }}">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Dashboard
@@ -20,7 +21,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.user.index') }}" class="nav-link text-white {{ Request::routeIs('admin.user.index') ? 'aktif' : '' }}">
+                <a href="{{ route('admin.user.index') }}"
+                    class="nav-link text-white {{ Request::routeIs('admin.user.index') ? 'aktif' : '' }}">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         User
@@ -28,7 +30,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.data.index') }}" class="nav-link text-white {{ Request::routeIs('admin.data.index') ? 'aktif' : '' }}">
+                <a href="{{ route('admin.data.index') }}"
+                    class="nav-link text-white {{ Request::routeIs('admin.data.index') ? 'aktif' : '' }}">
                     <i class="nav-icon fas fa-database"></i>
                     <p>
                         Data
@@ -36,7 +39,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.tag.index') }}" class="nav-link text-white {{ Request::routeIs('admin.tag.index') ? 'aktif' : '' }}">
+                <a href="{{ route('admin.tag.index') }}"
+                    class="nav-link text-white {{ Request::routeIs('admin.tag.index') ? 'aktif' : '' }}">
                     <i class="nav-icon fas fa-tag"></i>
                     <p>
                         Tag
@@ -44,7 +48,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.category.index') }}" class="nav-link text-white {{ Request::routeIs('admin.category.index') ? 'aktif' : '' }}">
+                <a href="{{ route('admin.category.index') }}"
+                    class="nav-link text-white {{ Request::routeIs('admin.category.index') ? 'aktif' : '' }}">
                     <i class="nav-icon fas fa-list-alt"></i>
                     <p>
                         Category
@@ -52,15 +57,17 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.franchise.index') }}" class="nav-link text-white {{ Request::routeIs('admin.franchise.index') ? 'aktif' : '' }}">
+                <a href="{{ route('admin.link.index') }}"
+                    class="nav-link text-white {{ Request::routeIs('admin.link.index') ? 'aktif' : '' }}">
                     <i class="nav-icon fas fa-tv"></i>
                     <p>
-                        Franchise
+                        link
                     </p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.era.index') }}" class="nav-link text-white {{ Request::routeIs('admin.era.index') ? 'aktif' : '' }}">
+                <a href="{{ route('admin.era.index') }}"
+                    class="nav-link text-white {{ Request::routeIs('admin.era.index') ? 'aktif' : '' }}">
                     <i class="nav-icon fas fa-flag"></i>
                     <p>
                         Era

@@ -52,7 +52,7 @@
         }
 
         .main-sidebar {
-            background-color: maroon;
+            background-color: rgb(80, 80, 80);
         }
 
         /* .aktif {
@@ -123,7 +123,7 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Admin</a></li>
+                                <li class="breadcrumb-item"><a style="color: gray;" href="{{ route('dashboard') }}">Admin</a></li>
                                 <li class="breadcrumb-item active">{{ $title ?? '' }}</li>
                             </ol>
                         </div>

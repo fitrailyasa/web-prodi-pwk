@@ -3,7 +3,7 @@
         <div class="d-flex flex-wrap align-items-center justify-content-between">
             <div class="d-flex align-items-center justify-content-center">
                 <img class="img-fluid" width="60" src="{{ asset('assets/img/logo.png') }}" alt="Logo">
-                <h2 class="mb-0 font-weight-bold">TOKUSATSU</h2>
+                <h2 class="mb-0 font-weight-bold">pwk</h2>
             </div>
             <div class="d-none d-lg-block">
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 mx-3 justify-content-center mb-md-0">
@@ -13,8 +13,8 @@
                     <li><a href="{{ route('era') }}"
                             class="nav-link py-3 px-3 text-white fw-bold fs-5 @yield('textEra')">{{ __('Era') }}</a>
                     </li>
-                    <li><a href="{{ route('franchise') }}"
-                            class="nav-link py-3 px-3 text-white fw-bold fs-5 @yield('textFranchise')">{{ __('Franchise') }}</a>
+                    <li><a href="{{ route('link') }}"
+                            class="nav-link py-3 px-3 text-white fw-bold fs-5 @yield('textlink')">{{ __('link') }}</a>
                     </li>
                     <li><a href="{{ route('category') }}"
                             class="nav-link py-3 px-3 text-white fw-bold fs-5 @yield('textCategory')">{{ __('Category') }}</a>

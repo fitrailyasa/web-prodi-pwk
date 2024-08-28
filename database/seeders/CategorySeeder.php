@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Era;
-use App\Models\Franchise;
+use App\Models\Link;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
@@ -16,15 +16,15 @@ class CategorySeeder extends Seeder
         $showa = $this->Era('Showa');
         $heisei = $this->Era('Heisei');
         $reiwa = $this->Era('Reiwa');
-        $ultraman = $this->Franchise('Ultraman');
-        $kamenrider = $this->Franchise('Kamen Rider');
-        $supersentai = $this->Franchise('Super Sentai');
+        $ultraman = $this->link('Ultraman');
+        $kamenrider = $this->link('Kamen Rider');
+        $supersentai = $this->link('Super Sentai');
 
         $data = [
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => 'Kamen Rider',
                 'slug' => Str::slug('Kamen Rider', '-'),
                 'desc' => null,
@@ -35,7 +35,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => 'V3',
                 'slug' => Str::slug('V3', '-'),
                 'desc' => null,
@@ -46,7 +46,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => 'Rider X',
                 'slug' => Str::slug('Rider X', '-'),
                 'desc' => null,
@@ -57,7 +57,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => 'Amazon',
                 'slug' => Str::slug('Amazon', '-'),
                 'desc' => null,
@@ -68,7 +68,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => 'Stronger',
                 'slug' => Str::slug('Stronger', '-'),
                 'desc' => null,
@@ -79,7 +79,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => 'Skyrider',
                 'slug' => Str::slug('Skyrider', '-'),
                 'desc' => null,
@@ -90,7 +90,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => 'Super-1',
                 'slug' => Str::slug('Super-1', '-'),
                 'desc' => null,
@@ -101,7 +101,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => 'ZX',
                 'slug' => Str::slug('ZX', '-'),
                 'desc' => null,
@@ -112,7 +112,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => 'Black',
                 'slug' => Str::slug('Black', '-'),
                 'desc' => null,
@@ -123,7 +123,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => 'Black RX',
                 'slug' => Str::slug('Black RX', '-'),
                 'desc' => null,
@@ -134,7 +134,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => 'Shin',
                 'slug' => Str::slug('Shin', '-'),
                 'desc' => null,
@@ -145,7 +145,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => 'ZO',
                 'slug' => Str::slug('ZO', '-'),
                 'desc' => null,
@@ -156,7 +156,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => 'J',
                 'slug' => Str::slug('J', '-'),
                 'desc' => null,
@@ -167,7 +167,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "Kuuga",
                 'slug' => Str::slug("Kuuga", '-'),
                 'desc' => "Kamen Rider Kuuga (仮面ライダークウガ Kamen Raidā Kūga, Masked Rider Kuuga) is a Japanese tokusatsu drama and the 10th installment of the Kamen Rider Series. Debuting as the first entry of the Heisei Era, the series aired from January 30, 2000 to January 21, 2001 on TV Asahi as a joint collaboration between Ishimori Productions and Toei Company.",
@@ -178,10 +178,10 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "Agito",
                 'slug' => Str::slug("Agito", '-'),
-                'desc' => "Kamen Rider Agito (仮面ライダーアギト Kamen Raidā Agito, Masked Rider ΑGITΩ), is the eleventh installment in the popular Kamen Rider tokusatsu franchise. The series represented the 30th Anniversary of the Kamen Rider Series. The series was also a joint collaboration between Ishimori Productions and Toei and was shown on TV Asahi from January 28, 2001 to January 27, 2002. The catchphrase for the series is \"Awaken the soul\" (目覚めろ、その魂 Mezamero, sono tamashii).",
+                'desc' => "Kamen Rider Agito (仮面ライダーアギト Kamen Raidā Agito, Masked Rider ΑGITΩ), is the eleventh installment in the popular Kamen Rider tokusatsu link. The series represented the 30th Anniversary of the Kamen Rider Series. The series was also a joint collaboration between Ishimori Productions and Toei and was shown on TV Asahi from January 28, 2001 to January 27, 2002. The catchphrase for the series is \"Awaken the soul\" (目覚めろ、その魂 Mezamero, sono tamashii).",
                 'img' => "Kamen Rider/Era Heisei/2. Agito/1.2 AgitoRiders (1).jpg",
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -189,7 +189,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "Ryuki",
                 'slug' => Str::slug("Ryuki", '-'),
                 'desc' => "Kamen Rider Ryuki (仮面ライダー龍騎 Kamen Raidā Ryūki, Masked Rider Ryuki) is a Japanese tokusatsu television series. It was the twelfth installment in the Kamen Rider Series of tokusatsu shows. It was a joint collaboration between Ishimori Productions and Toei, and it was shown on TV Asahi from February 3, 2002 to January 19, 2003. The catchphrase for the series is \"Those who don't fight won't survive!!\" (戦わなければ、生き残れない!! Tatakawanakereba, ikinokorenai!!). In 2009, Ryuki was adapted into the American television series Kamen Rider Dragon Knight, the first adaptation of a Kamen Rider Series in the United States since Saban's Masked Rider in 1996.",
@@ -200,7 +200,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "555",
                 'slug' => Str::slug("555", '-'),
                 'desc' => "Kamen Rider 555 (仮面ライダー555（ファイズ） Kamen Raidā Faizu, Masked Rider Φ's or Faiz or Phi's) is a Japanese tokusatsu television drama. It is the 13th installment in the Kamen Rider Series. It is a joint collaboration between Ishinomori Productions and Toei, and was broadcast on TV Asahi from January 26, 2003, to January 18, 2004. This series was the first to use TV Asahi's current logo. It aired as a part of TV Asahi's 2003 Super Hero Time block, alongside Bakuryū Sentai Abaranger.",
@@ -211,7 +211,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "Blade",
                 'slug' => Str::slug("Blade", '-'),
                 'desc' => "Kamen Rider Blade (仮面ライダー剣［ブレイド］ Kamen Raidā Bureido, Masked Rider ♠ or Blade), is a Japanese tokusatsu drama and the 14th installment of the Kamen Rider Series. Debuting as the 5th entry of the Heisei Era, the show premiered on January 25, 2004 alongside Tokusou Sentai DekarangerIcon-crosswiki.png on TV Asahi's Super Hero Time block, and finished its 49-episode run on January 23, 2005.",
@@ -222,7 +222,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "Hibiki",
                 'slug' => Str::slug("Hibiki", '-'),
                 'desc' => "Kamen Rider Hibiki (仮面ライダー響鬼［ヒビキ］ Kamen Raidā Hibiki, Masked Rider Hibiki) is a Japanese tokusatsu superhero television series. It is the fifteenth installment in the popular Kamen Rider Series of tokusatsu programs. It is a joint collaboration between Ishimori Productions and Toei. Kamen Rider Hibiki first aired on January 30, 2005 and aired its final episode on January 22, 2006. It aired alongside Mahou Sentai MagirangerIcon-crosswiki.png for Super Hero Time 2005. This series is noted for introducing new themes and styles yet unseen in other shows. The catchphrase for the series is \"To us, there are heroes.\" (ぼくたちには、ヒーローがいる Bokutachi ni wa, hīrō ga iru).",
@@ -233,7 +233,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "Kabuto",
                 'slug' => Str::slug("Kabuto", '-'),
                 'desc' => "Kamen Rider Kabuto (仮面ライダーカブト Kamen Raidā Kabuto, Masked Rider Kabuto) is a Japanese tokusatsu superhero television series. It is the sixteenth installment in the popular Kamen Rider Series of tokusatsu programs. It is a joint collaboration between Ishimori Productions and Toei. The series was broadcast on TV Asahi. The first episode aired on January 29, 2006, and with the final episode airing on January 21, 2007, completing the series with 49 episodes. It aired alongside GoGo Sentai BoukengerIcon-crosswiki.png for Super Hero Time 2006. The series represents the 35th anniversary of the Masked Rider Series, as indicated by a notice at the beginning of the pilot episode reading, in Japanese, \"Kamen Rider 35th Anniversary Production.\" Kamen Rider Kabuto is the first Kamen Rider Series to be broadcast in high-definition format.",
@@ -244,7 +244,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "Den-O",
                 'slug' => Str::slug("Den-O", '-'),
                 'desc' => "Kamen Rider Den-O (仮面ライダー電王［デンオウ］ Kamen Raidā Den'ō, Masked Rider Den-O) is the seventeenth installment in the popular Kamen Rider Series of tokusatsu programs. It is a joint collaboration between Ishimori Productions and Toei. It premiered January 28, 2007 on TV Asahi, and concluded airing on January 20, 2008. It aired alongside Juken Sentai GekirangerIcon-crosswiki.png for Super Hero Time 2007. Its lead actor Takeru Satoh is the first Kamen Rider Series lead born in the Heisei period of Japanese history.",
@@ -255,7 +255,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "Kiva",
                 'slug' => Str::slug("Kiva", '-'),
                 'desc' => "Kamen Rider Kiva (仮面ライダーキバ Kamen Raidā Kiba, Masked Rider Kiva) is the title of the 2008 Kamen Rider Japanese tokusatsu television series produced by Toei Company and Ishimori Productions. It premiered on January 27, 2008, following the finale of Kamen Rider Den-O. It aired as a part of TV Asahi's 2008 Super Hero Time block with Engine Sentai Go-OngerIcon-crosswiki.png. Advertisements showed a horror film theme to the series, with the motif for Kamen Rider Kiva as a vampire. The advertising slogan for the series is \"Wake up! Break the chains of destiny!!\" (覚醒（ウェイクアップ）! 運命（さだめ）の鎖を解き放て!! Weiku appu! Sadame no kusari o tokihanate!!). The first episode began with a commemoration of the series in honor of the seventieth anniversary of Shotaro Ishinomori's birthday.",
@@ -266,7 +266,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "Decade",
                 'slug' => Str::slug("Decade", '-'),
                 'desc' => "Kamen Rider Decade (仮面ライダーディケイド Kamen Raidā Dikeido, Masked Rider DCD, Masked Rider Decade) is a Japanese tokusatsu drama and the 19th entry of the Kamen Rider Series. The series is the 10th entry of the Heisei Era and commemorates all of the Rider series to date. It premiered on January 25, 2009 alongside Samurai Sentai ShinkengerIcon-crosswiki.png on TV Asahi's Super Hero Time block. After Kamen Rider Decade concluded early on August 30, 2009, Shinkenger was joined by Kamen Rider W.",
@@ -277,7 +277,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "W",
                 'slug' => Str::slug("W", '-'),
                 'desc' => "Kamen Rider Double (仮面ライダーＷ［ダブル］ Kamen Raidā Daburu) is the main and eponymous protagonist of Kamen Rider W, a Kamen Rider who transforms from two people, Shotaro Hidari and Philip.",
@@ -288,7 +288,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "OOO",
                 'slug' => Str::slug("OOO", '-'),
                 'desc' => "Kamen Rider OOO (仮面ライダーＯＯＯ［オーズ］ Kamen Raidā Ōzu) is a 2010-2011 Japanese tokusatsu drama in Toei Company's Kamen Rider Series, being the twelfth series in the Heisei period run and the twenty-first overall. It began airing on September 5, 2010, the week following the conclusion of Kamen Rider W,[1] joining Tensou Sentai GoseigerIcon-crosswiki.png and then Kaizoku Sentai GokaigerIcon-crosswiki.png in the Super Hero Time lineup, until its conclusion on August 28, 2011. The series' titular Kamen Rider made a cameo appearance in the film Kamen Rider W Forever: A to Z/The Gaia Memories of Fate. The catchphrase for the series is \"I'll transform!!!\" (俺が変身する!!! Ore ga henshin suru!!!).",
@@ -299,7 +299,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "Fourze",
                 'slug' => Str::slug("Fourze", '-'),
                 'desc' => "Kamen Rider Fourze (仮面ライダーフォーゼ Kamen Raidā Fōze) is a Japanese tokusatsu drama in Toei Company's Kamen Rider Series, being the thirteenth series in the Heisei period run and the twenty-second overall. It began airing on September 4, 2011, the week following the conclusion of Kamen Rider OOO, joining Kaizoku Sentai GokaigerIcon-crosswiki.png, later Tokumei Sentai Go-BustersIcon-crosswiki.png, in the Super Hero Time lineup. Trademarks on the title were filed by Toei in April 2011. The series commemorates not only the Kamen Rider Series' 40th anniversary but also the 50th anniversary of spaceflight, which began with Yuri Gagarin's Vostok 1 flight in 1961. The show's catchphrase is \"Switch on youth 'cause space is here!\" (青春スイッチオンで宇宙キター！ Seishun suitchi on de uchū kitā!), referencing the Fourze Driver transformation belt which gets its various powers from devices called Astroswitches to conjure attachments to Fourze's limbs. As with the two previous series, the protagonist of Fourze made his debut in the annual summer film of the show's direct predecessor, appearing in Kamen Rider OOO Wonderful: The Shogun and the 21 Core Medals.",
@@ -310,7 +310,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "Wizard",
                 'slug' => Str::slug("Wizard", '-'),
                 'desc' => "Kamen Rider Wizard (仮面ライダーウィザード Kamen Raidā Uizādo) is a Japanese tokusatsu drama in Toei Company's Kamen Rider Series, being the fourteenth series in the Heisei period run and the twenty-third overall. Trademarks on the title were filed by Toei in June 21, 2012. It began airing on September 2, 2012, joining Tokumei Sentai Go-BustersIcon-crosswiki.png and then Zyuden Sentai KyoryugerIcon-crosswiki.png in the Super Hero Time line-up following the finale of Kamen Rider Fourze. With Wizard finished, Kamen Rider Gaim joined Kyoryuger as part of Super Hero Time. Tsuyoshi Kida is the series' main screenwriter.",
@@ -321,7 +321,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "Gaim",
                 'slug' => Str::slug("Gaim", '-'),
                 'desc' => "Kamen Rider Gaim (仮面ライダー鎧武［ガイム］ Kamen Raidā Gaimu) is a Japanese tokusatsu drama in Toei Company's Kamen Rider Series, it is the fifteenth series in the Heisei period run and the twenty-fourth series overall. Toei registered the copyright and trademark of the series, which started on October 6, 2013, joining Zyuden Sentai KyoryugerIcon-crosswiki.png in the Super Hero Time line-up three weeks after the finale of Kamen Rider Wizard. After Kyoryuger concluded on February 9, 2014, Kamen Rider Gaim was joined in the Super Hero Time lineup with Ressha Sentai ToQgerIcon-crosswiki.png. After the finale of Kamen Rider Gaim, Kamen Rider Drive joined ToQger on the Super Hero Time block. The catchphrase for the series are \"It's a Rider Warring (Sengoku) era.\" (ライダー戦国時代。 Raidā Sengoku Jidai) and \"How would you use your power?\" (キミはこの力どう使う? Kimi wa kono chikara dō tsukau).",
@@ -332,7 +332,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "Drive",
                 'slug' => Str::slug("Drive", '-'),
                 'desc' => "Kamen Rider Drive (仮面ライダードライブ Kamen Raidā Doraibu) is a Japanese tokusatsu drama in Toei Company's Kamen Rider Series. It is the sixteenth series in the Heisei period run and the twenty-fifth series overall. The series started on October 5, 2014, joining Ressha Sentai ToQgerIcon-crosswiki.png in the Super Hero Time line-up after the finale of Kamen Rider Gaim. Starting on February 22, 2015, Kamen Rider Drive was joined by Shuriken Sentai NinningerIcon-crosswiki.png in the Super Hero Time line-up. After the finale of Kamen Rider Drive, Kamen Rider Ghost joined Ninninger in the Super Hero Time line-up. Its series tagline is \"Start Your Engine!\"",
@@ -343,7 +343,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "Ghost",
                 'slug' => Str::slug("Ghost", '-'),
                 'desc' => "Kamen Rider Ghost (仮面ライダーゴースト Kamen Raidā Gōsuto) is a Japanese tokusatsu drama in Toei Company's Kamen Rider Series. It is the seventeenth series in the Heisei period run and the twenty-sixth series overall. The series started on October 4, 2015, joining Shuriken Sentai NinningerIcon-crosswiki.png in the Super Hero Time line-up after the finale of Kamen Rider Drive. After Ninninger concluded on February 7, 2016, the series was joined by Doubutsu Sentai ZyuohgerIcon-crosswiki.png in the Super Hero Time line-up. After the finale of Kamen Rider Ghost, Kamen Rider Ex-Aid joined Zyuohger in the Super Hero Time line-up.",
@@ -354,7 +354,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "Ex-Aid",
                 'slug' => Str::slug("Ex-Aid", '-'),
                 'desc' => "Kamen Rider Ex-Aid (仮面ライダーエグゼイド Kamen Raidā Eguzeido) is a Japanese tokusatsu drama in Toei Company's Kamen Rider Series. It is the eighteenth series in the Heisei period run and the twenty-seventh series overall. The series started on October 2, 2016, joining Doubutsu Sentai ZyuohgerIcon-crosswiki.png in the Super Hero Time line-up after the finale of Kamen Rider Ghost. Starting on February 12, 2017, the series was joined by Uchu Sentai KyurangerIcon-crosswiki.png in the Super Hero Time line-up. After the finale of Kamen Rider Ex-Aid, Kamen Rider Build joined Kyuranger in the Super Hero Time line-up. In 2019, this became the first Kamen Rider to air in Indonesia on RTV since Kamen Rider OOO on Indosiar in 2014. This show currently airs on the North American Japanese-language channel TV Japan.",
@@ -365,7 +365,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "Build",
                 'slug' => Str::slug("Build", '-'),
                 'desc' => "Kamen Rider Build (仮面ライダービルド Kamen Raidā Birudo) is a Japanese tokusatsu drama in Toei Company's Kamen Rider Series. It is the nineteenth and penultimate series for a full Heisei period run and the twenty-eighth series overall. The series started on September 3, 2017, joining Uchu Sentai KyurangerIcon-crosswiki.png in the Super Hero Time line-up after the finale of Kamen Rider Ex-Aid. After Kyuranger concluded on February 4, 2018, the series was joined by Kaitou Sentai Lupinranger VS Keisatsu Sentai PatrangerIcon-crosswiki.png in the Super Hero Time line-up. After the finale of Kamen Rider Build, Kamen Rider Zi-O joined Lupinranger VS Patranger on the Super Hero Time block.",
@@ -376,7 +376,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => "Zi-O",
                 'slug' => Str::slug("Zi-O", '-'),
                 'desc' => "Kamen Rider Zi-O (仮面ライダージオウ Kamen Raidā Jiō) is a Japanese tokusatsu drama in Toei Company's Kamen Rider Series. It is the twentieth and final series in the Heisei period run, the first series to be produced around the Reiwa period, and the twenty-ninth series overall. The series started on September 2, 2018, joining Kaitou Sentai Lupinranger VS Keisatsu Sentai PatrangerIcon-crosswiki.png in the Super Hero Time line-up after the finale of Kamen Rider Build. After Lupinranger VS Patranger’s conclusion, it was joined by 4 Week Continuous Special Super Sentai Strongest Battle!!Icon-crosswiki.png in February 2019 and later Kishiryu Sentai RyusoulgerIcon-crosswiki.png in March 2019. After the finale of Kamen Rider Zi-O, Ryusoulger would air alongside Kamen Rider Zero-One in the Super Hero Time block.",
@@ -387,7 +387,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $reiwa,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => 'Zero-One',
                 'slug' => Str::slug('Zero-One', '-'),
                 'desc' => null,
@@ -398,7 +398,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $reiwa,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => 'Saber',
                 'slug' => Str::slug('Saber', '-'),
                 'desc' => null,
@@ -409,7 +409,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $reiwa,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => 'Revice',
                 'slug' => Str::slug('Revice', '-'),
                 'desc' => null,
@@ -420,7 +420,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $reiwa,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => 'Geats',
                 'slug' => Str::slug('Geats', '-'),
                 'desc' => null,
@@ -431,7 +431,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $reiwa,
-                'franchise_id' => $kamenrider,
+                'link_id' => $kamenrider,
                 'name' => 'Gotchard',
                 'slug' => Str::slug('Gotchard', '-'),
                 'desc' => null,
@@ -442,7 +442,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Gorenger',
                 'slug' => Str::slug('Gorenger', '-'),
                 'desc' => null,
@@ -453,7 +453,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'J.A.K.Q.',
                 'slug' => Str::slug('J.A.K.Q.', '-'),
                 'desc' => null,
@@ -464,7 +464,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Fever J',
                 'slug' => Str::slug('Fever J', '-'),
                 'desc' => null,
@@ -475,7 +475,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Denziman',
                 'slug' => Str::slug('Denziman', '-'),
                 'desc' => null,
@@ -486,7 +486,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Sun Vulcan',
                 'slug' => Str::slug('Sun Vulcan', '-'),
                 'desc' => null,
@@ -497,7 +497,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Goggle V',
                 'slug' => Str::slug('Goggle V', '-'),
                 'desc' => null,
@@ -508,7 +508,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Dynaman',
                 'slug' => Str::slug('Dynaman', '-'),
                 'desc' => null,
@@ -519,7 +519,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Bioman',
                 'slug' => Str::slug('Bioman', '-'),
                 'desc' => null,
@@ -530,7 +530,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Changeman',
                 'slug' => Str::slug('Changeman', '-'),
                 'desc' => null,
@@ -541,7 +541,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Flashman',
                 'slug' => Str::slug('Flashman', '-'),
                 'desc' => null,
@@ -552,7 +552,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Maskman',
                 'slug' => Str::slug('Maskman', '-'),
                 'desc' => null,
@@ -563,7 +563,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Liveman',
                 'slug' => Str::slug('Liveman', '-'),
                 'desc' => null,
@@ -574,7 +574,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Turboranger',
                 'slug' => Str::slug('Turboranger', '-'),
                 'desc' => null,
@@ -585,7 +585,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Fiveman',
                 'slug' => Str::slug('Fiveman', '-'),
                 'desc' => null,
@@ -596,7 +596,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Jetman',
                 'slug' => Str::slug('Jetman', '-'),
                 'desc' => null,
@@ -607,7 +607,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Zyuranger',
                 'slug' => Str::slug('Zyuranger', '-'),
                 'desc' => null,
@@ -618,7 +618,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Dairanger',
                 'slug' => Str::slug('Dairanger', '-'),
                 'desc' => null,
@@ -629,7 +629,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Kakuranger',
                 'slug' => Str::slug('Kakuranger', '-'),
                 'desc' => null,
@@ -640,7 +640,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Ohranger',
                 'slug' => Str::slug('Ohranger', '-'),
                 'desc' => null,
@@ -651,7 +651,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Carranger',
                 'slug' => Str::slug('Carranger', '-'),
                 'desc' => null,
@@ -662,7 +662,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Megaranger',
                 'slug' => Str::slug('Megaranger', '-'),
                 'desc' => null,
@@ -673,7 +673,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Gingaman',
                 'slug' => Str::slug('Gingaman', '-'),
                 'desc' => null,
@@ -684,7 +684,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Go Go V',
                 'slug' => Str::slug('Go Go V', '-'),
                 'desc' => null,
@@ -695,7 +695,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Timeranger',
                 'slug' => Str::slug('Timeranger', '-'),
                 'desc' => null,
@@ -706,7 +706,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Gaoranger',
                 'slug' => Str::slug('Gaoranger', '-'),
                 'desc' => null,
@@ -717,7 +717,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Hurricaneger',
                 'slug' => Str::slug('Hurricaneger', '-'),
                 'desc' => null,
@@ -728,7 +728,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Abaranger',
                 'slug' => Str::slug('Abaranger', '-'),
                 'desc' => null,
@@ -739,7 +739,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Dekaranger',
                 'slug' => Str::slug('Dekaranger', '-'),
                 'desc' => null,
@@ -750,7 +750,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Magiranger',
                 'slug' => Str::slug('Magiranger', '-'),
                 'desc' => null,
@@ -761,7 +761,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Boukenger',
                 'slug' => Str::slug('Boukenger', '-'),
                 'desc' => null,
@@ -772,7 +772,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Gekiranger',
                 'slug' => Str::slug('Gekiranger', '-'),
                 'desc' => null,
@@ -783,7 +783,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Go-onger',
                 'slug' => Str::slug('Go-onger', '-'),
                 'desc' => null,
@@ -794,7 +794,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Shinkenger',
                 'slug' => Str::slug('Shinkenger', '-'),
                 'desc' => null,
@@ -805,7 +805,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Goseiger',
                 'slug' => Str::slug('Goseiger', '-'),
                 'desc' => null,
@@ -816,7 +816,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Gokaiger',
                 'slug' => Str::slug('Gokaiger', '-'),
                 'desc' => null,
@@ -827,7 +827,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Go-Busters',
                 'slug' => Str::slug('Go-Busters', '-'),
                 'desc' => null,
@@ -838,7 +838,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Kyoryuger',
                 'slug' => Str::slug('Kyoryuger', '-'),
                 'desc' => null,
@@ -849,7 +849,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'ToQger',
                 'slug' => Str::slug('ToQger', '-'),
                 'desc' => null,
@@ -860,7 +860,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Ninninger',
                 'slug' => Str::slug('Ninninger', '-'),
                 'desc' => null,
@@ -871,7 +871,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Zyuohger',
                 'slug' => Str::slug('Zyuohger', '-'),
                 'desc' => null,
@@ -882,7 +882,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Kyuuranger',
                 'slug' => Str::slug('Kyuuranger', '-'),
                 'desc' => null,
@@ -893,7 +893,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Lupinranger VS Patranger',
                 'slug' => Str::slug('Lupinranger VS Patranger', '-'),
                 'desc' => null,
@@ -904,7 +904,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Ryusoulger',
                 'slug' => Str::slug('Ryusoulger', '-'),
                 'desc' => null,
@@ -915,7 +915,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $reiwa,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Kiramager',
                 'slug' => Str::slug('Kiramager', '-'),
                 'desc' => null,
@@ -926,7 +926,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $reiwa,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Zenkaiger',
                 'slug' => Str::slug('Zenkaiger', '-'),
                 'desc' => null,
@@ -937,7 +937,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $reiwa,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Donbrothers',
                 'slug' => Str::slug('Donbrothers', '-'),
                 'desc' => null,
@@ -948,7 +948,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $reiwa,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'King-Ohger',
                 'slug' => Str::slug('King-Ohger', '-'),
                 'desc' => null,
@@ -959,7 +959,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $reiwa,
-                'franchise_id' => $supersentai,
+                'link_id' => $supersentai,
                 'name' => 'Boonboomger',
                 'slug' => Str::slug('Boonboomger', '-'),
                 'desc' => null,
@@ -970,7 +970,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Ultraman',
                 'slug' => Str::slug('Ultraman', '-'),
                 'desc' => null,
@@ -981,7 +981,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Ultra Seven',
                 'slug' => Str::slug('Ultra Seven', '-'),
                 'desc' => null,
@@ -992,7 +992,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Jack',
                 'slug' => Str::slug('Jack', '-'),
                 'desc' => null,
@@ -1003,7 +1003,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Ace',
                 'slug' => Str::slug('Ace', '-'),
                 'desc' => null,
@@ -1014,7 +1014,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Taro',
                 'slug' => Str::slug('Taro', '-'),
                 'desc' => null,
@@ -1025,7 +1025,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Leo',
                 'slug' => Str::slug('Leo', '-'),
                 'desc' => null,
@@ -1036,7 +1036,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => '80',
                 'slug' => Str::slug('80', '-'),
                 'desc' => null,
@@ -1047,7 +1047,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $showa,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Zoffy',
                 'slug' => Str::slug('Zoffy', '-'),
                 'desc' => null,
@@ -1058,7 +1058,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Tiga',
                 'slug' => Str::slug('Tiga', '-'),
                 'desc' => null,
@@ -1069,7 +1069,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Dyna',
                 'slug' => Str::slug('Dyna', '-'),
                 'desc' => null,
@@ -1080,7 +1080,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Gaia',
                 'slug' => Str::slug('Gaia', '-'),
                 'desc' => null,
@@ -1091,7 +1091,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Cosmos',
                 'slug' => Str::slug('Cosmos', '-'),
                 'desc' => null,
@@ -1102,7 +1102,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Nexus',
                 'slug' => Str::slug('Nexus', '-'),
                 'desc' => null,
@@ -1113,7 +1113,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Max',
                 'slug' => Str::slug('Max', '-'),
                 'desc' => null,
@@ -1124,7 +1124,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Zero',
                 'slug' => Str::slug('Zero', '-'),
                 'desc' => null,
@@ -1135,7 +1135,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Ginga',
                 'slug' => Str::slug('Ginga', '-'),
                 'desc' => null,
@@ -1146,7 +1146,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Ginga S',
                 'slug' => Str::slug('Ginga S', '-'),
                 'desc' => null,
@@ -1157,7 +1157,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'X',
                 'slug' => Str::slug('X', '-'),
                 'desc' => null,
@@ -1168,7 +1168,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Orb',
                 'slug' => Str::slug('Orb', '-'),
                 'desc' => null,
@@ -1179,7 +1179,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Geed',
                 'slug' => Str::slug('Geed', '-'),
                 'desc' => null,
@@ -1190,7 +1190,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $heisei,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'R/B',
                 'slug' => Str::slug('R/B', '-'),
                 'desc' => null,
@@ -1201,7 +1201,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $reiwa,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Taiga',
                 'slug' => Str::slug('Taiga', '-'),
                 'desc' => null,
@@ -1212,7 +1212,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $reiwa,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Z',
                 'slug' => Str::slug('Z', '-'),
                 'desc' => null,
@@ -1223,7 +1223,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $reiwa,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Trigger',
                 'slug' => Str::slug('Trigger', '-'),
                 'desc' => null,
@@ -1234,7 +1234,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $reiwa,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Decker',
                 'slug' => Str::slug('Decker', '-'),
                 'desc' => null,
@@ -1245,7 +1245,7 @@ class CategorySeeder extends Seeder
             [
                 'id' => Str::uuid(),
                 'era_id' => $reiwa,
-                'franchise_id' => $ultraman,
+                'link_id' => $ultraman,
                 'name' => 'Blazar',
                 'slug' => Str::slug('Blazar', '-'),
                 'desc' => null,
@@ -1271,15 +1271,15 @@ class CategorySeeder extends Seeder
         return $era->id;
     }
 
-    private function Franchise(string $name): string
+    private function link(string $name): string
     {
-        $franchise = Franchise::where('name', $name)->first();
-        if (!$franchise) {
-            $franchise = Franchise::create([
+        $link = link::where('name', $name)->first();
+        if (!$link) {
+            $link = link::create([
                 'id' => Str::uuid(),
                 'name' => $name,
             ]);
         }
-        return $franchise->id;
+        return $link->id;
     }
 }

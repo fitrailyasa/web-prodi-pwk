@@ -4,7 +4,7 @@ namespace App\Imports;
 
 use App\Models\Category;
 use App\Models\Era;
-use App\Models\Franchise;
+use App\Models\link;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 use Illuminate\Support\Str;
@@ -23,10 +23,10 @@ class CategoryImport implements ToModel, WithStartRow
             ]);
         }
 
-        $franchise = Franchise::where('name', $row[1])->first();
+        $link = link::where('name', $row[1])->first();
 
-        if (!$franchise) {
-            $franchise = Franchise::create([
+        if (!$link) {
+            $link = link::create([
                 'id' => Str::uuid(),
                 'name' => $row[1],
                 'img' => null,
@@ -40,7 +40,7 @@ class CategoryImport implements ToModel, WithStartRow
                 'img' => $row[4] ?? $checkCategory->img,
                 'desc' => $row[5] ?? $checkCategory->desc,
                 'era_id' => $era->id,
-                'franchise_id' => $franchise->id,
+                'link_id' => $link->id,
             ]);
 
             return null;
@@ -52,7 +52,7 @@ class CategoryImport implements ToModel, WithStartRow
             'img' => $row[4] ?? null,
             'desc' => $row[5] ?? null,
             'era_id' => $era->id ?? null,
-            'franchise_id' => $franchise->id ?? null,
+            'link_id' => $link->id ?? null,
         ]);
     }
 

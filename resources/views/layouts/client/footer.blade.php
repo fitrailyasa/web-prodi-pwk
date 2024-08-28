@@ -10,7 +10,7 @@
                             class="fas fa-crown fs-4"></i></a>
                 </li>
                 <li>
-                    <a href="{{ route('franchise') }}" class="nav-link p-3 text-white fw-bold @yield('textFranchise')"><i
+                    <a href="{{ route('link') }}" class="nav-link p-3 text-white fw-bold @yield('textlink')"><i
                             class="fas fa-tv fs-4"></i></a>
                 </li>
                 <li>

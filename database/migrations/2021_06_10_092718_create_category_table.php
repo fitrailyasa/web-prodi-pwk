@@ -20,7 +20,7 @@ class CreateCategoryTable extends Migration
             $table->text('desc')->nullable();
             $table->string('img')->nullable();
             $table->uuid('era_id')->nullable();
-            $table->uuid('franchise_id')->nullable();
+            $table->uuid('link_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

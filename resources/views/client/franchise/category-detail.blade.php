@@ -2,7 +2,7 @@
 
 @section('title', 'Category')
 
-@section('textFranchise', 'rounded aktif')
+@section('textlink', 'rounded aktif')
 
 @section('content')
 

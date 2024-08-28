@@ -24,7 +24,7 @@ class CategoryRequest extends FormRequest
 
         return [
             'era_id' => 'required',
-            'franchise_id' => 'required',
+            'link_id' => 'required',
             'name' => [
                 'required',
                 'max:100',
@@ -39,7 +39,7 @@ class CategoryRequest extends FormRequest
     {
         return [
             'era_id.required' => 'Era harus dipilih!',
-            'franchise_id.required' => 'Franchise harus dipilih!',
+            'link_id.required' => 'link harus dipilih!',
             'name.required' => 'Kolom Nama harus diisi!',
             'name.max' => 'Kolom Nama tidak boleh lebih dari 100 karakter!',
             'desc.max' => 'Kolom Deskripsi tidak boleh lebih dari 1024 karakter!',

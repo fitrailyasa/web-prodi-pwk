@@ -7,12 +7,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminEraController;
-use App\Http\Controllers\Admin\AdminFranchiseController;
+use App\Http\Controllers\Admin\AdminlinkController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminTagController;
 use App\Http\Controllers\Admin\AdminDataController;
 use App\Http\Controllers\Auth\ProviderController;
-use App\Http\Controllers\Client\ClientFranchiseController;
+use App\Http\Controllers\Client\ClientlinkController;
 use App\Http\Controllers\Client\ClientEraController;
 use App\Http\Controllers\Client\ClientCategoryController;
 
@@ -23,9 +23,9 @@ Route::get('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/era', [ClientEraController::class, 'index'])->name('era');
 Route::get('/era/{category}', [ClientEraController::class, 'show'])->name('era.show');
 Route::get('/era/{category}/{data}', [ClientEraController::class, 'category'])->name('era.category');
-Route::get('/franchise', [ClientFranchiseController::class, 'index'])->name('franchise');
-Route::get('/franchise/{category}', [ClientFranchiseController::class, 'show'])->name('franchise.show');
-Route::get('/franchise/{category}/{data}', [ClientFranchiseController::class, 'category'])->name('franchise.category');
+Route::get('/link', [ClientlinkController::class, 'index'])->name('link');
+Route::get('/link/{category}', [ClientlinkController::class, 'show'])->name('link.show');
+Route::get('/link/{category}/{data}', [ClientlinkController::class, 'category'])->name('link.category');
 Route::get('/category', [ClientCategoryController::class, 'index'])->name('category');
 Route::get('/category/{data}', [ClientCategoryController::class, 'show'])->name('category.show');
 
@@ -61,16 +61,16 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/era/{id}/restore', [AdminEraController::class, 'restore'])->name('era.restore');
     Route::put('/era/restoreAll', [AdminEraController::class, 'restoreAll'])->name('era.restoreAll');
 
-    // CRUD FRANCHISE
-    Route::get('/franchise', [AdminFranchiseController::class, 'index'])->name('franchise.index');
-    Route::post('/franchise', [AdminFranchiseController::class, 'store'])->name('franchise.store');
-    Route::put('/franchise/{id}/update', [AdminFranchiseController::class, 'update'])->name('franchise.update');
-    Route::delete('/franchise/{id}/destroy', [AdminFranchiseController::class, 'destroy'])->name('franchise.destroy');
-    Route::post('/franchise/import', [AdminFranchiseController::class, 'import'])->name('franchise.import');
-    Route::get('/franchise/export', [AdminFranchiseController::class, 'export'])->name('franchise.export');
-    Route::delete('/franchise/deleteAll', [AdminFranchiseController::class, 'destroyAll'])->name('franchise.destroyAll');
-    Route::put('/franchise/{id}/restore', [AdminFranchiseController::class, 'restore'])->name('franchise.restore');
-    Route::put('/franchise/restoreAll', [AdminFranchiseController::class, 'restoreAll'])->name('franchise.restoreAll');
+    // CRUD link
+    Route::get('/link', [AdminlinkController::class, 'index'])->name('link.index');
+    Route::post('/link', [AdminlinkController::class, 'store'])->name('link.store');
+    Route::put('/link/{id}/update', [AdminlinkController::class, 'update'])->name('link.update');
+    Route::delete('/link/{id}/destroy', [AdminlinkController::class, 'destroy'])->name('link.destroy');
+    Route::post('/link/import', [AdminlinkController::class, 'import'])->name('link.import');
+    Route::get('/link/export', [AdminlinkController::class, 'export'])->name('link.export');
+    Route::delete('/link/deleteAll', [AdminlinkController::class, 'destroyAll'])->name('link.destroyAll');
+    Route::put('/link/{id}/restore', [AdminlinkController::class, 'restore'])->name('link.restore');
+    Route::put('/link/restoreAll', [AdminlinkController::class, 'restoreAll'])->name('link.restoreAll');
 
     // CRUD CATEGORY
     Route::get('/category', [AdminCategoryController::class, 'index'])->name('category.index');
@@ -108,4 +108,4 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/{franchise}/{category}', [HomeController::class, 'show'])->name('beranda.show');
+Route::get('/{link}/{category}', [HomeController::class, 'show'])->name('beranda.show');

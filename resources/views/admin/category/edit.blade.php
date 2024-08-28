@@ -36,18 +36,18 @@
                     </div>
                     <div class="col-md-4">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Franchise') }}</label>
-                            <select class="form-select @error('franchise_id') is-invalid @enderror" name="franchise_id"
-                                id="franchise_id" required>
-                                <option selected disabled>{{ __('Select Franchise') }}</option>
-                                @foreach ($franchises as $franchise)
-                                    <option value="{{ old('franchise_id', $franchise->id) }}"
-                                        {{ $franchise->id == $category->franchise_id ? 'selected' : '' }}>
-                                        {{ $franchise->name }}
+                            <label class="form-label">{{ __('link') }}</label>
+                            <select class="form-select @error('link_id') is-invalid @enderror" name="link_id"
+                                id="link_id" required>
+                                <option selected disabled>{{ __('Select link') }}</option>
+                                @foreach ($links as $link)
+                                    <option value="{{ old('link_id', $link->id) }}"
+                                        {{ $link->id == $category->link_id ? 'selected' : '' }}>
+                                        {{ $link->name }}
                                     </option>
                                 @endforeach
                             </select>
-                            @error('franchise_id')
+                            @error('link_id')
                                 <div class="invalid-feedback">{{ $message }}
                                 </div>
                             @enderror

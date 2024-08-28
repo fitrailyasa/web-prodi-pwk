@@ -26,7 +26,7 @@ class CategoryExport implements FromCollection, WithHeadings, WithStyles, Should
                 'Img' => $category->img ?? '',
                 'Desc' => $category->desc ?? '',
                 'Era' => $category->era->name ?? '',
-                'Franchise' => $category->franchise->name ?? '',
+                'link' => $category->link->name ?? '',
             ];
         }
 
@@ -45,7 +45,7 @@ class CategoryExport implements FromCollection, WithHeadings, WithStyles, Should
                 'Img',
                 'Desc',
                 'Era',
-                'Franchise',
+                'link',
             ],
         ];
     }

@@ -2,7 +2,7 @@
 
 @section('title', 'Category')
 
-@section('textFranchise', 'rounded aktif')
+@section('textlink', 'rounded aktif')
 
 @section('content')
 
@@ -15,7 +15,7 @@
                     </a>
                 </div>
                 <div class="col-6">
-                    <h4 class="text-white font-weight-bold">{{ $franchise->name }}</h4>
+                    <h4 class="text-white font-weight-bold">{{ $link->name }}</h4>
                 </div>
                 <div class="col-3 text-right">
                     <button type="button" class="btn aktif text-white" onclick="window.print()">Print</button>
@@ -24,8 +24,8 @@
         </div>
         <div class="text-center d-flex flex-wrap justify-content-center">
             @foreach ($categories as $category)
-                <a href="{{ route('franchise.category', [$category->franchise->slug, $category->slug]) }}"
-                    class="btn m-2 img-gallery" loading="lazy">
+                <a href="{{ route('link.category', [$category->link->slug, $category->slug]) }}" class="btn m-2 img-gallery"
+                    loading="lazy">
                     @if ($category->img === null)
                         <img class="img img-fluid rounded" src="{{ asset('assets/img/comingsoon.jpg') }}" alt="">
                     @else

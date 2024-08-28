@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\Franchise;
+use App\Models\link;
 use App\Models\Era;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -27,7 +27,7 @@ class AdminCategoryController extends Controller
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
         $eras = Era::all();
-        $franchises = Franchise::all();
+        $links = link::all();
 
         if ($search) {
             $categories = Category::withTrashed()
@@ -40,7 +40,7 @@ class AdminCategoryController extends Controller
 
         $counter = ($categories->currentPage() - 1) * $categories->perPage() + 1;
 
-        return view("admin.category.index", compact('categories', 'eras', 'franchises', 'counter', 'search', 'perPage'));
+        return view("admin.category.index", compact('categories', 'eras', 'links', 'counter', 'search', 'perPage'));
     }
 
     public function import(Request $request)

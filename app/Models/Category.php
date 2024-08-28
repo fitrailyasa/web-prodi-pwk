@@ -17,7 +17,7 @@ class Category extends Model
     protected $table = 'category';
     protected $primaryKey = 'id';
     public $incrementing = false;
-    protected $fillable = ['id', 'name', 'slug', 'desc', 'img', 'era_id', 'franchise_id'];
+    protected $fillable = ['id', 'name', 'slug', 'desc', 'img', 'era_id', 'link_id'];
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     public static function setDynamicConnection()
@@ -56,8 +56,8 @@ class Category extends Model
         return $this->belongsTo(Era::class, 'era_id', 'id');
     }
 
-    public function franchise()
+    public function link()
     {
-        return $this->belongsTo(Franchise::class, 'franchise_id', 'id');
+        return $this->belongsTo(Link::class, 'link_id', 'id');
     }
 }

@@ -20,7 +20,7 @@ class DataImport implements ToModel, WithStartRow
                 'id' => Str::uuid(),
                 'name' => $row[2],
                 'img' => null,
-                'franchise_id' => null,
+                'link_id' => null,
                 'era_id' => null,
             ]);
         }
