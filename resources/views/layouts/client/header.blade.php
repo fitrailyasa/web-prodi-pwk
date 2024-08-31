@@ -10,15 +10,6 @@
                     <li><a href="{{ route('beranda') }}"
                             class="nav-link py-3 px-3 text-white fw-bold fs-5 @yield('textHome')">{{ __('Home') }}</a>
                     </li>
-                    <li><a href="{{ route('era') }}"
-                            class="nav-link py-3 px-3 text-white fw-bold fs-5 @yield('textEra')">{{ __('Era') }}</a>
-                    </li>
-                    <li><a href="{{ route('link') }}"
-                            class="nav-link py-3 px-3 text-white fw-bold fs-5 @yield('textlink')">{{ __('link') }}</a>
-                    </li>
-                    <li><a href="{{ route('category') }}"
-                            class="nav-link py-3 px-3 text-white fw-bold fs-5 @yield('textCategory')">{{ __('Category') }}</a>
-                    </li>
                 </ul>
             </div>
             {{-- <div class="d-flex align-items-center">

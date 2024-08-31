@@ -30,16 +30,16 @@
                     <td class="d-none d-lg-table-cell">{{ $user->email ?? '-' }}</td>
                     <td class="d-none d-lg-table-cell">
                         @if ($user->role == 'admin')
-                            <span class="badge badge-primary">{{ $user->role }}</span>
+                            <span class="badge badge-dark">{{ $user->role }}</span>
                         @elseif ($user->role != 'admin')
                             <span class="badge badge-secondary">{{ $user->role }}</span>
                         @endif
                     </td>
                     <td class="d-none d-lg-table-cell">
                         @if ($user->status == 'aktif')
-                            <span class="badge badge-success">{{ $user->status }}</span>
+                            <span class="badge badge-dark">{{ $user->status }}</span>
                         @elseif ($user->status != 'aktif')
-                            <span class="badge badge-danger">{{ $user->status }}</span>
+                            <span class="badge badge-secondary">{{ $user->status }}</span>
                         @endif
                     </td>
                     <td class="manage-row">

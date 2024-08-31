@@ -5,18 +5,6 @@
                 <li><a href="{{ route('beranda') }}" class="nav-link p-3 text-white fw-bold @yield('textHome')"><i
                             class="fas fa-home fs-4"></i></a>
                 </li>
-                <li>
-                    <a href="{{ route('era') }}" class="nav-link p-3 text-white fw-bold @yield('textEra')"><i
-                            class="fas fa-crown fs-4"></i></a>
-                </li>
-                <li>
-                    <a href="{{ route('link') }}" class="nav-link p-3 text-white fw-bold @yield('textlink')"><i
-                            class="fas fa-tv fs-4"></i></a>
-                </li>
-                <li>
-                    <a href="{{ route('category') }}" class="nav-link p-3 text-white fw-bold @yield('textCategory')"><i
-                            class="fas fa-tag fs-4"></i></a>
-                </li>
             </ul>
         </div>
     </div>
