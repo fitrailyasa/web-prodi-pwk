@@ -25,11 +25,10 @@ class AdminLinkController extends Controller
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
         if ($search) {
-            $links = Link::withTrashed()
-                ->where('name', 'like', "%{$search}%")
+            $links = Link::where('name', 'like', "%{$search}%")
                 ->paginate($validPerPage);
         } else {
-            $links = Link::withTrashed()->paginate($validPerPage);
+            $links = Link::paginate($validPerPage);
         }
 
         $counter = ($links->currentPage() - 1) * $links->perPage() + 1;
@@ -76,17 +75,5 @@ class AdminLinkController extends Controller
     {
         Link::query()->delete();
         return back()->with('alert', 'Berhasil Hapus Semua Link!');
-    }
-
-    public function restore($id)
-    {
-        Link::withTrashed()->findOrFail($id)->restore();
-        return back()->with('alert', 'Berhasil Restore Link!');
-    }
-
-    public function restoreAll()
-    {
-        Link::onlyTrashed()->restore();
-        return back()->with('alert', 'Berhasil Restore Semua Link!');
     }
 }

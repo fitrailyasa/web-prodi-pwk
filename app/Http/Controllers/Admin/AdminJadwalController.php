@@ -25,11 +25,10 @@ class AdminJadwalController extends Controller
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
         if ($search) {
-            $jadwals = Jadwal::withTrashed()
-                ->where('name', 'like', "%{$search}%")
+            $jadwals = Jadwal::where('name', 'like', "%{$search}%")
                 ->paginate($validPerPage);
         } else {
-            $jadwals = Jadwal::withTrashed()->paginate($validPerPage);
+            $jadwals = Jadwal::paginate($validPerPage);
         }
 
         $counter = ($jadwals->currentPage() - 1) * $jadwals->perPage() + 1;
@@ -76,17 +75,5 @@ class AdminJadwalController extends Controller
     {
         Jadwal::query()->delete();
         return back()->with('alert', 'Berhasil Hapus Semua Jadwal!');
-    }
-
-    public function restore($id)
-    {
-        Jadwal::withTrashed()->findOrFail($id)->restore();
-        return back()->with('alert', 'Berhasil Restore Jadwal!');
-    }
-
-    public function restoreAll()
-    {
-        Jadwal::onlyTrashed()->restore();
-        return back()->with('alert', 'Berhasil Restore Semua Jadwal!');
     }
 }

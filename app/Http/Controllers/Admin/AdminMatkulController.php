@@ -25,11 +25,10 @@ class AdminMatkulController extends Controller
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
         if ($search) {
-            $matkuls = Matkul::withTrashed()
-                ->where('name', 'like', "%{$search}%")
+            $matkuls = Matkul::where('name', 'like', "%{$search}%")
                 ->paginate($validPerPage);
         } else {
-            $matkuls = Matkul::withTrashed()->paginate($validPerPage);
+            $matkuls = Matkul::paginate($validPerPage);
         }
 
         $counter = ($matkuls->currentPage() - 1) * $matkuls->perPage() + 1;
@@ -76,17 +75,5 @@ class AdminMatkulController extends Controller
     {
         Matkul::query()->delete();
         return back()->with('alert', 'Berhasil Hapus Semua Matkul!');
-    }
-
-    public function restore($id)
-    {
-        Matkul::withTrashed()->findOrFail($id)->restore();
-        return back()->with('alert', 'Berhasil Restore Matkul!');
-    }
-
-    public function restoreAll()
-    {
-        Matkul::onlyTrashed()->restore();
-        return back()->with('alert', 'Berhasil Restore Semua Matkul!');
     }
 }

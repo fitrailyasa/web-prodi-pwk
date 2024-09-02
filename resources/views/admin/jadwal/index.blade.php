@@ -25,11 +25,6 @@
         {{-- @include('admin.jadwal.deleteAll') --}}
     </x-slot>
 
-    <!-- Button Restore All -->
-    <x-slot name="restoreAll">
-        {{-- @include('admin.jadwal.restoreAll') --}}
-    </x-slot>
-
     <!-- Search & Pagination -->
     <x-slot name="search">
         @include('admin.jadwal.search')
@@ -48,13 +43,12 @@
         </thead>
         <tbody>
             @foreach ($jadwals as $jadwal)
-                <tr @if ($jadwal->trashed()) class="text-muted" @endif>
+                <tr @if ($jadwal) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
                     <td>{{ $jadwal->name ?? '-' }}</td>
                     <td>
                         @if ($jadwal->img == null)
-                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $jadwal->name }}"
-                                width="100">
+                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $jadwal->name }}" width="100">
                         @else
                             <a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{ $jadwal->id }}">
                                 <img class="img img-fluid rounded" src="{{ asset('assets/img/' . $jadwal->img) }}"
@@ -96,14 +90,9 @@
                     <td>{{ $jadwal->desc ?? '-' }}</td>
                     <td class="manage-row">
                         @if (auth()->user()->role == 'admin')
-                            @if ($jadwal->trashed())
-                                <!-- Restore Button -->
-                                @include('admin.jadwal.restore')
-                            @else
-                                <!-- Edit and Delete Buttons -->
-                                @include('admin.jadwal.edit')
-                                @include('admin.jadwal.delete')
-                            @endif
+                            <!-- Edit and Delete Buttons -->
+                            @include('admin.jadwal.edit')
+                            @include('admin.jadwal.delete')
                         @endif
                     </td>
                 </tr>

@@ -25,11 +25,10 @@ class AdminStaffController extends Controller
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
         if ($search) {
-            $staffs = Staff::withTrashed()
-                ->where('name', 'like', "%{$search}%")
+            $staffs = Staff::where('name', 'like', "%{$search}%")
                 ->paginate($validPerPage);
         } else {
-            $staffs = Staff::withTrashed()->paginate($validPerPage);
+            $staffs = Staff::paginate($validPerPage);
         }
 
         $counter = ($staffs->currentPage() - 1) * $staffs->perPage() + 1;
@@ -76,17 +75,5 @@ class AdminStaffController extends Controller
     {
         Staff::query()->delete();
         return back()->with('alert', 'Berhasil Hapus Semua Staff!');
-    }
-
-    public function restore($id)
-    {
-        Staff::withTrashed()->findOrFail($id)->restore();
-        return back()->with('alert', 'Berhasil Restore Staff!');
-    }
-
-    public function restoreAll()
-    {
-        Staff::onlyTrashed()->restore();
-        return back()->with('alert', 'Berhasil Restore Semua Staff!');
     }
 }

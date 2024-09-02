@@ -25,11 +25,10 @@ class AdminAlumniController extends Controller
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
         if ($search) {
-            $alumnis = Alumni::withTrashed()
-                ->where('name', 'like', "%{$search}%")
+            $alumnis = Alumni::where('name', 'like', "%{$search}%")
                 ->paginate($validPerPage);
         } else {
-            $alumnis = Alumni::withTrashed()->paginate($validPerPage);
+            $alumnis = Alumni::paginate($validPerPage);
         }
 
         $counter = ($alumnis->currentPage() - 1) * $alumnis->perPage() + 1;
@@ -76,17 +75,5 @@ class AdminAlumniController extends Controller
     {
         Alumni::query()->delete();
         return back()->with('alert', 'Berhasil Hapus Semua Alumni!');
-    }
-
-    public function restore($id)
-    {
-        Alumni::withTrashed()->findOrFail($id)->restore();
-        return back()->with('alert', 'Berhasil Restore Alumni!');
-    }
-
-    public function restoreAll()
-    {
-        Alumni::onlyTrashed()->restore();
-        return back()->with('alert', 'Berhasil Restore Semua Alumni!');
     }
 }

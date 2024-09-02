@@ -25,11 +25,6 @@
         {{-- @include('admin.link.deleteAll') --}}
     </x-slot>
 
-    <!-- Button Restore All -->
-    <x-slot name="restoreAll">
-        {{-- @include('admin.link.restoreAll') --}}
-    </x-slot>
-
     <!-- Search & Pagination -->
     <x-slot name="search">
         @include('admin.link.search')
@@ -48,13 +43,12 @@
         </thead>
         <tbody>
             @foreach ($links as $link)
-                <tr @if ($link->trashed()) class="text-muted" @endif>
+                <tr @if ($link) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
                     <td>{{ $link->name ?? '-' }}</td>
                     <td>
                         @if ($link->img == null)
-                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $link->name }}"
-                                width="100">
+                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $link->name }}" width="100">
                         @else
                             <a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{ $link->id }}">
                                 <img class="img img-fluid rounded" src="{{ asset('assets/img/' . $link->img) }}"
@@ -96,14 +90,9 @@
                     <td>{{ $link->desc ?? '-' }}</td>
                     <td class="manage-row">
                         @if (auth()->user()->role == 'admin')
-                            @if ($link->trashed())
-                                <!-- Restore Button -->
-                                @include('admin.link.restore')
-                            @else
-                                <!-- Edit and Delete Buttons -->
-                                @include('admin.link.edit')
-                                @include('admin.link.delete')
-                            @endif
+                            <!-- Edit and Delete Buttons -->
+                            @include('admin.link.edit')
+                            @include('admin.link.delete')
                         @endif
                     </td>
                 </tr>

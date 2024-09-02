@@ -25,11 +25,6 @@
         {{-- @include('admin.alumni.deleteAll') --}}
     </x-slot>
 
-    <!-- Button Restore All -->
-    <x-slot name="restoreAll">
-        {{-- @include('admin.alumni.restoreAll') --}}
-    </x-slot>
-
     <!-- Search & Pagination -->
     <x-slot name="search">
         @include('admin.alumni.search')
@@ -48,13 +43,12 @@
         </thead>
         <tbody>
             @foreach ($alumnis as $alumni)
-                <tr @if ($alumni->trashed()) class="text-muted" @endif>
+                <tr @if ($alumni) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
                     <td>{{ $alumni->name ?? '-' }}</td>
                     <td>
                         @if ($alumni->img == null)
-                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $alumni->name }}"
-                                width="100">
+                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $alumni->name }}" width="100">
                         @else
                             <a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{ $alumni->id }}">
                                 <img class="img img-fluid rounded" src="{{ asset('assets/img/' . $alumni->img) }}"
@@ -96,14 +90,9 @@
                     <td>{{ $alumni->desc ?? '-' }}</td>
                     <td class="manage-row">
                         @if (auth()->user()->role == 'admin')
-                            @if ($alumni->trashed())
-                                <!-- Restore Button -->
-                                @include('admin.alumni.restore')
-                            @else
-                                <!-- Edit and Delete Buttons -->
-                                @include('admin.alumni.edit')
-                                @include('admin.alumni.delete')
-                            @endif
+                            <!-- Edit and Delete Buttons -->
+                            @include('admin.alumni.edit')
+                            @include('admin.alumni.delete')
                         @endif
                     </td>
                 </tr>

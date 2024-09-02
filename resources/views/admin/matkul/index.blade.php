@@ -25,11 +25,6 @@
         {{-- @include('admin.matkul.deleteAll') --}}
     </x-slot>
 
-    <!-- Button Restore All -->
-    <x-slot name="restoreAll">
-        {{-- @include('admin.matkul.restoreAll') --}}
-    </x-slot>
-
     <!-- Search & Pagination -->
     <x-slot name="search">
         @include('admin.matkul.search')
@@ -48,13 +43,12 @@
         </thead>
         <tbody>
             @foreach ($matkuls as $matkul)
-                <tr @if ($matkul->trashed()) class="text-muted" @endif>
+                <tr @if ($matkul) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
                     <td>{{ $matkul->name ?? '-' }}</td>
                     <td>
                         @if ($matkul->img == null)
-                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $matkul->name }}"
-                                width="100">
+                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $matkul->name }}" width="100">
                         @else
                             <a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{ $matkul->id }}">
                                 <img class="img img-fluid rounded" src="{{ asset('assets/img/' . $matkul->img) }}"
@@ -96,14 +90,9 @@
                     <td>{{ $matkul->desc ?? '-' }}</td>
                     <td class="manage-row">
                         @if (auth()->user()->role == 'admin')
-                            @if ($matkul->trashed())
-                                <!-- Restore Button -->
-                                @include('admin.matkul.restore')
-                            @else
-                                <!-- Edit and Delete Buttons -->
-                                @include('admin.matkul.edit')
-                                @include('admin.matkul.delete')
-                            @endif
+                            <!-- Edit and Delete Buttons -->
+                            @include('admin.matkul.edit')
+                            @include('admin.matkul.delete')
                         @endif
                     </td>
                 </tr>

@@ -25,11 +25,10 @@ class AdminMedpartController extends Controller
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
         if ($search) {
-            $medparts = Medpart::withTrashed()
-                ->where('name', 'like', "%{$search}%")
+            $medparts = Medpart::where('name', 'like', "%{$search}%")
                 ->paginate($validPerPage);
         } else {
-            $medparts = Medpart::withTrashed()->paginate($validPerPage);
+            $medparts = Medpart::paginate($validPerPage);
         }
 
         $counter = ($medparts->currentPage() - 1) * $medparts->perPage() + 1;
@@ -76,17 +75,5 @@ class AdminMedpartController extends Controller
     {
         Medpart::query()->delete();
         return back()->with('alert', 'Berhasil Hapus Semua Medpart!');
-    }
-
-    public function restore($id)
-    {
-        Medpart::withTrashed()->findOrFail($id)->restore();
-        return back()->with('alert', 'Berhasil Restore Medpart!');
-    }
-
-    public function restoreAll()
-    {
-        Medpart::onlyTrashed()->restore();
-        return back()->with('alert', 'Berhasil Restore Semua Medpart!');
     }
 }

@@ -25,11 +25,11 @@ class AdminTentangController extends Controller
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
         if ($search) {
-            $tentangs = Tentang::withTrashed()
-                ->where('name', 'like', "%{$search}%")
+            $tentangs = Tentang::
+                where('name', 'like', "%{$search}%")
                 ->paginate($validPerPage);
         } else {
-            $tentangs = Tentang::withTrashed()->paginate($validPerPage);
+            $tentangs = Tentang::paginate($validPerPage);
         }
 
         $counter = ($tentangs->currentPage() - 1) * $tentangs->perPage() + 1;
@@ -76,17 +76,5 @@ class AdminTentangController extends Controller
     {
         Tentang::query()->delete();
         return back()->with('alert', 'Berhasil Hapus Semua Tentang!');
-    }
-
-    public function restore($id)
-    {
-        Tentang::withTrashed()->findOrFail($id)->restore();
-        return back()->with('alert', 'Berhasil Restore Tentang!');
-    }
-
-    public function restoreAll()
-    {
-        Tentang::onlyTrashed()->restore();
-        return back()->with('alert', 'Berhasil Restore Semua Tentang!');
     }
 }

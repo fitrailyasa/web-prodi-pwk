@@ -4,21 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class Jadwal extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     protected $connection;
     protected $table = 'jadwal';
     protected $primaryKey = 'id';
     public $incrementing = false;
     protected $fillable = ['id', 'name', 'slug', 'desc', 'img'];
-    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+    protected $dates = ['created_at', 'updated_at'];
 
     public static function setDynamicConnection()
     {

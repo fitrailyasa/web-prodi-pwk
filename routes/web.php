@@ -18,22 +18,11 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminTagController;
 use App\Http\Controllers\Auth\ProviderController;
-use App\Http\Controllers\Client\ClientLinkController;
-use App\Http\Controllers\Client\ClientEraController;
-use App\Http\Controllers\Client\ClientCategoryController;
 
 // CLIENT SIDE
 Route::get('/', [HomeController::class, 'index'])->name('beranda');
 
 Route::get('/search', [HomeController::class, 'search'])->name('search');
-Route::get('/era', [ClientEraController::class, 'index'])->name('era');
-Route::get('/era/{category}', [ClientEraController::class, 'show'])->name('era.show');
-Route::get('/era/{category}/{data}', [ClientEraController::class, 'category'])->name('era.category');
-Route::get('/link', [ClientLinkController::class, 'index'])->name('link');
-Route::get('/link/{category}', [ClientLinkController::class, 'show'])->name('link.show');
-Route::get('/link/{category}/{data}', [ClientLinkController::class, 'category'])->name('link.category');
-Route::get('/category', [ClientCategoryController::class, 'index'])->name('category');
-Route::get('/category/{data}', [ClientCategoryController::class, 'show'])->name('category.show');
 
 // OAuth
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('auth.redirect');
@@ -64,8 +53,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/alumni/import', [AdminAlumniController::class, 'import'])->name('alumni.import');
     Route::get('/alumni/export', [AdminAlumniController::class, 'export'])->name('alumni.export');
     Route::delete('/alumni/deleteAll', [AdminAlumniController::class, 'destroyAll'])->name('alumni.destroyAll');
-    Route::put('/alumni/{id}/restore', [AdminAlumniController::class, 'restore'])->name('alumni.restore');
-    Route::put('/alumni/restoreAll', [AdminAlumniController::class, 'restoreAll'])->name('alumni.restoreAll');
 
     // CRUD BERITA
     Route::get('/berita', [AdminBeritaController::class, 'index'])->name('berita.index');
@@ -75,8 +62,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/berita/import', [AdminBeritaController::class, 'import'])->name('berita.import');
     Route::get('/berita/export', [AdminBeritaController::class, 'export'])->name('berita.export');
     Route::delete('/berita/deleteAll', [AdminBeritaController::class, 'destroyAll'])->name('berita.destroyAll');
-    Route::put('/berita/{id}/restore', [AdminBeritaController::class, 'restore'])->name('berita.restore');
-    Route::put('/berita/restoreAll', [AdminBeritaController::class, 'restoreAll'])->name('berita.restoreAll');
 
     // CRUD JADWAL
     Route::get('/jadwal', [AdminJadwalController::class, 'index'])->name('jadwal.index');
@@ -86,8 +71,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/jadwal/import', [AdminJadwalController::class, 'import'])->name('jadwal.import');
     Route::get('/jadwal/export', [AdminJadwalController::class, 'export'])->name('jadwal.export');
     Route::delete('/jadwal/deleteAll', [AdminJadwalController::class, 'destroyAll'])->name('jadwal.destroyAll');
-    Route::put('/jadwal/{id}/restore', [AdminJadwalController::class, 'restore'])->name('jadwal.restore');
-    Route::put('/jadwal/restoreAll', [AdminJadwalController::class, 'restoreAll'])->name('jadwal.restoreAll');
 
     // CRUD KATEGORI
     Route::get('/kategori', [AdminKategoriController::class, 'index'])->name('kategori.index');
@@ -97,8 +80,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/kategori/import', [AdminKategoriController::class, 'import'])->name('kategori.import');
     Route::get('/kategori/export', [AdminKategoriController::class, 'export'])->name('kategori.export');
     Route::delete('/kategori/deleteAll', [AdminKategoriController::class, 'destroyAll'])->name('kategori.destroyAll');
-    Route::put('/kategori/{id}/restore', [AdminKategoriController::class, 'restore'])->name('kategori.restore');
-    Route::put('/kategori/restoreAll', [AdminKategoriController::class, 'restoreAll'])->name('kategori.restoreAll');
 
     // CRUD LAYANAN
     Route::get('/layanan', [AdminLayananController::class, 'index'])->name('layanan.index');
@@ -108,8 +89,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/layanan/import', [AdminLayananController::class, 'import'])->name('layanan.import');
     Route::get('/layanan/export', [AdminLayananController::class, 'export'])->name('layanan.export');
     Route::delete('/layanan/deleteAll', [AdminLayananController::class, 'destroyAll'])->name('layanan.destroyAll');
-    Route::put('/layanan/{id}/restore', [AdminLayananController::class, 'restore'])->name('layanan.restore');
-    Route::put('/layanan/restoreAll', [AdminLayananController::class, 'restoreAll'])->name('layanan.restoreAll');
 
     // CRUD LINK
     Route::get('/link', [AdminLinkController::class, 'index'])->name('link.index');
@@ -119,8 +98,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/link/import', [AdminLinkController::class, 'import'])->name('link.import');
     Route::get('/link/export', [AdminLinkController::class, 'export'])->name('link.export');
     Route::delete('/link/deleteAll', [AdminLinkController::class, 'destroyAll'])->name('link.destroyAll');
-    Route::put('/link/{id}/restore', [AdminLinkController::class, 'restore'])->name('link.restore');
-    Route::put('/link/restoreAll', [AdminLinkController::class, 'restoreAll'])->name('link.restoreAll');
 
     // CRUD MATA KULIAH
     Route::get('/matkul', [AdminMatkulController::class, 'index'])->name('matkul.index');
@@ -130,8 +107,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/matkul/import', [AdminMatkulController::class, 'import'])->name('matkul.import');
     Route::get('/matkul/export', [AdminMatkulController::class, 'export'])->name('matkul.export');
     Route::delete('/matkul/deleteAll', [AdminMatkulController::class, 'destroyAll'])->name('matkul.destroyAll');
-    Route::put('/matkul/{id}/restore', [AdminMatkulController::class, 'restore'])->name('matkul.restore');
-    Route::put('/matkul/restoreAll', [AdminMatkulController::class, 'restoreAll'])->name('matkul.restoreAll');
 
     // CRUD MEDIA PARTNER
     Route::get('/medpart', [AdminMedpartController::class, 'index'])->name('medpart.index');
@@ -141,8 +116,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/medpart/import', [AdminMedpartController::class, 'import'])->name('medpart.import');
     Route::get('/medpart/export', [AdminMedpartController::class, 'export'])->name('medpart.export');
     Route::delete('/medpart/deleteAll', [AdminMedpartController::class, 'destroyAll'])->name('medpart.destroyAll');
-    Route::put('/medpart/{id}/restore', [AdminMedpartController::class, 'restore'])->name('medpart.restore');
-    Route::put('/medpart/restoreAll', [AdminMedpartController::class, 'restoreAll'])->name('medpart.restoreAll');
 
     // CRUD STAFF
     Route::get('/staff', [AdminStaffController::class, 'index'])->name('staff.index');
@@ -152,8 +125,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/staff/import', [AdminStaffController::class, 'import'])->name('staff.import');
     Route::get('/staff/export', [AdminStaffController::class, 'export'])->name('staff.export');
     Route::delete('/staff/deleteAll', [AdminStaffController::class, 'destroyAll'])->name('staff.destroyAll');
-    Route::put('/staff/{id}/restore', [AdminStaffController::class, 'restore'])->name('staff.restore');
-    Route::put('/staff/restoreAll', [AdminStaffController::class, 'restoreAll'])->name('staff.restoreAll');
 
     // CRUD TAG
     Route::get('/tag', [AdminTagController::class, 'index'])->name('tag.index');
@@ -163,8 +134,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/tag/import', [AdminTagController::class, 'import'])->name('tag.import');
     Route::get('/tag/export', [AdminTagController::class, 'export'])->name('tag.export');
     Route::delete('/tag/deleteAll', [AdminTagController::class, 'destroyAll'])->name('tag.destroyAll');
-    Route::put('/tag/{id}/restore', [AdminTagController::class, 'restore'])->name('tag.restore');
-    Route::put('/tag/restoreAll', [AdminTagController::class, 'restoreAll'])->name('tag.restoreAll');
 
     // CRUD TENTANG
     Route::get('/tentang', [AdminTentangController::class, 'index'])->name('tentang.index');
@@ -174,8 +143,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/tentang/import', [AdminTentangController::class, 'import'])->name('tentang.import');
     Route::get('/tentang/export', [AdminTentangController::class, 'export'])->name('tentang.export');
     Route::delete('/tentang/deleteAll', [AdminTentangController::class, 'destroyAll'])->name('tentang.destroyAll');
-    Route::put('/tentang/{id}/restore', [AdminTentangController::class, 'restore'])->name('tentang.restore');
-    Route::put('/tentang/restoreAll', [AdminTentangController::class, 'restoreAll'])->name('tentang.restoreAll');
   });
 });
 

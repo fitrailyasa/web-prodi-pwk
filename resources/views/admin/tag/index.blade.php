@@ -25,11 +25,6 @@
         {{-- @include('admin.tag.deleteAll') --}}
     </x-slot>
 
-    <!-- Button Restore All -->
-    <x-slot name="restoreAll">
-        {{-- @include('admin.tag.restoreAll') --}}
-    </x-slot>
-
     <!-- Search & Pagination -->
     <x-slot name="search">
         @include('admin.tag.search')
@@ -46,19 +41,14 @@
         </thead>
         <tbody>
             @foreach ($tags as $tag)
-                <tr @if ($tag->trashed()) class="text-muted" @endif>
+                <tr @if ($tag) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
                     <td>{{ $tag->name ?? '-' }}</td>
                     <td class="manage-row">
                         @if (auth()->user()->role == 'admin')
-                            @if ($tag->trashed())
-                                <!-- Restore Button -->
-                                @include('admin.tag.restore')
-                            @else
-                                <!-- Edit and Delete Buttons -->
-                                @include('admin.tag.edit')
-                                @include('admin.tag.delete')
-                            @endif
+                            <!-- Edit and Delete Buttons -->
+                            @include('admin.tag.edit')
+                            @include('admin.tag.delete')
                         @endif
                     </td>
                 </tr>

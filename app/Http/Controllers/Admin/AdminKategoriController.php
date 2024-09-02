@@ -25,11 +25,10 @@ class AdminKategoriController extends Controller
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
         if ($search) {
-            $kategoris = Kategori::withTrashed()
-                ->where('name', 'like', "%{$search}%")
+            $kategoris = Kategori::where('name', 'like', "%{$search}%")
                 ->paginate($validPerPage);
         } else {
-            $kategoris = Kategori::withTrashed()->paginate($validPerPage);
+            $kategoris = Kategori::paginate($validPerPage);
         }
 
         $counter = ($kategoris->currentPage() - 1) * $kategoris->perPage() + 1;
@@ -76,17 +75,5 @@ class AdminKategoriController extends Controller
     {
         Kategori::query()->delete();
         return back()->with('alert', 'Berhasil Hapus Semua Kategori!');
-    }
-
-    public function restore($id)
-    {
-        Kategori::withTrashed()->findOrFail($id)->restore();
-        return back()->with('alert', 'Berhasil Restore Kategori!');
-    }
-
-    public function restoreAll()
-    {
-        Kategori::onlyTrashed()->restore();
-        return back()->with('alert', 'Berhasil Restore Semua Kategori!');
     }
 }

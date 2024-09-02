@@ -25,11 +25,6 @@
         {{-- @include('admin.kategori.deleteAll') --}}
     </x-slot>
 
-    <!-- Button Restore All -->
-    <x-slot name="restoreAll">
-        {{-- @include('admin.kategori.restoreAll') --}}
-    </x-slot>
-
     <!-- Search & Pagination -->
     <x-slot name="search">
         @include('admin.kategori.search')
@@ -48,7 +43,7 @@
         </thead>
         <tbody>
             @foreach ($kategoris as $kategori)
-                <tr @if ($kategori->trashed()) class="text-muted" @endif>
+                <tr @if ($kategori) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
                     <td>{{ $kategori->name ?? '-' }}</td>
                     <td>
@@ -96,14 +91,9 @@
                     <td>{{ $kategori->desc ?? '-' }}</td>
                     <td class="manage-row">
                         @if (auth()->user()->role == 'admin')
-                            @if ($kategori->trashed())
-                                <!-- Restore Button -->
-                                @include('admin.kategori.restore')
-                            @else
-                                <!-- Edit and Delete Buttons -->
-                                @include('admin.kategori.edit')
-                                @include('admin.kategori.delete')
-                            @endif
+                            <!-- Edit and Delete Buttons -->
+                            @include('admin.kategori.edit')
+                            @include('admin.kategori.delete')
                         @endif
                     </td>
                 </tr>

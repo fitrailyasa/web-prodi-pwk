@@ -25,11 +25,10 @@ class AdminLayananController extends Controller
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
         if ($search) {
-            $layanans = Layanan::withTrashed()
-                ->where('name', 'like', "%{$search}%")
+            $layanans = Layanan::where('name', 'like', "%{$search}%")
                 ->paginate($validPerPage);
         } else {
-            $layanans = Layanan::withTrashed()->paginate($validPerPage);
+            $layanans = Layanan::paginate($validPerPage);
         }
 
         $counter = ($layanans->currentPage() - 1) * $layanans->perPage() + 1;
@@ -76,17 +75,5 @@ class AdminLayananController extends Controller
     {
         Layanan::query()->delete();
         return back()->with('alert', 'Berhasil Hapus Semua Layanan!');
-    }
-
-    public function restore($id)
-    {
-        Layanan::withTrashed()->findOrFail($id)->restore();
-        return back()->with('alert', 'Berhasil Restore Layanan!');
-    }
-
-    public function restoreAll()
-    {
-        Layanan::onlyTrashed()->restore();
-        return back()->with('alert', 'Berhasil Restore Semua Layanan!');
     }
 }

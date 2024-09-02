@@ -26,7 +26,6 @@ return new class extends Migration
             $table->json('provider_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
         });
 
         Schema::create('sessions', function (Blueprint $table) {

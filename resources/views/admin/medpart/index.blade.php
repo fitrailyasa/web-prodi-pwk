@@ -25,11 +25,6 @@
         {{-- @include('admin.medpart.deleteAll') --}}
     </x-slot>
 
-    <!-- Button Restore All -->
-    <x-slot name="restoreAll">
-        {{-- @include('admin.medpart.restoreAll') --}}
-    </x-slot>
-
     <!-- Search & Pagination -->
     <x-slot name="search">
         @include('admin.medpart.search')
@@ -48,7 +43,7 @@
         </thead>
         <tbody>
             @foreach ($medparts as $medpart)
-                <tr @if ($medpart->trashed()) class="text-muted" @endif>
+                <tr @if ($medpart) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
                     <td>{{ $medpart->name ?? '-' }}</td>
                     <td>
@@ -96,14 +91,9 @@
                     <td>{{ $medpart->desc ?? '-' }}</td>
                     <td class="manage-row">
                         @if (auth()->user()->role == 'admin')
-                            @if ($medpart->trashed())
-                                <!-- Restore Button -->
-                                @include('admin.medpart.restore')
-                            @else
-                                <!-- Edit and Delete Buttons -->
-                                @include('admin.medpart.edit')
-                                @include('admin.medpart.delete')
-                            @endif
+                            <!-- Edit and Delete Buttons -->
+                            @include('admin.medpart.edit')
+                            @include('admin.medpart.delete')
                         @endif
                     </td>
                 </tr>

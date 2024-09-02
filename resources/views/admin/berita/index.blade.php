@@ -25,11 +25,6 @@
         {{-- @include('admin.berita.deleteAll') --}}
     </x-slot>
 
-    <!-- Button Restore All -->
-    <x-slot name="restoreAll">
-        {{-- @include('admin.berita.restoreAll') --}}
-    </x-slot>
-
     <!-- Search & Pagination -->
     <x-slot name="search">
         @include('admin.berita.search')
@@ -48,13 +43,12 @@
         </thead>
         <tbody>
             @foreach ($beritas as $berita)
-                <tr @if ($berita->trashed()) class="text-muted" @endif>
+                <tr @if ($berita) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
                     <td>{{ $berita->name ?? '-' }}</td>
                     <td>
                         @if ($berita->img == null)
-                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $berita->name }}"
-                                width="100">
+                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $berita->name }}" width="100">
                         @else
                             <a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{ $berita->id }}">
                                 <img class="img img-fluid rounded" src="{{ asset('assets/img/' . $berita->img) }}"
@@ -96,14 +90,9 @@
                     <td>{{ $berita->desc ?? '-' }}</td>
                     <td class="manage-row">
                         @if (auth()->user()->role == 'admin')
-                            @if ($berita->trashed())
-                                <!-- Restore Button -->
-                                @include('admin.berita.restore')
-                            @else
-                                <!-- Edit and Delete Buttons -->
-                                @include('admin.berita.edit')
-                                @include('admin.berita.delete')
-                            @endif
+                            <!-- Edit and Delete Buttons -->
+                            @include('admin.berita.edit')
+                            @include('admin.berita.delete')
                         @endif
                     </td>
                 </tr>

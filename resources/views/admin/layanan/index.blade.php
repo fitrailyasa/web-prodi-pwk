@@ -25,11 +25,6 @@
         {{-- @include('admin.layanan.deleteAll') --}}
     </x-slot>
 
-    <!-- Button Restore All -->
-    <x-slot name="restoreAll">
-        {{-- @include('admin.layanan.restoreAll') --}}
-    </x-slot>
-
     <!-- Search & Pagination -->
     <x-slot name="search">
         @include('admin.layanan.search')
@@ -48,7 +43,7 @@
         </thead>
         <tbody>
             @foreach ($layanans as $layanan)
-                <tr @if ($layanan->trashed()) class="text-muted" @endif>
+                <tr @if ($layanan) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
                     <td>{{ $layanan->name ?? '-' }}</td>
                     <td>
@@ -96,14 +91,9 @@
                     <td>{{ $layanan->desc ?? '-' }}</td>
                     <td class="manage-row">
                         @if (auth()->user()->role == 'admin')
-                            @if ($layanan->trashed())
-                                <!-- Restore Button -->
-                                @include('admin.layanan.restore')
-                            @else
-                                <!-- Edit and Delete Buttons -->
-                                @include('admin.layanan.edit')
-                                @include('admin.layanan.delete')
-                            @endif
+                            <!-- Edit and Delete Buttons -->
+                            @include('admin.layanan.edit')
+                            @include('admin.layanan.delete')
                         @endif
                     </td>
                 </tr>

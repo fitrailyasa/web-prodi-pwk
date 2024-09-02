@@ -25,11 +25,10 @@ class AdminTagController extends Controller
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
         if ($search) {
-            $tags = Tag::withTrashed()
-                ->where('name', 'like', "%{$search}%")
+            $tags = Tag::where('name', 'like', "%{$search}%")
                 ->paginate($validPerPage);
         } else {
-            $tags = Tag::withTrashed()->paginate($validPerPage);
+            $tags = Tag::paginate($validPerPage);
         }
 
         $counter = ($tags->currentPage() - 1) * $tags->perPage() + 1;
@@ -76,17 +75,5 @@ class AdminTagController extends Controller
     {
         Tag::query()->delete();
         return back()->with('alert', 'Berhasil Hapus Semua Tag!');
-    }
-
-    public function restore($id)
-    {
-        Tag::withTrashed()->findOrFail($id)->restore();
-        return back()->with('alert', 'Berhasil Restore Tag!');
-    }
-
-    public function restoreAll()
-    {
-        Tag::onlyTrashed()->restore();
-        return back()->with('alert', 'Berhasil Restore Semua Tag!');
     }
 }

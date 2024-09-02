@@ -25,11 +25,10 @@ class AdminBeritaController extends Controller
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
         if ($search) {
-            $beritas = Berita::withTrashed()
-                ->where('name', 'like', "%{$search}%")
+            $beritas = Berita::where('name', 'like', "%{$search}%")
                 ->paginate($validPerPage);
         } else {
-            $beritas = Berita::withTrashed()->paginate($validPerPage);
+            $beritas = Berita::paginate($validPerPage);
         }
 
         $counter = ($beritas->currentPage() - 1) * $beritas->perPage() + 1;
@@ -76,17 +75,5 @@ class AdminBeritaController extends Controller
     {
         Berita::query()->delete();
         return back()->with('alert', 'Berhasil Hapus Semua Berita!');
-    }
-
-    public function restore($id)
-    {
-        Berita::withTrashed()->findOrFail($id)->restore();
-        return back()->with('alert', 'Berhasil Restore Berita!');
-    }
-
-    public function restoreAll()
-    {
-        Berita::onlyTrashed()->restore();
-        return back()->with('alert', 'Berhasil Restore Semua Berita!');
     }
 }

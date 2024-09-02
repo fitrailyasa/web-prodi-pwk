@@ -25,11 +25,6 @@
         {{-- @include('admin.staff.deleteAll') --}}
     </x-slot>
 
-    <!-- Button Restore All -->
-    <x-slot name="restoreAll">
-        {{-- @include('admin.staff.restoreAll') --}}
-    </x-slot>
-
     <!-- Search & Pagination -->
     <x-slot name="search">
         @include('admin.staff.search')
@@ -48,13 +43,12 @@
         </thead>
         <tbody>
             @foreach ($staffs as $staff)
-                <tr @if ($staff->trashed()) class="text-muted" @endif>
+                <tr @if ($staff) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
                     <td>{{ $staff->name ?? '-' }}</td>
                     <td>
                         @if ($staff->img == null)
-                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $staff->name }}"
-                                width="100">
+                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $staff->name }}" width="100">
                         @else
                             <a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{ $staff->id }}">
                                 <img class="img img-fluid rounded" src="{{ asset('assets/img/' . $staff->img) }}"
@@ -96,14 +90,9 @@
                     <td>{{ $staff->desc ?? '-' }}</td>
                     <td class="manage-row">
                         @if (auth()->user()->role == 'admin')
-                            @if ($staff->trashed())
-                                <!-- Restore Button -->
-                                @include('admin.staff.restore')
-                            @else
-                                <!-- Edit and Delete Buttons -->
-                                @include('admin.staff.edit')
-                                @include('admin.staff.delete')
-                            @endif
+                            <!-- Edit and Delete Buttons -->
+                            @include('admin.staff.edit')
+                            @include('admin.staff.delete')
                         @endif
                     </td>
                 </tr>

@@ -25,11 +25,6 @@
         {{-- @include('admin.tentang.deleteAll') --}}
     </x-slot>
 
-    <!-- Button Restore All -->
-    <x-slot name="restoreAll">
-        {{-- @include('admin.tentang.restoreAll') --}}
-    </x-slot>
-
     <!-- Search & Pagination -->
     <x-slot name="search">
         @include('admin.tentang.search')
@@ -48,7 +43,7 @@
         </thead>
         <tbody>
             @foreach ($tentangs as $tentang)
-                <tr @if ($tentang->trashed()) class="text-muted" @endif>
+                <tr @if ($tentang) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
                     <td>{{ $tentang->name ?? '-' }}</td>
                     <td>
@@ -96,14 +91,9 @@
                     <td>{{ $tentang->desc ?? '-' }}</td>
                     <td class="manage-row">
                         @if (auth()->user()->role == 'admin')
-                            @if ($tentang->trashed())
-                                <!-- Restore Button -->
-                                @include('admin.tentang.restore')
-                            @else
-                                <!-- Edit and Delete Buttons -->
-                                @include('admin.tentang.edit')
-                                @include('admin.tentang.delete')
-                            @endif
+                            <!-- Edit and Delete Buttons -->
+                            @include('admin.tentang.edit')
+                            @include('admin.tentang.delete')
                         @endif
                     </td>
                 </tr>
