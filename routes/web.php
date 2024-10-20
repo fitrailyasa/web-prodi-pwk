@@ -18,28 +18,28 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminTagController;
 use App\Http\Controllers\Auth\ProviderController;
-use Inertia\Inertia;
 
 // CLIENT SIDE
 // Route::get('/', [HomeController::class, 'index'])->name('beranda');
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'name' => 'Laravel'
-    ]);
-})->name('beranda');
-Route::get('/about', function () {
-    return Inertia::render('About', [
-        'name' => 'test'
-    ]);
-})->name('about');
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         'name' => 'Laravel'
+//     ]);
+// })->name('beranda');
+// Route::get('/about', function () {
+//     return Inertia::render('About', [
+//         'name' => 'test'
+//     ]);
+// })->name('about');
 
-Route::get('/search', [HomeController::class, 'search'])->name('search');
+// Route::get('/search', [HomeController::class, 'search'])->name('search');
 
 // OAuth
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('auth.redirect');
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback'])->name('auth.callback');
 
 require __DIR__ . '/auth.php';
+require __DIR__ . '/guest.php';
 
 Route::middleware(['auth'])->group(function () {
 

@@ -1,8 +1,8 @@
 import { Link } from "@inertiajs/react";
 
-export default function NavBar() {
+export default function NavBar({ auth }) {
     return (
-        <nav className="bg-gray-800 text-white/50 dark:bg-black dark:text-white/50">
+        <nav className="text-gray-600">
             <div className="container mx-auto px-4">
                 <div className="flex justify-between items-center py-4">
                     <div>
@@ -13,9 +13,32 @@ export default function NavBar() {
                             Laravel Inertia React
                         </Link>
                     </div>
-                    <div>
-                        <Link href={route("beranda")}>beranda</Link>
-                        <Link href={route("about")}>About</Link>
+                    <div className=" flex gap-5">
+                        <Link
+                            className="cursor-pointer"
+                            href={route("beranda")}
+                        >
+                            beranda
+                        </Link>
+                        <Link className="cursor-pointer" href={route("about")}>
+                            About
+                        </Link>
+                        <Link className="cursor-pointer" href={route("berita")}>
+                            berita
+                        </Link>
+                        {auth ? (
+                            <a
+                                className="cursor-pointer"
+                                href={route("logout")}
+                                method="post"
+                            >
+                                Logout
+                            </a>
+                        ) : (
+                            <a className="cursor-pointer" href={route("login")}>
+                                Login
+                            </a>
+                        )}
                     </div>
                 </div>
             </div>
