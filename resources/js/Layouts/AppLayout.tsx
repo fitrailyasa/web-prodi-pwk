@@ -1,9 +1,9 @@
-import AppHead from "../Components/AppHead";
-import NavBar from "../Components/NavBar";
+import AppHead from '../Components/AppHead'
+import NavBar from '../Components/NavBar'
 
 interface AppLayoutProps {
-    title: string;
-    children: React.ReactNode;
+    title: string
+    children: React.ReactNode
 }
 
 export default function AppLayout({ title, children }: AppLayoutProps) {
@@ -13,5 +13,5 @@ export default function AppLayout({ title, children }: AppLayoutProps) {
             <NavBar />
             {children}
         </>
-    );
+    )
 }

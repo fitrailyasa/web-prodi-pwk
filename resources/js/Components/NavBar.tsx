@@ -1,15 +1,14 @@
-import { Link } from "@inertiajs/react";
-
+import { Link } from '@inertiajs/react'
 
 export default function NavBar() {
-    const auth = false;
+    const auth = false
     return (
         <nav className="text-gray-600">
             <div className="container mx-auto px-4">
                 <div className="flex justify-between items-center py-4">
                     <div>
                         <Link
-                            href={route("beranda")}
+                            href={route('beranda')}
                             className="text-lg font-bold"
                         >
                             Laravel Inertia React
@@ -18,25 +17,25 @@ export default function NavBar() {
                     <div className=" flex gap-5">
                         <Link
                             className="cursor-pointer"
-                            href={route("beranda")}
+                            href={route('beranda')}
                         >
                             beranda
                         </Link>
-                        <Link className="cursor-pointer" href={route("about")}>
+                        <Link className="cursor-pointer" href={route('about')}>
                             About
                         </Link>
-                        <Link className="cursor-pointer" href={route("berita")}>
+                        <Link className="cursor-pointer" href={route('berita')}>
                             berita
                         </Link>
                         {auth ? (
                             <a
                                 className="cursor-pointer"
-                                href={route("logout")}
+                                href={route('logout')}
                             >
                                 Logout
                             </a>
                         ) : (
-                            <a className="cursor-pointer" href={route("login")}>
+                            <a className="cursor-pointer" href={route('login')}>
                                 Login
                             </a>
                         )}
@@ -44,5 +43,5 @@ export default function NavBar() {
                 </div>
             </div>
         </nav>
-    );
+    )
 }
