@@ -1,6 +1,8 @@
 import { Link } from "@inertiajs/react";
 
-export default function NavBar({ auth }) {
+
+export default function NavBar() {
+    const auth = false;
     return (
         <nav className="text-gray-600">
             <div className="container mx-auto px-4">
@@ -30,7 +32,6 @@ export default function NavBar({ auth }) {
                             <a
                                 className="cursor-pointer"
                                 href={route("logout")}
-                                method="post"
                             >
                                 Logout
                             </a>

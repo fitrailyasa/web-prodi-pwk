@@ -1,6 +1,10 @@
 import { Head } from "@inertiajs/react";
 
-export default function AppHead({ title }) {
+type AppHeadProps = {
+    title: string;
+}
+
+export default function AppHead({ title } : AppHeadProps) {
     return (
         <Head>
             <title>{title}</title>

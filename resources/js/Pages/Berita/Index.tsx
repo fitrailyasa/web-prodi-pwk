@@ -1,7 +1,15 @@
 import { Link } from "@inertiajs/react";
 import AppLayout from "../../Layouts/AppLayout";
 
-export default function BeritaPage({ berita }) {
+type BeritaPageProps = {
+    berita: Array<{
+        id: number;
+        judul: string;
+        isi: string;
+    }>;
+}
+
+export default function BeritaPage({ berita } : BeritaPageProps) {
     return (
         <AppLayout title={"Berita"}>
             <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">

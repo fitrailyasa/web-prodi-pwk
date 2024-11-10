@@ -1,7 +1,11 @@
 import React from "react";
 import AppLayout from "../Layouts/AppLayout";
 
-export default function About({ name }) {
+interface AboutProps {
+    name: string;
+}
+
+export default function About({ name }: AboutProps) {
     const image = "/assets/img/logo.png";
     return (
         <AppLayout title={"welcome"}>
