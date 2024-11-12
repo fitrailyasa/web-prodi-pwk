@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use App\Traits\Slug;
+use App\Traits\UUID;
 
 class Jadwal extends Model
 {
-    use HasFactory;
+    use HasFactory, Slug, UUID;
 
     protected $connection;
     protected $table = 'jadwal';
@@ -23,24 +24,9 @@ class Jadwal extends Model
         DB::setDefaultConnection(env('DB_CONNECTION'));
         // DB::setDefaultConnection(env('DB2_CONNECTION'));
     }
-
-    protected static function boot()
+    
+    public function user()
     {
-        parent::boot();
-
-        static::creating(function ($model) {
-            if (empty($model->id)) {
-                $model->id = (string) Str::uuid();
-            }
-            if (empty($model->slug) && !empty($model->name)) {
-                $model->slug = Str::slug($model->name, '-');
-            }
-        });
-
-        static::updating(function ($model) {
-            if ($model->isDirty('name')) {
-                $model->slug = Str::slug($model->name, '-');
-            }
-        });
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

@@ -44,8 +44,8 @@ class Tag extends Model
         });
     }
 
-    public function datas()
+    public function user()
     {
-        return $this->belongsToMany(Data::class, 'data_tags', 'tag_id', 'data_id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

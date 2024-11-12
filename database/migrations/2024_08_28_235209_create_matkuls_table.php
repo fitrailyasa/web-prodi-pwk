@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('matkul', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name')->unique();
-            $table->string('slug')->unique();
             $table->text('desc')->nullable();
+            $table->integer('credits')->unique();
+            $table->string('lecture')->nullable();
             $table->string('img')->nullable();
+            $table->foreignId('jadwal_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

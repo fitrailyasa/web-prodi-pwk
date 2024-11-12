@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jadwal', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+        Schema::create('jadwals', function (Blueprint $table) {
+            $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->text('desc')->nullable();
             $table->string('img')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jadwal');
+        Schema::dropIfExists('jadwals');
     }
 };

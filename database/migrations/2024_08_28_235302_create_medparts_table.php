@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('medpart', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name')->unique();
-            $table->string('slug')->unique();
-            $table->text('desc')->nullable();
+            $table->string('link')->unique();
             $table->string('img')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@ class Staff extends Model
     protected $table = 'staff';
     protected $primaryKey = 'id';
     public $incrementing = false;
-    protected $fillable = ['id', 'name', 'slug', 'desc', 'img'];
+    protected $fillable = ['id', 'name', 'nip', 'position', 'img', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 
     public static function setDynamicConnection()
@@ -42,5 +42,10 @@ class Staff extends Model
                 $model->slug = Str::slug($model->name, '-');
             }
         });
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

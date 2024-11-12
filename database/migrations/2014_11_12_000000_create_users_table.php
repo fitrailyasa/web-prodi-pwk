@@ -21,9 +21,6 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->string('role')->nullable();
             $table->string('status')->nullable()->default('tidak aktif');
-            $table->json('provider')->nullable();
-            $table->json('provider_id')->nullable();
-            $table->json('provider_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
