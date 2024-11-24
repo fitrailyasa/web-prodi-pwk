@@ -17,9 +17,13 @@ class MatkulFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'name' => fake()->name(), 
             'desc' => fake()->realText(100),
-            'img' => 'logo-putih.png',
+            'credits' => fake()->numberBetween(1, 4),
+            'lecture' => fake()->name(), 
+            'img' => 'logo-putih.png', 
+            'jadwal_id' => 1, 
+            'user_id' => 1
         ];
     }
 }

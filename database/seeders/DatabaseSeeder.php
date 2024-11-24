@@ -17,12 +17,12 @@ class DatabaseSeeder extends Seeder
         $this->call(LayananSeeder::class);
         $this->call(AlumniSeeder::class);
         $this->call(StaffSeeder::class);
+        $this->call(JadwalSeeder::class);
         $this->call(MatkulSeeder::class);
         $this->call(MedpartSeeder::class);
-        $this->call(JadwalSeeder::class);
         $this->call(LinkSeeder::class);
         $this->call(KategoriSeeder::class);
-        $this->call(BeritaSeeder::class);
         $this->call(TagSeeder::class);
+        $this->call(BeritaSeeder::class);
     }
 }

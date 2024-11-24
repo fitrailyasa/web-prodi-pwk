@@ -20,6 +20,8 @@ class LayananFactory extends Factory
             'name' => fake()->name(),
             'desc' => fake()->realText(100),
             'img' => 'logo-putih.png',
+            'link' => fake()->url(),
+            'user_id' => 1
         ];
     }
 }
