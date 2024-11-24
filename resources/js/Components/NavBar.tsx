@@ -98,7 +98,7 @@ function MobileLink(prop: {
 }) {
     return (
         <Link
-            className="bg-white mt-0 mb-1 mx-2 p-4 rounded-xl"
+            className="bg-white border hover:bg-gray-100 mt-0 mb-1 mx-2 p-4 rounded-xl"
             href={prop.href}
         >
             {prop.title}
@@ -266,7 +266,7 @@ export default function NavBar() {
                     <Link href={route('beranda')}>
                         <TypingAnimation
                             text="Beranda"
-                            speed={0.05}
+                            // speed={0.05}
                             ishover={true}
                             isBorderLeft={true}
                         />
@@ -313,7 +313,12 @@ export default function NavBar() {
             <NavbarMenu>
                 <MobileLink href={route('beranda')} title={'Beranda'} />
                 <Accordion variant="splitted">
-                    <AccordionItem key="1" aria-label="Profile" title="Profile">
+                    <AccordionItem
+                        className="hover:bg-gray-100"
+                        key="1"
+                        aria-label="Profile"
+                        title="Profile"
+                    >
                         {DropdwonProfleMenu.map((item, index) => (
                             <AccordionLink
                                 key={index}
@@ -323,6 +328,7 @@ export default function NavBar() {
                         ))}
                     </AccordionItem>
                     <AccordionItem
+                        className="hover:bg-gray-100"
                         key="2"
                         aria-label="Akademik"
                         title="Akademik"
@@ -336,6 +342,7 @@ export default function NavBar() {
                         ))}
                     </AccordionItem>
                     <AccordionItem
+                        className="hover:bg-gray-100"
                         key="3"
                         aria-label="Fasilitas"
                         title="Fasilitas"
