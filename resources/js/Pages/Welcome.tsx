@@ -2,12 +2,14 @@ import IconHome from '@/Components/Icon/IconHome'
 import AppLayout from '../Layouts/AppLayout'
 import { Button, Link } from '@nextui-org/react'
 import { motion } from 'framer-motion'
+import { useVisitor } from '@/Providers/VisitorProvider'
 
 type WelcomeProps = {
     name: string
 }
 
 export default function Welcome({ name }: WelcomeProps) {
+    const visitor = useVisitor()
     const image = '/assets/img/logo.png'
 
     const navigate = (name: string) => {
@@ -22,7 +24,7 @@ export default function Welcome({ name }: WelcomeProps) {
                 <Button color="primary" onClick={() => navigate('about')}>
                     <IconHome size={24} /> Home
                 </Button>
-                <Link href={route('berita')}>keberita</Link>
+                <Link href={route('berita')}>{visitor.visitorCount}</Link>
             </div>
             <div
                 style={{

@@ -74,19 +74,43 @@ function NavDropdown({ title, icon, item }: propsDropdown) {
     )
 }
 
+function AccordionLink(prop: {
+    href: string
+    title: string
+    description?: string
+    icon?: React.ReactNode
+}) {
+    return (
+        <Link
+            className="w-full block bg-slate-200 hover:bg-slate-400 my-2 py-2 px-3 rounded-lg"
+            href={prop.href}
+            sizes="lg"
+        >
+            {prop.title}
+        </Link>
+    )
+}
+function MobileLink(prop: {
+    href: string
+    title: string
+    description?: string
+    icon?: React.ReactNode
+}) {
+    return (
+        <Link
+            className="bg-white mt-0 mb-1 mx-2 p-4 rounded-xl"
+            href={prop.href}
+        >
+            {prop.title}
+        </Link>
+    )
+}
+
 export default function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const auth = false
 
     const Logo_img = '/assets/img/logo.png'
-
-    const menuItems = [
-        'Features',
-        'Customers',
-        'Integrations',
-        'Login',
-        'Sign Up'
-    ]
 
     const DropdwonProfleMenu = [
         {
@@ -215,11 +239,14 @@ export default function NavBar() {
 
     return (
         <Navbar
+            position="sticky"
             onMenuOpenChange={setIsMenuOpen}
-            className=" flex justify-around "
+            className="flex justify-around   top-0 z-50"
         >
-            {/* <NavbarContent> */}
-            <Link href={'#'} className="font-bold text-inherit w-full">
+            <Link
+                href={route('beranda')}
+                className="font-bold text-inherit w-full"
+            >
                 <NavbarBrand>
                     <img
                         src={Logo_img}
@@ -228,19 +255,18 @@ export default function NavBar() {
                         className="w-16 h-13"
                     />
                     <TypingAnimation
+                        className="hidden min-[380px]:block"
                         text="Perencanaan Wilayah dan Kota"
                         speed={0.01}
                     />
                 </NavbarBrand>
             </Link>
-            {/* </NavbarContent> */}
-
-            <NavbarContent className="hidden lg:flex" justify="center">
+            <NavbarContent className="hidden md:flex" justify="center">
                 <NavbarItem>
                     <NavDropdown title="Profile" item={DropdwonProfleMenu} />
                 </NavbarItem>
                 <NavbarItem>
-                    <NavDropdown title="Akademin" item={DropdwonAkademikMenu} />
+                    <NavDropdown title="Akademik" item={DropdwonAkademikMenu} />
                 </NavbarItem>
                 <NavbarItem>
                     <NavDropdown
@@ -249,7 +275,7 @@ export default function NavBar() {
                     />
                 </NavbarItem>
                 <NavbarItem>
-                    <Link href={'#'}>
+                    <Link href={route('berita')}>
                         <TypingAnimation
                             text="Berita dan Informasi"
                             speed={0.05}
@@ -258,7 +284,7 @@ export default function NavBar() {
                         />
                     </Link>
                 </NavbarItem>
-                <div className="border-l-2">
+                <div>
                     <Link href={'#'}>
                         <TypingAnimation
                             text="Kontak"
@@ -269,7 +295,7 @@ export default function NavBar() {
                     </Link>
                 </div>
             </NavbarContent>
-            <NavbarContent className="lg:hidden" justify="end">
+            <NavbarContent className="md:hidden" justify="end">
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
                 />
@@ -278,32 +304,44 @@ export default function NavBar() {
                 <Accordion variant="splitted">
                     <AccordionItem key="1" aria-label="Profile" title="Profile">
                         {DropdwonProfleMenu.map((item, index) => (
-                            <NavbarMenuItem key={index}>
-                                <Link
-                                    className="w-full"
-                                    href={item.href}
-                                    sizes="lg"
-                                >
-                                    {item.title}
-                                </Link>
-                            </NavbarMenuItem>
+                            <AccordionLink
+                                key={index}
+                                href={item.href}
+                                title={item.title}
+                            />
                         ))}
                     </AccordionItem>
                     <AccordionItem
                         key="2"
-                        aria-label="Accordion 2"
-                        title="Accordion 2"
+                        aria-label="Akademik"
+                        title="Akademik"
                     >
-                        test
+                        {DropdwonAkademikMenu.map((item, index) => (
+                            <AccordionLink
+                                key={index}
+                                href={item.href}
+                                title={item.title}
+                            />
+                        ))}
                     </AccordionItem>
                     <AccordionItem
                         key="3"
-                        aria-label="Accordion 3"
-                        title="Accordion 3"
+                        aria-label="Fasilitas"
+                        title="Fasilitas"
                     >
-                        test
+                        {DropdwonAkademikMenu.map((item, index) => (
+                            <AccordionLink
+                                key={index}
+                                href={item.href}
+                                title={item.title}
+                            />
+                        ))}
                     </AccordionItem>
                 </Accordion>
+                <MobileLink
+                    href={route('berita')}
+                    title={'Berita dan Informasi'}
+                />
             </NavbarMenu>
         </Navbar>
     )

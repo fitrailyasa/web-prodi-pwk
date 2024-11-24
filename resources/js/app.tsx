@@ -8,6 +8,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { useRoute } from 'ziggy-js'
+import { VisitorProvider } from './Providers/VisitorProvider'
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel'
 
@@ -27,11 +28,11 @@ createInertiaApp({
 
         const appElement = (
             <React.StrictMode>
-                <NextUIProvider>
-                    <main className=" min-h-screen rounded-xl overflow-hidden ">
+                <VisitorProvider>
+                    <NextUIProvider>
                         <App {...props} />
-                    </main>
-                </NextUIProvider>
+                    </NextUIProvider>
+                </VisitorProvider>
             </React.StrictMode>
         )
         createRoot(el).render(appElement)

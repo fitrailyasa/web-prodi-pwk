@@ -10,8 +10,10 @@ export default function AppLayout({ title, children }: AppLayoutProps) {
     return (
         <>
             <AppHead title={title} />
-            <NavBar />
-            {children}
+            <main className="rounded-xl  ">
+                <NavBar />
+                {children}
+            </main>
         </>
     )
 }

@@ -5,26 +5,35 @@ import path from 'path'
 import { watch } from 'vite-plugin-watch'
 
 export default defineConfig({
+    server: {
+        proxy: {
+            '/api/ipify': {
+                target: 'https://api.ipify.org',
+                changeOrigin: true,
+                rewrite: path => path.replace(/^\/api\/ipify/, '')
+            }
+        }
+    },
     plugins: [
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.tsx'],
-            refresh: true,
+            refresh: true
         }),
         react(),
         watch({
             pattern: 'app/{Data,Enums}/**/*.php',
-            command: 'php artisan typescript:transform',
+            command: 'php artisan typescript:transform'
         }),
         watch({
             pattern: 'routes/guest.php',
-            command: 'php artisan ziggy:generate',
-        }),
+            command: 'php artisan ziggy:generate'
+        })
     ],
     resolve: {
         alias: {
             '!assets': path.resolve(__dirname, './resources/assets'),
-            'ziggy-js': path.resolve('vendor/tightenco/ziggy'),
-        },
+            'ziggy-js': path.resolve('vendor/tightenco/ziggy')
+        }
     },
     build: {
         minify: 'terser',
@@ -37,7 +46,7 @@ export default defineConfig({
                 // Template untuk nama chunks yang menambahkan hash
                 chunkFileNames: `assets/[hash].js`,
                 // Template untuk nama entry files yang menambahkan hash
-                entryFileNames: `assets/[hash].js`,
+                entryFileNames: `assets/[hash].js`
             },
             onwarn(warning, defaultHandler) {
                 if (warning.code === 'SOURCEMAP_ERROR') {
@@ -45,7 +54,7 @@ export default defineConfig({
                 }
 
                 defaultHandler(warning)
-            },
-        },
-    },
+            }
+        }
+    }
 })

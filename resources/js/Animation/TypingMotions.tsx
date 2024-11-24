@@ -40,7 +40,6 @@ export const TypingAnimation: React.FC<TypingAnimationProps> = ({
         <motion.p
             key={key}
             style={{
-                display: 'inline-block',
                 whiteSpace: 'pre',
                 overflow: 'hidden',
                 paddingLeft: '3px',
