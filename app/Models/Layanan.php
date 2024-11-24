@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use App\Traits\Slug;
-use App\Traits\UUID;
+use Illuminate\Support\Str;
 
 class Layanan extends Model
 {
-    use HasFactory, Slug, UUID;
+    use HasFactory;
 
     protected $connection;
-    protected $table = 'layanan';
+    protected $table = 'layanans';
     protected $primaryKey = 'id';
     public $incrementing = false;
     protected $fillable = ['id', 'name', 'desc', 'link', 'img', 'user_id'];

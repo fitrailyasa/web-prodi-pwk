@@ -18,8 +18,8 @@ class KategoriFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'desc' => fake()->realText(100),
-            'img' => 'logo-putih.png',
+            'sub' => fake()->name(),
+            'user_id' => 1
         ];
     }
 }

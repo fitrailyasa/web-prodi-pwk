@@ -17,9 +17,11 @@ class AlumniFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'desc' => fake()->realText(100),
-            'img' => 'logo-putih.png',
+            'name' => fake()->name(), 
+            'class_year' => fake()->numberBetween(2000, 2022),
+            'work' => fake()->jobTitle(), 
+            'img' => 'logo-putih.png', 
+            'user_id' => 1
         ];
     }
 }

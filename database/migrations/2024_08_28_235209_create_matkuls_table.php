@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('matkul', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+        Schema::create('matkuls', function (Blueprint $table) {
+            $table->id();
             $table->string('name')->unique();
+            $table->string('slug')->unique();
             $table->text('desc')->nullable();
-            $table->integer('credits')->unique();
+            $table->integer('credits')->nullable();
             $table->string('lecture')->nullable();
             $table->string('img')->nullable();
             $table->foreignId('jadwal_id')->constrained()->onDelete('cascade');
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('matkul');
+        Schema::dropIfExists('matkuls');
     }
 };

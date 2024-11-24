@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tentang', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+        Schema::create('tentangs', function (Blueprint $table) {
+            $table->id();
             $table->string('name')->unique();
-            $table->string('slug')->unique();
             $table->text('desc')->nullable();
             $table->string('img')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tentang');
+        Schema::dropIfExists('tentangs');
     }
 };

@@ -12,10 +12,10 @@ class Tag extends Model
     use HasFactory;
 
     protected $connection;
-    protected $table = 'tag';
+    protected $table = 'tags';
     protected $primaryKey = 'id';
     public $incrementing = false;
-    protected $fillable = ['id', 'name', 'slug'];
+    protected $fillable = ['id', 'name', 'slug', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 
     public static function setDynamicConnection()
@@ -29,9 +29,6 @@ class Tag extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            if (empty($model->id)) {
-                $model->id = (string) Str::uuid();
-            }
             if (empty($model->slug) && !empty($model->name)) {
                 $model->slug = Str::slug($model->name, '-');
             }

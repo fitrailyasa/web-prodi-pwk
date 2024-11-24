@@ -5,18 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use App\Traits\Slug;
-use App\Traits\UUID;
 
 class Link extends Model
 {
-    use HasFactory, Slug, UUID;
+    use HasFactory;
 
     protected $connection;
-    protected $table = 'link';
+    protected $table = 'links';
     protected $primaryKey = 'id';
     public $incrementing = false;
-    protected $fillable = ['id', 'name', 'slug', 'desc', 'img'];
+    protected $fillable = ['id', 'name', 'link', 'img', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 
     public static function setDynamicConnection()

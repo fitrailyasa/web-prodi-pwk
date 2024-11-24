@@ -18,8 +18,9 @@ class MedpartFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'desc' => fake()->realText(100),
+            'link' => fake()->url(),
             'img' => 'logo-putih.png',
+            'user_id' => 1
         ];
     }
 }
