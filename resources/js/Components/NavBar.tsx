@@ -263,6 +263,16 @@ export default function NavBar() {
             </Link>
             <NavbarContent className="hidden md:flex" justify="center">
                 <NavbarItem>
+                    <Link href={route('beranda')}>
+                        <TypingAnimation
+                            text="Beranda"
+                            speed={0.05}
+                            ishover={true}
+                            isBorderLeft={true}
+                        />
+                    </Link>
+                </NavbarItem>
+                <NavbarItem>
                     <NavDropdown title="Profile" item={DropdwonProfleMenu} />
                 </NavbarItem>
                 <NavbarItem>
@@ -301,6 +311,7 @@ export default function NavBar() {
                 />
             </NavbarContent>
             <NavbarMenu>
+                <MobileLink href={route('beranda')} title={'Beranda'} />
                 <Accordion variant="splitted">
                     <AccordionItem key="1" aria-label="Profile" title="Profile">
                         {DropdwonProfleMenu.map((item, index) => (
