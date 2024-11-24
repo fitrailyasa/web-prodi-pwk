@@ -1,4 +1,3 @@
-import { Link } from '@inertiajs/react'
 import {
     Accordion,
     AccordionItem,
@@ -12,13 +11,14 @@ import {
     NavbarContent,
     NavbarItem,
     NavbarMenu,
-    NavbarMenuItem,
-    NavbarMenuToggle
+    NavbarMenuToggle,
+    Link
 } from '@nextui-org/react'
 import React, { useState } from 'react'
 import AnggleDownIcon from './Icon/AnggleDownIcon'
 import { TypingAnimation } from '@/Animation/TypingMotions'
 import LightBulbIcon from './Icon/LightBulbIcon'
+import { p } from 'framer-motion/client'
 
 type DropdownMenuItem = {
     title: string
@@ -74,33 +74,22 @@ function NavDropdown({ title, icon, item }: propsDropdown) {
     )
 }
 
-function AccordionLink(prop: {
-    href: string
-    title: string
-    description?: string
-    newTab?: boolean
-    icon?: React.ReactNode
-}) {
+function AccordionLink(prop: DropdownMenuItem) {
     return (
         <Link
-            className="w-full block bg-slate-200 hover:bg-slate-400 my-2 py-2 px-3 rounded-lg"
+            className="w-full block text-black bg-slate-200 hover:bg-slate-400 my-2 py-2 px-3 rounded-lg"
             href={prop.href}
-            target={prop.newTab ? '_blank' : '_self'}
-            sizes="lg"
+            isExternal={prop.newTab ?? false}
+            // sizes="lg"
         >
             {prop.title}
         </Link>
     )
 }
-function MobileLink(prop: {
-    href: string
-    title: string
-    description?: string
-    icon?: React.ReactNode
-}) {
+function MobileLink(prop: DropdownMenuItem) {
     return (
         <Link
-            className="bg-white border hover:bg-gray-100 mt-0 mb-1 mx-2 p-4 rounded-xl"
+            className="bg-white text-black border hover:bg-gray-100 mt-0 mb-1 mx-2 p-4 rounded-xl"
             href={prop.href}
         >
             {prop.title}
@@ -265,7 +254,7 @@ export default function NavBar() {
             </Link>
             <NavbarContent className="hidden md:flex" justify="center">
                 <NavbarItem>
-                    <Link href={route('beranda')}>
+                    <Link className="text-black" href={route('beranda')}>
                         <TypingAnimation
                             text="Beranda"
                             // speed={0.05}
@@ -287,7 +276,7 @@ export default function NavBar() {
                     />
                 </NavbarItem>
                 <NavbarItem>
-                    <Link href={route('berita')}>
+                    <Link className="text-black" href={route('berita')}>
                         <TypingAnimation
                             text="Berita dan Informasi"
                             speed={0.05}
@@ -297,7 +286,7 @@ export default function NavBar() {
                     </Link>
                 </NavbarItem>
                 <div>
-                    <Link href={'#'}>
+                    <Link className="text-black" href={'#'}>
                         <TypingAnimation
                             text="Kontak"
                             speed={0.05}
