@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('slug')->unique();
             $table->text('desc')->nullable();
             $table->string('img')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

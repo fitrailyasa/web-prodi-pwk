@@ -5,24 +5,40 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use App\Traits\Slug;
-use App\Traits\UUID;
+use Illuminate\Support\Str;
 
 class Kategori extends Model
 {
-    use HasFactory, Slug, UUID;
+    use HasFactory;
 
     protected $connection;
-    protected $table = 'kategori';
+    protected $table = 'kategoris';
     protected $primaryKey = 'id';
     public $incrementing = false;
-    protected $fillable = ['id', 'name', 'slug', 'desc', 'img'];
+    protected $fillable = ['id', 'name', 'slug', 'sub', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 
     public static function setDynamicConnection()
     {
         DB::setDefaultConnection(env('DB_CONNECTION'));
         // DB::setDefaultConnection(env('DB2_CONNECTION'));
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (empty($model->slug) && !empty($model->name)) {
+                $model->slug = Str::slug($model->name, '-');
+            }
+        });
+
+        static::updating(function ($model) {
+            if ($model->isDirty('name')) {
+                $model->slug = Str::slug($model->name, '-');
+            }
+        });
     }
 
     public function user()

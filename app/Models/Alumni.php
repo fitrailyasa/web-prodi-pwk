@@ -5,15 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use App\Traits\Slug;
-use App\Traits\UUID;
 
 class Alumni extends Model
 {
-    use HasFactory, Slug, UUID;
+    use HasFactory;
 
     protected $connection;
-    protected $table = 'alumni';
+    protected $table = 'alumnis';
     protected $primaryKey = 'id';
     public $incrementing = false;
     protected $fillable = ['id', 'name', 'class_year', 'work', 'img', 'user_id'];
@@ -24,7 +22,7 @@ class Alumni extends Model
         DB::setDefaultConnection(env('DB_CONNECTION'));
         // DB::setDefaultConnection(env('DB2_CONNECTION'));
     }
-    
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');

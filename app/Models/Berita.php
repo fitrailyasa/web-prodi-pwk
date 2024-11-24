@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use App\Traits\Slug;
-use App\Traits\UUID;
+use Illuminate\Support\Str;
 
 class Berita extends Model
 {
-    use HasFactory, Slug, UUID;
+    use HasFactory;
 
     protected $connection;
-    protected $table = 'berita';
+    protected $table = 'beritas';
     protected $primaryKey = 'id';
     public $incrementing = false;
     protected $fillable = ['id', 'name', 'slug', 'desc', 'img', 'tag_id', 'user_id'];
@@ -24,7 +23,24 @@ class Berita extends Model
         DB::setDefaultConnection(env('DB_CONNECTION'));
         // DB::setDefaultConnection(env('DB2_CONNECTION'));
     }
-    
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (empty($model->slug) && !empty($model->name)) {
+                $model->slug = Str::slug($model->name, '-');
+            }
+        });
+
+        static::updating(function ($model) {
+            if ($model->isDirty('name')) {
+                $model->slug = Str::slug($model->name, '-');
+            }
+        });
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
