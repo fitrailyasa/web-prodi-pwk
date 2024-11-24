@@ -24,7 +24,9 @@ export default function Welcome({ name }: WelcomeProps) {
                 <Button color="primary" onClick={() => navigate('about')}>
                     <IconHome size={24} /> Home
                 </Button>
-                <Link href={route('berita')}>{visitor.visitorCount}</Link>
+                <Link href={route('berita')}>
+                    {visitor.visitorCount} {JSON.stringify(visitor.visitorData)}
+                </Link>
             </div>
             <div
                 style={{

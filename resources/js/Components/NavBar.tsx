@@ -78,12 +78,14 @@ function AccordionLink(prop: {
     href: string
     title: string
     description?: string
+    newTab?: boolean
     icon?: React.ReactNode
 }) {
     return (
         <Link
             className="w-full block bg-slate-200 hover:bg-slate-400 my-2 py-2 px-3 rounded-lg"
             href={prop.href}
+            target={prop.newTab ? '_blank' : '_self'}
             sizes="lg"
         >
             {prop.title}
@@ -112,7 +114,7 @@ export default function NavBar() {
 
     const Logo_img = '/assets/img/logo.png'
 
-    const DropdwonProfleMenu = [
+    const DropdwonProfleMenu: DropdownMenuItem[] = [
         {
             title: 'Visi & Misi',
             href: '#',
@@ -141,7 +143,7 @@ export default function NavBar() {
         }
     ]
 
-    const DropdwonAkademikMenu = [
+    const DropdwonAkademikMenu: DropdownMenuItem[] = [
         {
             title: 'Siakad',
             href: '#',
@@ -192,7 +194,7 @@ export default function NavBar() {
         }
     ]
 
-    const DropdwonFasilitasMenu = [
+    const DropdwonFasilitasMenu: DropdownMenuItem[] = [
         {
             title: 'Website ITERA',
             href: 'https://itera.ac.id',
@@ -323,6 +325,7 @@ export default function NavBar() {
                             <AccordionLink
                                 key={index}
                                 href={item.href}
+                                newTab={item.newTab ?? false}
                                 title={item.title}
                             />
                         ))}
@@ -337,6 +340,7 @@ export default function NavBar() {
                             <AccordionLink
                                 key={index}
                                 href={item.href}
+                                newTab={item.newTab ?? false}
                                 title={item.title}
                             />
                         ))}
@@ -347,10 +351,11 @@ export default function NavBar() {
                         aria-label="Fasilitas"
                         title="Fasilitas"
                     >
-                        {DropdwonAkademikMenu.map((item, index) => (
+                        {DropdwonFasilitasMenu.map((item, index) => (
                             <AccordionLink
                                 key={index}
                                 href={item.href}
+                                newTab={item.newTab ?? false}
                                 title={item.title}
                             />
                         ))}
