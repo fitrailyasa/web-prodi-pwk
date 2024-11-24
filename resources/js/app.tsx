@@ -16,7 +16,7 @@ createInertiaApp({
     resolve: name =>
         resolvePageComponent(
             `./pages/${name}.tsx`,
-            import.meta.glob('./pages/**/*.tsx'),
+            import.meta.glob('./pages/**/*.tsx')
         ),
     setup({ el, App, props }) {
         import.meta.env.NODE_ENV !== 'local'
@@ -24,14 +24,17 @@ createInertiaApp({
             : Ziggy.url
         // @ts-expect-error
         window.route = useRoute()
+
         const appElement = (
             <React.StrictMode>
                 <NextUIProvider>
-                    <App {...props} />
+                    <main className=" min-h-screen rounded-xl overflow-hidden ">
+                        <App {...props} />
+                    </main>
                 </NextUIProvider>
             </React.StrictMode>
         )
         createRoot(el).render(appElement)
     },
-    progress: false,
+    progress: false
 })
