@@ -15,7 +15,7 @@ type LanguageProviderState = {
 
 const initialStates: LanguageProviderState = {
     language: 'id',
-    setLanguage: () => null,
+    setLanguage: () => null
 }
 
 const LanguageContext = createContext<LanguageProviderState>(initialStates)
@@ -23,7 +23,7 @@ const LanguageContext = createContext<LanguageProviderState>(initialStates)
 export function LanguageProvider({
     children,
     defaultLanguage = 'id',
-    StorageKey = 'vite-language',
+    StorageKey = 'vite-language'
 }: LanguageProviderProps) {
     const [language, setLanguage] = useState<LanguageOption>(() => {
         const storedLanguage = localStorage.getItem(StorageKey)
@@ -41,4 +41,12 @@ export function LanguageProvider({
             {children}
         </LanguageContext.Provider>
     )
+}
+
+export const useLanguage = () => {
+    const context = React.useContext(LanguageContext)
+    if (!context) {
+        throw new Error('useLanguage must be used within a LanguageProvider')
+    }
+    return context
 }

@@ -3,6 +3,7 @@ import AppLayout from '../Layouts/AppLayout'
 import { Button, Link } from '@nextui-org/react'
 import { motion } from 'framer-motion'
 import { useVisitor } from '@/Providers/VisitorProvider'
+import { Slider } from '@/Components/Slider'
 
 type WelcomeProps = {
     name: string
@@ -11,6 +12,21 @@ type WelcomeProps = {
 export default function Welcome({ name }: WelcomeProps) {
     const visitor = useVisitor()
     const image = '/assets/img/logo.png'
+
+    const benner = [
+        {
+            img: '/assets/img/logo.png',
+            alt: 'Banner 1'
+        },
+        {
+            img: '/assets/img/logo.png',
+            alt: 'Banner 1'
+        },
+        {
+            img: '/assets/img/logo.png',
+            alt: 'Banner 1'
+        }
+    ]
 
     const navigate = (name: string) => {
         window.location.href = route(name)
@@ -45,7 +61,20 @@ export default function Welcome({ name }: WelcomeProps) {
                     Selamat Datang di Framer Motion!
                 </motion.h1>
             </div>
-            );
+
+            <div className="h-screen flex items-center justify-center bg-gray-50">
+                <Slider>
+                    <div className="w-full h-64 flex items-center justify-center bg-red-400 text-white text-2xl font-bold">
+                        Slide 1
+                    </div>
+                    <div className="w-full h-64 flex items-center justify-center bg-blue-400 text-white text-2xl font-bold">
+                        Slide 2
+                    </div>
+                    <div className="w-full h-64 flex items-center justify-center bg-green-400 text-white text-2xl font-bold">
+                        Slide 3
+                    </div>
+                </Slider>
+            </div>
         </AppLayout>
     )
 }
