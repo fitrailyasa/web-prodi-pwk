@@ -31,13 +31,15 @@ interface SliderProps {
     className?: String
     interval?: number
     autoSlider?: boolean
+    sendComponent?: (component: React.ReactNode) => void
 }
 
 export const Slider: React.FC<SliderProps> = ({
     children,
     className,
-    interval,
-    autoSlider = true
+    interval, // in seconds
+    autoSlider = true,
+    sendComponent
 }) => {
     const [[page, direction], setPage] = useState<[number, number]>([0, 0])
 
@@ -48,10 +50,29 @@ export const Slider: React.FC<SliderProps> = ({
         setPage([page + newDirection, newDirection])
     }
     useEffect(() => {
+        sendComponent &&
+            sendComponent(
+                <div className=" flex gap-2 py-6">
+                    {Array.from({ length: children.length }).map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => setPage([index, index - childIndex])}
+                            className={`w-3 h-3 rounded-full cursor-pointer ${
+                                index === childIndex
+                                    ? 'bg-gray-200'
+                                    : 'bg-transparent border border-gray-200'
+                            }`}
+                        ></button>
+                    ))}
+                </div>
+            )
         if (autoSlider) {
-            const autoSlide = setInterval(() => {
-                paginate(1)
-            }, interval || 3000)
+            const autoSlide = setInterval(
+                () => {
+                    paginate(1)
+                },
+                interval ? interval * 1000 : 3000
+            )
 
             return () => clearInterval(autoSlide)
         }
@@ -59,7 +80,7 @@ export const Slider: React.FC<SliderProps> = ({
 
     return (
         <div
-            className={`relative z-10 w-full h-full overflow-hidden bg-gray-100 ${className}`}
+            className={`relative z-10 w-full h-full  bg-gray-100 ${className}`}
         >
             <AnimatePresence initial={false} custom={direction}>
                 <motion.div
@@ -102,17 +123,6 @@ export const Slider: React.FC<SliderProps> = ({
                 onClick={() => paginate(1)}
             >
                 <NextIcon className="justify-center flex" size={24} />
-            </div>
-            <div className="absolute z-20 bottom-2 left-1/2 transform -translate-x-1/2 flex gap-2">
-                {Array.from({ length: children.length }).map((_, index) => (
-                    <button
-                        key={index}
-                        onClick={() => setPage([index, index - childIndex])}
-                        className={`w-3 h-3 rounded-full cursor-pointer ${
-                            index === childIndex ? 'bg-gray-500' : 'bg-gray-200'
-                        }`}
-                    ></button>
-                ))}
             </div>
         </div>
     )
