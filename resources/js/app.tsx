@@ -20,11 +20,13 @@ createInertiaApp({
             import.meta.glob('./Pages/**/*.tsx')
         ),
     setup({ el, App, props }) {
-        import.meta.env.NODE_ENV !== 'local'
+        import.meta.env.VITE_NODE_ENV !== 'local'
             ? (Ziggy.url = 'http://localhost:8000')
             : Ziggy.url
-        // @ts-expect-error
+
         window.route = useRoute()
+
+        console.log(window)
 
         const appElement = (
             <React.StrictMode>

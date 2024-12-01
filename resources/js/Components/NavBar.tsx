@@ -39,7 +39,7 @@ function NavDropdown({ title, icon, item }: propsDropdown) {
             <DropdownTrigger>
                 <Button
                     disableRipple
-                    className="p-0 bg-transparent data-[hover=true]:bg-transparent"
+                    className="p-0 bg-transparent data-[hover=true]:bg-transparent text-md"
                     radius="sm"
                     variant="light"
                 >
@@ -77,7 +77,7 @@ function NavDropdown({ title, icon, item }: propsDropdown) {
 function AccordionLink(prop: DropdownMenuItem) {
     return (
         <Link
-            className="w-full block text-black bg-slate-200 hover:bg-slate-400 my-2 py-2 px-3 rounded-lg"
+            className="w-full block text-md text-black bg-slate-200 hover:bg-slate-400 my-2 py-2 px-3 rounded-lg"
             href={prop.href}
             isExternal={prop.newTab ?? false}
             // sizes="lg"
@@ -89,7 +89,7 @@ function AccordionLink(prop: DropdownMenuItem) {
 function MobileLink(prop: DropdownMenuItem) {
     return (
         <Link
-            className="bg-white text-black border hover:bg-gray-100 mt-0 mb-1 mx-2 p-4 rounded-xl"
+            className="bg-white text-md text-black border hover:bg-gray-100 mt-0 mb-1 mx-2 p-4 rounded-xl"
             href={prop.href}
         >
             {prop.title}
@@ -232,7 +232,7 @@ export default function NavBar() {
         <Navbar
             position="sticky"
             onMenuOpenChange={setIsMenuOpen}
-            className="flex justify-around   top-0 z-50"
+            className="flex justify-around top-0 z-50"
         >
             <Link
                 href={route('beranda')}
@@ -254,7 +254,10 @@ export default function NavBar() {
             </Link>
             <NavbarContent className="hidden md:flex" justify="center">
                 <NavbarItem>
-                    <Link className="text-black" href={route('beranda')}>
+                    <Link
+                        className="text-black text-md"
+                        href={route('beranda')}
+                    >
                         <TypingAnimation
                             text="Beranda"
                             // speed={0.05}
@@ -276,7 +279,7 @@ export default function NavBar() {
                     />
                 </NavbarItem>
                 <NavbarItem>
-                    <Link className="text-black" href={route('berita')}>
+                    <Link className="text-black text-md" href={route('berita')}>
                         <TypingAnimation
                             text="Berita dan Informasi"
                             speed={0.05}
@@ -286,7 +289,7 @@ export default function NavBar() {
                     </Link>
                 </NavbarItem>
                 <div>
-                    <Link className="text-black" href={'#'}>
+                    <Link className="text-black text-md" href={'#'}>
                         <TypingAnimation
                             text="Kontak"
                             speed={0.05}
@@ -305,7 +308,7 @@ export default function NavBar() {
                 <MobileLink href={route('beranda')} title={'Beranda'} />
                 <Accordion variant="splitted">
                     <AccordionItem
-                        className="hover:bg-gray-100"
+                        className="hover:bg-gray-100 text-md"
                         key="1"
                         aria-label="Profile"
                         title="Profile"
@@ -320,7 +323,7 @@ export default function NavBar() {
                         ))}
                     </AccordionItem>
                     <AccordionItem
-                        className="hover:bg-gray-100"
+                        className="hover:bg-gray-100 text-md"
                         key="2"
                         aria-label="Akademik"
                         title="Akademik"
@@ -335,7 +338,7 @@ export default function NavBar() {
                         ))}
                     </AccordionItem>
                     <AccordionItem
-                        className="hover:bg-gray-100"
+                        className="hover:bg-gray-100 text-md"
                         key="3"
                         aria-label="Fasilitas"
                         title="Fasilitas"
