@@ -46,23 +46,13 @@
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Deskripsi') }}</label>
-                            <textarea class="form-control @error('desc') is-invalid @enderror" placeholder="deskripsi" name="desc" id="desc"
-                                rows="3">{{ old('desc', $medpart->desc) }}</textarea>
-                            @error('desc')
+                            <label class="form-label">{{ __('Tautan') }}</label>
+                            <input type="text" class="form-control @error('link') is-invalid @enderror"
+                                placeholder="https://google.com" name="link" id="link"
+                                value="{{ old('link', $medpart->link) }}" required>
+                            @error('link')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-12 text-center">
-                        <div class="mb-3">
-                            @if ($medpart->img == null)
-                                <img class="img-fluid rounded" width="200px" id="image-preview"
-                                    src="{{ asset('assets/profile/default.png') }}" alt="{{ $medpart->name }}">
-                            @else
-                                <img class="img-fluid rounded" width="200px" id="image-preview"
-                                    src="{{ asset('assets/img/' . $medpart->img) }}" alt="{{ $medpart->name }}">
-                            @endif
                         </div>
                     </div>
                 </div>

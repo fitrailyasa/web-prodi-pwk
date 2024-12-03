@@ -37,7 +37,8 @@
                 <th>{{ __('No') }}</th>
                 <th>{{ __('Nama') }}</th>
                 <th>{{ __('Gambar') }}</th>
-                <th>{{ __('Deskripsi') }}</th>
+                <th>{{ __('Tautan') }}</th>
+                <th>{{ __('Oleh') }}</th>
                 <th class="text-center">{{ __('Aksi') }}</th>
             </tr>
         </thead>
@@ -88,7 +89,8 @@
                             </div>
                         @endif
                     </td>
-                    <td>{{ $medpart->desc ?? '-' }}</td>
+                    <td><a href="{{ $medpart->link }}" target="_blank">{{ $medpart->link ?? '-' }}</a></td>
+                    <td>{{ $medpart->user->name ?? '-' }}</td>
                     <td class="manage-row text-center">
                         @if (auth()->user()->role == 'admin')
                             <!-- Edit and Delete Buttons -->
