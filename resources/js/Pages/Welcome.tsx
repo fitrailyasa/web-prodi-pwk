@@ -1,6 +1,13 @@
 import IconHome from '@/Components/Icon/IconHome'
 import AppLayout from '../Layouts/AppLayout'
-import { Button, Card, CardBody, Image, Link } from '@nextui-org/react'
+import {
+    Button,
+    Card,
+    CardBody,
+    CardHeader,
+    Image,
+    Link
+} from '@nextui-org/react'
 import { motion } from 'framer-motion'
 import { useVisitor } from '@/Providers/VisitorProvider'
 import { Slider } from '@/Components/Slider'
@@ -93,7 +100,6 @@ export default function Welcome({ name }: WelcomeProps) {
                                     </div>
                                 </div>
                             </div>
-                            {/* <div className="h-6 bg-gradient-to-r from-[#236899] from-10% to-transparent to-110%" /> */}
                         </div>
                         // </div>
                     ))}
@@ -165,9 +171,102 @@ export default function Welcome({ name }: WelcomeProps) {
             </section>
             <section className="py-20 w-full bg-secondary-blue ">
                 <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-5">
-                    <Image src={logoBox} className="border" />
+                    <div className="col-span-2">
+                        <Image src={logoBox} className="" />
+                    </div>
 
-                    <div className="col-auto"></div>
+                    <div className="col-span-3">
+                        <h1 className="text-4xl font-bold">
+                            Perencanaan Wilayah Dan Kota ITERA
+                        </h1>
+                        <p className="py-2">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing
+                            elit. Natus sapiente eaque deleniti reiciendis sunt
+                            explicabo consectetur quae sequi itaque maiores?
+                            Impedit aspernatur eum animi provident! Perferendis
+                            eveniet adipisci sequi quisquam?
+                        </p>
+
+                        <Button className="bg-main-green font-semibold text-white inline-block">
+                            Baca Selengkapnya
+                        </Button>
+                    </div>
+                </div>
+            </section>
+            <section className="py-20 w-full">
+                <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-10">
+                    <div className="col-span-3">
+                        <h1 className="text-4xl font-bold">Visi</h1>
+                        <p className="py-2">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing
+                            elit. Natus sapiente eaque deleniti reiciendis sunt
+                            explicabo consectetur quae sequi itaque maiores?
+                            Impedit aspernatur eum animi provident! Perferendis
+                            eveniet adipisci sequi quisquam?
+                        </p>
+
+                        <Button className="bg-main-green font-semibold text-white inline-block">
+                            Baca Selengkapnya
+                        </Button>
+                    </div>
+                    <div className="col-span-2">
+                        <Image src={logoBox} className="" />
+                    </div>
+                </div>
+            </section>
+            <section className="py-20 w-full bg-secondary-blue">
+                <div className="max-w-5xl mx-auto ">
+                    <h1 className="text-4xl font-bold pb-5 text-center">
+                        Misi
+                    </h1>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                        <Card className="p-10">
+                            <CardHeader className="font-bold text-lg">
+                                <h3>Misi 1</h3>
+                            </CardHeader>
+                            <CardBody className="">
+                                <p>
+                                    Lorem ipsum, dolor sit amet consectetur
+                                    adipisicing elit. Amet nisi dolorem cum.
+                                </p>
+                            </CardBody>
+                        </Card>
+                        <Card className="p-8">
+                            <CardHeader className="font-bold text-lg">
+                                <h3>Misi 1</h3>
+                            </CardHeader>
+                            <CardBody className="">
+                                <p>
+                                    Lorem ipsum, dolor sit amet consectetur
+                                    adipisicing elit. Amet nisi dolorem cum.
+                                </p>
+                            </CardBody>
+                        </Card>
+                        <Card className="p-10">
+                            <CardHeader className="font-bold text-lg">
+                                <h3>Misi 1</h3>
+                            </CardHeader>
+                            <CardBody className="">
+                                <p>
+                                    Lorem ipsum, dolor sit amet consectetur
+                                    adipisicing elit. Amet nisi dolorem cum.
+                                </p>
+                            </CardBody>
+                        </Card>
+                    </div>
+                    {/* <div className="col-span-3">
+                        <p className="py-2">
+                            Lorem ipsum, dolor sit amet consectetur adipisicing
+                            elit. Natus sapiente eaque deleniti reiciendis sunt
+                            explicabo consectetur quae sequi itaque maiores?
+                            Impedit aspernatur eum animi provident! Perferendis
+                            eveniet adipisci sequi quisquam?
+                        </p>
+
+                        <Button className="bg-main-green font-semibold text-white inline-block">
+                            Baca Selengkapnya
+                        </Button>
+                    </div> */}
                 </div>
             </section>
         </AppLayout>
