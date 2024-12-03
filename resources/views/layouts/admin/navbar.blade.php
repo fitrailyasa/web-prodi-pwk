@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+<nav class="main-header navbar navbar-expand navbar-dark">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -11,7 +11,7 @@
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
             <a href="{{ route('profile.edit') }}" class="nav-link d-flex align-items-center">
-                    <div class="d-none d-lg-block text-dark mr-2">{{ auth()->user()->name }}</div>
+                    <div class="d-none d-lg-block text-white mr-2">{{ auth()->user()->name }}</div>
                     @if (Auth::user()->foto_user != null)
                         <img src="{{ asset('assets/profile/' . Auth::user()->foto_user) }}" class="img-circle elevation-2"
                             alt="User Image"

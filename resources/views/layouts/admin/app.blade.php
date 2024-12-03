@@ -9,13 +9,25 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;400i;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0-alpha3/css/bootstrap.min.css"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/css/adminlte.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.2.7/sweetalert2.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/css/OverlayScrollbars.min.css">
     <script src="https://kit.fontawesome.com/2a99f4df77.js" crossorigin="anonymous"></script>
+
+    <style>
+        .main-header,
+        .main-sidebar {
+            background-color: rgb(0, 0, 66);
+            color: white;
+        }
+
+        .aktif {
+            background-color: rgb(20, 20, 187);
+        }
+    </style>
 
     <!--Favicon-->
     <link rel="apple-touch-icon-precomposed" sizes="57x57"
@@ -45,68 +57,6 @@
     <meta name="msapplication-wide310x150logo" content="{{ asset('assets/favicon/mstile-310x150.png') }}" />
     <meta name="msapplication-square310x310logo" content="{{ asset('assets/favicon/mstile-310x310.png') }}" />
     <link rel="icon" href="{{ asset('assets/favicon/favicon.ico') }}">
-
-    <style>
-        .border-bottom {
-            border-bottom: 0.2px solid rgba(255, 255, 255, 0.2) !important;
-        }
-
-        .main-sidebar {
-            background-color: rgb(80, 80, 80);
-        }
-
-        .aktif {
-            background-color: rgb(165, 165, 165);
-        }
-
-        /* .aktif {
-            background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
-        }
-
-        .bg-info {
-            background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
-        }
-
-        .bg-primary {
-            background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
-        }
-
-        .bg-secondary {
-            background-image: linear-gradient(to top, #a3a3a3 0%, #707070 100%);
-        }
-
-        .bg-success {
-            background-image: linear-gradient(to top, #49e0b0 0%, #0ba360 100%);
-        }
-
-        .bg-warning {
-            background-image: linear-gradient(to top, #f8fa7c 0%, #ffc508 100%);
-        }
-
-        .bg-danger {
-            background-image: linear-gradient(to top, #fd704d 0%, #ff0844 100%);
-        }
-
-        .btn-primary {
-            background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
-        }
-
-        .btn-secondary {
-            background-image: linear-gradient(to top, #a3a3a3 0%, #707070 100%);
-        }
-
-        .btn-success {
-            background-image: linear-gradient(to top, #49e0b0 0%, #0ba360 100%);
-        }
-
-        .btn-warning {
-            background-image: linear-gradient(to top, #f8fa7c 0%, #ffc508 100%);
-        }
-
-        .btn-danger {
-            background-image: linear-gradient(to top, #fd704d 0%, #ff0844 100%);
-        } */
-    </style>
 
     {{ $style ?? '' }}
 

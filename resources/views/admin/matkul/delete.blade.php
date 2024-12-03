@@ -1,6 +1,6 @@
 <!-- Tombol untuk membuka modal -->
-<button role="button" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target=".formDelete{{ $matkul->id }}"><i
-        class="fas fa-trash"></i><span class="d-none d-sm-inline">
+<button role="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+    data-bs-target=".formDelete{{ $matkul->id }}"><i class="fas fa-trash"></i><span class="d-none d-sm-inline">
         {{ __('Hapus') }}</span></button>
 
 <!-- Modal -->
@@ -21,7 +21,7 @@
                     @csrf
                     <button type="button" class="btn btn-secondary"
                         data-bs-dismiss="modal">{{ __('Tutup') }}</button>
-                    <input type="submit" class="btn btn-dark light" name="" id="" value="Hapus">
+                    <input type="submit" class="btn btn-danger light" name="" id="" value="Hapus">
                 </form>
             </div>
         </div>

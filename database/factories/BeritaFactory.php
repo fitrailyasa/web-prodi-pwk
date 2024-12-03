@@ -17,11 +17,11 @@ class BeritaFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(), 
-            'slug' => fake()->slug(), 
-            'desc' => fake()->realText(100), 
-            'img' => 'logo-putih.png', 
-            'tag_id' => 1, 
+            'name' => fake()->name(),
+            'slug' => fake()->slug(),
+            'desc' => fake()->realText(100),
+            'img' => 'logo.png',
+            'tag_id' => 1,
             'user_id' => 1
         ];
     }

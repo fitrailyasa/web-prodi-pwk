@@ -17,10 +17,10 @@ class StaffFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(), 
+            'name' => fake()->name(),
             'nip' => fake()->numberBetween(1000000000, 9999999999),
-            'position' => fake()->jobTitle(), 
-            'img' => 'logo-putih.png', 
+            'position' => fake()->jobTitle(),
+            'img' => 'logo.png',
             'user_id' => 1
         ];
     }

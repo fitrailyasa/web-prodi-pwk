@@ -1,5 +1,5 @@
 <!-- Tombol untuk membuka modal -->
-<button role="button" class="btn btn-sm mx-1 btn-secondary" data-bs-toggle="modal" data-bs-target=".formImport"><i
+<button role="button" class="btn btn-sm mx-1 btn-info" data-bs-toggle="modal" data-bs-target=".formImport"><i
         class="fas fa-upload"></i> <span class="d-none d-sm-inline">{{ __('Upload') }}</span></button>
 
 <!-- Modal -->
@@ -31,9 +31,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a class="btn btn-secondary" href="{{ asset('assets/template/tentang-template.xlsx') }}"
-                    download="tentang-template.xlsx">{{ __('Download Format') }}</a>
-                <button type="submit" class="btn btn-dark">{{ __('Simpan') }}</button>
+                <a class="btn btn-success" href="{{ asset('assets/template/tentang-template.xlsx') }}"
+                    download="tentang-template.xlsx"><i class="fas fa-download"></i> {{ __('Download Format') }}</a>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> {{ __('Simpan') }}</button>
             </div>
             </form>
         </div>

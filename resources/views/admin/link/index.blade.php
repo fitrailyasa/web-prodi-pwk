@@ -27,7 +27,7 @@
 
     <!-- Search & Pagination -->
     <x-slot name="search">
-        @include('admin.link.search')
+        @include('layouts.admin.search')
     </x-slot>
 
     <!-- Table -->

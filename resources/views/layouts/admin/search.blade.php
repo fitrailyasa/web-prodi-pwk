@@ -1,5 +1,5 @@
 <div class="mb-3">
-    <form method="GET" action="{{ route('admin.link.index') }}">
+    <form method="GET" action="{{ url()->current() }}">
         <div class="d-flex justify-content-between align-items-center">
             <div class="me-3">
                 <div class="input-group">

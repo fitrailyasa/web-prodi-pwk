@@ -1,5 +1,5 @@
 <!-- Tombol untuk membuka modal -->
-<button role="button" class="btn btn-sm btn-secondary mr-2" data-bs-toggle="modal"
+<button role="button" class="btn btn-sm btn-warning mr-2" data-bs-toggle="modal"
     data-bs-target=".formEdit{{ $tag->id }}"><i class="fas fa-edit"></i><span class="d-none d-sm-inline">
         {{ __('Edit') }}</span></button>
 
@@ -36,7 +36,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Tutup') }}</button>
-                <button type="submit" class="btn btn-dark">{{ __('Simpan') }}</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> {{ __('Simpan') }}</button>
             </div>
             </form>
         </div>

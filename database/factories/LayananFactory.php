@@ -19,7 +19,7 @@ class LayananFactory extends Factory
         return [
             'name' => fake()->name(),
             'desc' => fake()->realText(100),
-            'img' => 'logo-putih.png',
+            'img' => 'logo.png',
             'link' => fake()->url(),
             'user_id' => 1
         ];
