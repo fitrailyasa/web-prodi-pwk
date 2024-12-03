@@ -20,11 +20,11 @@
         <thead>
             <tr>
                 <th>{{ __('No') }}</th>
-                <th>{{ __('Name') }}</th>
+                <th>{{ __('Nama') }}</th>
                 <th>{{ __('Email') }}</th>
-                <th>{{ __('Role') }}</th>
+                <th>{{ __('Peran') }}</th>
                 <th>{{ __('Status') }}</th>
-                <th>{{ __('Action') }}</th>
+                <th>{{ __('Aksi') }}</th>
             </tr>
         </thead>
         <tbody>

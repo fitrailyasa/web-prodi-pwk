@@ -13,8 +13,8 @@
             <div>
                 <div class="input-group">
                     <input type="text" name="search" class="form-control" value="{{ $search }}"
-                        placeholder="Search...">
-                    <button class="btn border" type="submit">Search</button>
+                        placeholder="Cari...">
+                    <button class="btn border" type="submit"><i class="fas fa-search"></i></button>
                 </div>
             </div>
         </div>

@@ -35,10 +35,10 @@
         <thead>
             <tr>
                 <th>{{ __('No') }}</th>
-                <th>{{ __('Name') }}</th>
-                <th>{{ __('Img') }}</th>
-                <th>{{ __('Desc') }}</th>
-                <th>{{ __('Action') }}</th>
+                <th>{{ __('Nama') }}</th>
+                <th>{{ __('Gambar') }}</th>
+                <th>{{ __('Deskripsi') }}</th>
+                <th>{{ __('Aksi') }}</th>
             </tr>
         </thead>
         <tbody>
