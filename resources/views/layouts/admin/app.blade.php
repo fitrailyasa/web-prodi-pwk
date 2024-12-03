@@ -61,6 +61,32 @@
     <meta name="msapplication-square310x310logo" content="{{ asset('assets/favicon/mstile-310x310.png') }}" />
     <link rel="icon" href="{{ asset('assets/favicon/favicon.ico') }}">
 
+    <style>
+        .btn-primary {
+            background-color: rgb(0, 0, 66);
+        }
+
+        .btn-primary:hover {
+            background-color: rgb(14, 14, 125);
+        }
+
+        .btn-primary:active {
+            background-color: rgb(14, 14, 125);
+        }
+
+        .btn-info {
+            background-color: rgb(30, 30, 244);
+        }
+
+        .btn-info:hover {
+            background-color: rgb(13, 13, 160);
+        }
+
+        .btn-info:active {
+            background-color: rgb(13, 13, 160);
+        }
+    </style>
+
     {{ $style ?? '' }}
 
 </head>
@@ -80,8 +106,8 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a style="color: gray;"
-                                        href="{{ route('dashboard') }}">Admin</a></li>
+                                <li class="breadcrumb-item"><a
+                                        href="{{ route('dashboard') }}">Dashboard</a></li>
                                 <li class="breadcrumb-item active">{{ $title ?? '' }}</li>
                             </ol>
                         </div>
