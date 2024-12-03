@@ -54,14 +54,21 @@ class AdminLayananController extends Controller
 
     public function store(LayananRequest $request)
     {
-        $Layanan = Layanan::create($request->validated());
+        $validatedData = $request->validated();
+        $validatedData['user_id'] = auth()->id();
+
+        Layanan::create($validatedData);
         return back()->with('alert', 'Berhasil Tambah Data Layanan!');
     }
 
     public function update(LayananRequest $request, $id)
     {
         $Layanan = Layanan::findOrFail($id);
-        $Layanan->update($request->validated());
+        $validatedData = $request->validated();
+
+        $validatedData['user_id'] = $Layanan->user_id;
+
+        $Layanan->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Layanan!');
     }
 

@@ -54,14 +54,21 @@ class AdminLinkController extends Controller
 
     public function store(LinkRequest $request)
     {
-        $link = Link::create($request->validated());
+        $validatedData = $request->validated();
+        $validatedData['user_id'] = auth()->id();
+
+        Link::create($validatedData);
         return back()->with('alert', 'Berhasil Tambah Data Link!');
     }
 
     public function update(LinkRequest $request, $id)
     {
-        $link = Link::findOrFail($id);
-        $link->update($request->validated());
+        $Link = Link::findOrFail($id);
+        $validatedData = $request->validated();
+
+        $validatedData['user_id'] = $Link->user_id;
+
+        $Link->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Link!');
     }
 

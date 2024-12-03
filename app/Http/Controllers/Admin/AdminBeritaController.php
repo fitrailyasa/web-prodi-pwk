@@ -54,14 +54,21 @@ class AdminBeritaController extends Controller
 
     public function store(BeritaRequest $request)
     {
-        $berita = Berita::create($request->validated());
+        $validatedData = $request->validated();
+        $validatedData['user_id'] = auth()->id();
+
+        Berita::create($validatedData);
         return back()->with('alert', 'Berhasil Tambah Data Berita!');
     }
 
     public function update(BeritaRequest $request, $id)
     {
-        $berita = Berita::findOrFail($id);
-        $berita->update($request->validated());
+        $Berita = Berita::findOrFail($id);
+        $validatedData = $request->validated();
+
+        $validatedData['user_id'] = $Berita->user_id;
+
+        $Berita->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Berita!');
     }
 

@@ -54,14 +54,21 @@ class AdminMatkulController extends Controller
 
     public function store(MatkulRequest $request)
     {
-        $matkul = Matkul::create($request->validated());
+        $validatedData = $request->validated();
+        $validatedData['user_id'] = auth()->id();
+
+        Matkul::create($validatedData);
         return back()->with('alert', 'Berhasil Tambah Data Matkul!');
     }
 
     public function update(MatkulRequest $request, $id)
     {
-        $matkul = Matkul::findOrFail($id);
-        $matkul->update($request->validated());
+        $Matkul = Matkul::findOrFail($id);
+        $validatedData = $request->validated();
+
+        $validatedData['user_id'] = $Matkul->user_id;
+
+        $Matkul->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Matkul!');
     }
 

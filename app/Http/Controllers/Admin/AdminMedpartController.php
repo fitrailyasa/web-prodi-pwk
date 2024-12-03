@@ -54,14 +54,21 @@ class AdminMedpartController extends Controller
 
     public function store(MedpartRequest $request)
     {
-        $medpart = Medpart::create($request->validated());
+        $validatedData = $request->validated();
+        $validatedData['user_id'] = auth()->id();
+
+        Medpart::create($validatedData);
         return back()->with('alert', 'Berhasil Tambah Data Medpart!');
     }
 
     public function update(MedpartRequest $request, $id)
     {
-        $medpart = Medpart::findOrFail($id);
-        $medpart->update($request->validated());
+        $Medpart = Medpart::findOrFail($id);
+        $validatedData = $request->validated();
+
+        $validatedData['user_id'] = $Medpart->user_id;
+
+        $Medpart->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Medpart!');
     }
 

@@ -54,14 +54,21 @@ class AdminAlumniController extends Controller
 
     public function store(AlumniRequest $request)
     {
-        $alumni = Alumni::create($request->validated());
+        $validatedData = $request->validated();
+        $validatedData['user_id'] = auth()->id();
+
+        Alumni::create($validatedData);
         return back()->with('alert', 'Berhasil Tambah Data Alumni!');
     }
 
     public function update(AlumniRequest $request, $id)
     {
         $alumni = Alumni::findOrFail($id);
-        $alumni->update($request->validated());
+        $validatedData = $request->validated();
+
+        $validatedData['user_id'] = $alumni->user_id;
+
+        $alumni->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Alumni!');
     }
 

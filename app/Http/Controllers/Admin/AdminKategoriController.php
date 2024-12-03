@@ -54,14 +54,21 @@ class AdminKategoriController extends Controller
 
     public function store(KategoriRequest $request)
     {
-        $kategori = Kategori::create($request->validated());
+        $validatedData = $request->validated();
+        $validatedData['user_id'] = auth()->id();
+
+        Kategori::create($validatedData);
         return back()->with('alert', 'Berhasil Tambah Data Kategori!');
     }
 
     public function update(KategoriRequest $request, $id)
     {
-        $kategori = Kategori::findOrFail($id);
-        $kategori->update($request->validated());
+        $Kategori = Kategori::findOrFail($id);
+        $validatedData = $request->validated();
+
+        $validatedData['user_id'] = $Kategori->user_id;
+
+        $Kategori->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Kategori!');
     }
 

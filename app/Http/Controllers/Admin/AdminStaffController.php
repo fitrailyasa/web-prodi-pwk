@@ -54,14 +54,21 @@ class AdminStaffController extends Controller
 
     public function store(StaffRequest $request)
     {
-        $staff = Staff::create($request->validated());
+        $validatedData = $request->validated();
+        $validatedData['user_id'] = auth()->id();
+
+        Staff::create($validatedData);
         return back()->with('alert', 'Berhasil Tambah Data Staff!');
     }
 
     public function update(StaffRequest $request, $id)
     {
-        $staff = Staff::findOrFail($id);
-        $staff->update($request->validated());
+        $Staff = Staff::findOrFail($id);
+        $validatedData = $request->validated();
+
+        $validatedData['user_id'] = $Staff->user_id;
+
+        $Staff->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Staff!');
     }
 
