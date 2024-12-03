@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Berita;
 
 class BeritaRequest extends FormRequest
 {
@@ -21,8 +22,17 @@ class BeritaRequest extends FormRequest
      */
     public function rules(): array
     {
+        $db = new Berita();
+        $db->setDynamicConnection();
+
+        // dd($db->getConnection()->getDatabaseName());
+
         return [
-            //
+            'name' => 'required|max:100',
+            'desc' => 'required|max:1000', 
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', 
+            'tag_id ' => 'required', 
+            'user_id' => 'required',
         ];
     }
 }

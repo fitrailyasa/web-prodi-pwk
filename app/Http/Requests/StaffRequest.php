@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Staff;
 
 class StaffRequest extends FormRequest
 {
@@ -21,8 +22,17 @@ class StaffRequest extends FormRequest
      */
     public function rules(): array
     {
+        $db = new Staff();
+        $db->setDynamicConnection();
+
+        // dd($db->getConnection()->getDatabaseName());
+
         return [
-            //
+            'name' => 'required|max:100', 
+            'nip' => 'required|max_digits:values:18', 
+            'position' => 'required|max:100', 
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', 
+            'user_id' => 'required',
         ];
     }
 }

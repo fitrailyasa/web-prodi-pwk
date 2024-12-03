@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Link;
 
 class LinkRequest extends FormRequest
 {
@@ -21,8 +22,16 @@ class LinkRequest extends FormRequest
      */
     public function rules(): array
     {
+        $db = new Link();
+        $db->setDynamicConnection();
+
+        // dd($db->getConnection()->getDatabaseName());
+
         return [
-            //
+            'name' => 'required|max:100', 
+            'link' => 'required|max:100', 
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', 
+            'user_id' => 'required',
         ];
     }
 }

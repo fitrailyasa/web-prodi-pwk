@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Tentang;
 
 class TentangRequest extends FormRequest
 {
@@ -21,8 +22,16 @@ class TentangRequest extends FormRequest
      */
     public function rules(): array
     {
+        $db = new Tentang();
+        $db->setDynamicConnection();
+
+        // dd($db->getConnection()->getDatabaseName());
+
         return [
-            //
+            'name' => 'required|max:100', 
+            'desc' => 'required|max:1000', 
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', 
+            'user_id' => 'required',
         ];
     }
 }

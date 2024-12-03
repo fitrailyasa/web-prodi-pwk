@@ -18,7 +18,10 @@
     <script src="https://kit.fontawesome.com/2a99f4df77.js" crossorigin="anonymous"></script>
 
     <style>
-        .main-header,
+        .main-header {
+            background-color: rgb(0, 0, 66);
+        }
+        
         .main-sidebar {
             background-color: rgb(0, 0, 66);
             color: white;

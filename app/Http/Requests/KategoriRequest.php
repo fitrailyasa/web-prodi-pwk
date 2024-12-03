@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Kategori;
 
 class KategoriRequest extends FormRequest
 {
@@ -21,8 +22,15 @@ class KategoriRequest extends FormRequest
      */
     public function rules(): array
     {
+        $db = new Kategori();
+        $db->setDynamicConnection();
+
+        // dd($db->getConnection()->getDatabaseName());
+
         return [
-            //
+            'name' => 'required|max:100',
+            'sub' => 'required|max:100', 
+            'user_id' => 'required',
         ];
     }
 }

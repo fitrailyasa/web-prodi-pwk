@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Alumni;
 
 class AlumniRequest extends FormRequest
 {
@@ -21,8 +22,17 @@ class AlumniRequest extends FormRequest
      */
     public function rules(): array
     {
+        $db = new Alumni();
+        $db->setDynamicConnection();
+
+        // dd($db->getConnection()->getDatabaseName());
+
         return [
-            //
+            'name' => 'required|max:100', 
+            'class_year' => 'required|max_digits:values:4', 
+            'work' => 'required|max:100', 
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', 
+            'user_id' => 'required',
         ];
     }
 }
