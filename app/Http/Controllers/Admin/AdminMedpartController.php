@@ -33,7 +33,7 @@ class AdminMedpartController extends Controller
 
         $counter = ($medparts->currentPage() - 1) * $medparts->perPage() + 1;
 
-        return view("admin.Medpart.index", compact('Medparts', 'counter', 'search', 'perPage'));
+        return view("admin.medpart.index", compact('medparts', 'counter', 'search', 'perPage'));
     }
 
     public function import(Request $request)

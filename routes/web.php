@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\Admin;
+use App\Http\Middleware\Dosen;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminAlumniController;
 use App\Http\Controllers\Admin\AdminBeritaController;
@@ -154,6 +155,30 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/tentang/import', [AdminTentangController::class, 'import'])->name('tentang.import');
         Route::get('/tentang/export', [AdminTentangController::class, 'export'])->name('tentang.export');
         Route::delete('/tentang/deleteAll', [AdminTentangController::class, 'destroyAll'])->name('tentang.destroyAll');
+    });
+
+    // CMS DOSEN
+    Route::middleware([Dosen::class])->name('dosen.')->prefix('dosen')->group(function () {
+        Route::get('/', [HomeController::class, 'index'])->name('beranda');
+        Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+
+        // CRUD JADWAL
+        Route::get('/jadwal', [AdminJadwalController::class, 'index'])->name('jadwal.index');
+        Route::post('/jadwal', [AdminJadwalController::class, 'store'])->name('jadwal.store');
+        Route::put('/jadwal/{id}/update', [AdminJadwalController::class, 'update'])->name('jadwal.update');
+        Route::delete('/jadwal/{id}/destroy', [AdminJadwalController::class, 'destroy'])->name('jadwal.destroy');
+        Route::post('/jadwal/import', [AdminJadwalController::class, 'import'])->name('jadwal.import');
+        Route::get('/jadwal/export', [AdminJadwalController::class, 'export'])->name('jadwal.export');
+        Route::delete('/jadwal/deleteAll', [AdminJadwalController::class, 'destroyAll'])->name('jadwal.destroyAll');
+
+        // CRUD MATA KULIAH
+        Route::get('/matkul', [AdminMatkulController::class, 'index'])->name('matkul.index');
+        Route::post('/matkul', [AdminMatkulController::class, 'store'])->name('matkul.store');
+        Route::put('/matkul/{id}/update', [AdminMatkulController::class, 'update'])->name('matkul.update');
+        Route::delete('/matkul/{id}/destroy', [AdminMatkulController::class, 'destroy'])->name('matkul.destroy');
+        Route::post('/matkul/import', [AdminMatkulController::class, 'import'])->name('matkul.import');
+        Route::get('/matkul/export', [AdminMatkulController::class, 'export'])->name('matkul.export');
+        Route::delete('/matkul/deleteAll', [AdminMatkulController::class, 'destroyAll'])->name('matkul.destroyAll');
     });
 });
 

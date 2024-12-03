@@ -10,6 +10,9 @@
             @if (auth()->user()->role == 'admin')
                 <form method="POST" action="{{ route('admin.jadwal.update', $jadwal->id) }}"
                     enctype="multipart/form-data">
+            @elseif (auth()->user()->role == 'dosen')
+                <form method="POST" action="{{ route('dosen.jadwal.update', $jadwal->id) }}"
+                    enctype="multipart/form-data">
             @endif
             @csrf
             @method('PUT')

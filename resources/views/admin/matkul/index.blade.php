@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        Matkul
+        Mata Kuliah
     </x-slot>
 
     <!-- Button Form Create -->

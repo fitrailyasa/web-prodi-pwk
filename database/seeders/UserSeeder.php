@@ -35,6 +35,15 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'email_verified_at' => now(),
             ],
+            [
+                'name' => 'Dosen 1',
+                'email' => 'dosen@pwk.itera.ac.id',
+                'role' => 'dosen',
+                'status' => 'aktif',
+                'no_hp' => '081234567890',
+                'password' => Hash::make('password'),
+                'email_verified_at' => now(),
+            ],
         ];
         User::query()->insert($users);
     }

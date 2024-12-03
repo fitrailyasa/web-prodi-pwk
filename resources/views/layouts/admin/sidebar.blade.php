@@ -61,6 +61,15 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('admin.matkul.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.matkul.index') ? 'aktif' : '' }}">
+                            <i class="nav-icon fas fa-list-alt"></i>
+                            <p>
+                                Mata Kuliah
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('admin.alumni.index') }}"
                             class="nav-link text-white {{ Request::routeIs('admin.alumni.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-list-alt"></i>
@@ -102,6 +111,44 @@
                             <i class="nav-icon fas fa-list-alt"></i>
                             <p>
                                 Media Sosial
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.medpart.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.medpart.index') ? 'aktif' : '' }}">
+                            <i class="nav-icon fas fa-list-alt"></i>
+                            <p>
+                                Media Partner
+                            </p>
+                        </a>
+                    </li>
+                @elseif (auth()->user()->role == 'dosen')
+                    <li class="nav-item">
+                        <a href="{{ route('dosen.dashboard') }}"
+                            class="nav-link text-white {{ Request::routeIs('dosen.dashboard') ? 'aktif' : '' }}">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-header text-white">MENU</li>
+                    <li class="nav-item">
+                        <a href="{{ route('dosen.jadwal.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('dosen.jadwal.index') ? 'aktif' : '' }}">
+                            <i class="nav-icon fas fa-list-alt"></i>
+                            <p>
+                                Jadwal Kuliah
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('dosen.matkul.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('dosen.matkul.index') ? 'aktif' : '' }}">
+                            <i class="nav-icon fas fa-list-alt"></i>
+                            <p>
+                                Mata Kuliah
                             </p>
                         </a>
                     </li>

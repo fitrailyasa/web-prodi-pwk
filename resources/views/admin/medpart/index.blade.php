@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        Medpart
+        Media Partner
     </x-slot>
 
     <!-- Button Form Create -->

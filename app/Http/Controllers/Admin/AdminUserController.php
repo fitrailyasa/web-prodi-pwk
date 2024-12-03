@@ -30,6 +30,10 @@ class AdminUserController extends Controller
                 'name' => 'Admin',
             ],
             [
+                'id' => 'dosen',
+                'name' => 'Dosen',
+            ],
+            [
                 'id' => 'user',
                 'name' => 'User',
             ]

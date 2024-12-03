@@ -8,6 +8,8 @@
         <div class="modal-content">
             @if (auth()->user()->role == 'admin')
                 <form method="POST" action="{{ route('admin.matkul.store') }}" enctype="multipart/form-data">
+                @elseif (auth()->user()->role == 'dosen')
+                    <form method="POST" action="{{ route('dosen.matkul.store') }}" enctype="multipart/form-data">
             @endif
             @csrf
             <div class="modal-header">
