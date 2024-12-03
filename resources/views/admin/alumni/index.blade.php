@@ -38,7 +38,7 @@
                 <th>{{ __('Nama') }}</th>
                 <th>{{ __('Gambar') }}</th>
                 <th>{{ __('Deskripsi') }}</th>
-                <th>{{ __('Aksi') }}</th>
+                <th class="text-center">{{ __('Aksi') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -48,7 +48,8 @@
                     <td>{{ $alumni->name ?? '-' }}</td>
                     <td>
                         @if ($alumni->img == null)
-                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $alumni->name }}" width="100">
+                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $alumni->name }}"
+                                width="100">
                         @else
                             <a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{ $alumni->id }}">
                                 <img class="img img-fluid rounded" src="{{ asset('assets/img/' . $alumni->img) }}"
@@ -88,7 +89,7 @@
                         @endif
                     </td>
                     <td>{{ $alumni->desc ?? '-' }}</td>
-                    <td class="manage-row">
+                    <td class="manage-row text-center">
                         @if (auth()->user()->role == 'admin')
                             <!-- Edit and Delete Buttons -->
                             @include('admin.alumni.edit')

@@ -24,7 +24,7 @@
                 <th>{{ __('Email') }}</th>
                 <th>{{ __('Peran') }}</th>
                 <th>{{ __('Status') }}</th>
-                <th>{{ __('Aksi') }}</th>
+                <th class="text-center">{{ __('Aksi') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -47,7 +47,7 @@
                             <span class="badge badge-secondary">{{ $user->status }}</span>
                         @endif
                     </td>
-                    <td class="manage-row">
+                    <td class="manage-row text-center">
                         @if (auth()->user()->role == 'admin')
                             @include('admin.user.edit')
                             @include('admin.user.delete')

@@ -38,7 +38,7 @@
                 <th>{{ __('Nama') }}</th>
                 <th>{{ __('Gambar') }}</th>
                 <th>{{ __('Deskripsi') }}</th>
-                <th>{{ __('Aksi') }}</th>
+                <th class="text-center">{{ __('Aksi') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -89,7 +89,7 @@
                         @endif
                     </td>
                     <td>{{ $tentang->desc ?? '-' }}</td>
-                    <td class="manage-row">
+                    <td class="manage-row text-center">
                         @if (auth()->user()->role == 'admin')
                             <!-- Edit and Delete Buttons -->
                             @include('admin.tentang.edit')
