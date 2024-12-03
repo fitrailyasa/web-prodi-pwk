@@ -90,7 +90,7 @@
                     </td>
                     <td>{{ $jadwal->desc ?? '-' }}</td>
                     <td class="manage-row text-center">
-                        @if (auth()->user()->role == 'admin')
+                        @if (auth()->user()->role == 'admin' || auth()->user()->role == 'dosen')
                             <!-- Edit and Delete Buttons -->
                             @include('admin.jadwal.edit')
                             @include('admin.jadwal.delete')
