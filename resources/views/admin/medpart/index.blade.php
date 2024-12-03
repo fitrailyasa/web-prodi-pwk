@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        Medpart
+        Media Partner
     </x-slot>
 
     <!-- Button Form Create -->
@@ -35,10 +35,11 @@
         <thead>
             <tr>
                 <th>{{ __('No') }}</th>
-                <th>{{ __('Name') }}</th>
-                <th>{{ __('Img') }}</th>
-                <th>{{ __('Desc') }}</th>
-                <th>{{ __('Action') }}</th>
+                <th>{{ __('Nama') }}</th>
+                <th>{{ __('Gambar') }}</th>
+                <th>{{ __('Tautan') }}</th>
+                <th>{{ __('Oleh') }}</th>
+                <th class="text-center">{{ __('Aksi') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -61,7 +62,7 @@
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
-                                        <div class="modal-body">
+                                        <div class="modal-body text-left">
                                             <div class="card">
                                                 <div class="card-header">
                                                     <h3 class="card-title">{{ $medpart->name }}</h3>
@@ -88,8 +89,9 @@
                             </div>
                         @endif
                     </td>
-                    <td>{{ $medpart->desc ?? '-' }}</td>
-                    <td class="manage-row">
+                    <td><a href="{{ $medpart->link }}" target="_blank">{{ $medpart->link ?? '-' }}</a></td>
+                    <td>{{ $medpart->user->name ?? '-' }}</td>
+                    <td class="manage-row text-center">
                         @if (auth()->user()->role == 'admin')
                             <!-- Edit and Delete Buttons -->
                             @include('admin.medpart.edit')

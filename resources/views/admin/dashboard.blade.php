@@ -15,7 +15,7 @@
 
                     <p>{{ __('Data') }}</p>
                 </div>
-                <a href="{{ route('admin.jadwal.index') }}" class="small-box-footer">More info <i
+                <a href="#" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -28,7 +28,7 @@
 
                     <p>{{ __('Data') }}</p>
                 </div>
-                <a href="{{ route('admin.kategori.index') }}" class="small-box-footer">More info <i
+                <a href="#" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -41,7 +41,7 @@
 
                     <p>{{ __('Data') }}</p>
                 </div>
-                <a href="{{ route('admin.berita.index') }}" class="small-box-footer">More info <i
+                <a href="#" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -54,7 +54,7 @@
 
                     <p>{{ __('Data') }}</p>
                 </div>
-                <a href="{{ route('admin.link.index') }}" class="small-box-footer">More info <i
+                <a href="#" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>

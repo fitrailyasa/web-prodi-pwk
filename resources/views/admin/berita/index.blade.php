@@ -35,10 +35,10 @@
         <thead>
             <tr>
                 <th>{{ __('No') }}</th>
-                <th>{{ __('Name') }}</th>
-                <th>{{ __('Img') }}</th>
-                <th>{{ __('Desc') }}</th>
-                <th>{{ __('Action') }}</th>
+                <th>{{ __('Nama') }}</th>
+                <th>{{ __('Gambar') }}</th>
+                <th>{{ __('Deskripsi') }}</th>
+                <th class="text-center">{{ __('Aksi') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -48,7 +48,8 @@
                     <td>{{ $berita->name ?? '-' }}</td>
                     <td>
                         @if ($berita->img == null)
-                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $berita->name }}" width="100">
+                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $berita->name }}"
+                                width="100">
                         @else
                             <a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{ $berita->id }}">
                                 <img class="img img-fluid rounded" src="{{ asset('assets/img/' . $berita->img) }}"
@@ -60,7 +61,7 @@
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
-                                        <div class="modal-body">
+                                        <div class="modal-body text-left">
                                             <div class="card">
                                                 <div class="card-header">
                                                     <h3 class="card-title">{{ $berita->name }}</h3>
@@ -88,7 +89,7 @@
                         @endif
                     </td>
                     <td>{{ $berita->desc ?? '-' }}</td>
-                    <td class="manage-row">
+                    <td class="manage-row text-center">
                         @if (auth()->user()->role == 'admin')
                             <!-- Edit and Delete Buttons -->
                             @include('admin.berita.edit')

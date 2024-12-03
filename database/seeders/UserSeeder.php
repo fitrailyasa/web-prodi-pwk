@@ -23,7 +23,11 @@ class UserSeeder extends Seeder
                 'role' => 'admin',
                 'status' => 'aktif',
                 'no_hp' => '081234567890',
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'nip' => fake()->numberBetween(1000000000, 9999999999),
+                'position' => fake()->jobTitle(),
+                'img' => 'logo.png',
+                'email_verified_at' => now(),
             ],
             [
                 'name' => 'Administrator',
@@ -31,7 +35,23 @@ class UserSeeder extends Seeder
                 'role' => 'admin',
                 'status' => 'aktif',
                 'no_hp' => '081234567890',
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'nip' => fake()->numberBetween(1000000000, 9999999999),
+                'position' => fake()->jobTitle(),
+                'img' => 'logo.png',
+                'email_verified_at' => now(),
+            ],
+            [
+                'name' => 'Dosen 1',
+                'email' => 'dosen@pwk.itera.ac.id',
+                'role' => 'dosen',
+                'status' => 'aktif',
+                'no_hp' => '081234567890',
+                'password' => Hash::make('password'),
+                'nip' => fake()->numberBetween(1000000000, 9999999999),
+                'position' => fake()->jobTitle(),
+                'img' => 'logo.png',
+                'email_verified_at' => now(),
             ],
         ];
         User::query()->insert($users);

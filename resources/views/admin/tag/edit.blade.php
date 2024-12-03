@@ -1,5 +1,5 @@
 <!-- Tombol untuk membuka modal -->
-<button role="button" class="btn btn-sm btn-warning mr-2" data-bs-toggle="modal"
+<button role="button" class="btn btn-sm m-1 btn-warning mr-2" data-bs-toggle="modal"
     data-bs-target=".formEdit{{ $tag->id }}"><i class="fas fa-edit"></i><span class="d-none d-sm-inline">
         {{ __('Edit') }}</span></button>
 
@@ -19,13 +19,13 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body text-left">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Name') }}</label>
+                            <label class="form-label">{{ __('Nama') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="name" name="name" id="name" value="{{ old('name', $tag->name) }}"
+                                placeholder="nama" name="name" id="name" value="{{ old('name', $tag->name) }}"
                                 required>
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>

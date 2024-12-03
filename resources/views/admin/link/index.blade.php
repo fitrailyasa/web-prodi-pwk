@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        Link
+        Tautan Akademik dan Lainnya
     </x-slot>
 
     <!-- Button Form Create -->
@@ -35,10 +35,11 @@
         <thead>
             <tr>
                 <th>{{ __('No') }}</th>
-                <th>{{ __('Name') }}</th>
-                <th>{{ __('Img') }}</th>
-                <th>{{ __('Desc') }}</th>
-                <th>{{ __('Action') }}</th>
+                <th>{{ __('Nama') }}</th>
+                <th>{{ __('Gambar') }}</th>
+                <th>{{ __('Deskripsi') }}</th>
+                <th>{{ __('Tautan') }}</th>
+                <th class="text-center">{{ __('Aksi') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -48,7 +49,8 @@
                     <td>{{ $link->name ?? '-' }}</td>
                     <td>
                         @if ($link->img == null)
-                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $link->name }}" width="100">
+                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $link->name }}"
+                                width="100">
                         @else
                             <a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{ $link->id }}">
                                 <img class="img img-fluid rounded" src="{{ asset('assets/img/' . $link->img) }}"
@@ -60,7 +62,7 @@
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
-                                        <div class="modal-body">
+                                        <div class="modal-body text-left">
                                             <div class="card">
                                                 <div class="card-header">
                                                     <h3 class="card-title">{{ $link->name }}</h3>
@@ -88,7 +90,8 @@
                         @endif
                     </td>
                     <td>{{ $link->desc ?? '-' }}</td>
-                    <td class="manage-row">
+                    <td><a href="{{ $link->link }}" target="_blank">{{ $link->link ?? '-' }}</a></td>
+                    <td class="manage-row text-center">
                         @if (auth()->user()->role == 'admin')
                             <!-- Edit and Delete Buttons -->
                             @include('admin.link.edit')

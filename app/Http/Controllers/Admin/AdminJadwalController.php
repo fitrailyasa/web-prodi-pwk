@@ -54,14 +54,21 @@ class AdminJadwalController extends Controller
 
     public function store(JadwalRequest $request)
     {
-        $jadwal = Jadwal::create($request->validated());
+        $validatedData = $request->validated();
+        $validatedData['user_id'] = auth()->id();
+
+        Jadwal::create($validatedData);
         return back()->with('alert', 'Berhasil Tambah Data Jadwal!');
     }
 
     public function update(JadwalRequest $request, $id)
     {
-        $jadwal = Jadwal::findOrFail($id);
-        $jadwal->update($request->validated());
+        $Jadwal = Jadwal::findOrFail($id);
+        $validatedData = $request->validated();
+
+        $validatedData['user_id'] = $Jadwal->user_id;
+
+        $Jadwal->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Jadwal!');
     }
 

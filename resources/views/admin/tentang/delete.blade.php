@@ -1,5 +1,5 @@
 <!-- Tombol untuk membuka modal -->
-<button role="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+<button role="button" class="btn btn-sm m-1 btn-danger" data-bs-toggle="modal"
     data-bs-target=".formDelete{{ $tentang->id }}"><i class="fas fa-trash"></i><span class="d-none d-sm-inline">
         {{ __('Hapus') }}</span></button>
 
@@ -14,7 +14,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">Apakah anda yakin ingin menghapus data?</div>
+            <div class="modal-body text-left">Apakah anda yakin ingin menghapus data?</div>
             <div class="modal-footer">
                 <form action="{{ route('admin.tentang.destroy', $tentang->id) }}" method="POST">
                     @method('DELETE')

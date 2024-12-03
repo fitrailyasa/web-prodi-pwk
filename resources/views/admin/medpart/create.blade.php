@@ -16,13 +16,13 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body text-left">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Name') }}</label>
+                            <label class="form-label">{{ __('Nama') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="name" name="name" id="name" value="{{ old('name') }}" required>
+                                placeholder="nama" name="name" id="name" value="{{ old('name') }}" required>
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Images') }}</label>
+                            <label class="form-label">{{ __('Gambar') }}</label>
                             <input id="image-input" accept="image/*" type="file"
                                 class="form-control @error('img') is-invalid @enderror" placeholder="img" name="img"
                                 id="img" value="{{ old('img') }}">
@@ -41,18 +41,12 @@
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Description') }}</label>
-                            <textarea class="form-control @error('desc') is-invalid @enderror" placeholder="description" name="desc"
-                                id="desc" rows="3">{{ old('desc') }}</textarea>
-                            @error('desc')
+                            <label class="form-label">{{ __('Tautan') }}</label>
+                            <input type="text" class="form-control @error('link') is-invalid @enderror"
+                                placeholder="https://google.com" name="link" id="link" value="{{ old('link') }}" required>
+                            @error('link')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-12 text-center">
-                        <div class="mb-3">
-                            <img class="img-fluid py-3" id="image-preview" width="200px"
-                                src="{{ asset('assets/profile/default.png') }}" alt="Image Preview">
                         </div>
                     </div>
                 </div>

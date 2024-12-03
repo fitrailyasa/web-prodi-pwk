@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('link')->unique();
+            $table->string('name')->nullable();
+            $table->text('desc')->nullable();
+            $table->string('link')->nullable();
             $table->string('img')->nullable();
+            $table->string('category')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

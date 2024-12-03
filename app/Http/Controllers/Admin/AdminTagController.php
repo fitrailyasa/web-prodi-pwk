@@ -54,14 +54,21 @@ class AdminTagController extends Controller
 
     public function store(TagRequest $request)
     {
-        $tag = Tag::create($request->validated());
+        $validatedData = $request->validated();
+        $validatedData['user_id'] = auth()->id();
+
+        Tag::create($validatedData);
         return back()->with('alert', 'Berhasil Tambah Data Tag!');
     }
 
     public function update(TagRequest $request, $id)
     {
-        $tag = Tag::findOrFail($id);
-        $tag->update($request->validated());
+        $Tag = Tag::findOrFail($id);
+        $validatedData = $request->validated();
+
+        $validatedData['user_id'] = $Tag->user_id;
+
+        $Tag->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Tag!');
     }
 

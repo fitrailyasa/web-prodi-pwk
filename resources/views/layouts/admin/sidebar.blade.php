@@ -25,83 +25,133 @@
                     </li>
                     <li class="nav-header text-white">MENU</li>
                     <li class="nav-item">
+                        <a href="{{ route('admin.tentang.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.tentang.index') ? 'aktif' : '' }}">
+                            <i class="nav-icon fas fa-info-circle"></i>
+                            <p>
+                                Profile
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('admin.user.index') }}"
                             class="nav-link text-white {{ Request::routeIs('admin.user.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-users"></i>
                             <p>
-                                User
+                                Staff Akademik
+                            </p>
+                        </a>
+                    </li>
+                    <li
+                        class="nav-item has-treeview {{ Request::routeIs('admin.berita.index', 'admin.tag.index') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link text-white">
+                            <i class="nav-icon fas fa-newspaper"></i>
+                            <p>
+                                Kelola Berita
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item ms-3">
+                                <a href="{{ route('admin.berita.index') }}"
+                                    class="nav-link text-white {{ Request::routeIs('admin.berita.index') ? 'aktif' : '' }}">
+                                    <i class="nav-icon fas fa-list-alt"></i>
+                                    <p>Berita</p>
+                                </a>
+                            </li>
+                            <li class="nav-item ms-3">
+                                <a href="{{ route('admin.tag.index') }}"
+                                    class="nav-link text-white {{ Request::routeIs('admin.tag.index') ? 'aktif' : '' }}">
+                                    <i class="nav-icon fas fa-tags"></i>
+                                    <p>Tag</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li
+                        class="nav-item has-treeview {{ Request::routeIs('admin.jadwal.index', 'admin.matkul.index') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link text-white">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Akademik
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item ms-3">
+                                <a href="{{ route('admin.jadwal.index') }}"
+                                    class="nav-link text-white {{ Request::routeIs('admin.jadwal.index') ? 'aktif' : '' }}">
+                                    <i class="nav-icon fas fa-calendar"></i>
+                                    <p>
+                                        Jadwal Kuliah
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item ms-3">
+                                <a href="{{ route('admin.matkul.index') }}"
+                                    class="nav-link text-white {{ Request::routeIs('admin.matkul.index') ? 'aktif' : '' }}">
+                                    <i class="nav-icon fas fa-book"></i>
+                                    <p>
+                                        Mata Kuliah
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.alumni.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.alumni.index') ? 'aktif' : '' }}">
+                            <i class="nav-icon fas fa-graduation-cap"></i>
+                            <p>
+                                Data Alumni
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.berita.index') }}"
-                            class="nav-link text-white {{ Request::routeIs('admin.berita.index') ? 'aktif' : '' }}">
+                        <a href="{{ route('admin.medpart.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.medpart.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-list-alt"></i>
                             <p>
-                                Berita
+                                Media Partner
                             </p>
                         </a>
                     </li>
+                    
                     <li class="nav-item">
-                        <a href="{{ route('admin.tag.index') }}"
-                            class="nav-link text-white {{ Request::routeIs('admin.tag.index') ? 'aktif' : '' }}">
-                            <i class="nav-icon fas fa-list-alt"></i>
+                        <a href="{{ route('admin.link.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.link.index') ? 'aktif' : '' }}">
+                            <i class="nav-icon fas fa-link"></i>
+                            <p class="small">
+                                Tautan Akademik dan Lainnya
+                            </p>
+                        </a>
+                    </li>
+                @elseif (auth()->user()->role == 'dosen')
+                    <li class="nav-item">
+                        <a href="{{ route('dosen.dashboard') }}"
+                            class="nav-link text-white {{ Request::routeIs('dosen.dashboard') ? 'aktif' : '' }}">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
-                                Tag
+                                Dashboard
                             </p>
                         </a>
                     </li>
+                    <li class="nav-header text-white">MENU</li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.jadwal.index') }}"
-                            class="nav-link text-white {{ Request::routeIs('admin.jadwal.index') ? 'aktif' : '' }}">
-                            <i class="nav-icon fas fa-list-alt"></i>
+                        <a href="{{ route('dosen.jadwal.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('dosen.jadwal.index') ? 'aktif' : '' }}">
+                            <i class="nav-icon fas fa-calendar"></i>
                             <p>
                                 Jadwal Kuliah
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.alumni.index') }}"
-                            class="nav-link text-white {{ Request::routeIs('admin.alumni.index') ? 'aktif' : '' }}">
-                            <i class="nav-icon fas fa-list-alt"></i>
+                        <a href="{{ route('dosen.matkul.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('dosen.matkul.index') ? 'aktif' : '' }}">
+                            <i class="nav-icon fas fa-book"></i>
                             <p>
-                                Alumni
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.kategori.index') }}"
-                            class="nav-link text-white {{ Request::routeIs('admin.kategori.index') ? 'aktif' : '' }}">
-                            <i class="nav-icon fas fa-list-alt"></i>
-                            <p>
-                                Kategori
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.layanan.index') }}"
-                            class="nav-link text-white {{ Request::routeIs('admin.layanan.index') ? 'aktif' : '' }}">
-                            <i class="nav-icon fas fa-list-alt"></i>
-                            <p>
-                                Layanan
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.staff.index') }}"
-                            class="nav-link text-white {{ Request::routeIs('admin.staff.index') ? 'aktif' : '' }}">
-                            <i class="nav-icon fas fa-list-alt"></i>
-                            <p>
-                                Staff
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.link.index') }}"
-                            class="nav-link text-white {{ Request::routeIs('admin.link.index') ? 'aktif' : '' }}">
-                            <i class="nav-icon fas fa-list-alt"></i>
-                            <p>
-                                Media Sosial
+                                Mata Kuliah
                             </p>
                         </a>
                     </li>

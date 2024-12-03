@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        Tentang
+        Profile
     </x-slot>
 
     <!-- Button Form Create -->
@@ -35,10 +35,10 @@
         <thead>
             <tr>
                 <th>{{ __('No') }}</th>
-                <th>{{ __('Name') }}</th>
-                <th>{{ __('Img') }}</th>
-                <th>{{ __('Desc') }}</th>
-                <th>{{ __('Action') }}</th>
+                <th>{{ __('Nama') }}</th>
+                <th>{{ __('Gambar') }}</th>
+                <th>{{ __('Deskripsi') }}</th>
+                <th class="text-center">{{ __('Aksi') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -61,7 +61,7 @@
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
-                                        <div class="modal-body">
+                                        <div class="modal-body text-left">
                                             <div class="card">
                                                 <div class="card-header">
                                                     <h3 class="card-title">{{ $tentang->name }}</h3>
@@ -89,7 +89,7 @@
                         @endif
                     </td>
                     <td>{{ $tentang->desc ?? '-' }}</td>
-                    <td class="manage-row">
+                    <td class="manage-row text-center">
                         @if (auth()->user()->role == 'admin')
                             <!-- Edit and Delete Buttons -->
                             @include('admin.tentang.edit')

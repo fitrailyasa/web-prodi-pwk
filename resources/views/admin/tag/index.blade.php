@@ -35,8 +35,8 @@
         <thead>
             <tr>
                 <th>{{ __('No') }}</th>
-                <th>{{ __('Name') }}</th>
-                <th>{{ __('Action') }}</th>
+                <th>{{ __('Nama') }}</th>
+                <th class="text-center">{{ __('Aksi') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -44,7 +44,7 @@
                 <tr @if ($tag) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
                     <td>{{ $tag->name ?? '-' }}</td>
-                    <td class="manage-row">
+                    <td class="manage-row text-center">
                         @if (auth()->user()->role == 'admin')
                             <!-- Edit and Delete Buttons -->
                             @include('admin.tag.edit')

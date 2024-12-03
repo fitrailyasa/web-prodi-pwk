@@ -14,7 +14,7 @@ class Link extends Model
     protected $table = 'links';
     protected $primaryKey = 'id';
     public $incrementing = false;
-    protected $fillable = ['id', 'name', 'link', 'img', 'user_id'];
+    protected $fillable = ['id', 'name', 'desc', 'link', 'img', 'category', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 
     public static function setDynamicConnection()

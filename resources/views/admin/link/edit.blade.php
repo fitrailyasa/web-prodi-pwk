@@ -1,5 +1,5 @@
 <!-- Tombol untuk membuka modal -->
-<button role="button" class="btn btn-sm btn-warning mr-2" data-bs-toggle="modal"
+<button role="button" class="btn btn-sm m-1 btn-warning mr-2" data-bs-toggle="modal"
     data-bs-target=".formEdit{{ $link->id }}"><i class="fas fa-edit"></i><span class="d-none d-sm-inline">
         {{ __('Edit') }}</span></button>
 
@@ -19,13 +19,13 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body text-left">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Name') }}</label>
+                            <label class="form-label">{{ __('Nama') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="name" name="name" id="name" value="{{ old('name', $link->name) }}"
+                                placeholder="nama" name="name" id="name" value="{{ old('name', $link->name) }}"
                                 required>
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -34,7 +34,31 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Images') }}</label>
+                            <label class="form-label">{{ __('Tautan') }}</label>
+                            <input type="text" class="form-control @error('link') is-invalid @enderror"
+                                placeholder="https://google.com" name="link" id="link" value="{{ old('link', $link->link) }}" required>
+                            @error('link')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Kategori') }}</label>
+                            <select class="form-select @error('category') is-invalid @enderror" name="category" id="category">
+                                <option value="">-- Pilih Kategori --</option>
+                                <option value="akademik" {{ old('category', $link->category) == 'akademik' ? 'selected' : '' }}>Akademik</option>
+                                <option value="fasilitas" {{ old('category', $link->category) == 'fasilitas' ? 'selected' : '' }}>Fasilitas</option>
+                                <option value="lainnya" {{ old('category', $link->category) == 'lainnya' ? 'selected' : '' }}>Lainnya</option>
+                            </select>
+                            @error('category')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Gambar') }}</label>
                             <input id="image-input" accept="image/*" type="file" id="img-input"
                                 class="form-control @error('img') is-invalid @enderror" placeholder="img" name="img"
                                 id="img" value="{{ old('img', $link->img) }}">
@@ -45,23 +69,12 @@
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Description') }}</label>
-                            <textarea class="form-control @error('desc') is-invalid @enderror" placeholder="description" name="desc"
-                                id="desc" rows="3">{{ old('desc', $link->desc) }}</textarea>
+                            <label class="form-label">{{ __('Deskripsi') }}</label>
+                            <textarea class="form-control @error('desc') is-invalid @enderror" placeholder="deskripsi" name="desc" id="desc"
+                                rows="3">{{ old('desc', $link->desc) }}</textarea>
                             @error('desc')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-12 text-center">
-                        <div class="mb-3">
-                            @if ($link->img == null)
-                                <img class="img-fluid rounded" width="200px" id="image-preview"
-                                    src="{{ asset('assets/profile/default.png') }}" alt="{{ $link->name }}">
-                            @else
-                                <img class="img-fluid rounded" width="200px" id="image-preview"
-                                    src="{{ asset('assets/img/' . $link->img) }}" alt="{{ $link->name }}">
-                            @endif
                         </div>
                     </div>
                 </div>

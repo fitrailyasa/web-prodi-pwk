@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        User
+        Staff Akademik
     </x-slot>
 
     <!-- Button Form Create -->
@@ -20,11 +20,11 @@
         <thead>
             <tr>
                 <th>{{ __('No') }}</th>
-                <th>{{ __('Name') }}</th>
+                <th>{{ __('Nama') }}</th>
                 <th>{{ __('Email') }}</th>
-                <th>{{ __('Role') }}</th>
+                <th>{{ __('Peran') }}</th>
                 <th>{{ __('Status') }}</th>
-                <th>{{ __('Action') }}</th>
+                <th class="text-center">{{ __('Aksi') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -47,7 +47,7 @@
                             <span class="badge badge-secondary">{{ $user->status }}</span>
                         @endif
                     </td>
-                    <td class="manage-row">
+                    <td class="manage-row text-center">
                         @if (auth()->user()->role == 'admin')
                             @include('admin.user.edit')
                             @include('admin.user.delete')

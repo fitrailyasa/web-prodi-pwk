@@ -8,6 +8,8 @@
         <div class="modal-content">
             @if (auth()->user()->role == 'admin')
                 <form method="POST" action="{{ route('admin.jadwal.import') }}" enctype="multipart/form-data">
+            @elseif (auth()->user()->role == 'dosen')
+                <form method="POST" action="{{ route('dosen.jadwal.import') }}" enctype="multipart/form-data">
             @endif
             @csrf
             <div class="modal-header">
@@ -16,7 +18,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body text-left">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-1">

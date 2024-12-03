@@ -3,16 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\Admin;
+use App\Http\Middleware\Dosen;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminAlumniController;
 use App\Http\Controllers\Admin\AdminBeritaController;
 use App\Http\Controllers\Admin\AdminJadwalController;
-use App\Http\Controllers\Admin\AdminKategoriController;
-use App\Http\Controllers\Admin\AdminLayananController;
 use App\Http\Controllers\Admin\AdminLinkController;
 use App\Http\Controllers\Admin\AdminMatkulController;
 use App\Http\Controllers\Admin\AdminMedpartController;
-use App\Http\Controllers\Admin\AdminStaffController;
 use App\Http\Controllers\Admin\AdminTentangController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminUserController;
@@ -83,24 +81,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/jadwal/export', [AdminJadwalController::class, 'export'])->name('jadwal.export');
         Route::delete('/jadwal/deleteAll', [AdminJadwalController::class, 'destroyAll'])->name('jadwal.destroyAll');
 
-        // CRUD KATEGORI
-        Route::get('/kategori', [AdminKategoriController::class, 'index'])->name('kategori.index');
-        Route::post('/kategori', [AdminKategoriController::class, 'store'])->name('kategori.store');
-        Route::put('/kategori/{id}/update', [AdminKategoriController::class, 'update'])->name('kategori.update');
-        Route::delete('/kategori/{id}/destroy', [AdminKategoriController::class, 'destroy'])->name('kategori.destroy');
-        Route::post('/kategori/import', [AdminKategoriController::class, 'import'])->name('kategori.import');
-        Route::get('/kategori/export', [AdminKategoriController::class, 'export'])->name('kategori.export');
-        Route::delete('/kategori/deleteAll', [AdminKategoriController::class, 'destroyAll'])->name('kategori.destroyAll');
-
-        // CRUD LAYANAN
-        Route::get('/layanan', [AdminLayananController::class, 'index'])->name('layanan.index');
-        Route::post('/layanan', [AdminLayananController::class, 'store'])->name('layanan.store');
-        Route::put('/layanan/{id}/update', [AdminLayananController::class, 'update'])->name('layanan.update');
-        Route::delete('/layanan/{id}/destroy', [AdminLayananController::class, 'destroy'])->name('layanan.destroy');
-        Route::post('/layanan/import', [AdminLayananController::class, 'import'])->name('layanan.import');
-        Route::get('/layanan/export', [AdminLayananController::class, 'export'])->name('layanan.export');
-        Route::delete('/layanan/deleteAll', [AdminLayananController::class, 'destroyAll'])->name('layanan.destroyAll');
-
         // CRUD LINK
         Route::get('/link', [AdminLinkController::class, 'index'])->name('link.index');
         Route::post('/link', [AdminLinkController::class, 'store'])->name('link.store');
@@ -128,15 +108,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/medpart/export', [AdminMedpartController::class, 'export'])->name('medpart.export');
         Route::delete('/medpart/deleteAll', [AdminMedpartController::class, 'destroyAll'])->name('medpart.destroyAll');
 
-        // CRUD STAFF
-        Route::get('/staff', [AdminStaffController::class, 'index'])->name('staff.index');
-        Route::post('/staff', [AdminStaffController::class, 'store'])->name('staff.store');
-        Route::put('/staff/{id}/update', [AdminStaffController::class, 'update'])->name('staff.update');
-        Route::delete('/staff/{id}/destroy', [AdminStaffController::class, 'destroy'])->name('staff.destroy');
-        Route::post('/staff/import', [AdminStaffController::class, 'import'])->name('staff.import');
-        Route::get('/staff/export', [AdminStaffController::class, 'export'])->name('staff.export');
-        Route::delete('/staff/deleteAll', [AdminStaffController::class, 'destroyAll'])->name('staff.destroyAll');
-
         // CRUD TAG
         Route::get('/tag', [AdminTagController::class, 'index'])->name('tag.index');
         Route::post('/tag', [AdminTagController::class, 'store'])->name('tag.store');
@@ -154,6 +125,30 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/tentang/import', [AdminTentangController::class, 'import'])->name('tentang.import');
         Route::get('/tentang/export', [AdminTentangController::class, 'export'])->name('tentang.export');
         Route::delete('/tentang/deleteAll', [AdminTentangController::class, 'destroyAll'])->name('tentang.destroyAll');
+    });
+
+    // CMS DOSEN
+    Route::middleware([Dosen::class])->name('dosen.')->prefix('dosen')->group(function () {
+        Route::get('/', [HomeController::class, 'index'])->name('beranda');
+        Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+
+        // CRUD JADWAL
+        Route::get('/jadwal', [AdminJadwalController::class, 'index'])->name('jadwal.index');
+        Route::post('/jadwal', [AdminJadwalController::class, 'store'])->name('jadwal.store');
+        Route::put('/jadwal/{id}/update', [AdminJadwalController::class, 'update'])->name('jadwal.update');
+        Route::delete('/jadwal/{id}/destroy', [AdminJadwalController::class, 'destroy'])->name('jadwal.destroy');
+        Route::post('/jadwal/import', [AdminJadwalController::class, 'import'])->name('jadwal.import');
+        Route::get('/jadwal/export', [AdminJadwalController::class, 'export'])->name('jadwal.export');
+        Route::delete('/jadwal/deleteAll', [AdminJadwalController::class, 'destroyAll'])->name('jadwal.destroyAll');
+
+        // CRUD MATA KULIAH
+        Route::get('/matkul', [AdminMatkulController::class, 'index'])->name('matkul.index');
+        Route::post('/matkul', [AdminMatkulController::class, 'store'])->name('matkul.store');
+        Route::put('/matkul/{id}/update', [AdminMatkulController::class, 'update'])->name('matkul.update');
+        Route::delete('/matkul/{id}/destroy', [AdminMatkulController::class, 'destroy'])->name('matkul.destroy');
+        Route::post('/matkul/import', [AdminMatkulController::class, 'import'])->name('matkul.import');
+        Route::get('/matkul/export', [AdminMatkulController::class, 'export'])->name('matkul.export');
+        Route::delete('/matkul/deleteAll', [AdminMatkulController::class, 'destroyAll'])->name('matkul.destroyAll');
     });
 });
 

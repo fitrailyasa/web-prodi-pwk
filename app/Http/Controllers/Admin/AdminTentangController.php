@@ -25,8 +25,7 @@ class AdminTentangController extends Controller
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
         if ($search) {
-            $tentangs = Tentang::
-                where('name', 'like', "%{$search}%")
+            $tentangs = Tentang::where('name', 'like', "%{$search}%")
                 ->paginate($validPerPage);
         } else {
             $tentangs = Tentang::paginate($validPerPage);
@@ -55,14 +54,21 @@ class AdminTentangController extends Controller
 
     public function store(TentangRequest $request)
     {
-        $tentang = Tentang::create($request->validated());
+        $validatedData = $request->validated();
+        $validatedData['user_id'] = auth()->id();
+
+        Tentang::create($validatedData);
         return back()->with('alert', 'Berhasil Tambah Data Tentang!');
     }
 
     public function update(TentangRequest $request, $id)
     {
-        $tentang = Tentang::findOrFail($id);
-        $tentang->update($request->validated());
+        $Tentang = Tentang::findOrFail($id);
+        $validatedData = $request->validated();
+
+        $validatedData['user_id'] = $Tentang->user_id;
+
+        $Tentang->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Tentang!');
     }
 
