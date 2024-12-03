@@ -23,7 +23,8 @@ class UserSeeder extends Seeder
                 'role' => 'admin',
                 'status' => 'aktif',
                 'no_hp' => '081234567890',
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'email_verified_at' => now(),
             ],
             [
                 'name' => 'Administrator',
@@ -31,7 +32,8 @@ class UserSeeder extends Seeder
                 'role' => 'admin',
                 'status' => 'aktif',
                 'no_hp' => '081234567890',
-                'password' => Hash::make('password')
+                'password' => Hash::make('password'),
+                'email_verified_at' => now(),
             ],
         ];
         User::query()->insert($users);

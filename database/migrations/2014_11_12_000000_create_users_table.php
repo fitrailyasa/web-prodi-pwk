@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->string('role')->nullable();
             $table->string('status')->nullable()->default('tidak aktif');
+            $table->string('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
