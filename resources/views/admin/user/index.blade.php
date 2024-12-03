@@ -10,15 +10,20 @@
         @include('admin.user.create')
     </x-slot>
 
+    <!-- Search & Pagination -->
+    <x-slot name="search">
+        @include('layouts.admin.search')
+    </x-slot>
+
     <!-- Table -->
-    <table id="example1" class="table table-bordered table-striped">
+    <table id="" class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>{{ __('No') }}</th>
                 <th>{{ __('Name') }}</th>
-                <th class="d-none d-lg-table-cell">{{ __('Email') }}</th>
-                <th class="d-none d-lg-table-cell">{{ __('Role') }}</th>
-                <th class="d-none d-lg-table-cell">{{ __('Status') }}</th>
+                <th>{{ __('Email') }}</th>
+                <th>{{ __('Role') }}</th>
+                <th>{{ __('Status') }}</th>
                 <th>{{ __('Action') }}</th>
             </tr>
         </thead>
@@ -27,17 +32,17 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $user->name ?? '-' }}</td>
-                    <td class="d-none d-lg-table-cell">{{ $user->email ?? '-' }}</td>
-                    <td class="d-none d-lg-table-cell">
+                    <td>{{ $user->email ?? '-' }}</td>
+                    <td>
                         @if ($user->role == 'admin')
-                            <span class="badge badge-dark">{{ $user->role }}</span>
+                            <span class="badge badge-primary">{{ $user->role }}</span>
                         @elseif ($user->role != 'admin')
                             <span class="badge badge-secondary">{{ $user->role }}</span>
                         @endif
                     </td>
-                    <td class="d-none d-lg-table-cell">
+                    <td>
                         @if ($user->status == 'aktif')
-                            <span class="badge badge-dark">{{ $user->status }}</span>
+                            <span class="badge badge-success">{{ $user->status }}</span>
                         @elseif ($user->status != 'aktif')
                             <span class="badge badge-secondary">{{ $user->status }}</span>
                         @endif
@@ -55,12 +60,14 @@
             <tr>
                 <th>{{ __('No') }}</th>
                 <th>{{ __('Name') }}</th>
-                <th class="d-none d-lg-table-cell">{{ __('Email') }}</th>
-                <th class="d-none d-lg-table-cell">{{ __('Role') }}</th>
-                <th class="d-none d-lg-table-cell">{{ __('Status') }}</th>
+                <th>{{ __('Email') }}</th>
+                <th>{{ __('Role') }}</th>
+                <th>{{ __('Status') }}</th>
                 <th>{{ __('Action') }}</th>
             </tr>
         </tfoot>
     </table>
+
+    {{ $users->appends(['perPage' => $perPage, 'search' => $search])->links() }}
 
 </x-admin-table>

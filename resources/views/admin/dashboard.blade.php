@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-dark">
+            <div class="small-box bg-primary">
                 <div class="inner">
                     <h3>1000</h3>
 
@@ -22,7 +22,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-secondary">
+            <div class="small-box bg-success">
                 <div class="inner">
                     <h3>500</h3>
 
@@ -35,7 +35,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-dark">
+            <div class="small-box bg-warning">
                 <div class="inner">
                     <h3>200</h3>
 
@@ -48,7 +48,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-secondary">
+            <div class="small-box bg-danger">
                 <div class="inner">
                     <h3>100</h3>
 
