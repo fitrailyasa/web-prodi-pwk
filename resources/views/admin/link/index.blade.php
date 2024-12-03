@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        Link
+        Tautan Akademik dan Lainnya
     </x-slot>
 
     <!-- Button Form Create -->
@@ -38,6 +38,7 @@
                 <th>{{ __('Nama') }}</th>
                 <th>{{ __('Gambar') }}</th>
                 <th>{{ __('Deskripsi') }}</th>
+                <th>{{ __('Tautan') }}</th>
                 <th class="text-center">{{ __('Aksi') }}</th>
             </tr>
         </thead>
@@ -89,6 +90,7 @@
                         @endif
                     </td>
                     <td>{{ $link->desc ?? '-' }}</td>
+                    <td><a href="{{ $link->link }}" target="_blank">{{ $link->link ?? '-' }}</a></td>
                     <td class="manage-row text-center">
                         @if (auth()->user()->role == 'admin')
                             <!-- Edit and Delete Buttons -->

@@ -91,7 +91,7 @@ class LinkSeeder extends Seeder
                 'id' => 9,
                 'name' => 'Heldesk',
                 'desc' => 'Heldesk Institut Teknologi Sumatera',
-                'link' => 'https://Heldesk.itera.ac.id/',
+                'link' => 'https://heldesk.itera.ac.id/',
                 'img' => 'logo.png',
                 'category' => 'fasilitas',
                 'user_id' => 1,
