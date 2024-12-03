@@ -18,6 +18,12 @@
     <script src="https://kit.fontawesome.com/2a99f4df77.js" crossorigin="anonymous"></script>
 
     <style>
+        thead {
+            background-color: rgb(0, 0, 66);
+            background-image: linear-gradient(135deg, rgb(7, 7, 139) 0%, rgb(0, 0, 66) 50%);
+            color: white;
+        }
+
         .main-header {
             background-color: rgb(0, 0, 66);
             background-image: linear-gradient(135deg, rgb(7, 7, 139) 0%, rgb(0, 0, 66) 50%);

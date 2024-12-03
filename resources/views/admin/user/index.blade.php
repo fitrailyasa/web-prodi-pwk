@@ -56,16 +56,6 @@
                 </tr>
             @endforeach
         </tbody>
-        <tfoot>
-            <tr>
-                <th>{{ __('No') }}</th>
-                <th>{{ __('Name') }}</th>
-                <th>{{ __('Email') }}</th>
-                <th>{{ __('Role') }}</th>
-                <th>{{ __('Status') }}</th>
-                <th>{{ __('Action') }}</th>
-            </tr>
-        </tfoot>
     </table>
 
     {{ $users->appends(['perPage' => $perPage, 'search' => $search])->links() }}
