@@ -230,6 +230,7 @@ export default function NavBar() {
 
     return (
         <Navbar
+            maxWidth="2xl"
             position="sticky"
             onMenuOpenChange={setIsMenuOpen}
             className="flex justify-around top-0 z-50"

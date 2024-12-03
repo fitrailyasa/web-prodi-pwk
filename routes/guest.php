@@ -10,6 +10,12 @@ Route::get('/', function () {
     ]);
 })->name('beranda');
 
+Route::get('/home', function () {
+    return Inertia::render('Home', [
+        'name' => 'test'
+    ]);
+})->name('home');
+
 Route::get('/about', function () {
     return Inertia::render('About', [
         'name' => 'test'

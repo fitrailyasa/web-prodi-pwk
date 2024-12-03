@@ -14,6 +14,10 @@ export default {
         extend: {
             sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             colors: {
+                'main-bg': '#f4f2ee',
+                'main-blue-light': '#0a4181',
+                'secondary-blue-light': '#d9e9fa',
+                'main-text': '#191919',
                 'main-green': '#00A86B',
                 'main-blue': '#236899 ',
                 'secondary-blue': '#B4CBDB',
