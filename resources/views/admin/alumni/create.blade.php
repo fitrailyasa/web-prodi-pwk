@@ -11,44 +11,78 @@
             @endif
             @csrf
             <div class="modal-header">
-                <h5 class="modal-title" id="modalFormLabel">{{ __('Tambah Data') }}</h5>
+                <h5 class="modal-title" id="modalFormLabel">{{ __('Tambah Data Alumni') }}</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body text-left">
                 <div class="row">
-                    <div class="col-md-6">
+
+                    <!-- Nama -->
+                    <div class="col-md-12">
                         <div class="mb-3">
                             <label class="form-label">{{ __('Nama') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="nama" name="name" id="name" value="{{ old('name') }}" required>
+                                placeholder="Nama" name="name" id="name" value="{{ old('name') }}" required>
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
+
+                    <!-- Tahun Masuk (Class Year) -->
                     <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Tahun Masuk') }}</label>
+                            <input type="number" class="form-control @error('class_year') is-invalid @enderror"
+                                placeholder="Tahun Masuk" name="class_year" id="class_year"
+                                value="{{ old('class_year') }}" required>
+                            @error('class_year')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <!-- Tahun Lulus (Graduation Year) -->
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Tahun Lulus') }}</label>
+                            <input type="number" class="form-control @error('graduation_year') is-invalid @enderror"
+                                placeholder="Tahun Lulus" name="graduation_year" id="graduation_year"
+                                value="{{ old('graduation_year') }}" required>
+                            @error('graduation_year')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <!-- Pekerjaan (Work) -->
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Pekerjaan') }}</label>
+                            <input type="text" class="form-control @error('work') is-invalid @enderror"
+                                placeholder="Pekerjaan" name="work" id="work" value="{{ old('work') }}">
+                            @error('work')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <!-- Gambar (Image) -->
+                    <div class="col-md-12">
                         <div class="mb-3">
                             <label class="form-label">{{ __('Gambar') }}</label>
                             <input id="image-input" accept="image/*" type="file"
-                                class="form-control @error('img') is-invalid @enderror" placeholder="img" name="img"
-                                id="img" value="{{ old('img') }}">
+                                class="form-control @error('img') is-invalid @enderror" name="img"
+                                value="{{ old('img') }}">
                             @error('img')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <label class="form-label">{{ __('Deskripsi') }}</label>
-                            <textarea class="form-control @error('desc') is-invalid @enderror" placeholder="deskripsi" name="desc" id="desc"
-                                rows="3">{{ old('desc') }}</textarea>
-                            @error('desc')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
+
+                    <!-- Preview Gambar -->
                     <div class="col-md-12 text-center">
                         <div class="mb-3">
                             <img class="img-fluid py-3" id="image-preview" width="200px"

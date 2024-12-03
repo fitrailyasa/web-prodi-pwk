@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->integer('class_year')->nullable();
+            $table->integer('graduation_year')->nullable();
             $table->text('work')->nullable();
             $table->string('img')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

@@ -15,7 +15,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body text-left">
                     <p>Anda yakin ingin menghapus semua data?</p>
                 </div>
                 <div class="modal-footer">

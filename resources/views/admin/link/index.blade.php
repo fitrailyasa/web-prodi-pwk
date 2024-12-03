@@ -61,7 +61,7 @@
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
-                                        <div class="modal-body">
+                                        <div class="modal-body text-left">
                                             <div class="card">
                                                 <div class="card-header">
                                                     <h3 class="card-title">{{ $link->name }}</h3>
