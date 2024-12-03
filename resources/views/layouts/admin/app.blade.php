@@ -20,10 +20,12 @@
     <style>
         .main-header {
             background-color: rgb(0, 0, 66);
+            background-image: linear-gradient(135deg, rgb(7, 7, 139) 0%, rgb(0, 0, 66) 50%);
         }
-        
+
         .main-sidebar {
             background-color: rgb(0, 0, 66);
+            background-image: linear-gradient(135deg, rgb(7, 7, 139) 0%, rgb(0, 0, 66) 50%);
             color: white;
         }
 
@@ -106,8 +108,7 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a
-                                        href="{{ route('dashboard') }}">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                                 <li class="breadcrumb-item active">{{ $title ?? '' }}</li>
                             </ol>
                         </div>
