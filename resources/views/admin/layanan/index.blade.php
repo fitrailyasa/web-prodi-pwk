@@ -99,20 +99,7 @@
                 </tr>
             @endforeach
         </tbody>
-        <tfoot>
-            <tr>
-                <th>{{ __('No') }}</th>
-                <th>{{ __('Name') }}</th>
-                <th>{{ __('Img') }}</th>
-                <th>{{ __('Desc') }}</th>
-                <th>{{ __('Action') }}</th>
-            </tr>
-            <tr>
-                <th colspan="5">
-                    {{ $layanans->appends(['perPage' => $perPage, 'search' => $search])->links() }}
-                </th>
-            </tr>
-        </tfoot>
     </table>
+    {{ $layanans->appends(['perPage' => $perPage, 'search' => $search])->links() }}
 
 </x-admin-table>

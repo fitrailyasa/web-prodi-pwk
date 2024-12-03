@@ -98,20 +98,7 @@
                 </tr>
             @endforeach
         </tbody>
-        <tfoot>
-            <tr>
-                <th>{{ __('No') }}</th>
-                <th>{{ __('Name') }}</th>
-                <th>{{ __('Img') }}</th>
-                <th>{{ __('Desc') }}</th>
-                <th>{{ __('Action') }}</th>
-            </tr>
-            <tr>
-                <th colspan="5">
-                    {{ $matkuls->appends(['perPage' => $perPage, 'search' => $search])->links() }}
-                </th>
-            </tr>
-        </tfoot>
     </table>
+    {{ $matkuls->appends(['perPage' => $perPage, 'search' => $search])->links() }}
 
 </x-admin-table>
