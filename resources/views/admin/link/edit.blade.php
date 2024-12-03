@@ -34,6 +34,30 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
+                            <label class="form-label">{{ __('Tautan') }}</label>
+                            <input type="text" class="form-control @error('link') is-invalid @enderror"
+                                placeholder="https://google.com" name="link" id="link" value="{{ old('link', $link->link) }}" required>
+                            @error('link')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Kategori') }}</label>
+                            <select class="form-select @error('category') is-invalid @enderror" name="category" id="category">
+                                <option value="">-- Pilih Kategori --</option>
+                                <option value="akademik" {{ old('category', $link->category) == 'akademik' ? 'selected' : '' }}>Akademik</option>
+                                <option value="fasilitas" {{ old('category', $link->category) == 'fasilitas' ? 'selected' : '' }}>Fasilitas</option>
+                                <option value="lainnya" {{ old('category', $link->category) == 'lainnya' ? 'selected' : '' }}>Lainnya</option>
+                            </select>
+                            @error('category')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
                             <label class="form-label">{{ __('Gambar') }}</label>
                             <input id="image-input" accept="image/*" type="file" id="img-input"
                                 class="form-control @error('img') is-invalid @enderror" placeholder="img" name="img"
@@ -51,17 +75,6 @@
                             @error('desc')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-12 text-center">
-                        <div class="mb-3">
-                            @if ($link->img == null)
-                                <img class="img-fluid rounded" width="200px" id="image-preview"
-                                    src="{{ asset('assets/profile/default.png') }}" alt="{{ $link->name }}">
-                            @else
-                                <img class="img-fluid rounded" width="200px" id="image-preview"
-                                    src="{{ asset('assets/img/' . $link->img) }}" alt="{{ $link->name }}">
-                            @endif
                         </div>
                     </div>
                 </div>

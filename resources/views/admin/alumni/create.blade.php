@@ -11,7 +11,7 @@
             @endif
             @csrf
             <div class="modal-header">
-                <h5 class="modal-title" id="modalFormLabel">{{ __('Tambah Data Alumni') }}</h5>
+                <h5 class="modal-title" id="modalFormLabel">{{ __('Tambah Data') }}</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -64,6 +64,18 @@
                             <input type="text" class="form-control @error('work') is-invalid @enderror"
                                 placeholder="Pekerjaan" name="work" id="work" value="{{ old('work') }}">
                             @error('work')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <!-- Perusahaan (Company) -->
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Perusahaan') }}</label>
+                            <input type="text" class="form-control @error('company') is-invalid @enderror"
+                                placeholder="Perusahaan" name="company" id="company" value="{{ old('company') }}">
+                            @error('company')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

@@ -74,6 +74,19 @@
                         </div>
                     </div>
 
+                    <!-- Perusahaan (Company) -->
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Perusahaan') }}</label>
+                            <input type="text" class="form-control @error('company') is-invalid @enderror"
+                                placeholder="Perusahaan" name="company" id="company"
+                                value="{{ old('company', $alumni->company) }}">
+                            @error('company')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
                     <!-- Gambar (Image) -->
                     <div class="col-md-12">
                         <div class="mb-3">

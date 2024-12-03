@@ -30,6 +30,30 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
+                            <label class="form-label">{{ __('Tautan') }}</label>
+                            <input type="text" class="form-control @error('link') is-invalid @enderror"
+                                placeholder="https://google.com" name="link" id="link" value="{{ old('link') }}" required>
+                            @error('link')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Kategori') }}</label>
+                            <select class="form-select @error('category') is-invalid @enderror" name="category" id="category">
+                                <option value="">-- Pilih Kategori --</option>
+                                <option value="akademik">Akademik</option>
+                                <option value="fasilitas">Fasilitas</option>
+                                <option value="lainnya">Lainnya</option>
+                            </select>
+                            @error('category')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
                             <label class="form-label">{{ __('Gambar') }}</label>
                             <input id="image-input" accept="image/*" type="file"
                                 class="form-control @error('img') is-invalid @enderror" placeholder="img" name="img"
@@ -47,12 +71,6 @@
                             @error('desc')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-12 text-center">
-                        <div class="mb-3">
-                            <img class="img-fluid py-3" id="image-preview" width="200px"
-                                src="{{ asset('assets/profile/default.png') }}" alt="Image Preview">
                         </div>
                     </div>
                 </div>

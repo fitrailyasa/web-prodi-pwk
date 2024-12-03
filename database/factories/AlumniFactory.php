@@ -18,8 +18,10 @@ class AlumniFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'class_year' => fake()->numberBetween(2000, 2022),
+            'class_year' => fake()->numberBetween(2016, 2020),
+            'graduation_year' => fake()->numberBetween(2024, 2028),
             'work' => fake()->jobTitle(),
+            'company' => fake()->company(),
             'img' => 'logo.png',
             'user_id' => 1
         ];
