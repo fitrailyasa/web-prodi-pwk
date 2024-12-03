@@ -84,24 +84,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/jadwal/export', [AdminJadwalController::class, 'export'])->name('jadwal.export');
         Route::delete('/jadwal/deleteAll', [AdminJadwalController::class, 'destroyAll'])->name('jadwal.destroyAll');
 
-        // CRUD KATEGORI
-        Route::get('/kategori', [AdminKategoriController::class, 'index'])->name('kategori.index');
-        Route::post('/kategori', [AdminKategoriController::class, 'store'])->name('kategori.store');
-        Route::put('/kategori/{id}/update', [AdminKategoriController::class, 'update'])->name('kategori.update');
-        Route::delete('/kategori/{id}/destroy', [AdminKategoriController::class, 'destroy'])->name('kategori.destroy');
-        Route::post('/kategori/import', [AdminKategoriController::class, 'import'])->name('kategori.import');
-        Route::get('/kategori/export', [AdminKategoriController::class, 'export'])->name('kategori.export');
-        Route::delete('/kategori/deleteAll', [AdminKategoriController::class, 'destroyAll'])->name('kategori.destroyAll');
-
-        // CRUD LAYANAN
-        Route::get('/layanan', [AdminLayananController::class, 'index'])->name('layanan.index');
-        Route::post('/layanan', [AdminLayananController::class, 'store'])->name('layanan.store');
-        Route::put('/layanan/{id}/update', [AdminLayananController::class, 'update'])->name('layanan.update');
-        Route::delete('/layanan/{id}/destroy', [AdminLayananController::class, 'destroy'])->name('layanan.destroy');
-        Route::post('/layanan/import', [AdminLayananController::class, 'import'])->name('layanan.import');
-        Route::get('/layanan/export', [AdminLayananController::class, 'export'])->name('layanan.export');
-        Route::delete('/layanan/deleteAll', [AdminLayananController::class, 'destroyAll'])->name('layanan.destroyAll');
-
         // CRUD LINK
         Route::get('/link', [AdminLinkController::class, 'index'])->name('link.index');
         Route::post('/link', [AdminLinkController::class, 'store'])->name('link.store');
@@ -128,15 +110,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/medpart/import', [AdminMedpartController::class, 'import'])->name('medpart.import');
         Route::get('/medpart/export', [AdminMedpartController::class, 'export'])->name('medpart.export');
         Route::delete('/medpart/deleteAll', [AdminMedpartController::class, 'destroyAll'])->name('medpart.destroyAll');
-
-        // CRUD STAFF
-        Route::get('/staff', [AdminStaffController::class, 'index'])->name('staff.index');
-        Route::post('/staff', [AdminStaffController::class, 'store'])->name('staff.store');
-        Route::put('/staff/{id}/update', [AdminStaffController::class, 'update'])->name('staff.update');
-        Route::delete('/staff/{id}/destroy', [AdminStaffController::class, 'destroy'])->name('staff.destroy');
-        Route::post('/staff/import', [AdminStaffController::class, 'import'])->name('staff.import');
-        Route::get('/staff/export', [AdminStaffController::class, 'export'])->name('staff.export');
-        Route::delete('/staff/deleteAll', [AdminStaffController::class, 'destroyAll'])->name('staff.destroyAll');
 
         // CRUD TAG
         Route::get('/tag', [AdminTagController::class, 'index'])->name('tag.index');

@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        User
+        Staff Akademik
     </x-slot>
 
     <!-- Button Form Create -->

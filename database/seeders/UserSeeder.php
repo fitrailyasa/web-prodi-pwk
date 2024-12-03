@@ -24,6 +24,9 @@ class UserSeeder extends Seeder
                 'status' => 'aktif',
                 'no_hp' => '081234567890',
                 'password' => Hash::make('password'),
+                'nip' => fake()->numberBetween(1000000000, 9999999999),
+                'position' => fake()->jobTitle(),
+                'img' => 'logo.png',
                 'email_verified_at' => now(),
             ],
             [
@@ -33,6 +36,9 @@ class UserSeeder extends Seeder
                 'status' => 'aktif',
                 'no_hp' => '081234567890',
                 'password' => Hash::make('password'),
+                'nip' => fake()->numberBetween(1000000000, 9999999999),
+                'position' => fake()->jobTitle(),
+                'img' => 'logo.png',
                 'email_verified_at' => now(),
             ],
             [
@@ -42,6 +48,9 @@ class UserSeeder extends Seeder
                 'status' => 'aktif',
                 'no_hp' => '081234567890',
                 'password' => Hash::make('password'),
+                'nip' => fake()->numberBetween(1000000000, 9999999999),
+                'position' => fake()->jobTitle(),
+                'img' => 'logo.png',
                 'email_verified_at' => now(),
             ],
         ];

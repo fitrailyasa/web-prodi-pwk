@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        Tentang
+        Profile
     </x-slot>
 
     <!-- Button Form Create -->
