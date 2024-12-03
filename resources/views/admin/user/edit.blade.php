@@ -23,9 +23,9 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-2">
-                            <label class="form-label">{{ __('Name') }}</label>
+                            <label class="form-label">{{ __('Nama') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="name" name="name" id="name" value="{{ old('name', $user->name) }}"
+                                placeholder="nama" name="name" id="name" value="{{ old('name', $user->name) }}"
                                 required>
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}
