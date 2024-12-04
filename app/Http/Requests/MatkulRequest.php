@@ -28,13 +28,12 @@ class MatkulRequest extends FormRequest
         // dd($db->getConnection()->getDatabaseName());
 
         return [
-            'name' => 'required|max:100', 
-            'desc' => 'required|max:1000', 
-            'credits' => 'required|max_digits:values:4', 
-            'lecture' => 'required|max:100', 
-            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', 
-            'jadwal_id' => 'required', 
-            'user_id' => 'required',
+            'name' => 'required|max:100',
+            'desc' => 'required|max:1000',
+            'credits' => 'required|max_digits:values:4',
+            'lecture' => 'required|max:100',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'jadwal_id' => 'required',
         ];
     }
 }

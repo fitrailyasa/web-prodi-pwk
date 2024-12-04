@@ -28,12 +28,11 @@ class LinkRequest extends FormRequest
         // dd($db->getConnection()->getDatabaseName());
 
         return [
-            'name' => 'required|max:100', 
+            'name' => 'required|max:100',
             'desc' => 'required|max:1000',
-            'link' => 'required|max:100', 
-            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', 
+            'link' => 'required|max:100',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category' => 'required|max:100',
-            'user_id' => 'required',
         ];
     }
 }

@@ -29,10 +29,9 @@ class BeritaRequest extends FormRequest
 
         return [
             'name' => 'required|max:100',
-            'desc' => 'required|max:1000', 
-            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', 
-            'tag_id ' => 'required', 
-            'user_id' => 'required',
+            'desc' => 'required|max:1000',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'tag_id ' => 'required',
         ];
     }
 }

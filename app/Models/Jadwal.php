@@ -14,7 +14,6 @@ class Jadwal extends Model
     protected $connection;
     protected $table = 'jadwals';
     protected $primaryKey = 'id';
-    public $incrementing = false;
     protected $fillable = ['id', 'name', 'desc', 'img', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 

@@ -13,7 +13,6 @@ class Alumni extends Model
     protected $connection;
     protected $table = 'alumnis';
     protected $primaryKey = 'id';
-    public $incrementing = false;
     protected $fillable = ['id', 'name', 'class_year', 'graduation_year', 'work', 'company', 'img', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 

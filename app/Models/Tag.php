@@ -14,7 +14,6 @@ class Tag extends Model
     protected $connection;
     protected $table = 'tags';
     protected $primaryKey = 'id';
-    public $incrementing = false;
     protected $fillable = ['id', 'name', 'slug', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 

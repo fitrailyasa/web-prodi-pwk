@@ -13,7 +13,6 @@ class Link extends Model
     protected $connection;
     protected $table = 'links';
     protected $primaryKey = 'id';
-    public $incrementing = false;
     protected $fillable = ['id', 'name', 'desc', 'link', 'img', 'category', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 

@@ -14,7 +14,6 @@ class Berita extends Model
     protected $connection;
     protected $table = 'beritas';
     protected $primaryKey = 'id';
-    public $incrementing = false;
     protected $fillable = ['id', 'name', 'slug', 'desc', 'img', 'tag_id', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 

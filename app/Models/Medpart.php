@@ -13,7 +13,6 @@ class Medpart extends Model
     protected $connection;
     protected $table = 'medparts';
     protected $primaryKey = 'id';
-    public $incrementing = false;
     protected $fillable = ['id', 'name', 'link', 'img', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 
