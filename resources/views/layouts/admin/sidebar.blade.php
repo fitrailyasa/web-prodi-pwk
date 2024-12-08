@@ -68,35 +68,14 @@
                             </li>
                         </ul>
                     </li>
-                    <li
-                        class="nav-item has-treeview {{ Request::routeIs('admin.jadwal.index', 'admin.matkul.index') ? 'menu-open' : '' }}">
-                        <a href="#" class="nav-link text-white">
+                    <li class="nav-item ms-3">
+                        <a href="{{ route('admin.matkul.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.matkul.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-book"></i>
                             <p>
-                                Akademik
-                                <i class="right fas fa-angle-left"></i>
+                                Mata Kuliah
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item ms-3">
-                                <a href="{{ route('admin.jadwal.index') }}"
-                                    class="nav-link text-white {{ Request::routeIs('admin.jadwal.index') ? 'aktif' : '' }}">
-                                    <i class="nav-icon fas fa-calendar"></i>
-                                    <p>
-                                        Jadwal Kuliah
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item ms-3">
-                                <a href="{{ route('admin.matkul.index') }}"
-                                    class="nav-link text-white {{ Request::routeIs('admin.matkul.index') ? 'aktif' : '' }}">
-                                    <i class="nav-icon fas fa-book"></i>
-                                    <p>
-                                        Mata Kuliah
-                                    </p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin.alumni.index') }}"
@@ -116,7 +95,15 @@
                             </p>
                         </a>
                     </li>
-                    
+                    <li class="nav-item ms-3">
+                        <a href="{{ route('admin.jadwal.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.jadwal.index') ? 'aktif' : '' }}">
+                            <i class="nav-icon fas fa-calendar"></i>
+                            <p>
+                                Jadwal Event
+                            </p>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="{{ route('admin.link.index') }}"
                             class="nav-link text-white {{ Request::routeIs('admin.link.index') ? 'aktif' : '' }}">
