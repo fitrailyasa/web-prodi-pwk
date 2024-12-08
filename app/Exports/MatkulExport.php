@@ -21,10 +21,12 @@ class MatkulExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
 
         foreach ($Matkuls as $Matkul) {
             $collection[] = [
-                'No' => $no++,
-                'Name' => $Matkul->name ?? '',
-                'Img' => $Matkul->img ?? '',
-                'Desc' => $Matkul->desc ?? '',
+                'no' => $no++,
+                'name' => $Matkul->name ?? '',
+                'desc' => $Matkul->desc ?? '',
+                'credits' => $Matkul->credits ?? '',
+                'lecture' => $Matkul->lecture ?? '',
+                'jadwal_id' => $Matkul->jadwal->name ?? '',
             ];
         }
 
@@ -38,17 +40,19 @@ class MatkulExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
         return [
             [''],
             [
-                'No',
-                'Name',
-                'Img',
-                'Desc',
+                'no',
+                'name',
+                'desc',
+                'credits',
+                'lecture',
+                'jadwal_id',
             ]
         ];
     }
 
     public function styles(Worksheet $sheet)
     {
-        $sheet->mergeCells('A1:D1');
+        $sheet->mergeCells('A1:F1');
 
         $borderStyle = [
             'borders' => [

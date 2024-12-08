@@ -19,12 +19,17 @@ class BeritaExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
         $no = 1;
         $Beritas = Berita::all();
 
+
+
         foreach ($Beritas as $Berita) {
             $collection[] = [
-                'No' => $no++,
-                'Name' => $Berita->name ?? '',
-                'Img' => $Berita->img ?? '',
-                'Desc' => $Berita->desc ?? '',
+                'no' => $no++,
+                'name' => $Berita->name ?? '',
+                'desc' => $Berita->desc ?? '',
+                'status' => $Berita->status ?? '',
+                'publish_date' => $Berita->publish_date ?? '',
+                'event_date' => $Berita->event_date ?? '',
+                'tag_id' => $Berita->tag->name ?? '',
             ];
         }
 
@@ -38,17 +43,20 @@ class BeritaExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
         return [
             [''],
             [
-                'No',
-                'Name',
-                'Img',
-                'Desc',
+                'no',
+                'name',
+                'desc',
+                'status',
+                'publish_date',
+                'event_date',
+                'tag_id',
             ]
         ];
     }
 
     public function styles(Worksheet $sheet)
     {
-        $sheet->mergeCells('A1:D1');
+        $sheet->mergeCells('A1:G1');
 
         $borderStyle = [
             'borders' => [

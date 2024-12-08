@@ -17,7 +17,6 @@ class TagImport implements ToModel, WithStartRow
 
         if (!$checkTag) {
             return new Tag([
-                'id' => Str::uuid(),
                 'name' => $name,
             ]);
         }

@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\Matkul;
+use App\Models\Jadwal;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
@@ -12,24 +13,32 @@ class MatkulImport implements ToModel, WithStartRow
     public function model(array $row)
     {
         $name = $row[1];
-        $img = $row[2] ?? null;
-        $desc = $row[3] ?? null;
+        $desc = $row[2];
+        $credits = $row[3];
+        $lecture = $row[4];
+        $jadwal_id = $row[5];
+
+        // jadwal id by name
+        $jadwal = Jadwal::where('name', $jadwal_id)->first();
 
         $checkMatkul = Matkul::where('name', $name)->first();
 
         if ($checkMatkul) {
             $checkMatkul->update([
-                'img' => $img,
                 'desc' => $desc,
+                'credits' => $credits,
+                'lecture' => $lecture,
+                'jadwal_id' => $jadwal->id,
             ]);
 
             return null;
         } else {
             return new Matkul([
-                'id' => Str::uuid(),
                 'name' => $name,
-                'img' => $img,
                 'desc' => $desc,
+                'credits' => $credits,
+                'lecture' => $lecture,
+                'jadwal_id' => $jadwal->id,
             ]);
         }
     }

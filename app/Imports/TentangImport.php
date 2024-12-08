@@ -26,7 +26,6 @@ class TentangImport implements ToModel, WithStartRow
             return null;
         } else {
             return new Tentang([
-                'id' => Str::uuid(),
                 'name' => $name,
                 'img' => $img,
                 'desc' => $desc,

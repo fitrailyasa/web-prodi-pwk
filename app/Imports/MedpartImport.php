@@ -12,24 +12,20 @@ class MedpartImport implements ToModel, WithStartRow
     public function model(array $row)
     {
         $name = $row[1];
-        $img = $row[2] ?? null;
-        $desc = $row[3] ?? null;
+        $link = $row[2] ?? null;
 
         $checkMedpart = Medpart::where('name', $name)->first();
 
         if ($checkMedpart) {
             $checkMedpart->update([
-                'img' => $img,
-                'desc' => $desc,
+                'link' => $link,
             ]);
 
             return null;
         } else {
             return new Medpart([
-                'id' => Str::uuid(),
                 'name' => $name,
-                'img' => $img,
-                'desc' => $desc,
+                'link' => $link,
             ]);
         }
     }

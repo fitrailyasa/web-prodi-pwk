@@ -12,24 +12,29 @@ class AlumniImport implements ToModel, WithStartRow
     public function model(array $row)
     {
         $name = $row[1];
-        $img = $row[2] ?? null;
-        $desc = $row[3] ?? null;
+        $class_year = $row[2];
+        $graduation_year = $row[3];
+        $work = $row[4];
+        $company = $row[5];
 
         $checkAlumni = Alumni::where('name', $name)->first();
 
         if ($checkAlumni) {
             $checkAlumni->update([
-                'img' => $img,
-                'desc' => $desc,
+                'class_year' => $class_year,
+                'graduation_year' => $graduation_year,
+                'work' => $work,
+                'company' => $company,
             ]);
 
             return null;
         } else {
             return new Alumni([
-                'id' => Str::uuid(),
                 'name' => $name,
-                'img' => $img,
-                'desc' => $desc,
+                'class_year' => $class_year,
+                'graduation_year' => $graduation_year,
+                'work' => $work,
+                'company' => $company,
             ]);
         }
     }

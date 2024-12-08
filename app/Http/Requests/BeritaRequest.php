@@ -31,6 +31,9 @@ class BeritaRequest extends FormRequest
             'name' => 'required|max:100',
             'desc' => 'required|max:1000',
             'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'status' => 'required',
+            'event_date' => 'required|date',
+            'publish_date' => 'required|date',
             'tag_id ' => 'required',
         ];
     }
