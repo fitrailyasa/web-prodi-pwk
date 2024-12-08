@@ -1,43 +1,29 @@
-import React from 'react'
-import { motion, Variants } from 'framer-motion'
+import React, { useRef } from 'react'
+import { motion, useScroll, useTransform, Variants } from 'framer-motion'
 
 interface BouncingAnimationProps {
     children: React.ReactNode
     className?: string
-    index?: number
 }
 
 export const SectionTrigerScroll: React.FC<BouncingAnimationProps> = ({
     children,
-    className,
-    index
+    className
 }) => {
-    const variant: Variants = {
-        offscreen: {
-            opacity: 0,
-            y: 50
-        },
-        onscreen: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                delay: index ? index * 0.2 * 0.05 : 0.05,
-                type: 'spring',
-                bounce: 0.4,
-                duration: 0.8
-            }
-        }
-    }
+    const ref = useRef<HTMLDivElement>(null)
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ['0 1', '1.33 1']
+    })
+
+    const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1])
+    const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1])
     return (
-        <motion.section
-            className="card-container"
-            initial="offscreen"
-            whileInView="onscreen"
-            viewport={{ once: true, amount: 0.8 }}
+        <motion.div
+            ref={ref}
+            style={{ scale: scaleProgress, opacity: opacityProgress }}
         >
-            <motion.div className={className} variants={variant}>
-                {children}
-            </motion.div>
-        </motion.section>
+            <section className={className}>{children}</section>
+        </motion.div>
     )
 }

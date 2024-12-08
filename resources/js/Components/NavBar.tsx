@@ -35,20 +35,25 @@ type propsDropdown = {
 }
 function NavDropdown({ title, icon, item }: propsDropdown) {
     return (
-        <Dropdown key={title} className="hidden sm:flex gap-4">
+        <Dropdown key={title} className="hidden sm:flex gap-2">
             <DropdownTrigger>
                 <Button
                     disableRipple
-                    className="p-0 bg-transparent data-[hover=true]:bg-transparent text-md"
+                    className="p-0 flex gap-1 bg-transparent data-[hover=true]:bg-transparent text-md"
                     radius="sm"
                     variant="light"
                 >
                     <TypingAnimation
+                        className="p-0"
                         text={title}
                         ishover={true}
-                        isBorderLeft={true}
                     />
-                    {icon ?? <AnggleDownIcon />}
+                    {icon ?? (
+                        <AnggleDownIcon
+                            size={12}
+                            className="fill-gray-600 w-fit"
+                        />
+                    )}
                 </Button>
             </DropdownTrigger>
 
@@ -263,7 +268,7 @@ export default function NavBar() {
                             text="Beranda"
                             // speed={0.05}
                             ishover={true}
-                            isBorderLeft={true}
+                            // isBorderLeft={true}
                         />
                     </Link>
                 </NavbarItem>
@@ -285,7 +290,7 @@ export default function NavBar() {
                             text="Berita dan Informasi"
                             speed={0.05}
                             ishover={true}
-                            isBorderLeft={true}
+                            // isBorderLeft={true}
                         />
                     </Link>
                 </NavbarItem>
@@ -295,7 +300,7 @@ export default function NavBar() {
                             text="Kontak"
                             speed={0.05}
                             ishover={true}
-                            isBorderLeft={true}
+                            // isBorderLeft={true}
                         />
                     </Link>
                 </div>

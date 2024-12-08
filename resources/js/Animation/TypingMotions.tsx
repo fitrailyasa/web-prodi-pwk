@@ -42,14 +42,13 @@ export const TypingAnimation: React.FC<TypingAnimationProps> = ({
             style={{
                 whiteSpace: 'pre',
                 overflow: 'hidden',
-                paddingLeft: '3px',
                 borderRight: isrightBorder ? '2px solid ' : 'none',
                 borderLeft: isBorderLeft ? '2px solid ' : 'none',
                 cursor: 'pointer'
             }}
             className={props.className}
             initial={{ width: 0 }}
-            animate={{ width: '100%' }}
+            animate={{ width: '' }}
             transition={{
                 duration: text.length * speed,
                 ease: 'linear'

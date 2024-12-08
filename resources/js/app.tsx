@@ -26,8 +26,6 @@ createInertiaApp({
 
         window.route = useRoute()
 
-        console.log(window)
-
         const appElement = (
             <React.StrictMode>
                 <VisitorProvider>
