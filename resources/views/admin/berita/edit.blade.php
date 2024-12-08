@@ -22,54 +22,111 @@
             </div>
             <div class="modal-body text-left">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Nama') }}</label>
+                            <label class="form-label">{{ __('Judul Berita') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="nama" name="name" id="name"
+                                placeholder="Judul Berita" name="name" id="name"
                                 value="{{ old('name', $berita->name) }}" required>
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Konten Berita') }}</label>
+                            <textarea class="form-control @error('desc') is-invalid @enderror" placeholder="deskripsi..." name="desc"
+                                id="desc" rows="3">{{ old('desc', $berita->desc) }}</textarea>
+                            @error('desc')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Gambar') }}</label>
-                            <input id="image-input" accept="image/*" type="file" id="img-input"
-                                class="form-control @error('img') is-invalid @enderror" placeholder="img" name="img"
-                                id="img" value="{{ old('img', $berita->img) }}">
-                            @error('img')
+                            <label class="form-label">{{ __('Tanggal Pelaksanaan') }}</label>
+                            <input type="date" class="form-control @error('event_date') is-invalid @enderror"
+                                placeholder="Tanggal Pelaksanaan" name="event_date" id="event_date"
+                                value="{{ old('event_date', $berita->event_date) }}" required>
+                            @error('event_date')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Tanggal Publikasi') }}</label>
+                            <input type="date" class="form-control @error('publish_date') is-invalid @enderror"
+                                placeholder="Tanggal Publikasi" name="publish_date" id="publish_date"
+                                value="{{ old('publish_date', $berita->publish_date) }}" required>
+                            @error('publish_date')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Status') }}</label>
+                            <select class="form-select @error('status') is-invalid @enderror" name="status"
+                                id="status" required>
+                                <option value="">-- Pilih Status --</option>
+                                <option value="publish"
+                                    {{ old('status', $content->status ?? '') == 'publish' ? 'selected' : '' }}>
+                                    Publish
+                                </option>
+                                <option value="unpublish"
+                                    {{ old('status', $content->status ?? '') == 'unpublish' ? 'selected' : '' }}>
+                                    Unpublish
+                                </option>
+                            </select>
+                            @error('status')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Tag Berita') }}</label>
+                            <select class="form-select @error('tag_id') is-invalid @enderror" name="tag_id" id="tag_id"
+                                required>
+                                <option value="">-- Pilih Tag --</option>
+                                @foreach ($tags as $tag)
+                                    <option value="{{ $tag->id }}"
+                                        {{ old('tag_id', $content->tag_id ?? '') == $tag->id ? 'selected' : '' }}>
+                                        {{ $tag->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('tag_id')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Deskripsi') }}</label>
-                            <textarea class="form-control @error('desc') is-invalid @enderror" placeholder="deskripsi" name="desc" id="desc"
-                                rows="3">{{ old('desc', $berita->desc) }}</textarea>
-                            @error('desc')
+                            <label class="form-label">{{ __('Gambar') }}</label>
+                            <input id="image-input" accept="image/*" type="file"
+                                class="form-control @error('img') is-invalid @enderror" placeholder="img" name="img"
+                                id="img" value="{{ old('img') }}">
+                            @error('img')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
                     <div class="col-md-12 text-center">
                         <div class="mb-3">
-                            @if ($berita->img == null)
-                                <img class="img-fluid rounded" width="200px" id="image-preview"
-                                    src="{{ asset('assets/profile/default.png') }}" alt="{{ $berita->name }}">
-                            @else
-                                <img class="img-fluid rounded" width="200px" id="image-preview"
-                                    src="{{ asset('assets/img/' . $berita->img) }}" alt="{{ $berita->name }}">
-                            @endif
+                            <img class="img-fluid py-3" id="image-preview" width="200px"
+                                src="{{ asset('assets/profile/default.png') }}" alt="Image Preview">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Tutup') }}</button>
-                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> {{ __('Simpan') }}</button>
+                <button type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal">{{ __('Tutup') }}</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>
+                    {{ __('Simpan') }}</button>
             </div>
             </form>
         </div>

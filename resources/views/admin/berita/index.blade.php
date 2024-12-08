@@ -35,9 +35,14 @@
         <thead>
             <tr>
                 <th>{{ __('No') }}</th>
-                <th>{{ __('Nama') }}</th>
+                <th>{{ __('Judul Berita') }}</th>
                 <th>{{ __('Gambar') }}</th>
-                <th>{{ __('Deskripsi') }}</th>
+                <th>{{ __('Konten Berita') }}</th>    
+                <th>{{ __('Status') }}</th>
+                <th>{{ __('Tanggal Pelaksanaan') }}</th>
+                <th>{{ __('Tanggal Publikasi') }}</th>
+                <th>{{ __('Tag') }}</th>
+                <th>{{ __('Oleh') }}</th>
                 <th class="text-center">{{ __('Aksi') }}</th>
             </tr>
         </thead>
@@ -88,7 +93,19 @@
                             </div>
                         @endif
                     </td>
-                    <td>{{ $berita->desc ?? '-' }}</td>
+                    <td>{{ $berita->desc ? implode(' ', array_slice(explode(' ', $berita->desc), 0, 10)) . (str_word_count($berita->desc) > 10 ? '...' : '') : '-' }}</td>
+                    <td>
+                        @if ($berita->status == 'unpublish')
+                            <span class="badge bg-secondary">Unpublished</span>
+                        @else
+                            <span class="badge bg-primary">Published</span>
+                        @endif
+                    </td>
+                    <td>{{ $berita->event_date ? \Carbon\Carbon::parse($berita->event_date)->translatedFormat('l, d F Y') : '-' }}</td>
+                    <td>{{ $berita->publish_date ? \Carbon\Carbon::parse($berita->publish_date)->translatedFormat('l, d F Y') : '-' }}
+                    </td>
+                    <td>{{ $berita->tag->name ?? '-' }}</td>
+                    <td>{{ $berita->user->name ?? '-' }}</td>
                     <td class="manage-row text-center">
                         @if (auth()->user()->role == 'admin')
                             <!-- Edit and Delete Buttons -->

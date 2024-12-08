@@ -36,4 +36,22 @@ class MatkulRequest extends FormRequest
             'jadwal' => 'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Mata kuliah tidak boleh kosong!',
+            'name.max' => 'Mata kuliah maksimal 100 karakter!',
+            'code.required' => 'Kode tidak boleh kosong!',
+            'code.max' => 'Kode maksimal 10 karakter!',
+            'credits.required' => 'SKS tidak boleh kosong!',
+            'credits.max' => 'SKS maksimal 4 karakter!',
+            'lecture.required' => 'Dosen tidak boleh kosong!',
+            'lecture.max' => 'Dosen maksimal 100 karakter!',
+            'img.image' => 'Gambar harus berupa gambar!',
+            'img.mimes' => 'Gambar harus berupa jpeg, png, jpg, gif, svg!',
+            'img.max' => 'Gambar maksimal 2mb!',
+            'jadwal.required' => 'Jadwal tidak boleh kosong!',
+        ];
+    }
 }

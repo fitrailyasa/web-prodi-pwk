@@ -33,4 +33,17 @@ class TentangRequest extends FormRequest
             'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Judul tidak boleh kosong!',
+            'name.max' => 'Judul maksimal 100 karakter!',
+            'desc.required' => 'Deskripsi tidak boleh kosong!',
+            'desc.max' => 'Deskripsi maksimal 1000 karakter!',
+            'img.image' => 'Gambar harus berupa gambar!',
+            'img.mimes' => 'Gambar harus berupa jpeg, png, jpg, gif, svg!',
+            'img.max' => 'Gambar maksimal 2mb!',
+        ];
+    }
 }

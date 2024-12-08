@@ -22,11 +22,11 @@ class BeritaExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
         foreach ($Beritas as $Berita) {
             $collection[] = [
                 'No' => $no++,
-                'Nama' => $Berita->name ?? '',
-                'Deskripsi' => $Berita->desc ?? '',
+                'Judul Berita' => $Berita->name ?? '',
+                'Konten Berita' => $Berita->desc ?? '',
                 'Status' => $Berita->status ?? '',
                 'Tanggal Pelaksanaan' => $Berita->event_date ?? '',
-                'Tanggal Publish' => $Berita->publish_date ?? '',
+                'Tanggal Publikasi' => $Berita->publish_date ?? '',
                 'Tag Berita' => $Berita->tag->name ?? '',
             ];
         }
@@ -42,11 +42,11 @@ class BeritaExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
             [''],
             [
                 'No',
-                'Nama',
-                'Deskripsi',
+                'Judul Berita',
+                'Isi Berita',
                 'Status',
                 'Tanggal Pelaksanaan',
-                'Tanggal Publish',
+                'Tanggal Publikasi',
                 'Tag Berita',
             ]
         ];
