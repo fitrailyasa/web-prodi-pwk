@@ -22,9 +22,11 @@ class AlumniExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
         foreach ($Alumnis as $Alumni) {
             $collection[] = [
                 'No' => $no++,
-                'Name' => $Alumni->name ?? '',
-                'Img' => $Alumni->img ?? '',
-                'Desc' => $Alumni->desc ?? '',
+                'Nama' => $Alumni->name ?? '',
+                'Tahun Masuk' => $Alumni->class_year ?? '',
+                'Tahun Lulus' => $Alumni->graduation_year ?? '',
+                'Pekerjaan' => $Alumni->work ?? '',
+                'Perusahaan' => $Alumni->company ?? '',
             ];
         }
 
@@ -39,16 +41,18 @@ class AlumniExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
             [''],
             [
                 'No',
-                'Name',
-                'Img',
-                'Desc',
+                'Nama',
+                'Tahun Masuk',
+                'Tahun Lulus',
+                'Pekerjaan',
+                'Perusahaan',
             ]
         ];
     }
 
     public function styles(Worksheet $sheet)
     {
-        $sheet->mergeCells('A1:D1');
+        $sheet->mergeCells('A1:F1');
 
         $borderStyle = [
             'borders' => [

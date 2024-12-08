@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        Jadwal Kuliah
+        Jadwal Event
     </x-slot>
 
     <!-- Button Form Create -->

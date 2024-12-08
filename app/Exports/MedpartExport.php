@@ -22,9 +22,8 @@ class MedpartExport implements FromCollection, WithHeadings, WithStyles, ShouldA
         foreach ($Medparts as $Medpart) {
             $collection[] = [
                 'No' => $no++,
-                'Name' => $Medpart->name ?? '',
-                'Img' => $Medpart->img ?? '',
-                'Desc' => $Medpart->desc ?? '',
+                'Nama' => $Medpart->name ?? '',
+                'Tautan' => $Medpart->link ?? '',
             ];
         }
 
@@ -39,16 +38,15 @@ class MedpartExport implements FromCollection, WithHeadings, WithStyles, ShouldA
             [''],
             [
                 'No',
-                'Name',
-                'Img',
-                'Desc',
+                'Nama',
+                'Tautan',
             ]
         ];
     }
 
     public function styles(Worksheet $sheet)
     {
-        $sheet->mergeCells('A1:D1');
+        $sheet->mergeCells('A1:C1');
 
         $borderStyle = [
             'borders' => [

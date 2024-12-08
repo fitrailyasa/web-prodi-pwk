@@ -22,9 +22,10 @@ class LinkExport implements FromCollection, WithHeadings, WithStyles, ShouldAuto
         foreach ($Links as $Link) {
             $collection[] = [
                 'No' => $no++,
-                'Name' => $Link->name ?? '',
-                'Img' => $Link->img ?? '',
-                'Desc' => $Link->desc ?? '',
+                'Nama' => $Link->name ?? '',
+                'Deskripsi' => $Link->desc ?? '',
+                'Tautan' => $Link->link ?? '',
+                'Kategori' => $Link->category ?? '',
             ];
         }
 
@@ -39,9 +40,10 @@ class LinkExport implements FromCollection, WithHeadings, WithStyles, ShouldAuto
             [''],
             [
                 'No',
-                'Name',
-                'Img',
-                'Desc',
+                'Nama',
+                'Deskripsi',
+                'Tautan',
+                'Kategori',
             ]
         ];
     }

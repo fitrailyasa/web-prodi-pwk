@@ -14,7 +14,7 @@ class Berita extends Model
     protected $connection;
     protected $table = 'beritas';
     protected $primaryKey = 'id';
-    protected $fillable = ['id', 'name', 'slug', 'desc', 'img', 'tag_id', 'user_id'];
+    protected $fillable = ['id', 'name', 'slug', 'desc', 'img', 'status', 'event_date', 'publish_date', 'tag_id', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 
     public static function setDynamicConnection()
@@ -43,5 +43,10 @@ class Berita extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function tag()
+    {
+        return $this->belongsTo(Tag::class, 'tag_id', 'id');
     }
 }

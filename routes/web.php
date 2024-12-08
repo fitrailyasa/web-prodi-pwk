@@ -151,6 +151,3 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/matkul/deleteAll', [AdminMatkulController::class, 'destroyAll'])->name('matkul.destroyAll');
     });
 });
-
-// Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/{link}/{category}', [HomeController::class, 'show'])->name('beranda.show');

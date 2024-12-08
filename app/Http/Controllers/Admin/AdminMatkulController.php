@@ -9,6 +9,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\MatkulImport;
 use App\Exports\MatkulExport;
 use App\Http\Requests\MatkulRequest;
+use Carbon\Carbon;
+Carbon::setLocale('id');
 
 class AdminMatkulController extends Controller
 {

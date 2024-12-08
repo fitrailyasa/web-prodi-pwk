@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Berita;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\BeritaImport;
 use App\Exports\BeritaExport;
 use App\Http\Requests\BeritaRequest;
+use Carbon\Carbon;
+Carbon::setLocale('id');
 
 class AdminBeritaController extends Controller
 {
@@ -24,6 +27,8 @@ class AdminBeritaController extends Controller
 
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
+        $tags = Tag::all();
+
         if ($search) {
             $beritas = Berita::where('name', 'like', "%{$search}%")
                 ->paginate($validPerPage);
@@ -33,7 +38,7 @@ class AdminBeritaController extends Controller
 
         $counter = ($beritas->currentPage() - 1) * $beritas->perPage() + 1;
 
-        return view("admin.berita.index", compact('beritas', 'counter', 'search', 'perPage'));
+        return view("admin.berita.index", compact('beritas', 'tags', 'counter', 'search', 'perPage'));
     }
 
     public function import(Request $request)
@@ -55,6 +60,7 @@ class AdminBeritaController extends Controller
     public function store(BeritaRequest $request)
     {
         $validatedData = $request->validated();
+        // dd($validatedData);
         $validatedData['user_id'] = auth()->id();
 
         Berita::create($validatedData);
