@@ -68,7 +68,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item ms-3">
+                    <li class="nav-item">
                         <a href="{{ route('admin.matkul.index') }}"
                             class="nav-link text-white {{ Request::routeIs('admin.matkul.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-book"></i>
@@ -95,7 +95,7 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item ms-3">
+                    <li class="nav-item">
                         <a href="{{ route('admin.jadwal.index') }}"
                             class="nav-link text-white {{ Request::routeIs('admin.jadwal.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-calendar"></i>
