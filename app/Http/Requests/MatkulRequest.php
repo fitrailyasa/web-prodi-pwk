@@ -33,7 +33,7 @@ class MatkulRequest extends FormRequest
             'credits' => 'required|max_digits:values:4',
             'lecture' => 'required|max:100',
             'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'jadwal_id' => 'required',
+            'jadwal' => 'required',
         ];
     }
 }

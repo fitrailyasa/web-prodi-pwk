@@ -22,7 +22,7 @@ class MatkulFactory extends Factory
             'credits' => fake()->numberBetween(1, 4),
             'lecture' => fake()->name(),
             'img' => 'logo.png',
-            'jadwal_id' => 1,
+            'date' => fake()->date(),
             'user_id' => 1
         ];
     }

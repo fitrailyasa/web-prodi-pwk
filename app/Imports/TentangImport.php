@@ -3,7 +3,6 @@
 namespace App\Imports;
 
 use App\Models\Tentang;
-use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 

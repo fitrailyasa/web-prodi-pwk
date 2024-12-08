@@ -21,9 +21,9 @@ class MedpartExport implements FromCollection, WithHeadings, WithStyles, ShouldA
 
         foreach ($Medparts as $Medpart) {
             $collection[] = [
-                'no' => $no++,
-                'name' => $Medpart->name ?? '',
-                'link' => $Medpart->link ?? '',
+                'No' => $no++,
+                'Nama' => $Medpart->name ?? '',
+                'Tautan' => $Medpart->link ?? '',
             ];
         }
 
@@ -37,9 +37,9 @@ class MedpartExport implements FromCollection, WithHeadings, WithStyles, ShouldA
         return [
             [''],
             [
-                'no',
-                'name',
-                'link',
+                'No',
+                'Nama',
+                'Tautan',
             ]
         ];
     }

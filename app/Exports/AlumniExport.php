@@ -21,12 +21,12 @@ class AlumniExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
 
         foreach ($Alumnis as $Alumni) {
             $collection[] = [
-                'no' => $no++,
-                'name' => $Alumni->name ?? '',
-                'class_year' => $Alumni->class_year ?? '',
-                'graduation_year' => $Alumni->graduation_year ?? '',
-                'work' => $Alumni->work ?? '',
-                'company' => $Alumni->company ?? '',
+                'No' => $no++,
+                'Nama' => $Alumni->name ?? '',
+                'Tahun Masuk' => $Alumni->class_year ?? '',
+                'Tahun Lulus' => $Alumni->graduation_year ?? '',
+                'Pekerjaan' => $Alumni->work ?? '',
+                'Perusahaan' => $Alumni->company ?? '',
             ];
         }
 
@@ -40,12 +40,12 @@ class AlumniExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
         return [
             [''],
             [
-                'no',
-                'name',
-                'class_year',
-                'graduation_year',
-                'work',
-                'company',
+                'No',
+                'Nama',
+                'Tahun Masuk',
+                'Tahun Lulus',
+                'Pekerjaan',
+                'Perusahaan',
             ]
         ];
     }

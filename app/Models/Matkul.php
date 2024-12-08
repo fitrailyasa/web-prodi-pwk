@@ -14,7 +14,7 @@ class Matkul extends Model
     protected $connection;
     protected $table = 'matkuls';
     protected $primaryKey = 'id';
-    protected $fillable = ['id', 'name', 'desc', 'slug', 'credits', 'lecture', 'img', 'jadwal_id', 'user_id'];
+    protected $fillable = ['id', 'name', 'desc', 'slug', 'credits', 'lecture', 'img', 'date', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 
     public static function setDynamicConnection()

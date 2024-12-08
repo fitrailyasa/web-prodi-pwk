@@ -22,7 +22,7 @@ class TagExport implements FromCollection, WithHeadings, WithStyles, ShouldAutoS
         foreach ($tags as $tag) {
             $collection[] = [
                 'No' => $no++,
-                'Name' => $tag->name ?? '',
+                'Nama' => $tag->name ?? '',
             ];
         }
 
@@ -37,7 +37,7 @@ class TagExport implements FromCollection, WithHeadings, WithStyles, ShouldAutoS
             [''],
             [
                 'No',
-                'Name',
+                'Nama',
             ]
         ];
     }

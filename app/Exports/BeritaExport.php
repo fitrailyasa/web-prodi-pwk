@@ -19,17 +19,15 @@ class BeritaExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
         $no = 1;
         $Beritas = Berita::all();
 
-
-
         foreach ($Beritas as $Berita) {
             $collection[] = [
-                'no' => $no++,
-                'name' => $Berita->name ?? '',
-                'desc' => $Berita->desc ?? '',
-                'status' => $Berita->status ?? '',
-                'publish_date' => $Berita->publish_date ?? '',
-                'event_date' => $Berita->event_date ?? '',
-                'tag_id' => $Berita->tag->name ?? '',
+                'No' => $no++,
+                'Nama' => $Berita->name ?? '',
+                'Deskripsi' => $Berita->desc ?? '',
+                'Status' => $Berita->status ?? '',
+                'Tanggal Pelaksanaan' => $Berita->event_date ?? '',
+                'Tanggal Publish' => $Berita->publish_date ?? '',
+                'Tag Berita' => $Berita->tag->name ?? '',
             ];
         }
 
@@ -43,13 +41,13 @@ class BeritaExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
         return [
             [''],
             [
-                'no',
-                'name',
-                'desc',
-                'status',
-                'publish_date',
-                'event_date',
-                'tag_id',
+                'No',
+                'Nama',
+                'Deskripsi',
+                'Status',
+                'Tanggal Pelaksanaan',
+                'Tanggal Publish',
+                'Tag Berita',
             ]
         ];
     }
