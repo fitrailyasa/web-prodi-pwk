@@ -60,7 +60,7 @@ class AdminBeritaController extends Controller
     public function store(BeritaRequest $request)
     {
         $validatedData = $request->validated();
-        dd($validatedData);
+        // dd($validatedData);
         $validatedData['user_id'] = auth()->id();
 
         Berita::create($validatedData);

@@ -72,11 +72,11 @@
                                 id="status" required>
                                 <option value="">-- Pilih Status --</option>
                                 <option value="publish"
-                                    {{ old('status', $content->status ?? '') == 'publish' ? 'selected' : '' }}>
+                                    {{ old('status', $berita->status ?? '') == 'publish' ? 'selected' : '' }}>
                                     Publish
                                 </option>
                                 <option value="unpublish"
-                                    {{ old('status', $content->status ?? '') == 'unpublish' ? 'selected' : '' }}>
+                                    {{ old('status', $berita->status ?? '') == 'unpublish' ? 'selected' : '' }}>
                                     Unpublish
                                 </option>
                             </select>
@@ -93,7 +93,7 @@
                                 <option value="">-- Pilih Tag --</option>
                                 @foreach ($tags as $tag)
                                     <option value="{{ $tag->id }}"
-                                        {{ old('tag_id', $content->tag_id ?? '') == $tag->id ? 'selected' : '' }}>
+                                        {{ old('tag_id', $berita->tag_id ?? '') == $tag->id ? 'selected' : '' }}>
                                         {{ $tag->name }}
                                     </option>
                                 @endforeach
