@@ -22,8 +22,8 @@ class MatkulExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
         foreach ($Matkuls as $Matkul) {
             $collection[] = [
                 'No' => $no++,
-                'Nama' => $Matkul->name ?? '',
-                'Deskripsi' => $Matkul->desc ?? '',
+                'Nama Matkul' => $Matkul->name ?? '',
+                'Kode Matkul' => $Matkul->code ?? '',
                 'Jumlah SKS' => $Matkul->credits ?? '',
                 'Nama Dosen' => $Matkul->lecture ?? '',
                 'Tanggal' => $Matkul->date ?? '',
@@ -41,8 +41,8 @@ class MatkulExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
             [''],
             [
                 'No',
-                'Nama',
-                'Deskripsi',
+                'Nama Matkul',
+                'Kode Matkul',
                 'Jumlah SKS',
                 'Nama Dosen',
                 'Tanggal',

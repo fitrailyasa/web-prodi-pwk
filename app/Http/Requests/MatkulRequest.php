@@ -29,7 +29,7 @@ class MatkulRequest extends FormRequest
 
         return [
             'name' => 'required|max:100',
-            'desc' => 'required|max:1000',
+            'code' => 'required|max:10',
             'credits' => 'required|max_digits:values:4',
             'lecture' => 'required|max:100',
             'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',

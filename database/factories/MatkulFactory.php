@@ -18,11 +18,10 @@ class MatkulFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'desc' => fake()->realText(100),
+            'code' => fake()->randomElement(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']) . fake()->numberBetween(100, 999),
             'credits' => fake()->numberBetween(1, 4),
             'lecture' => fake()->name(),
-            'img' => 'logo.png',
-            'date' => fake()->date(),
+            'date' => fake()->dateTimeBetween('-1 year', 'now')->format('Y-m-d'),
             'user_id' => 1
         ];
     }

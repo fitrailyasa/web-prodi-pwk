@@ -22,9 +22,9 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Nama') }}</label>
+                            <label class="form-label">{{ __('Nama Matkul') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="nama" name="name" id="name" value="{{ old('name') }}" required>
+                                placeholder="Matematika Dasar 1B" name="name" id="name" value="{{ old('name') }}" required>
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -32,29 +32,42 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Gambar') }}</label>
-                            <input id="image-input" accept="image/*" type="file"
-                                class="form-control @error('img') is-invalid @enderror" placeholder="img" name="img"
-                                id="img" value="{{ old('img') }}">
-                            @error('img')
+                            <label class="form-label">{{ __('Kode Matkul') }}</label>
+                            <input type="text" class="form-control @error('code') is-invalid @enderror"
+                                placeholder="MA1104" name="code" id="code" value="{{ old('code') }}" required>
+                            @error('code')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Jumlah SKS') }}</label>
+                            <input type="number" class="form-control @error('credits') is-invalid @enderror"
+                                placeholder="3" name="credits" id="credits" value="{{ old('credits') }}" required>
+                            @error('credits')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Tanggal Pelaksanaan') }}</label>
+                            <input type="date" class="form-control @error('date') is-invalid @enderror"
+                                placeholder="" name="date" id="date" value="{{ old('date') }}" required>
+                            @error('date')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Deskripsi') }}</label>
-                            <textarea class="form-control @error('desc') is-invalid @enderror" placeholder="deskripsi" name="desc" id="desc"
-                                rows="3">{{ old('desc') }}</textarea>
-                            @error('desc')
+                            <label class="form-label">{{ __('Nama Dosen') }}</label>
+                            <input type="text" class="form-control @error('lecture') is-invalid @enderror"
+                                placeholder="Dr. Kurniawan, S.P.W.K., M.P.W.K." name="lecture" id="lecture" value="{{ old('lecture') }}" required>
+                            @error('lecture')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-12 text-center">
-                        <div class="mb-3">
-                            <img class="img-fluid py-3" id="image-preview" width="200px"
-                                src="{{ asset('assets/profile/default.png') }}" alt="Image Preview">
                         </div>
                     </div>
                 </div>

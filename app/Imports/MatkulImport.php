@@ -11,7 +11,7 @@ class MatkulImport implements ToModel, WithStartRow
     public function model(array $row)
     {
         $name = $row[1];
-        $desc = $row[2];
+        $code = $row[2];
         $credits = $row[3];
         $lecture = $row[4];
         $date = $row[5];
@@ -21,7 +21,7 @@ class MatkulImport implements ToModel, WithStartRow
 
         if ($checkMatkul) {
             $checkMatkul->update([
-                'desc' => $desc,
+                'code' => $code,
                 'credits' => $credits,
                 'lecture' => $lecture,
                 'date' => $date,
@@ -32,7 +32,7 @@ class MatkulImport implements ToModel, WithStartRow
         } else {
             return new Matkul([
                 'name' => $name,
-                'desc' => $desc,
+                'code' => $code,
                 'credits' => $credits,
                 'lecture' => $lecture,
                 'date' => $date,
