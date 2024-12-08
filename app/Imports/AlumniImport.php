@@ -15,6 +15,7 @@ class AlumniImport implements ToModel, WithStartRow
         $graduation_year = $row[3];
         $work = $row[4];
         $company = $row[5];
+        $user_id = auth()->user()->id;
 
         $checkAlumni = Alumni::where('name', $name)->first();
 
@@ -24,6 +25,7 @@ class AlumniImport implements ToModel, WithStartRow
                 'graduation_year' => $graduation_year,
                 'work' => $work,
                 'company' => $company,
+                'user_id' => $user_id,
             ]);
 
             return null;
@@ -34,6 +36,7 @@ class AlumniImport implements ToModel, WithStartRow
                 'graduation_year' => $graduation_year,
                 'work' => $work,
                 'company' => $company,
+                'user_id' => $user_id,
             ]);
         }
     }

@@ -11,12 +11,14 @@ class TagImport implements ToModel, WithStartRow
     public function model(array $row)
     {
         $name = $row[1];
+        $user_id = auth()->user()->id;
 
         $checkTag = Tag::where('name', $name)->first();
 
         if (!$checkTag) {
             return new Tag([
                 'name' => $name,
+                'user_id' => $user_id,
             ]);
         }
 

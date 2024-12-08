@@ -17,6 +17,7 @@ class BeritaImport implements ToModel, WithStartRow
         $event_date = $row[4];
         $publish_date = $row[5];
         $tag = $row[6];
+        $user_id = auth()->user()->id;
 
         // tag id by name
         $tag = Tag::where('name', $tag)->first();
@@ -30,6 +31,7 @@ class BeritaImport implements ToModel, WithStartRow
                 'event_date' => $event_date,
                 'publish_date' => $publish_date,
                 'tag_id' => $tag->id,
+                'user_id' => $user_id,
             ]);
 
             return null;
@@ -41,6 +43,7 @@ class BeritaImport implements ToModel, WithStartRow
                 'event_date' => $event_date,
                 'publish_date' => $publish_date,
                 'tag_id' => $tag->id,
+                'user_id' => $user_id,
             ]);
         }
     }

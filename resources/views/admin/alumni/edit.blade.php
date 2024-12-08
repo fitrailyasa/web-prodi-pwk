@@ -40,7 +40,7 @@
                         <div class="mb-3">
                             <label class="form-label">{{ __('Tahun Masuk') }}</label>
                             <input type="number" class="form-control @error('class_year') is-invalid @enderror"
-                                placeholder="Tahun Masuk" name="class_year" id="class_year"
+                                placeholder="2020" name="class_year" id="class_year"
                                 value="{{ old('class_year', $alumni->class_year) }}" required>
                             @error('class_year')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -53,7 +53,7 @@
                         <div class="mb-3">
                             <label class="form-label">{{ __('Tahun Lulus') }}</label>
                             <input type="number" class="form-control @error('graduation_year') is-invalid @enderror"
-                                placeholder="Tahun Lulus" name="graduation_year" id="graduation_year"
+                                placeholder="2024" name="graduation_year" id="graduation_year"
                                 value="{{ old('graduation_year', $alumni->graduation_year) }}" required>
                             @error('graduation_year')
                                 <div class="invalid-feedback">{{ $message }}</div>

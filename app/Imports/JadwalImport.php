@@ -13,6 +13,7 @@ class JadwalImport implements ToModel, WithStartRow
         $name = $row[1];
         $img = $row[2] ?? null;
         $desc = $row[3] ?? null;
+        $user_id = auth()->user()->id;
 
         $checkJadwal = Jadwal::where('name', $name)->first();
 
@@ -20,6 +21,7 @@ class JadwalImport implements ToModel, WithStartRow
             $checkJadwal->update([
                 'img' => $img,
                 'desc' => $desc,
+                'user_id' => $user_id,
             ]);
 
             return null;
@@ -28,6 +30,7 @@ class JadwalImport implements ToModel, WithStartRow
                 'name' => $name,
                 'img' => $img,
                 'desc' => $desc,
+                'user_id' => $user_id,
             ]);
         }
     }

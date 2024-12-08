@@ -12,12 +12,14 @@ class MedpartImport implements ToModel, WithStartRow
     {
         $name = $row[1];
         $link = $row[2] ?? null;
+        $user_id = auth()->user()->id;
 
         $checkMedpart = Medpart::where('name', $name)->first();
 
         if ($checkMedpart) {
             $checkMedpart->update([
                 'link' => $link,
+                'user_id' => $user_id,
             ]);
 
             return null;
@@ -25,6 +27,7 @@ class MedpartImport implements ToModel, WithStartRow
             return new Medpart([
                 'name' => $name,
                 'link' => $link,
+                'user_id' => $user_id,
             ]);
         }
     }

@@ -32,6 +32,7 @@ class AlumniRequest extends FormRequest
             'class_year' => 'required|max_digits:values:4',
             'graduation_year' => 'required|max_digits:values:4',
             'work' => 'required|max:100',
+            'company' => 'required|max:100',
             'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }

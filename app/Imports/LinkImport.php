@@ -10,11 +10,11 @@ class LinkImport implements ToModel, WithStartRow
 {
     public function model(array $row)
     {
-        // 'name', 'desc', 'link', 'img', 'category',
         $name = $row[1];
         $desc = $row[2] ?? null;
         $link = $row[3] ?? null;
         $category = $row[4] ?? null;
+        $user_id = auth()->user()->id;
 
         $checkLink = Link::where('name', $name)->first();
 
@@ -23,6 +23,7 @@ class LinkImport implements ToModel, WithStartRow
                 'desc' => $desc,
                 'link' => $link,
                 'category' => $category,
+                'user_id' => $user_id,
             ]);
 
             return null;
@@ -32,6 +33,7 @@ class LinkImport implements ToModel, WithStartRow
                 'desc' => $desc,
                 'link' => $link,
                 'category' => $category,
+                'user_id' => $user_id,
             ]);
         }
     }

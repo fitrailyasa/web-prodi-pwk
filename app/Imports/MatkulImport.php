@@ -15,6 +15,7 @@ class MatkulImport implements ToModel, WithStartRow
         $credits = $row[3];
         $lecture = $row[4];
         $date = $row[5];
+        $user_id = auth()->user()->id;
 
         $checkMatkul = Matkul::where('name', $name)->first();
 
@@ -24,6 +25,7 @@ class MatkulImport implements ToModel, WithStartRow
                 'credits' => $credits,
                 'lecture' => $lecture,
                 'date' => $date,
+                'user_id' => $user_id,
             ]);
 
             return null;
@@ -34,6 +36,7 @@ class MatkulImport implements ToModel, WithStartRow
                 'credits' => $credits,
                 'lecture' => $lecture,
                 'date' => $date,
+                'user_id' => $user_id,
             ]);
         }
     }
