@@ -1,21 +1,23 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform, Variants } from 'framer-motion'
 import ControlCenterMac from '@/Components/ControlCenterMac'
 
 interface BouncingAnimationProps {
     children: React.ReactNode
+    id: string
     className?: string
     macControlCenter?: boolean
 }
 
 export const SectionTrigerScroll: React.FC<BouncingAnimationProps> = ({
     children,
+    id,
     className,
     macControlCenter = false
 }) => {
-    const ref = useRef<HTMLDivElement>(null)
+    const sectionRef = useRef<HTMLDivElement>(null)
     const { scrollYProgress } = useScroll({
-        target: ref,
+        target: sectionRef,
         offset: ['0 1', '1.33 1']
     })
 
@@ -23,7 +25,8 @@ export const SectionTrigerScroll: React.FC<BouncingAnimationProps> = ({
     const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1])
     return (
         <motion.div
-            ref={ref}
+            id={id}
+            ref={sectionRef}
             style={{ scale: scaleProgress, opacity: opacityProgress }}
         >
             <section className={className}>

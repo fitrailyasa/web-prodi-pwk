@@ -40,14 +40,16 @@ const EvenContainer: React.FC<eventTypes> = ({
                                 ` - ${eventEnd.date}, ${eventEnd.month}`}
                         </span>
                     </div>
-                    <h1 className="text-lg font-bold text-nowrap">{title}</h1>
+                    <h1 className="text-lg font-bold md:text-nowrap ">
+                        {title}
+                    </h1>
                 </div>
             </button>
 
             <Modal
                 isOpen={isOpen}
                 size="4xl"
-                placement="top-center"
+                placement="bottom-center"
                 onOpenChange={onOpenChange}
             >
                 <ModalContent>

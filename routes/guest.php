@@ -5,10 +5,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'name' => 'Laravel'
-    ]);
-})->name('beranda');
+    return redirect()->route('home');
+});
 
 Route::get('/home', function () {
     return Inertia::render('Home', [
@@ -21,6 +19,14 @@ Route::get('/about', function () {
         'name' => 'test'
     ]);
 })->name('about');
+
+
+// akadmik
+Route::get('/kalender-akademik', function () {
+    return Inertia::render('Akademik/KalenderAkademik', [
+        'name' => 'test'
+    ]);
+})->name('kalender-akademik');
 
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita');
 Route::get('/berita/{id}', [BeritaController::class, 'show'])->name('berita.show');

@@ -7,16 +7,12 @@ import NextIcon from '@/Components/Icon/NextIcon'
 import PrevIcon from '@/Components/Icon/PrevIcon'
 import EvenContainer from '@/Components/home/EvenContainer'
 import { SliderNews } from '@/Components/home/SliderNews'
-import {
-    beritaConstants,
-    eventsConstants,
-    logoBox,
-    misiConstants
-} from '@/Constants'
+import { beritaConstants, eventsConstants, misiConstants } from '@/Constants'
 import { DateFormater } from '@/Helper/DateFormater'
 import AppLayout from '@/Layouts/AppLayout'
 import { Button, Image } from '@nextui-org/react'
-import React, { ReactNode, useRef, useState } from 'react'
+import { useScroll } from 'framer-motion'
+import React, { ReactNode, useEffect, useRef, useState } from 'react'
 
 export default function Home() {
     const [pageIndicator, setPageIndicator] = useState<ReactNode>(null)
@@ -24,111 +20,134 @@ export default function Home() {
         sliderFunction: (newDirection: number) => void
     }>(null)
 
+    const newsCurentRef = useRef(null)
+    const [isInView, setIsInView] = useState(false)
+
+    const newsScorllObserver = useScroll({
+        target: newsCurentRef
+    })
+
+    const logoBox = '/assets/img/logo-box.png'
+
     const handleSlideBTN = (newDirection: number) => {
         sliderRef.current?.sliderFunction(newDirection)
     }
 
+    newsScorllObserver.scrollYProgress.on('change', value => {
+        if (value > 0) {
+            setIsInView(true)
+        } else {
+            setIsInView(false)
+        }
+    })
+    useEffect(() => {
+        handleSlideBTN(1)
+    }, [isInView])
+
     return (
         <AppLayout title="home">
-            <div className="container mx-auto px-4 py-3">
-                <SectionTrigerScroll className="">
-                    <BouncingAnimation
-                        index={0}
-                        className="flex justify-between pb-2"
-                    >
-                        <div className="flex gap-2 items-center flex-wrap">
-                            <h1 className="text-2xl font-bold pe-10">
-                                Berita Terpopular
-                            </h1>
-                        </div>
-                        <div className="flex gap-2">
-                            <Button
-                                onClick={() => handleSlideBTN(-1)}
-                                className="bg-gray-200 rounded-full shadow-md hover:bg-gray-200 focus:outline-none"
-                            >
-                                <PrevIcon
-                                    className="justify-center flex"
-                                    size={24}
-                                />
-                            </Button>
-                            <Button
-                                onClick={() => handleSlideBTN(-1)}
-                                className="bg-gray-200 rounded-full shadow-md hover:bg-gray-200 focus:outline-none"
-                            >
-                                <NextIcon
-                                    className="justify-center flex"
-                                    size={24}
-                                />
-                            </Button>
-                        </div>
-                    </BouncingAnimation>
+            <div className="container mx-auto px-4 py-3 relative">
+                <SectionTrigerScroll id={'beritaslider'} className="">
+                    <div ref={newsCurentRef}>
+                        <BouncingAnimation
+                            index={0}
+                            className="flex justify-between pb-2"
+                        >
+                            <div className="flex gap-2 items-center flex-wrap">
+                                <h1 className="text-2xl font-bold pe-10">
+                                    Berita Terpopular
+                                </h1>
+                            </div>
+                            <div className="flex gap-2">
+                                <Button
+                                    onClick={() => handleSlideBTN(-1)}
+                                    className="bg-gray-200 rounded-full shadow-md hover:bg-gray-200 focus:outline-none"
+                                >
+                                    <PrevIcon
+                                        className="justify-center flex"
+                                        size={24}
+                                    />
+                                </Button>
+                                <Button
+                                    onClick={() => handleSlideBTN(-1)}
+                                    className="bg-gray-200 rounded-full shadow-md hover:bg-gray-200 focus:outline-none"
+                                >
+                                    <NextIcon
+                                        className="justify-center flex"
+                                        size={24}
+                                    />
+                                </Button>
+                            </div>
+                        </BouncingAnimation>
 
-                    <SliderNews
-                        autoSlide={true}
-                        ref={sliderRef}
-                        getPageIndicator={setPageIndicator}
-                        className="h-56 md:h-96 "
-                    >
-                        {beritaConstants.map((item, index) => (
-                            <div
-                                key={index}
-                                className="w-full h-56 md:h-96 bg-cover bg-center rounded-3xl overflow-hidden border shadow-xl bg-white"
-                            >
-                                <div className="grid grid-cols-2 rounded-3xl bg-sk">
-                                    <div className="relative">
-                                        <div className=" absolute bottom-0 right-0  bg-main-blue bg-opacity-40 self-end h-8 w-10"></div>
-                                        <p className="absolute rounded-3xl w-full bg-white h-full flex flex-1 px-5 items-center text-2xl font-bold z-10">
-                                            Kategori Berita
-                                        </p>
-                                    </div>
-                                    <div className="bg-white  rounded-t-3xl overflow-hidden">
-                                        <div className="bg-main-blue bg-opacity-40 py-4 px-4 flex">
-                                            <Button className="bg-main-green font-semibold text-white inline-block rounded-lg">
-                                                Baca Selengkapnya
-                                            </Button>
+                        <SliderNews
+                            autoSlide={isInView}
+                            ref={sliderRef}
+                            getPageIndicator={setPageIndicator}
+                            className="h-56 md:h-96 "
+                        >
+                            {beritaConstants.map((item, index) => (
+                                <div
+                                    key={index}
+                                    className="w-full h-56 md:h-96 bg-cover bg-center rounded-3xl overflow-hidden border shadow-xl bg-white"
+                                >
+                                    <div className="grid grid-cols-2 rounded-3xl bg-sk">
+                                        <div className="relative">
+                                            <div className=" absolute bottom-0 right-0  bg-main-blue bg-opacity-40 self-end h-8 w-10"></div>
+                                            <p className="absolute rounded-3xl w-full bg-white h-full flex flex-1 px-5 items-center text-2xl font-bold z-10">
+                                                Kategori Berita
+                                            </p>
+                                        </div>
+                                        <div className="bg-white  rounded-t-3xl overflow-hidden">
+                                            <div className="bg-main-blue bg-opacity-40 py-4 px-4 flex">
+                                                <Button className="bg-main-green font-semibold text-white inline-block rounded-lg">
+                                                    Baca Selengkapnya
+                                                </Button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="bg-main-blue bg-opacity-40 col-span-2 rounded-l-3xl rounded-b-3xl p-4">
-                                    <div className="grid grid-cols-5 justify-between ">
-                                        <div className="col-span-3 overflow-hidden h-full">
-                                            <ControlCenterMac className="pb-3" />
-                                            <p className="text-white  text-md md:text-4xl pb-1 md:pb-10 font-semibold md:font-bold me-2 md:me-10 overflow-hidden line-clamp-3">
-                                                {item.title}
-                                            </p>
-                                            <div className="">
-                                                <p className="text-black text-xs md:text-sm ">
-                                                    {DateFormater({
-                                                        date: item.date
-                                                    })}
+                                    <div className="bg-main-blue bg-opacity-40 col-span-2 rounded-l-3xl rounded-b-3xl p-4">
+                                        <div className="grid grid-cols-5 justify-between ">
+                                            <div className="col-span-3 overflow-hidden h-full">
+                                                <ControlCenterMac className="pb-3" />
+                                                <p className="text-white  text-md md:text-4xl pb-1 md:pb-10 font-semibold md:font-bold me-2 md:me-10 overflow-hidden line-clamp-3">
+                                                    {item.title}
                                                 </p>
-                                                <div className="flex gap-2 py-2">
-                                                    {pageIndicator}
+                                                <div className="">
+                                                    <p className="text-black text-xs md:text-sm ">
+                                                        {DateFormater({
+                                                            date: item.date
+                                                        })}
+                                                    </p>
+                                                    <div className="flex gap-2 py-2">
+                                                        {pageIndicator}
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <BouncingAnimation
+                                                key={index}
+                                                className="col-span-2 relative -end-5 -top-2 md:-top-8 lg:-top-14 aspect-square"
+                                            >
+                                                <div className="rounded-full overflow-hidden border-3 border-main-green p-2">
+                                                    <Image
+                                                        src={item.image}
+                                                        alt={item.title}
+                                                        className=" aspect-square object-cover object-bottom rounded-full"
+                                                    />
+                                                </div>
+                                                <div className="absolute -left-8 top-0 md:-left-12 md:top-10 lg:-left-20 w-20 h-20 lg:w-40 lg:h-40 bg-main-blue shadow-lg shadow-black/25 backdrop-blur-md rounded-full opacity-65 z-0"></div>
+                                                <div className="absolute bottom-0 left-2 md:left-10 w-10 h-10 lg:w-28 lg:h-28 bg-yellow-400 shadow-lg shadow-black/25 backdrop-blur-md opacity-80  rounded-tl-[70%] rounded-tr-full rounded-br-[30%] z-10"></div>
+                                            </BouncingAnimation>
                                         </div>
-                                        <BouncingAnimation
-                                            index={3}
-                                            className="col-span-2 relative -end-5 -top-2 md:-top-8 lg:-top-14 aspect-square"
-                                        >
-                                            <div className="rounded-full overflow-hidden border-3 border-main-green p-2">
-                                                <Image
-                                                    src={item.image}
-                                                    alt={item.title}
-                                                    className=" aspect-square object-cover object-bottom rounded-full"
-                                                />
-                                            </div>
-                                            <div className="absolute -left-8 top-0 md:-left-12 md:top-10 lg:-left-20 w-20 h-20 lg:w-40 lg:h-40 bg-main-blue shadow-lg shadow-black/25 backdrop-blur-md rounded-full opacity-65 z-0"></div>
-                                            <div className="absolute bottom-0 left-2 md:left-10 w-10 h-10 lg:w-28 lg:h-28 bg-yellow-400 shadow-lg shadow-black/25 backdrop-blur-md opacity-80  rounded-tl-[70%] rounded-tr-full rounded-br-[30%] z-10"></div>
-                                        </BouncingAnimation>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
-                    </SliderNews>
+                            ))}
+                        </SliderNews>
+                    </div>
                 </SectionTrigerScroll>
                 {/* //stratistik section */}
                 <SectionTrigerScroll
+                    id={'statistik'}
                     macControlCenter
                     className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
                 >
@@ -203,6 +222,7 @@ export default function Home() {
                 </SectionTrigerScroll>
                 {/* // abauth section */}
                 <SectionTrigerScroll
+                    id={'tentang'}
                     macControlCenter
                     className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
                 >
@@ -240,6 +260,7 @@ export default function Home() {
                 </SectionTrigerScroll>
                 {/* // visi misi */}
                 <SectionTrigerScroll
+                    id={'visi'}
                     macControlCenter
                     className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
                 >
@@ -264,6 +285,7 @@ export default function Home() {
                 </SectionTrigerScroll>
                 {/* misi */}
                 <SectionTrigerScroll
+                    id={'misi'}
                     macControlCenter
                     className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
                 >
@@ -272,7 +294,10 @@ export default function Home() {
                     </h2>
                     <div className="flex flex-col gap-3 justify-between">
                         {misiConstants.map((item, index) => (
-                            <div className="border p-3 rounded-2xl flex gap-3 items-center">
+                            <div
+                                key={index}
+                                className="border p-3 rounded-2xl flex gap-3 items-center"
+                            >
                                 <MultyPersonIcon
                                     size={60}
                                     className="stroke-main-green fill-main-green"
@@ -285,6 +310,7 @@ export default function Home() {
 
                 {/* even section */}
                 <SectionTrigerScroll
+                    id={'even'}
                     macControlCenter
                     className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
                 >
@@ -307,6 +333,7 @@ export default function Home() {
 
                 {/* med pat */}
                 <SectionTrigerScroll
+                    id={'medpat'}
                     macControlCenter
                     className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
                 >

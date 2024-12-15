@@ -175,7 +175,7 @@ export default function NavBar() {
         },
         {
             title: 'Kalender Akademin',
-            href: '#',
+            href: 'kalender-akademik',
             description: 'Kalender Akademik Institut Teknologi Sumatera',
             icon: <LightBulbIcon className="fill-[#4005e1]" />
         },
@@ -241,7 +241,7 @@ export default function NavBar() {
             className="flex justify-around top-0 z-50"
         >
             <Link
-                href={route('beranda')}
+                href={route('home')}
                 className="font-bold text-inherit w-full"
             >
                 <NavbarBrand>
@@ -260,10 +260,7 @@ export default function NavBar() {
             </Link>
             <NavbarContent className="hidden md:flex" justify="center">
                 <NavbarItem>
-                    <Link
-                        className="text-black text-md"
-                        href={route('beranda')}
-                    >
+                    <Link className="text-black text-md" href={route('home')}>
                         <TypingAnimation
                             text="Beranda"
                             // speed={0.05}
@@ -311,7 +308,7 @@ export default function NavBar() {
                 />
             </NavbarContent>
             <NavbarMenu>
-                <MobileLink href={route('beranda')} title={'Beranda'} />
+                <MobileLink href={route('home')} title={'Beranda'} />
                 <Accordion variant="splitted">
                     <AccordionItem
                         className="hover:bg-gray-100 text-md"
