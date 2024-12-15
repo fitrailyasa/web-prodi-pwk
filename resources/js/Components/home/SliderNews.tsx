@@ -57,7 +57,7 @@ export const SliderNews = React.forwardRef<
                                 ? 'bg-gray-700'
                                 : 'bg-transparent border border-gray-700'
                         }`}
-                    ></button>
+                    />
                 ))}
             </>
         )

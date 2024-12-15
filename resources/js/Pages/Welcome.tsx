@@ -118,7 +118,7 @@ export default function Welcome({ name }: WelcomeProps) {
                             We reached here with our hard work and dedication
                         </p>
                     </div>
-                    <div className=" grid grid-cols-2 gap-5">
+                    <div className=" grid grid-cols-2 g gap-5">
                         <div className="flex gap-4">
                             <MultyPersonIcon
                                 size={74}

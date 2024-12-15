@@ -1,35 +1,22 @@
 import BouncingAnimation from '@/Animation/BouncingAnimation'
+import CountAnimation from '@/Animation/CountAnimation'
 import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
+import ControlCenterMac from '@/Components/ControlCenterMac'
+import MultyPersonIcon from '@/Components/Icon/MultyPersonIcon'
 import NextIcon from '@/Components/Icon/NextIcon'
 import PrevIcon from '@/Components/Icon/PrevIcon'
-import { SliderNews } from '@/Components/SliderNews'
+import EvenContainer from '@/Components/home/EvenContainer'
+import { SliderNews } from '@/Components/home/SliderNews'
+import {
+    beritaConstants,
+    eventsConstants,
+    logoBox,
+    misiConstants
+} from '@/Constants'
 import { DateFormater } from '@/Helper/DateFormater'
 import AppLayout from '@/Layouts/AppLayout'
 import { Button, Image } from '@nextui-org/react'
 import React, { ReactNode, useRef, useState } from 'react'
-
-const berita = [
-    {
-        title: 'Gelar LMBKA Karya Studio Setingkat Nasional',
-        date: new Date(),
-        image: './assets/img/test.png'
-    },
-    {
-        title: 'Staf Pengajar Prodi Desain Komunikasi Visual Raih Penghargaan',
-        date: new Date(),
-        image: './assets/img/test.png'
-    },
-    {
-        title: 'Staf Pengajar Prodi Desain Komunikasi Visual Raih Penghargaan',
-        date: new Date(),
-        image: './assets/img/test.png'
-    },
-    {
-        title: 'Staf Pengajar Prodi Desain Komunikasi Visual Raih Penghargaan',
-        date: new Date(),
-        image: './assets/img/test.png'
-    }
-]
 
 export default function Home() {
     const [pageIndicator, setPageIndicator] = useState<ReactNode>(null)
@@ -40,7 +27,6 @@ export default function Home() {
     const handleSlideBTN = (newDirection: number) => {
         sliderRef.current?.sliderFunction(newDirection)
     }
-    // bg-gradient-to-r from-[#236899] from-10% to-transparent to-110%
 
     return (
         <AppLayout title="home">
@@ -83,7 +69,7 @@ export default function Home() {
                         getPageIndicator={setPageIndicator}
                         className="h-56 md:h-96 "
                     >
-                        {berita.map((item, index) => (
+                        {beritaConstants.map((item, index) => (
                             <div
                                 key={index}
                                 className="w-full h-56 md:h-96 bg-cover bg-center rounded-3xl overflow-hidden border shadow-xl bg-white"
@@ -106,6 +92,7 @@ export default function Home() {
                                 <div className="bg-main-blue bg-opacity-40 col-span-2 rounded-l-3xl rounded-b-3xl p-4">
                                     <div className="grid grid-cols-5 justify-between ">
                                         <div className="col-span-3 overflow-hidden h-full">
+                                            <ControlCenterMac className="pb-3" />
                                             <p className="text-white  text-md md:text-4xl pb-1 md:pb-10 font-semibold md:font-bold me-2 md:me-10 overflow-hidden line-clamp-3">
                                                 {item.title}
                                             </p>
@@ -140,14 +127,210 @@ export default function Home() {
                         ))}
                     </SliderNews>
                 </SectionTrigerScroll>
+                {/* //stratistik section */}
+                <SectionTrigerScroll
+                    macControlCenter
+                    className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
+                >
+                    <div className=" grid grid-cols-1 md:grid-cols-2 gap-10 justify-between">
+                        <div className=" grid grid-cols-2 gap-5">
+                            <div className="flex gap-4 bg-secondary-blue bg-opacity-30 p-4 rounded-3xl">
+                                <MultyPersonIcon
+                                    size={74}
+                                    className="stroke-main-green fill-main-green"
+                                />
+                                <div className="flex flex-col gap-1">
+                                    <CountAnimation
+                                        from={0}
+                                        to={100}
+                                        duration={2}
+                                        className="font-bold text-4xl text-main-green"
+                                    />
+                                    <p className="font-semibold text-lg">
+                                        Mahasiswa
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="flex gap-4 bg-secondary-blue bg-opacity-30 p-4 rounded-3xl">
+                                <MultyPersonIcon
+                                    size={74}
+                                    className="stroke-main-green fill-main-green"
+                                />
+                                <div className="flex flex-col gap-1">
+                                    <CountAnimation
+                                        from={0}
+                                        to={100}
+                                        duration={2}
+                                        className="font-bold text-4xl text-main-green"
+                                    />
+                                    <p className="font-semibold text-lg">
+                                        Dosen
+                                    </p>
+                                </div>
+                            </div>
 
-                <SectionTrigerScroll className="mt-10">
-                    <h1 className="text-4xl font-bold">ini home</h1>
+                            <div className=" flex gap-4 bg-secondary-blue bg-opacity-30 p-4 rounded-3xl">
+                                <MultyPersonIcon
+                                    size={74}
+                                    className="stroke-main-green fill-main-green"
+                                />
+                                <div className="flex flex-col gap-1">
+                                    <CountAnimation
+                                        from={0}
+                                        to={100}
+                                        duration={2}
+                                        className="font-bold text-4xl text-main-green"
+                                    />
+                                    <p className="font-semibold text-lg">
+                                        tendik
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="">
+                            <h1 className="font-bold text-4xl">
+                                Perencanaan Wilayah dan Kota
+                            </h1>
+                            <h1 className="font-bold text-4xl text-main-green py-3">
+                                ITERA
+                            </h1>
+                            <p className="py-4 font-semibold text-lg">
+                                We reached here with our hard work and
+                                dedication
+                            </p>
+                        </div>
+                    </div>
+                </SectionTrigerScroll>
+                {/* // abauth section */}
+                <SectionTrigerScroll
+                    macControlCenter
+                    className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
+                >
+                    <h2 className="font-bold text-3xl pb-4 border-b mb-3">
+                        Tentan PWK ITERA
+                    </h2>
+                    <div className=" grid grid-cols-2 md:grid-cols-5 gap-10 justify-between">
+                        <div className="col-span-3">
+                            <h1 className="text-4xl font-bold">
+                                Perencanaan Wilayah Dan Kota ITERA
+                            </h1>
+                            <p className="py-2">
+                                Lorem ipsum, dolor sit amet consectetur
+                                adipisicing elit. Natus sapiente eaque deleniti
+                                reiciendis sunt explicabo consectetur quae sequi
+                                itaque maiores? Impedit aspernatur eum animi
+                                provident! Perferendis eveniet adipisci sequi
+                                quisquam?
+                            </p>
+
+                            <Button className="bg-main-green font-semibold text-white inline-block">
+                                Baca Selengkapnya
+                            </Button>
+                        </div>
+                        <div className="col-span-2">
+                            <div
+                                className="flex-1 h-full border rounded-2xl"
+                                style={{
+                                    background:
+                                        'url(/assets/img/logo-box.png) center top no-repeat'
+                                }}
+                            ></div>
+                        </div>
+                    </div>
+                </SectionTrigerScroll>
+                {/* // visi misi */}
+                <SectionTrigerScroll
+                    macControlCenter
+                    className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
+                >
+                    <h2 className="font-bold text-3xl pb-4 border-b mb-3">
+                        Visi
+                    </h2>
+                    <div className=" grid grid-cols-2 md:grid-cols-5 gap-10 justify-between">
+                        <div className="col-span-2">
+                            <Image src={logoBox} className="" />
+                        </div>
+                        <div className="col-span-3">
+                            <p className="py-2">
+                                Lorem ipsum, dolor sit amet consectetur
+                                adipisicing elit. Natus sapiente eaque deleniti
+                                reiciendis sunt explicabo consectetur quae sequi
+                                itaque maiores? Impedit aspernatur eum animi
+                                provident! Perferendis eveniet adipisci sequi
+                                quisquam?
+                            </p>
+                        </div>
+                    </div>
+                </SectionTrigerScroll>
+                {/* misi */}
+                <SectionTrigerScroll
+                    macControlCenter
+                    className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
+                >
+                    <h2 className="font-bold text-3xl pb-4 border-b mb-3">
+                        Misi
+                    </h2>
+                    <div className="flex flex-col gap-3 justify-between">
+                        {misiConstants.map((item, index) => (
+                            <div className="border p-3 rounded-2xl flex gap-3 items-center">
+                                <MultyPersonIcon
+                                    size={60}
+                                    className="stroke-main-green fill-main-green"
+                                />
+                                <p className="py-2">{item.title}</p>
+                            </div>
+                        ))}
+                    </div>
                 </SectionTrigerScroll>
 
-                <SectionTrigerScroll className="mt-10 h-screen bg-blue-500">
-                    <h1 className="text-4xl font-bold">ini home</h1>
+                {/* even section */}
+                <SectionTrigerScroll
+                    macControlCenter
+                    className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
+                >
+                    <h2 className="font-bold text-3xl pb-4 border-b mb-3">
+                        Even Terdekat
+                    </h2>
+                    <div className="flex flex-wrap gap-3">
+                        {eventsConstants.map((item, index) => (
+                            <EvenContainer
+                                key={index}
+                                title={item.title}
+                                date={item.date}
+                                dateStart={item.dateStart}
+                                dateEnd={item.dateEnd}
+                                description={item.description}
+                            />
+                        ))}
+                    </div>
                 </SectionTrigerScroll>
+
+                {/* med pat */}
+                <SectionTrigerScroll
+                    macControlCenter
+                    className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
+                >
+                    <h2 className="font-bold text-3xl pb-4 border-b mb-3">
+                        Media Partner
+                    </h2>
+                    <div className="flex flex-wrap gap-3">
+                        {eventsConstants.map((item, index) => (
+                            <EvenContainer
+                                key={index}
+                                title={item.title}
+                                date={item.date}
+                                dateStart={item.dateStart}
+                                dateEnd={item.dateEnd}
+                                description={item.description}
+                            />
+                        ))}
+                    </div>
+                </SectionTrigerScroll>
+
+                {/* other section  */}
+                {/* <SectionTrigerScroll className="mt-10 h-screen bg-blue-500">
+                    <h1 className="text-4xl font-bold">ini home</h1>
+                </SectionTrigerScroll> */}
             </div>
         </AppLayout>
     )

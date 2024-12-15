@@ -1,3 +1,4 @@
+import { Footer } from '@/Components/Footer'
 import AppHead from '../Components/AppHead'
 import NavBar from '../Components/NavBar'
 
@@ -13,6 +14,7 @@ export default function AppLayout({ title, children }: AppLayoutProps) {
             <main className="rounded-xl bg-main-bg min-h-screen">
                 <NavBar />
                 {children}
+                <Footer />
             </main>
         </>
     )
