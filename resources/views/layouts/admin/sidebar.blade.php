@@ -73,7 +73,7 @@
                             class="nav-link text-white {{ Request::routeIs('admin.matkul.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-book"></i>
                             <p>
-                                Mata Kuliah
+                                Jadwal Kuliah
                             </p>
                         </a>
                     </li>
@@ -129,7 +129,7 @@
                             class="nav-link text-white {{ Request::routeIs('dosen.jadwal.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-calendar"></i>
                             <p>
-                                Jadwal Kuliah
+                                Jadwal Event
                             </p>
                         </a>
                     </li>
@@ -138,7 +138,7 @@
                             class="nav-link text-white {{ Request::routeIs('dosen.matkul.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-book"></i>
                             <p>
-                                Mata Kuliah
+                                Jadwal Kuliah
                             </p>
                         </a>
                     </li>

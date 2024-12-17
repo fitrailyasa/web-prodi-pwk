@@ -14,8 +14,6 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
         $users = [
             [
                 'name' => 'Super Administrator',
@@ -41,19 +39,8 @@ class UserSeeder extends Seeder
                 'img' => 'logo.png',
                 'email_verified_at' => now(),
             ],
-            [
-                'name' => 'Dosen 1',
-                'email' => 'dosen@pwk.itera.ac.id',
-                'role' => 'dosen',
-                'status' => 'aktif',
-                'no_hp' => '081234567890',
-                'password' => Hash::make('password'),
-                'nip' => fake()->numberBetween(1000000000, 9999999999),
-                'position' => fake()->jobTitle(),
-                'img' => 'logo.png',
-                'email_verified_at' => now(),
-            ],
         ];
         User::query()->insert($users);
+        \App\Models\User::factory(20)->create();
     }
 }

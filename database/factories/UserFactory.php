@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
@@ -17,13 +18,18 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $firstname = strtolower(fake()->firstName());
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'name' => fake()->name() . ' S.P.W.K., M.P.W.K.',
+            'email' => $firstname . '@pwk.itera.ac.id',
+            'role' => 'dosen',
+            'status' => 'aktif',
+            'no_hp' => '081234567890',
+            'password' => Hash::make('password'),
+            'nip' => fake()->numberBetween(1000000000, 9999999999),
+            'position' => fake()->randomElement(['Dosen', 'Tenaga Ahli', 'Tendik']),
+            'img' => 'logo.png',
             'email_verified_at' => now(),
         ];
     }
-
 }

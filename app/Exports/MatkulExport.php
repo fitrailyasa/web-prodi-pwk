@@ -15,22 +15,44 @@ class MatkulExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
     public function collection()
     {
         $collection = [];
-
-        $no = 1;
         $Matkuls = Matkul::all();
 
-        foreach ($Matkuls as $Matkul) {
-            $collection[] = [
-                'No' => $no++,
-                'Nama Matkul' => $Matkul->name ?? '',
-                'Kode Matkul' => $Matkul->code ?? '',
-                'Jumlah SKS' => $Matkul->credits ?? '',
-                'Nama Dosen' => $Matkul->lecture ?? '',
-                'Tanggal' => $Matkul->date ?? '',
-            ];
-        }
+        // Urutkan data berdasarkan hari (Senin, Selasa, dll)
+        $daysOrder = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
 
-        array_unshift($collection, ['Data Matkul'], ['']);
+        // Mengelompokkan data berdasarkan 'day' (hari)
+        $groupedMatkuls = $Matkuls->groupBy('day');
+
+        // Urutkan hari sesuai urutan yang diinginkan
+        foreach ($daysOrder as $day) {
+            if ($groupedMatkuls->has($day)) {
+                // Menambahkan hari ke baris pertama untuk setiap grup
+                $collection[] = [
+                    'Hari' => $day,
+                    'Waktu Mulai' => '',
+                    'Waktu Selesai' => '',
+                    'Mata Kuliah' => '',
+                    'SKS' => '',
+                    'Kelas' => '',
+                    'Dosen Pengampu' => '',
+                    'Ruang' => '',
+                ];
+
+                // Menambahkan mata kuliah di bawahnya
+                foreach ($groupedMatkuls->get($day) as $Matkul) {
+                    $collection[] = [
+                        'Hari' => '',
+                        'Waktu Mulai' => $Matkul->start_time ?? '',
+                        'Waktu Selesai' => $Matkul->end_time ?? '',
+                        'Mata Kuliah' => $Matkul->name ?? '',
+                        'SKS' => $Matkul->credits ?? '',
+                        'Kelas' => $Matkul->class ?? '',
+                        'Dosen Pengampu' => $Matkul->dosen->name ?? '',
+                        'Ruang' => $Matkul->room ?? '',
+                    ];
+                }
+            }
+        }
 
         return collect($collection);
     }
@@ -38,22 +60,27 @@ class MatkulExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
     public function headings(): array
     {
         return [
+            ['Data Jadwal Mata Kuliah'], // Judul Utama
             [''],
             [
-                'No',
-                'Nama Matkul',
-                'Kode Matkul',
-                'Jumlah SKS',
-                'Nama Dosen',
-                'Tanggal',
+                'Hari',
+                'Waktu Mulai',
+                'Waktu Selesai',
+                'Mata Kuliah',
+                'SKS',
+                'Kelas',
+                'Dosen Pengampu',
+                'Ruang',
             ]
         ];
     }
 
     public function styles(Worksheet $sheet)
     {
-        $sheet->mergeCells('A1:F1');
+        // Merge sel untuk judul utama
+        $sheet->mergeCells('A1:H1');
 
+        // Style border tipis
         $borderStyle = [
             'borders' => [
                 'allBorders' => [
@@ -63,32 +90,41 @@ class MatkulExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
             ],
         ];
 
-        $sheet->getStyle('A1:D' . $sheet->getHighestRow())
+        // Atur border untuk seluruh data
+        $sheet->getStyle('A1:H' . $sheet->getHighestRow())
             ->applyFromArray($borderStyle);
 
         return [
-            // Style untuk heading pertama
+            // Style untuk Judul Utama
             1 => [
-                'font' => ['bold' => true, 'color' => ['argb' => 'FFFFFFFF']], // Putih
+                'font' => ['bold' => true, 'size' => 14, 'color' => ['argb' => 'FFFFFFFF']],
                 'fill' => [
                     'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
-                    'color' => ['argb' => 'FF000000'], // Hitam
+                    'color' => ['argb' => 'FF000000'],
                 ],
                 'alignment' => [
                     'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
                     'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
                 ],
             ],
-            // Style untuk heading kedua
-            2 => [
-                'font' => ['bold' => true, 'color' => ['argb' => 'FFFFFFFF']], // Putih
+            // Style untuk Header Tabel
+            3 => [
+                'font' => ['bold' => true, 'color' => ['argb' => 'FFFFFFFF']],
                 'fill' => [
                     'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
-                    'color' => ['argb' => 'FF000000'], // Hitam
+                    'color' => ['argb' => 'FF000000'],
                 ],
                 'alignment' => [
                     'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
                     'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER,
+                ],
+            ],
+            // Style untuk baris yang berisi hari
+            'A4:A' . $sheet->getHighestRow() => [
+                'font' => ['bold' => true, 'size' => 12],
+                'fill' => [
+                    'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
+                    'color' => ['argb' => 'FFDDDDDD'], // Latar abu-abu terang
                 ],
             ],
         ];

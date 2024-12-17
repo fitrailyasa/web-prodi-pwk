@@ -32,8 +32,13 @@ class MatkulRequest extends FormRequest
             'code' => 'required|max:10',
             'credits' => 'required|max_digits:values:4',
             'lecture' => 'required|max:100',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'jadwal' => 'required',
+            'credits' => 'required|max:6',
+            'class' => 'required|max:100',
+            'room' => 'required|max:100',
+            'lecture' => 'required|max:100',
+            'day' => 'required|in:Senin,Selasa,Rabu,Kamis,Jumat,Sabtu,Minggu',
+            'start_time' => 'required|date_format:H:i',
+            'end_time' => 'required|date_format:H:i',
         ];
     }
 
@@ -48,10 +53,12 @@ class MatkulRequest extends FormRequest
             'credits.max' => 'SKS maksimal 4 karakter!',
             'lecture.required' => 'Dosen tidak boleh kosong!',
             'lecture.max' => 'Dosen maksimal 100 karakter!',
-            'img.image' => 'Gambar harus berupa gambar!',
-            'img.mimes' => 'Gambar harus berupa jpeg, png, jpg, gif, svg!',
-            'img.max' => 'Gambar maksimal 2mb!',
-            'jadwal.required' => 'Jadwal tidak boleh kosong!',
+            'day.required' => 'Hari tidak boleh kosong!',
+            'day.in' => 'Hari harus Senin, Selasa, Rabu, Kamis, Jumat, Sabtu, Minggu!',
+            'start_time.required' => 'Waktu tidak boleh kosong!',
+            'start_time.date_format' => 'Format waktu harus HH:MM!',
+            'end_time.required' => 'Waktu tidak boleh kosong!',
+            'end_time.date_format' => 'Format waktu harus HH:MM!',
         ];
     }
 }
