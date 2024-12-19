@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        Mata Kuliah
+        Jadwal Kuliah
     </x-slot>
 
     <!-- Button Form Create -->
@@ -35,11 +35,12 @@
         <thead>
             <tr>
                 <th>{{ __('No') }}</th>
-                <th>{{ __('Tanggal Pelaksanaan') }}</th>
+                <th>{{ __('Hari') }}</th>
+                <th>{{ __('Jam Pelaksanaan') }}</th>
                 <th>{{ __('Nama Matkul') }}</th>
                 <th>{{ __('Kode Matkul') }}</th>
                 <th>{{ __('Jumlah SKS') }}</th>
-                <th>{{ __('Nama Dosen') }}</th>
+                <th>{{ __('Dosen Pengampu') }}</th>
                 <th class="text-center">{{ __('Aksi') }}</th>
             </tr>
         </thead>
@@ -47,11 +48,12 @@
             @foreach ($matkuls as $matkul)
                 <tr @if ($matkul) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
-                    <td>{{ $matkul->date ? \Carbon\Carbon::parse($matkul->date)->translatedFormat('l, d F Y') : '-' }}</td>
+                    <td>{{ $matkul->day ?? '-' }}</td>
+                    <td>{{ $matkul->start_time ? \Carbon\Carbon::parse($matkul->start_time)->format('H:i') : '-' }} - {{ $matkul->end_time ? \Carbon\Carbon::parse($matkul->end_time)->format('H:i') : '-' }}</td>
                     <td>{{ $matkul->name ?? '-' }}</td>
                     <td>{{ $matkul->code ?? '-' }}</td>
                     <td>{{ $matkul->credits ?? '-' }}</td>
-                    <td>{{ $matkul->lecture ?? '-' }}</td>
+                    <td>{{ $matkul->dosen->name ?? '-' }}</td>
                     <td class="manage-row text-center">
                         @if (auth()->user()->role == 'admin' || auth()->user()->role == 'dosen')
                             <!-- Edit and Delete Buttons -->
