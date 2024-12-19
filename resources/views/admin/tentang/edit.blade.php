@@ -5,7 +5,7 @@
 
 <!-- Modal Edit -->
 <div class="modal fade" id="formEdit{{ $tentang->id }}" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <form method="POST" action="{{ route('admin.tentang.update', $tentang->id) }}" enctype="multipart/form-data">
                 @csrf
@@ -69,7 +69,7 @@
                         </div>
 
                         <!-- Total Lecture -->
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="mb-3">
                                 <label class="form-label">{{ __('Jumlah Dosen') }}</label>
                                 <input type="number" class="form-control @error('total_lecture') is-invalid @enderror"
@@ -81,7 +81,7 @@
                         </div>
 
                         <!-- Total Student -->
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="mb-3">
                                 <label class="form-label">{{ __('Jumlah Mahasiswa') }}</label>
                                 <input type="number" class="form-control @error('total_student') is-invalid @enderror"
@@ -93,7 +93,7 @@
                         </div>
 
                         <!-- Total Teaching Staff -->
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="mb-3">
                                 <label class="form-label">{{ __('Jumlah Staf Pengajar') }}</label>
                                 <input type="number" class="form-control @error('total_teaching_staff') is-invalid @enderror"

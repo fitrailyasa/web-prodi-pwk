@@ -5,7 +5,7 @@
 
 <!-- Modal -->
 <div class="modal fade formEdit{{ $berita->id }}" tabindex="-1" role="dialog" aria-hidden="">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             @if (auth()->user()->role == 'admin')
                 <form method="POST" action="{{ route('admin.berita.update', $berita->id) }}"

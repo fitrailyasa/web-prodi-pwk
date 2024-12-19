@@ -68,7 +68,7 @@
                     </div>
 
                     <!-- Total Lecture -->
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="mb-3">
                             <label class="form-label">{{ __('Jumlah Dosen') }}</label>
                             <input type="number" class="form-control @error('total_lecture') is-invalid @enderror"
@@ -81,7 +81,7 @@
                     </div>
 
                     <!-- Total Student -->
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="mb-3">
                             <label class="form-label">{{ __('Jumlah Mahasiswa') }}</label>
                             <input type="number" class="form-control @error('total_student') is-invalid @enderror"
@@ -94,7 +94,7 @@
                     </div>
 
                     <!-- Total Teaching Staff -->
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="mb-3">
                             <label class="form-label">{{ __('Jumlah Staf Pengajar') }}</label>
                             <input type="number" class="form-control @error('total_teaching_staff') is-invalid @enderror"

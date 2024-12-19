@@ -36,7 +36,7 @@
             <tr>
                 <th>{{ __('No') }}</th>
                 <th>{{ __('Judul Berita') }}</th>
-                <th>{{ __('Konten Berita') }}</th>
+                {{-- <th>{{ __('Konten Berita') }}</th> --}}
                 <th>{{ __('Status') }}</th>
                 <th>{{ __('Tanggal Pelaksanaan') }}</th>
                 <th>{{ __('Tanggal Publikasi') }}</th>
@@ -50,7 +50,7 @@
                 <tr @if ($berita) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
                     <td>{{ $berita->name ?? '-' }}</td>
-                    <td>{!! $berita->desc !!}</td>
+                    {{-- <td>{!! $berita->desc !!}</td> --}}
                     <td>
                         @if ($berita->status == 'unpublish')
                             <span class="badge bg-secondary">Unpublished</span>
