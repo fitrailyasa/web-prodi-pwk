@@ -6,6 +6,11 @@ export type eventTypes = {
     description: string
 }
 
+export type evenByBulanType = {
+    bulan: string
+    events: Array<eventTypes>
+}
+
 export type MisiType = {
     title: string
 }

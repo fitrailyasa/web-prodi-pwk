@@ -2,6 +2,18 @@ import { eventTypes, MisiType } from '@/types/PropsType'
 
 export const eventsConstants: eventTypes[] = [
     {
+        title: 'Wisuda Sarjana ke-10',
+        dateStart: new Date(2024, 10, 15),
+        date: new Date(2024, 10, 15),
+        // dateEnd: (() => {
+        //     let date = new Date(2024, 0, 15)
+        //     date.setDate(date.getDate() + 1) // 16 Januari 2024
+        //     return date
+        // })(),
+        description:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, doloremque.'
+    },
+    {
         title: 'Dies Natalis ke-10',
         dateStart: new Date(),
         date: new Date(),
@@ -63,6 +75,18 @@ export const eventsConstants: eventTypes[] = [
         dateEnd: (() => {
             let date = new Date()
             date.setDate(date.getDate() + 1)
+            return date
+        })(),
+        description:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, doloremque.'
+    },
+    {
+        title: 'Wisuda Sarjana ke-10',
+        dateStart: new Date(2024, 0, 15), // 15 Januari 2024
+        date: new Date(2024, 0, 15), // 15 Januari 2024
+        dateEnd: (() => {
+            let date = new Date(2024, 0, 15)
+            date.setDate(date.getDate() + 1) // 16 Januari 2024
             return date
         })(),
         description:

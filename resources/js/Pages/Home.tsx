@@ -10,7 +10,7 @@ import { SliderNews } from '@/Components/home/SliderNews'
 import { beritaConstants, eventsConstants, misiConstants } from '@/Constants'
 import { DateFormater } from '@/Helper/DateFormater'
 import AppLayout from '@/Layouts/AppLayout'
-import { Button, Image } from '@nextui-org/react'
+import { Button, Image, Link } from '@nextui-org/react'
 import { useScroll } from 'framer-motion'
 import React, { ReactNode, useEffect, useRef, useState } from 'react'
 
@@ -314,9 +314,17 @@ export default function Home() {
                     macControlCenter
                     className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
                 >
-                    <h2 className="font-bold text-3xl pb-4 border-b mb-3">
-                        Even Terdekat
-                    </h2>
+                    <div className="flex justify-between">
+                        <h2 className="font-bold text-3xl pb-4 border-b mb-3">
+                            Even Terdekat
+                        </h2>
+
+                        <Link href="/kalender-akademik">
+                            <Button className="bg-main-green font-semibold text-white inline-block">
+                                Lihat Semua
+                            </Button>
+                        </Link>
+                    </div>
                     <div className="flex flex-wrap gap-3">
                         {eventsConstants.map((item, index) => (
                             <EvenContainer
