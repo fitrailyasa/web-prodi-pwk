@@ -37,7 +37,7 @@
                         <div class="mb-3">
                             <label class="form-label">{{ __('Konten Berita') }}</label>
                             <textarea class="form-control @error('desc') is-invalid @enderror" placeholder="deskripsi..." name="desc"
-                                id="desc" rows="3">{{ old('desc', $berita->desc) }}</textarea>
+                                id="edit_desc">{{ old('desc', $berita->desc) }}</textarea>
                             @error('desc')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -101,23 +101,6 @@
                             @error('tag_id')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <label class="form-label">{{ __('Gambar') }}</label>
-                            <input id="image-input" accept="image/*" type="file"
-                                class="form-control @error('img') is-invalid @enderror" placeholder="img" name="img"
-                                id="img" value="{{ old('img') }}">
-                            @error('img')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-12 text-center">
-                        <div class="mb-3">
-                            <img class="img-fluid py-3" id="image-preview" width="200px"
-                                src="{{ asset('assets/profile/default.png') }}" alt="Image Preview">
                         </div>
                     </div>
                 </div>

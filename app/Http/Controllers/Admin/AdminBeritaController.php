@@ -11,6 +11,9 @@ use App\Imports\BeritaImport;
 use App\Exports\BeritaExport;
 use App\Http\Requests\BeritaRequest;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+
 Carbon::setLocale('id');
 
 class AdminBeritaController extends Controller
@@ -88,5 +91,27 @@ class AdminBeritaController extends Controller
     {
         Berita::query()->delete();
         return back()->with('alert', 'Berhasil Hapus Semua Berita!');
+    }
+
+    public function uploadImage(Request $request)
+    {
+        // Validasi file
+        $request->validate([
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        Log::info('File upload request:', $request->all());
+
+        // Menyimpan gambar ke public storage
+        $path = $request->file('img')->store('images', 'public');
+        
+        // Mengembalikan URL file yang telah diupload
+        $url = Storage::url($path);
+        
+        // Mengembalikan response dalam format yang diperlukan oleh CKEditor
+        return response()->json([
+            'uploaded' => true,
+            'url' => $url
+        ]);
     }
 }
