@@ -71,6 +71,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/berita/import', [AdminBeritaController::class, 'import'])->name('berita.import');
         Route::get('/berita/export', [AdminBeritaController::class, 'export'])->name('berita.export');
         Route::delete('/berita/deleteAll', [AdminBeritaController::class, 'destroyAll'])->name('berita.destroyAll');
+        Route::post('/admin/berita/upload-image', [AdminBeritaController::class, 'uploadImage'])->name('berita.upload_image');
 
         // CRUD JADWAL
         Route::get('/jadwal', [AdminJadwalController::class, 'index'])->name('jadwal.index');
@@ -125,6 +126,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/tentang/import', [AdminTentangController::class, 'import'])->name('tentang.import');
         Route::get('/tentang/export', [AdminTentangController::class, 'export'])->name('tentang.export');
         Route::delete('/tentang/deleteAll', [AdminTentangController::class, 'destroyAll'])->name('tentang.destroyAll');
+        Route::post('/admin/tentang/upload-image', [AdminTentangController::class, 'uploadImage'])->name('tentang.upload_image');
     });
 
     // CMS DOSEN

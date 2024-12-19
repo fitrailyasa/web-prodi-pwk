@@ -14,7 +14,12 @@ return new class extends Migration
         Schema::create('tentangs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('desc')->nullable();
+            $table->string('vision');
+            $table->text('mission')->nullable();
+            $table->text('goals')->nullable();
+            $table->string('total_lecture')->nullable();
+            $table->string('total_student')->nullable();
+            $table->string('total_teaching_staff')->nullable();
             $table->string('img')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();

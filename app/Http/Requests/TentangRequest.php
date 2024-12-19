@@ -29,8 +29,12 @@ class TentangRequest extends FormRequest
 
         return [
             'name' => 'required|max:100',
-            'desc' => 'required|max:1000',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'vision' => 'required',
+            'mission' => 'required',
+            'goals' => 'required',
+            'total_lecture' => 'required',
+            'total_student' => 'required',
+            'total_teaching_staff' => 'required',
         ];
     }
 
@@ -39,11 +43,6 @@ class TentangRequest extends FormRequest
         return [
             'name.required' => 'Judul tidak boleh kosong!',
             'name.max' => 'Judul maksimal 100 karakter!',
-            'desc.required' => 'Deskripsi tidak boleh kosong!',
-            'desc.max' => 'Deskripsi maksimal 1000 karakter!',
-            'img.image' => 'Gambar harus berupa gambar!',
-            'img.mimes' => 'Gambar harus berupa jpeg, png, jpg, gif, svg!',
-            'img.max' => 'Gambar maksimal 2mb!',
         ];
     }
 }
