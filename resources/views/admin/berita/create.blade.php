@@ -32,7 +32,7 @@
                         <div class="mb-3">
                             <label class="form-label">{{ __('Konten Berita') }}</label>
                             <textarea class="form-control @error('desc') is-invalid @enderror" placeholder="deskripsi..." name="desc" id="create_desc"
-                                rows="5" style="height: 300px;">{{ old('desc') }}</textarea>
+                                rows="5">{{ old('desc') }}</textarea>
                             @error('desc')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
