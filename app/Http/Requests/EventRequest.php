@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Link;
+use App\Models\Event;
 
-class LinkRequest extends FormRequest
+class EventRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class LinkRequest extends FormRequest
      */
     public function rules(): array
     {
-        $db = new Link();
+        $db = new Event();
         $db->setDynamicConnection();
 
         // dd($db->getConnection()->getDatabaseName());
@@ -30,8 +30,10 @@ class LinkRequest extends FormRequest
         return [
             'name' => 'required|max:100',
             'desc' => 'required|max:1000',
-            'link' => 'required|max:100',
-            'category' => 'required|max:100',
+            'status' => 'required',
+            'event_date' => 'required|date',
+            'publish_date' => 'required|date',
+            'tag_id ' => 'required|max:100',
         ];
     }
 
@@ -42,10 +44,13 @@ class LinkRequest extends FormRequest
             'name.max' => 'Judul maksimal 100 karakter!',
             'desc.required' => 'Deskripsi tidak boleh kosong!',
             'desc.max' => 'Deskripsi maksimal 1000 karakter!',
-            'link.required' => 'Link tidak boleh kosong!',
-            'link.max' => 'Link maksimal 100 karakter!',
-            'category.required' => 'Kategori tidak boleh kosong!',
-            'category.max' => 'Kategori maksimal 100 karakter!',
+            'status.required' => 'Status tidak boleh kosong!',
+            'event_date.required' => 'Tanggal Event tidak boleh kosong!',
+            'event_date.date' => 'Tanggal Event harus berupa tanggal!',
+            'publish_date.required' => 'Tanggal Publish tidak boleh kosong!',
+            'publish_date.date' => 'Tanggal Publish harus berupa tanggal!',
+            'tag_id.required' => 'Tag tidak boleh kosong!',
+            'tag_id.max' => 'Tag maksimal 100 karakter!',
         ];
     }
 }

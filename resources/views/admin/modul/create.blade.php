@@ -1,32 +1,28 @@
 <!-- Tombol untuk membuka modal -->
-<button role="button" class="btn btn-sm m-1 btn-warning mr-2" data-bs-toggle="modal"
-    data-bs-target=".formEdit{{ $link->id }}"><i class="fas fa-edit"></i><span class="d-none d-sm-inline">
-        {{ __('Edit') }}</span></button>
+<button role="button" class="btn btn-sm mx-1 btn-primary" data-bs-toggle="modal" data-bs-target=".formCreate"><i
+        class="fas fa-plus"></i><span class="d-none d-sm-inline"> {{ __('Tambah') }}</span></button>
 
 <!-- Modal -->
-<div class="modal fade formEdit{{ $link->id }}" tabindex="-1" role="dialog" aria-hidden="">
+<div class="modal fade formCreate" tabindex="-1" role="dialog" aria-labelledby="modalFormLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             @if (auth()->user()->role == 'admin')
-                <form method="POST" action="{{ route('admin.link.update', $link->id) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.modul.store') }}" enctype="multipart/form-data">
             @endif
             @csrf
-            @method('PUT')
             <div class="modal-header">
-                <h5 class="modal-title" id="modalFormLabel">{{ __('Edit Data') }}
-                </h5>
+                <h5 class="modal-title" id="modalFormLabel">{{ __('Tambah Data') }}</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body text-left">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">{{ __('Nama') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="nama" name="name" id="name" value="{{ old('name', $link->name) }}"
-                                required>
+                                placeholder="nama" name="name" id="name" value="{{ old('name') }}" required>
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -36,7 +32,7 @@
                         <div class="mb-3">
                             <label class="form-label">{{ __('Tautan') }}</label>
                             <input type="text" class="form-control @error('link') is-invalid @enderror"
-                                placeholder="https://google.com" name="link" id="link" value="{{ old('link', $link->link) }}" required>
+                                placeholder="https://google.com" name="link" id="link" value="{{ old('link') }}" required>
                             @error('link')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -47,21 +43,22 @@
                             <label class="form-label">{{ __('Kategori') }}</label>
                             <select class="form-select @error('category') is-invalid @enderror" name="category" id="category">
                                 <option value="">-- Pilih Kategori --</option>
-                                <option value="akademik" {{ old('category', $link->category) == 'akademik' ? 'selected' : '' }}>Akademik</option>
-                                <option value="fasilitas" {{ old('category', $link->category) == 'fasilitas' ? 'selected' : '' }}>Fasilitas</option>
-                                <option value="lainnya" {{ old('category', $link->category) == 'lainnya' ? 'selected' : '' }}>Lainnya</option>
+                                <option value="akademik">Akademik</option>
+                                <option value="fasilitas">Fasilitas</option>
+                                <option value="lainnya">Lainnya</option>
                             </select>
                             @error('category')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Deskripsi') }}</label>
-                            <textarea class="form-control @error('desc') is-invalid @enderror" placeholder="deskripsi" name="desc" id="desc"
-                                rows="3">{{ old('desc', $link->desc) }}</textarea>
-                            @error('desc')
+                            <label class="form-label">{{ __('Gambar') }}</label>
+                            <input id="image-input" accept="image/*" type="file"
+                                class="form-control @error('img') is-invalid @enderror" placeholder="img" name="img"
+                                id="img" value="{{ old('img') }}">
+                            @error('img')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

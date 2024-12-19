@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Link>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Modul>
  */
-class LinkFactory extends Factory
+class ModulFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +18,8 @@ class LinkFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'desc' => fake()->realText(100),
-            'link' => fake()->url(),
+            'file' => 'file.pdf',
+            'img' => 'logo.png',
             'user_id' => 1
         ];
     }

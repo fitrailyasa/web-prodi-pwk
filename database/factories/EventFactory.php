@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Link>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Event>
  */
-class LinkFactory extends Factory
+class EventFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +18,12 @@ class LinkFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'slug' => fake()->slug(),
             'desc' => fake()->realText(100),
-            'link' => fake()->url(),
+            'status' => fake()->randomElement(['unpublish', 'publish']),
+            'event_date' => fake()->date(),
+            'publish_date' => fake()->date(),
+            'tag_id' => 1,
             'user_id' => 1
         ];
     }

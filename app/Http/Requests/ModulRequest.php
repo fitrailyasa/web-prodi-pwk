@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Link;
+use App\Models\Modul;
 
-class LinkRequest extends FormRequest
+class ModulRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,15 +22,15 @@ class LinkRequest extends FormRequest
      */
     public function rules(): array
     {
-        $db = new Link();
+        $db = new Modul();
         $db->setDynamicConnection();
 
         // dd($db->getConnection()->getDatabaseName());
 
         return [
             'name' => 'required|max:100',
-            'desc' => 'required|max:1000',
-            'link' => 'required|max:100',
+            'file' => 'required|max:100',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category' => 'required|max:100',
         ];
     }
@@ -40,10 +40,11 @@ class LinkRequest extends FormRequest
         return [
             'name.required' => 'Judul tidak boleh kosong!',
             'name.max' => 'Judul maksimal 100 karakter!',
-            'desc.required' => 'Deskripsi tidak boleh kosong!',
-            'desc.max' => 'Deskripsi maksimal 1000 karakter!',
-            'link.required' => 'Link tidak boleh kosong!',
-            'link.max' => 'Link maksimal 100 karakter!',
+            'file.required' => 'Modul tidak boleh kosong!',
+            'file.max' => 'Modul maksimal 100 karakter!',
+            'img.image' => 'Gambar harus berupa gambar!',
+            'img.mimes' => 'Gambar harus berupa jpeg, png, jpg, gif, svg!',
+            'img.max' => 'Gambar maksimal 2mb!',
             'category.required' => 'Kategori tidak boleh kosong!',
             'category.max' => 'Kategori maksimal 100 karakter!',
         ];
