@@ -88,23 +88,17 @@ class AdminTentangController extends Controller
 
     public function uploadImage(Request $request)
     {
-        // Validasi file gambar
         $request->validate([
-            'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'upload' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // Mengecek apakah file diterima
-        if ($request->hasFile('img')) {
-            Log::info('File diterima: ' . $request->file('img')->getClientOriginalName());
-        } else {
-            Log::error('Tidak ada file yang diterima.');
-        }
+        $path = $request->file('upload')->store('images', 'public');
+        
+        $url = Storage::url($path);
 
-        // Menyimpan gambar di storage
-        $imagePath = $request->file('upload')->store('public/images');
-        $imageUrl = Storage::url($imagePath);
-
-        // Mengembalikan URL gambar
-        return response()->json(['url' => $imageUrl]);
+        return response()->json([
+            'uploaded' => true,
+            'url' => $url
+        ]);
     }
 }

@@ -72,7 +72,7 @@
     ClassicEditor
         .create(document.querySelector('#create_mission'), {
             ckfinder: {
-                uploadUrl: '{{ route('admin.tentang.upload_image') }}',
+                uploadUrl: '{{route('admin.tentang.upload_image').'?_token='.csrf_token()}}',
             },
             toolbar: [
                 'heading', '|',
@@ -89,7 +89,7 @@
     ClassicEditor
         .create(document.querySelector('#create_goals'), {
             ckfinder: {
-                uploadUrl: '{{ route('admin.tentang.upload_image') }}',
+                uploadUrl: '{{route('admin.tentang.upload_image').'?_token='.csrf_token()}}',
             },
             toolbar: [
                 'heading', '|',
@@ -106,7 +106,7 @@
     ClassicEditor
         .create(document.querySelector('#edit_mission'), {
             ckfinder: {
-                uploadUrl: '{{ route('admin.tentang.upload_image') }}',
+                uploadUrl: '{{route('admin.tentang.upload_image').'?_token='.csrf_token()}}',
             },
             toolbar: [
                 'heading', '|',
@@ -123,7 +123,7 @@
     ClassicEditor
         .create(document.querySelector('#edit_goals'), {
             ckfinder: {
-                uploadUrl: '{{ route('admin.tentang.upload_image') }}',
+                uploadUrl: '{{route('admin.tentang.upload_image').'?_token='.csrf_token()}}',
             },
             toolbar: [
                 'heading', '|',

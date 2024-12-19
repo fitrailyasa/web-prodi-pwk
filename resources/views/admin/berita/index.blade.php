@@ -82,7 +82,7 @@
         ClassicEditor
         .create(document.querySelector('#create_desc'), {
             ckfinder: {
-                uploadUrl: '{{ route('admin.berita.upload_image') }}',
+                uploadUrl: '{{route('admin.berita.upload_image').'?_token='.csrf_token()}}',
             },
             toolbar: [
                 'heading', '|',
@@ -98,7 +98,7 @@
         ClassicEditor
         .create(document.querySelector('#edit_desc'), {
             ckfinder: {
-                uploadUrl: '{{ route('admin.berita.upload_image') }}',
+                uploadUrl: '{{route('admin.berita.upload_image').'?_token='.csrf_token()}}',
             },
             toolbar: [
                 'heading', '|',
