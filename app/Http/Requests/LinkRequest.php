@@ -31,7 +31,6 @@ class LinkRequest extends FormRequest
             'name' => 'required|max:100',
             'desc' => 'required|max:1000',
             'link' => 'required|max:100',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category' => 'required|max:100',
         ];
     }
@@ -45,9 +44,6 @@ class LinkRequest extends FormRequest
             'desc.max' => 'Deskripsi maksimal 1000 karakter!',
             'link.required' => 'Link tidak boleh kosong!',
             'link.max' => 'Link maksimal 100 karakter!',
-            'img.image' => 'Gambar harus berupa gambar!',
-            'img.mimes' => 'Gambar harus berupa jpeg, png, jpg, gif, svg!',
-            'img.max' => 'Gambar maksimal 2mb!',
             'category.required' => 'Kategori tidak boleh kosong!',
             'category.max' => 'Kategori maksimal 100 karakter!',
         ];

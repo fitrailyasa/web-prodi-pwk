@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\AdminMatkulController;
 use App\Http\Controllers\Admin\AdminMedpartController;
 use App\Http\Controllers\Admin\AdminTentangController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminEventController;
+use App\Http\Controllers\Admin\AdminModulController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminTagController;
 use App\Http\Controllers\Auth\ProviderController;
@@ -71,6 +73,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/berita/import', [AdminBeritaController::class, 'import'])->name('berita.import');
         Route::get('/berita/export', [AdminBeritaController::class, 'export'])->name('berita.export');
         Route::delete('/berita/deleteAll', [AdminBeritaController::class, 'destroyAll'])->name('berita.destroyAll');
+        Route::post('/admin/berita/upload-image', [AdminBeritaController::class, 'uploadImage'])->name('berita.upload_image');
 
         // CRUD JADWAL
         Route::get('/jadwal', [AdminJadwalController::class, 'index'])->name('jadwal.index');
@@ -80,6 +83,16 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/jadwal/import', [AdminJadwalController::class, 'import'])->name('jadwal.import');
         Route::get('/jadwal/export', [AdminJadwalController::class, 'export'])->name('jadwal.export');
         Route::delete('/jadwal/deleteAll', [AdminJadwalController::class, 'destroyAll'])->name('jadwal.destroyAll');
+        
+        // CRUD EVENT
+        Route::get('/event', [AdminEventController::class, 'index'])->name('event.index');
+        Route::post('/event', [AdminEventController::class, 'store'])->name('event.store');
+        Route::put('/event/{id}/update', [AdminEventController::class, 'update'])->name('event.update');
+        Route::delete('/event/{id}/destroy', [AdminEventController::class, 'destroy'])->name('event.destroy');
+        Route::post('/event/import', [AdminEventController::class, 'import'])->name('event.import');
+        Route::get('/event/export', [AdminEventController::class, 'export'])->name('event.export');
+        Route::delete('/event/deleteAll', [AdminEventController::class, 'destroyAll'])->name('event.destroyAll');
+        Route::post('/admin/event/upload-image', [AdminEventController::class, 'uploadImage'])->name('event.upload_image');
 
         // CRUD LINK
         Route::get('/link', [AdminLinkController::class, 'index'])->name('link.index');
@@ -98,6 +111,15 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/matkul/import', [AdminMatkulController::class, 'import'])->name('matkul.import');
         Route::get('/matkul/export', [AdminMatkulController::class, 'export'])->name('matkul.export');
         Route::delete('/matkul/deleteAll', [AdminMatkulController::class, 'destroyAll'])->name('matkul.destroyAll');
+        
+        // CRUD MODUL KULIAH
+        Route::get('/modul', [AdminModulController::class, 'index'])->name('modul.index');
+        Route::post('/modul', [AdminModulController::class, 'store'])->name('modul.store');
+        Route::put('/modul/{id}/update', [AdminModulController::class, 'update'])->name('modul.update');
+        Route::delete('/modul/{id}/destroy', [AdminModulController::class, 'destroy'])->name('modul.destroy');
+        Route::post('/modul/import', [AdminModulController::class, 'import'])->name('modul.import');
+        Route::get('/modul/export', [AdminModulController::class, 'export'])->name('modul.export');
+        Route::delete('/modul/deleteAll', [AdminModulController::class, 'destroyAll'])->name('modul.destroyAll');
 
         // CRUD MEDIA PARTNER
         Route::get('/medpart', [AdminMedpartController::class, 'index'])->name('medpart.index');
@@ -125,6 +147,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/tentang/import', [AdminTentangController::class, 'import'])->name('tentang.import');
         Route::get('/tentang/export', [AdminTentangController::class, 'export'])->name('tentang.export');
         Route::delete('/tentang/deleteAll', [AdminTentangController::class, 'destroyAll'])->name('tentang.destroyAll');
+        Route::post('/admin/tentang/upload-image', [AdminTentangController::class, 'uploadImage'])->name('tentang.upload_image');
     });
 
     // CMS DOSEN

@@ -11,6 +11,8 @@ use App\Imports\BeritaImport;
 use App\Exports\BeritaExport;
 use App\Http\Requests\BeritaRequest;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+
 Carbon::setLocale('id');
 
 class AdminBeritaController extends Controller
@@ -88,5 +90,21 @@ class AdminBeritaController extends Controller
     {
         Berita::query()->delete();
         return back()->with('alert', 'Berhasil Hapus Semua Berita!');
+    }
+
+    public function uploadImage(Request $request)
+    {
+        $request->validate([
+            'upload' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $path = $request->file('upload')->store('images', 'public');
+        
+        $url = Storage::url($path);
+
+        return response()->json([
+            'uploaded' => true,
+            'url' => $url
+        ]);
     }
 }

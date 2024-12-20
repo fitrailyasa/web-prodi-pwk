@@ -14,7 +14,7 @@ class Tentang extends Model
     protected $connection;
     protected $table = 'tentangs';
     protected $primaryKey = 'id';
-    protected $fillable = ['id', 'name', 'desc', 'img', 'user_id'];
+    protected $fillable = ['id', 'name', 'vision', 'mission', 'goals', 'total_lecture', 'total_student', 'total_teaching_staff', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 
     public static function setDynamicConnection()

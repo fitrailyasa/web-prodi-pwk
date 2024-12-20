@@ -104,7 +104,7 @@
                         <div class="mb-3">
                             @if ($alumni->img)
                                 <img class="img-fluid py-3" id="image-preview" width="200px"
-                                    src="{{ asset('assets/img/' . $alumni->img) }}" alt="{{ $alumni->name }}">
+                                    src="{{ asset('storage/' . $alumni->img) }}" alt="{{ $alumni->name }}">
                             @else
                                 <img class="img-fluid py-3" id="image-preview" width="200px"
                                     src="{{ asset('assets/profile/default.png') }}" alt="Image Preview">
@@ -116,7 +116,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Tutup') }}</button>
-                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> {{ __('Simpan') }}</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>
+                    {{ __('Simpan') }}</button>
             </div>
             </form>
         </div>

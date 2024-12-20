@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->text('desc')->nullable();
-            $table->string('img')->nullable();
             $table->enum('status', ['unpublish', 'publish'])->nullable();
             $table->date('event_date')->nullable();
             $table->date('publish_date')->nullable();

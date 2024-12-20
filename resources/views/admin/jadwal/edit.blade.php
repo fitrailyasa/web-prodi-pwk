@@ -10,9 +10,9 @@
             @if (auth()->user()->role == 'admin')
                 <form method="POST" action="{{ route('admin.jadwal.update', $jadwal->id) }}"
                     enctype="multipart/form-data">
-            @elseif (auth()->user()->role == 'dosen')
-                <form method="POST" action="{{ route('dosen.jadwal.update', $jadwal->id) }}"
-                    enctype="multipart/form-data">
+                @elseif (auth()->user()->role == 'dosen')
+                    <form method="POST" action="{{ route('dosen.jadwal.update', $jadwal->id) }}"
+                        enctype="multipart/form-data">
             @endif
             @csrf
             @method('PUT')
@@ -64,7 +64,7 @@
                                     src="{{ asset('assets/profile/default.png') }}" alt="{{ $jadwal->name }}">
                             @else
                                 <img class="img-fluid rounded" width="200px" id="image-preview"
-                                    src="{{ asset('assets/img/' . $jadwal->img) }}" alt="{{ $jadwal->name }}">
+                                    src="{{ asset('storage/' . $jadwal->img) }}" alt="{{ $jadwal->name }}">
                             @endif
                         </div>
                     </div>

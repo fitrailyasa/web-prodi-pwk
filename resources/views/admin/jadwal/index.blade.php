@@ -52,7 +52,7 @@
                                 width="100">
                         @else
                             <a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{ $jadwal->id }}">
-                                <img class="img img-fluid rounded" src="{{ asset('assets/img/' . $jadwal->img) }}"
+                                <img class="img img-fluid rounded" src="{{ asset('storage/' . $jadwal->img) }}"
                                     alt="{{ $jadwal->img }}" width="100" loading="lazy">
                             </a>
 
@@ -73,10 +73,10 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <img class="img img-fluid col-12"
-                                                        src="{{ asset('assets/img/' . $jadwal->img) }}"
+                                                        src="{{ asset('storage/' . $jadwal->img) }}"
                                                         alt="{{ $jadwal->img }}">
                                                     <!-- Tombol Download -->
-                                                    <a href="{{ asset('assets/img/' . $jadwal->img) }}"
+                                                    <a href="{{ asset('storage/' . $jadwal->img) }}"
                                                         download="{{ $jadwal->img }}"
                                                         class="btn btn-success mt-2 col-12">Download
                                                         Gambar</a>

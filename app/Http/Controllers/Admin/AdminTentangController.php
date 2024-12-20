@@ -9,6 +9,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\TentangImport;
 use App\Exports\TentangExport;
 use App\Http\Requests\TentangRequest;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class AdminTentangController extends Controller
 {
@@ -82,5 +84,21 @@ class AdminTentangController extends Controller
     {
         Tentang::query()->delete();
         return back()->with('alert', 'Berhasil Hapus Semua Tentang!');
+    }
+
+    public function uploadImage(Request $request)
+    {
+        $request->validate([
+            'upload' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $path = $request->file('upload')->store('images', 'public');
+        
+        $url = Storage::url($path);
+
+        return response()->json([
+            'uploaded' => true,
+            'url' => $url
+        ]);
     }
 }

@@ -1,5 +1,4 @@
 <x-admin-table>
-
     <!-- Title -->
     <x-slot name="title">
         Profile
@@ -35,9 +34,12 @@
         <thead>
             <tr>
                 <th>{{ __('No') }}</th>
-                <th>{{ __('Nama') }}</th>
-                <th>{{ __('Gambar') }}</th>
-                <th>{{ __('Deskripsi') }}</th>
+                <th>{{ __('Visi') }}</th>
+                <th>{{ __('Misi') }}</th>
+                <th>{{ __('Tujuan') }}</th>
+                <th>{{ __('Total Dosen') }}</th>
+                <th>{{ __('Total Mahasiswa') }}</th>
+                <th>{{ __('Total Tenaga Kependidikan') }}</th>
                 <th class="text-center">{{ __('Aksi') }}</th>
             </tr>
         </thead>
@@ -45,50 +47,12 @@
             @foreach ($tentangs as $tentang)
                 <tr @if ($tentang) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
-                    <td>{{ $tentang->name ?? '-' }}</td>
-                    <td>
-                        @if ($tentang->img == null)
-                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $tentang->name }}"
-                                width="100">
-                        @else
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{ $tentang->id }}">
-                                <img class="img img-fluid rounded" src="{{ asset('assets/img/' . $tentang->img) }}"
-                                    alt="{{ $tentang->img }}" width="100" loading="lazy">
-                            </a>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="myModal{{ $tentang->id }}" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-body text-left">
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <h3 class="card-title">{{ $tentang->name }}</h3>
-                                                    <div class="card-tools">
-                                                        <button type="button" class="btn btn-tool"
-                                                            data-card-widget="maximize"><i
-                                                                class="fas fa-expand"></i></button>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    <img class="img img-fluid col-12"
-                                                        src="{{ asset('assets/img/' . $tentang->img) }}"
-                                                        alt="{{ $tentang->img }}">
-                                                    <!-- Tombol Download -->
-                                                    <a href="{{ asset('assets/img/' . $tentang->img) }}"
-                                                        download="{{ $tentang->img }}"
-                                                        class="btn btn-success mt-2 col-12">Download
-                                                        Gambar</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                    </td>
-                    <td>{{ $tentang->desc ?? '-' }}</td>
+                    <td>{{ $tentang->vision ?? '-' }}</td>
+                    <td>{!! $tentang->mission !!}</td>
+                    <td>{!! $tentang->goals !!}</td>
+                    <td>{{ $tentang->total_lecture ?? '-' }}</td>
+                    <td>{{ $tentang->total_student ?? '-' }}</td>
+                    <td>{{ $tentang->total_teaching_staff ?? '-' }}</td>
                     <td class="manage-row text-center">
                         @if (auth()->user()->role == 'admin')
                             <!-- Edit and Delete Buttons -->
@@ -101,5 +65,77 @@
         </tbody>
     </table>
     {{ $tentangs->appends(['perPage' => $perPage, 'search' => $search])->links() }}
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+<script>
+    // Inisialisasi CKEditor untuk misi dan tujuan dengan dukungan unggah gambar
+    ClassicEditor
+        .create(document.querySelector('#create_mission'), {
+            ckfinder: {
+                uploadUrl: '{{route('admin.tentang.upload_image').'?_token='.csrf_token()}}',
+            },
+            toolbar: [
+                'heading', '|',
+                'bold', 'italic', 'link', '|',
+                'bulletedList', 'numberedList', '|',
+                'imageUpload',
+                'blockQuote', 'undo', 'redo'
+            ]
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+    ClassicEditor
+        .create(document.querySelector('#create_goals'), {
+            ckfinder: {
+                uploadUrl: '{{route('admin.tentang.upload_image').'?_token='.csrf_token()}}',
+            },
+            toolbar: [
+                'heading', '|',
+                'bold', 'italic', 'link', '|',
+                'bulletedList', 'numberedList', '|',
+                'imageUpload',
+                'blockQuote', 'undo', 'redo'
+            ]
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+    ClassicEditor
+        .create(document.querySelector('#edit_mission'), {
+            ckfinder: {
+                uploadUrl: '{{route('admin.tentang.upload_image').'?_token='.csrf_token()}}',
+            },
+            toolbar: [
+                'heading', '|',
+                'bold', 'italic', 'link', '|',
+                'bulletedList', 'numberedList', '|',
+                'imageUpload',
+                'blockQuote', 'undo', 'redo'
+            ]
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+    ClassicEditor
+        .create(document.querySelector('#edit_goals'), {
+            ckfinder: {
+                uploadUrl: '{{route('admin.tentang.upload_image').'?_token='.csrf_token()}}',
+            },
+            toolbar: [
+                'heading', '|',
+                'bold', 'italic', 'link', '|',
+                'bulletedList', 'numberedList', '|',
+                'imageUpload',
+                'blockQuote', 'undo', 'redo'
+            ]
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 
 </x-admin-table>

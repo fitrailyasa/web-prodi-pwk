@@ -17,9 +17,11 @@ class DatabaseSeeder extends Seeder
         $this->call(AlumniSeeder::class);
         $this->call(JadwalSeeder::class);
         $this->call(MatkulSeeder::class);
+        $this->call(ModulSeeder::class);
         $this->call(MedpartSeeder::class);
         $this->call(LinkSeeder::class);
         $this->call(TagSeeder::class);
         $this->call(BeritaSeeder::class);
+        $this->call(EventSeeder::class);
     }
 }

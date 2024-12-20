@@ -43,11 +43,44 @@
                         </a>
                     </li>
                     <li
-                        class="nav-item has-treeview {{ Request::routeIs('admin.berita.index', 'admin.tag.index') ? 'menu-open' : '' }}">
+                        class="nav-item has-treeview {{ Request::routeIs('admin.matkul.index', 'admin.jadwal.index', 'admin.modul.index') ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link text-white">
+                            <i class="nav-icon fas fa-graduation-cap"></i>
+                            <p>
+                                Akademik
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item ms-3">
+                                <a href="{{ route('admin.matkul.index') }}"
+                                    class="nav-link text-white {{ Request::routeIs('admin.matkul.index') ? 'aktif' : '' }}">
+                                    <i class="nav-icon fas fa-book"></i>
+                                    <p>Mata Kuliah</p>
+                                </a>
+                            </li>
+                            <li class="nav-item ms-3">
+                                <a href="{{ route('admin.jadwal.index') }}"
+                                    class="nav-link text-white {{ Request::routeIs('admin.jadwal.index') ? 'aktif' : '' }}">
+                                    <i class="nav-icon fas fa-calendar"></i>
+                                    <p>Jadwal Kuliah</p>
+                                </a>
+                            </li>
+                            <li class="nav-item ms-3">
+                                <a href="{{ route('admin.modul.index') }}"
+                                    class="nav-link text-white {{ Request::routeIs('admin.modul.index') ? 'aktif' : '' }}">
+                                    <i class="nav-icon fas fa-book"></i>
+                                    <p>Modul Kuliah</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li
+                        class="nav-item has-treeview {{ Request::routeIs('admin.berita.index', 'admin.event.index', 'admin.tag.index') ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link text-white">
                             <i class="nav-icon fas fa-newspaper"></i>
                             <p>
-                                Kelola Berita
+                                Kelola Artikel
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -60,6 +93,13 @@
                                 </a>
                             </li>
                             <li class="nav-item ms-3">
+                                <a href="{{ route('admin.event.index') }}"
+                                    class="nav-link text-white {{ Request::routeIs('admin.event.index') ? 'aktif' : '' }}">
+                                    <i class="nav-icon fas fa-list-alt"></i>
+                                    <p>Event</p>
+                                </a>
+                            </li>
+                            <li class="nav-item ms-3">
                                 <a href="{{ route('admin.tag.index') }}"
                                     class="nav-link text-white {{ Request::routeIs('admin.tag.index') ? 'aktif' : '' }}">
                                     <i class="nav-icon fas fa-tags"></i>
@@ -67,15 +107,6 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.matkul.index') }}"
-                            class="nav-link text-white {{ Request::routeIs('admin.matkul.index') ? 'aktif' : '' }}">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>
-                                Jadwal Kuliah
-                            </p>
-                        </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin.alumni.index') }}"
@@ -92,15 +123,6 @@
                             <i class="nav-icon fas fa-list-alt"></i>
                             <p>
                                 Media Partner
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.jadwal.index') }}"
-                            class="nav-link text-white {{ Request::routeIs('admin.jadwal.index') ? 'aktif' : '' }}">
-                            <i class="nav-icon fas fa-calendar"></i>
-                            <p>
-                                Jadwal Event
                             </p>
                         </a>
                     </li>
@@ -129,7 +151,7 @@
                             class="nav-link text-white {{ Request::routeIs('dosen.jadwal.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-calendar"></i>
                             <p>
-                                Jadwal Event
+                                Jadwal Kuliah
                             </p>
                         </a>
                     </li>
@@ -138,7 +160,7 @@
                             class="nav-link text-white {{ Request::routeIs('dosen.matkul.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-book"></i>
                             <p>
-                                Jadwal Kuliah
+                                Mata Kuliah
                             </p>
                         </a>
                     </li>

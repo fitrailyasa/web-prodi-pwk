@@ -20,7 +20,6 @@ class BeritaFactory extends Factory
             'name' => fake()->name(),
             'slug' => fake()->slug(),
             'desc' => fake()->realText(100),
-            'img' => 'logo.png',
             'status' => fake()->randomElement(['unpublish', 'publish']),
             'event_date' => fake()->date(),
             'publish_date' => fake()->date(),
