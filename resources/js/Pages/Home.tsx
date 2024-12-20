@@ -319,7 +319,7 @@ export default function Home() {
                             Even Terdekat
                         </h2>
 
-                        <Link href="/kalender-akademik">
+                        <Link href={route('akademik.kalender-akademik')}>
                             <Button className="bg-main-green font-semibold text-white inline-block">
                                 Lihat Semua
                             </Button>

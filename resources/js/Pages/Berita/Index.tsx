@@ -1,5 +1,8 @@
-import { Link } from '@inertiajs/react'
 import AppLayout from '../../Layouts/AppLayout'
+import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
+import NewsItem from '@/Components/News/NewsItem'
+import { TestImage } from '@/Constants'
+import { Button, DateRangePicker } from '@nextui-org/react'
 
 type BeritaPageProps = {
     berita: Array<{
@@ -12,19 +15,113 @@ type BeritaPageProps = {
 export default function BeritaPage({ berita }: BeritaPageProps) {
     return (
         <AppLayout title={'Berita'}>
-            <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
-                <p className="text-center tex"> Berita </p>
-                {berita.map(item => {
-                    return (
-                        <div className="p-5" key={item.id}>
-                            <h1>{item.judul}</h1>
-                            <p>{item.isi}</p>
-                            <Link href={route('berita.show', item.id)}>
-                                Read More
-                            </Link>
+            <div className="container mx-auto px-4 py-3 relative">
+                <SectionTrigerScroll id="list-berita" className="mt-10 p-5 ">
+                    <h2 className="font-bold text-3xl pb-4 border-b">
+                        Berita Terbaru
+                    </h2>
+                    <div className=" mb-3 py-2 flex justify-end">
+                        <div className="flex justify-end items-center gap-5 w-1/2">
+                            <DateRangePicker
+                                key={'outside-left'}
+                                className="w-1/2"
+                                visibleMonths={2}
+                                labelPlacement={'outside-left'}
+                            />
+                            <Button className="bg-main-green font-semibold text-white inline-block">
+                                filter
+                            </Button>
                         </div>
-                    )
-                })}
+                    </div>
+                    <div className="grid grid-cols-3 gap-5">
+                        {berita.map((item, index) => (
+                            <NewsItem
+                                id={item.id}
+                                key={index}
+                                title={item.judul}
+                                date={new Date()}
+                                image={TestImage}
+                                like={10}
+                                comment={10}
+                                see={10}
+                            />
+                        ))}
+                    </div>
+                </SectionTrigerScroll>
+
+                <SectionTrigerScroll
+                    id="list-berita"
+                    // macControlCenter
+                    className="mt-10 p-5 "
+                >
+                    <h2 className="font-bold text-3xl pb-4 border-b">
+                        Akademik
+                    </h2>
+                    <div className=" mb-3 py-2 flex justify-end">
+                        <div className="flex justify-end items-center gap-5 w-1/2">
+                            <DateRangePicker
+                                key={'outside-left'}
+                                className="w-1/2"
+                                visibleMonths={2}
+                                labelPlacement={'outside-left'}
+                            />
+                            <Button className="bg-main-green font-semibold text-white inline-block">
+                                filter
+                            </Button>
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-3 gap-5">
+                        {berita.map((item, index) => (
+                            <NewsItem
+                                id={item.id}
+                                key={index}
+                                title={item.judul}
+                                date={new Date()}
+                                image={TestImage}
+                                like={10}
+                                comment={10}
+                                see={10}
+                            />
+                        ))}
+                    </div>
+                </SectionTrigerScroll>
+
+                <SectionTrigerScroll
+                    id="list-berita"
+                    // macControlCenter
+                    className="mt-10 p-5 "
+                >
+                    <h2 className="font-bold text-3xl pb-4 border-b">
+                        Prestasi
+                    </h2>
+                    <div className=" mb-3 py-2 flex justify-end">
+                        <div className="flex justify-end items-center gap-5 w-1/2">
+                            <DateRangePicker
+                                key={'outside-left'}
+                                className="w-1/2"
+                                visibleMonths={2}
+                                labelPlacement={'outside-left'}
+                            />
+                            <Button className="bg-main-green font-semibold text-white inline-block">
+                                filter
+                            </Button>
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-3 gap-5">
+                        {berita.map((item, index) => (
+                            <NewsItem
+                                id={item.id}
+                                key={index}
+                                title={item.judul}
+                                date={new Date()}
+                                image={TestImage}
+                                like={10}
+                                comment={10}
+                                see={10}
+                            />
+                        ))}
+                    </div>
+                </SectionTrigerScroll>
             </div>
         </AppLayout>
     )

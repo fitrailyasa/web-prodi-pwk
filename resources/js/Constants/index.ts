@@ -108,6 +108,8 @@ export const misiConstants: MisiType[] = [
 
 export const logoBox = '/assets/img/logo-box.png'
 
+export const TestImage = '/assets/img/test.png'
+
 export const beritaConstants = [
     {
         title: 'Gelar LMBKA Karya Studio Setingkat Nasional',

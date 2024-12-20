@@ -175,7 +175,7 @@ export default function NavBar() {
         },
         {
             title: 'Kalender Akademin',
-            href: 'kalender-akademik',
+            href: route('akademik.kalender-akademik'),
             description: 'Kalender Akademik Institut Teknologi Sumatera',
             icon: <LightBulbIcon className="fill-[#4005e1]" />
         },
