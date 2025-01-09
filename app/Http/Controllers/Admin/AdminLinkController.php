@@ -24,6 +24,19 @@ class AdminLinkController extends Controller
 
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
+        $categories = [
+            ['id' => 'home', 'name' => 'Beranda'],
+            ['id' => 'profile', 'name' => 'Profile'],
+            ['id' => 'academic', 'name' => 'Akademik'],
+            ['id' => 'facility', 'name' => 'Fasilitas'],
+            ['id' => 'news', 'name' => 'Berita & Informasi'],
+            ['id' => 'contact', 'name' => 'Kontak'],
+        ];
+        
+        $categories = array_map(function ($category) {
+            return (object) $category;
+        }, $categories);
+
         if ($search) {
             $links = Link::where('name', 'like', "%{$search}%")
                 ->paginate($validPerPage);
@@ -32,8 +45,9 @@ class AdminLinkController extends Controller
         }
 
         $counter = ($links->currentPage() - 1) * $links->perPage() + 1;
+        // dd($links, $categories);
 
-        return view("admin.link.index", compact('links', 'counter', 'search', 'perPage'));
+        return view("admin.link.index", compact('links', 'categories', 'counter', 'search', 'perPage'));
     }
 
     public function import(Request $request)

@@ -30,7 +30,7 @@ class MedpartRequest extends FormRequest
         return [
             'name' => 'required|max:100',
             'link' => 'required|max:100',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
         ];
     }
 
@@ -43,7 +43,7 @@ class MedpartRequest extends FormRequest
             'link.max' => 'Link maksimal 100 karakter!',
             'img.image' => 'Gambar harus berupa gambar!',
             'img.mimes' => 'Gambar harus berupa jpeg, png, jpg, gif, svg!',
-            'img.max' => 'Gambar maksimal 2mb!',
+            'img.max' => 'Gambar maksimal 5mb!',
         ];
     }
 }

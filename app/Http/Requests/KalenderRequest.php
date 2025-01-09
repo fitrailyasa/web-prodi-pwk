@@ -3,16 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Jadwal;
 
-class JadwalRequest extends FormRequest
+class KalenderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,15 +21,17 @@ class JadwalRequest extends FormRequest
      */
     public function rules(): array
     {
-        $db = new Jadwal();
-        $db->setDynamicConnection();
-
-        // dd($db->getConnection()->getDatabaseName());
-
         return [
-            'name' => 'required|max:100',
-            'desc' => 'required|max:1000',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
+            'file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,pdf|max:5120',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'file.required' => 'File tidak boleh kosong!',
+            'file.mimes' => 'File harus berupa pdf, jpeg, png, jpg, gif, svg!',
+            'file.max' => 'File maksimal 5mb!',
         ];
     }
 }

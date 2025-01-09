@@ -58,6 +58,14 @@ class AdminModulController extends Controller
         $validatedData['user_id'] = auth()->id();
 
         // upload img 
+        if ($request->hasFile('img')) {
+            $validatedData['img'] = $request->file('img')->store('modul');
+        }
+
+        // upload file
+        if ($request->hasFile('file')) {
+            $validatedData['file'] = $request->file('file')->store('modul');
+        }
         
         Modul::create($validatedData);
         return back()->with('alert', 'Berhasil Tambah Data Modul!');
@@ -69,6 +77,16 @@ class AdminModulController extends Controller
         $validatedData = $request->validated();
 
         $validatedData['user_id'] = $Modul->user_id;
+
+        // upload img 
+        if ($request->hasFile('img')) {
+            $validatedData['img'] = $request->file('img')->store('modul');
+        }
+
+        // upload file
+        if ($request->hasFile('file')) {
+            $validatedData['file'] = $request->file('file')->store('modul');
+        }
 
         $Modul->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Modul!');

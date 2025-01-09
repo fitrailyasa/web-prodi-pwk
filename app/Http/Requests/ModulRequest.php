@@ -29,8 +29,8 @@ class ModulRequest extends FormRequest
 
         return [
             'name' => 'required|max:100',
-            'file' => 'required|max:100',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,pdf|max:5120',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
             'category' => 'required|max:100',
         ];
     }
@@ -41,10 +41,11 @@ class ModulRequest extends FormRequest
             'name.required' => 'Judul tidak boleh kosong!',
             'name.max' => 'Judul maksimal 100 karakter!',
             'file.required' => 'Modul tidak boleh kosong!',
-            'file.max' => 'Modul maksimal 100 karakter!',
+            'file.mimes' => 'Modul harus berupa pdf, jpeg, png, jpg, gif, svg!',
+            'file.max' => 'Modul maksimal 5mb!',
             'img.image' => 'Gambar harus berupa gambar!',
             'img.mimes' => 'Gambar harus berupa jpeg, png, jpg, gif, svg!',
-            'img.max' => 'Gambar maksimal 2mb!',
+            'img.max' => 'Gambar maksimal 5mb!',
             'category.required' => 'Kategori tidak boleh kosong!',
             'category.max' => 'Kategori maksimal 100 karakter!',
         ];

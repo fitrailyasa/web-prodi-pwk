@@ -57,6 +57,11 @@ class AdminAlumniController extends Controller
         $validatedData = $request->validated();
         $validatedData['user_id'] = auth()->id();
 
+        // upload img 
+        if ($request->hasFile('img')) {
+            $validatedData['img'] = $request->file('img')->store('alumni');
+        }
+
         Alumni::create($validatedData);
         return back()->with('alert', 'Berhasil Tambah Data Alumni!');
     }
@@ -67,6 +72,11 @@ class AdminAlumniController extends Controller
         $validatedData = $request->validated();
 
         $validatedData['user_id'] = $alumni->user_id;
+
+        // upload img 
+        if ($request->hasFile('img')) {
+            $validatedData['img'] = $request->file('img')->store('alumni');
+        }
 
         $alumni->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Alumni!');

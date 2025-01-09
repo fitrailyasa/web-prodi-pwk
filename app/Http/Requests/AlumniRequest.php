@@ -33,7 +33,7 @@ class AlumniRequest extends FormRequest
             'graduation_year' => 'required|max_digits:values:4',
             'work' => 'required|max:100',
             'company' => 'required|max:100',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
         ];
     }
 
@@ -52,7 +52,7 @@ class AlumniRequest extends FormRequest
             'company.max' => 'Perusahaan maksimal 100 karakter!',
             'img.image' => 'Gambar harus berupa gambar!',
             'img.mimes' => 'Gambar harus berupa jpeg, png, jpg, gif, svg!',
-            'img.max' => 'Gambar maksimal 2mb!',
+            'img.max' => 'Gambar maksimal 5mb!',
         ];
     }
 }

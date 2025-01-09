@@ -47,9 +47,9 @@
                             <label class="form-label">{{ __('Kategori') }}</label>
                             <select class="form-select @error('category') is-invalid @enderror" name="category" id="category">
                                 <option value="">-- Pilih Kategori --</option>
-                                <option value="akademik" {{ old('category', $link->category) == 'akademik' ? 'selected' : '' }}>Akademik</option>
-                                <option value="fasilitas" {{ old('category', $link->category) == 'fasilitas' ? 'selected' : '' }}>Fasilitas</option>
-                                <option value="lainnya" {{ old('category', $link->category) == 'lainnya' ? 'selected' : '' }}>Lainnya</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}" {{ old('category', $link->category) == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                @endforeach
                             </select>
                             @error('category')
                                 <div class="invalid-feedback">{{ $message }}</div>
