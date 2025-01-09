@@ -38,7 +38,13 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
             'name' => 'test'
         ]);
     })->name('dosen-and-staf');
+    Route::get('/dosen-and-staf/{id}', function () {
+        return Inertia::render('Profile/DosenAndStaf/DosenAndStafDetail', [
+            'name' => 'test'
+        ]);
+    })->name('dosen-and-staf.detail');
 });
+
 
 // berita
 

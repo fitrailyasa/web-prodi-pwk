@@ -34,3 +34,20 @@ export type DosenCardType = {
     image: string
     id: number
 }
+
+export type BgImageProps = {
+    src: string
+    Possition?:
+        | 'bg-bottom'
+        | 'bg-center'
+        | 'bg-left'
+        | 'bg-left-bottom'
+        | 'bg-left-top'
+        | 'bg-right'
+        | 'bg-right-bottom'
+        | 'bg-right-top'
+        | 'bg-top'
+    className?: string
+    alt: string
+    children?: React.ReactNode
+}

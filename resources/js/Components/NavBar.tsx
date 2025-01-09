@@ -124,7 +124,7 @@ export default function NavBar() {
         },
         {
             title: 'Dosen & Staf Akademik',
-            href: '#',
+            href: route('profile.dosen-and-staf'),
             description:
                 'Dosen dan Staf Akademik Program Studi Perencanaan Wilayah dan Kota',
             icon: null

@@ -20,7 +20,9 @@ const DosenAndStafCard: React.FC<{ staf: DosenCardType }> = ({ staf }) => {
                     </p>
                 )}
                 <div className="flex justify-end items-center mt-3">
-                    <Link href="#">
+                    <Link
+                        href={route('profile.dosen-and-staf.detail', staf.id)}
+                    >
                         <Button className="bg-main-green font-semibold text-white inline-block">
                             Detail
                         </Button>

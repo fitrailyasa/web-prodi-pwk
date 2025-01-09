@@ -146,11 +146,7 @@ export default function Home() {
                     </div>
                 </SectionTrigerScroll>
                 {/* //stratistik section */}
-                <SectionTrigerScroll
-                    id={'statistik'}
-                    macControlCenter
-                    className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
-                >
+                <SectionTrigerScroll id={'statistik'} macControlCenter>
                     <div className=" grid grid-cols-1 md:grid-cols-2 gap-10 justify-between">
                         <div className=" grid grid-cols-2 gap-5">
                             <div className="flex gap-4 bg-secondary-blue bg-opacity-30 p-4 rounded-3xl">
