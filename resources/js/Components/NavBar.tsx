@@ -12,13 +12,19 @@ import {
     NavbarItem,
     NavbarMenu,
     NavbarMenuToggle,
-    Link
+    Link,
+    Switch,
+    LinkIcon
 } from '@nextui-org/react'
 import React, { useState } from 'react'
 import AnggleDownIcon from './Icon/AnggleDownIcon'
 import { TypingAnimation } from '@/Animation/TypingMotions'
 import LightBulbIcon from './Icon/LightBulbIcon'
 import { p } from 'framer-motion/client'
+import WhatAppIcon from './Icon/WhatAppInco'
+import LinkedInIcon from './Icon/LinkedInInco'
+import IDIcon from './Icon/IDInco'
+import ENIcon from './Icon/ENInco'
 
 type DropdownMenuItem = {
     title: string
@@ -292,14 +298,32 @@ export default function NavBar() {
                     </Link>
                 </NavbarItem>
                 <div>
-                    <Link className="text-black text-md" href={'#'}>
+                    {/* <Link className="text-black text-md" href={'#'}>
                         <TypingAnimation
                             text="Kontak"
                             speed={0.05}
                             ishover={true}
                             // isBorderLeft={true}
                         />
-                    </Link>
+                    </Link> */}
+                    <Switch
+                        defaultSelected
+                        color="secondary"
+                        size="lg"
+                        thumbIcon={({ isSelected, className }) =>
+                            isSelected ? (
+                                <IDIcon
+                                    className={`${className} text-main-green p-1`}
+                                />
+                            ) : (
+                                <ENIcon
+                                    className={`${className} text-main-green p-1`}
+                                />
+                            )
+                        }
+                    >
+                        {/* Dark mode */}
+                    </Switch>
                 </div>
             </NavbarContent>
             <NavbarContent className="md:hidden" justify="end">

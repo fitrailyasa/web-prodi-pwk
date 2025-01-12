@@ -54,12 +54,12 @@ const DosenAndStafDetail: React.FC = () => {
                     className="mt-10 bg-white p-5 rounded-3xl shadow-xl border-2"
                 >
                     <div className="px-10 flex flex-nowrap items-end">
-                        <div className="aspect-square w-52 rounded-full p-2 bg-main-green">
+                        <div className="aspect-[3/4] w-52 rounded-3xl p-1 bg-main-green">
                             <BgImageComponent
                                 Possition="bg-bottom"
                                 src={TestImage}
                                 alt="foto-dosen-1"
-                                className="rounded-full w-full h-full"
+                                className="rounded-3xl w-full h-full"
                             />
                         </div>
                         <div className="flex flex-1 flex-col justify-center pl-5">
