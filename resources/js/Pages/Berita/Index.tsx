@@ -33,7 +33,7 @@ export default function BeritaPage({ berita }: BeritaPageProps) {
                             </Button>
                         </div>
                     </div>
-                    <div className="grid grid-cols-3 gap-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                         {berita.map((item, index) => (
                             <NewsItem
                                 id={item.id}
@@ -70,7 +70,7 @@ export default function BeritaPage({ berita }: BeritaPageProps) {
                             </Button>
                         </div>
                     </div>
-                    <div className="grid grid-cols-3 gap-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                         {berita.map((item, index) => (
                             <NewsItem
                                 id={item.id}
@@ -107,7 +107,7 @@ export default function BeritaPage({ berita }: BeritaPageProps) {
                             </Button>
                         </div>
                     </div>
-                    <div className="grid grid-cols-3 gap-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                         {berita.map((item, index) => (
                             <NewsItem
                                 id={item.id}

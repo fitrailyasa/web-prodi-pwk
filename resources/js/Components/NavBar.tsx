@@ -126,20 +126,21 @@ export default function NavBar() {
             title: 'Sejarah',
             href: '#',
             description: 'Sejarah Program Studi Perencanaan Wilayah dan Kota',
-            icon: null
+            icon: <LightBulbIcon className="fill-[#4005e1]" />
         },
         {
             title: 'Dosen & Staf Akademik',
             href: route('profile.dosen-and-staf'),
             description:
                 'Dosen dan Staf Akademik Program Studi Perencanaan Wilayah dan Kota',
-            icon: null
+            icon: <LightBulbIcon className="fill-[#4005e1]" />
         },
         {
-            title: 'Kontak',
+            title: 'Kelompok Keahlian',
             href: '#',
-            description: 'Kontak Program Studi Perencanaan Wilayah dan Kota',
-            icon: null
+            description:
+                'Kelompok Keahlian Program Studi Perencanaan Wilayah dan Kota',
+            icon: <LightBulbIcon className="fill-[#4005e1]" />
         }
     ]
 
@@ -297,15 +298,17 @@ export default function NavBar() {
                         />
                     </Link>
                 </NavbarItem>
-                <div>
-                    {/* <Link className="text-black text-md" href={'#'}>
+                <NavbarItem>
+                    <Link className="text-black text-md" href={route('berita')}>
                         <TypingAnimation
                             text="Kontak"
                             speed={0.05}
                             ishover={true}
                             // isBorderLeft={true}
                         />
-                    </Link> */}
+                    </Link>
+                </NavbarItem>
+                <div>
                     <Switch
                         defaultSelected
                         color="secondary"
@@ -384,6 +387,7 @@ export default function NavBar() {
                     href={route('berita')}
                     title={'Berita dan Informasi'}
                 />
+                <MobileLink href="#" title={'Kontak'} />`
             </NavbarMenu>
         </Navbar>
     )

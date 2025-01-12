@@ -35,7 +35,7 @@ const KalenderAkademik: React.FC = () => {
                     className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
                 >
                     <h2 className="font-bold text-3xl pb-4 border-b mb-3">
-                        Even Akademik 2024
+                        Event Akademik 2024
                     </h2>
 
                     <div className=" mb-3 py-2 flex justify-end">

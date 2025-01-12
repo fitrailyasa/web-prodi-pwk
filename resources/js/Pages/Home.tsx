@@ -60,21 +60,23 @@ export default function Home() {
                             </div>
                             <div className="flex gap-2">
                                 <Button
+                                    size="sm"
                                     onClick={() => handleSlideBTN(-1)}
                                     className="bg-gray-200 rounded-full shadow-md hover:bg-gray-200 focus:outline-none"
                                 >
                                     <PrevIcon
                                         className="justify-center flex"
-                                        size={24}
+                                        size={18}
                                     />
                                 </Button>
                                 <Button
+                                    size="sm"
                                     onClick={() => handleSlideBTN(-1)}
                                     className="bg-gray-200 rounded-full shadow-md hover:bg-gray-200 focus:outline-none"
                                 >
                                     <NextIcon
                                         className="justify-center flex"
-                                        size={24}
+                                        size={18}
                                     />
                                 </Button>
                             </div>
@@ -126,13 +128,13 @@ export default function Home() {
                                             </div>
                                             <BouncingAnimation
                                                 key={index}
-                                                className="col-span-2 relative -end-5 -top-2 md:-top-8 lg:-top-14 aspect-square"
+                                                className="col-span-2 relative -end-2 -top-2 md:-top-5 lg:-top-6 aspect-square"
                                             >
-                                                <div className="rounded-full overflow-hidden border-3 border-main-green p-2">
+                                                <div className="w-[100%] md:w-[90%] rounded-xl md:rounded-3xl overflow-hidden border-3 border-main-green p-2">
                                                     <Image
                                                         src={item.image}
                                                         alt={item.title}
-                                                        className=" aspect-square object-cover object-bottom rounded-full"
+                                                        className=" aspect-video object-cover object-bottom rounded-xl md:rounded-3xl"
                                                     />
                                                 </div>
                                                 <div className="absolute -left-8 top-0 md:-left-12 md:top-10 lg:-left-20 w-20 h-20 lg:w-40 lg:h-40 bg-main-blue shadow-lg shadow-black/25 backdrop-blur-md rounded-full opacity-65 z-0"></div>
@@ -146,7 +148,11 @@ export default function Home() {
                     </div>
                 </SectionTrigerScroll>
                 {/* //stratistik section */}
-                <SectionTrigerScroll id={'statistik'} macControlCenter>
+                <SectionTrigerScroll
+                    id={'statistik'}
+                    macControlCenter
+                    className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
+                >
                     <div className=" grid grid-cols-1 md:grid-cols-2 gap-10 justify-between">
                         <div className=" grid grid-cols-2 gap-5">
                             <div className="flex gap-4 bg-secondary-blue bg-opacity-30 p-4 rounded-3xl">
@@ -184,7 +190,7 @@ export default function Home() {
                                 </div>
                             </div>
 
-                            <div className=" flex gap-4 bg-secondary-blue bg-opacity-30 p-4 rounded-3xl">
+                            <div className=" flex col-span-2 gap-4 bg-secondary-blue bg-opacity-30 p-4 rounded-3xl">
                                 <MultyPersonIcon
                                     size={74}
                                     className="stroke-main-green fill-main-green"
@@ -223,7 +229,7 @@ export default function Home() {
                     className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
                 >
                     <h2 className="font-bold text-3xl pb-4 border-b mb-3">
-                        Tentan PWK ITERA
+                        Tentang PWK ITERA
                     </h2>
                     <div className=" grid grid-cols-2 md:grid-cols-5 gap-10 justify-between">
                         <div className="col-span-3">
@@ -278,14 +284,14 @@ export default function Home() {
                             </p>
                         </div>
                     </div>
-                </SectionTrigerScroll>
-                {/* misi */}
+                    {/* </SectionTrigerScroll>
+
                 <SectionTrigerScroll
                     id={'misi'}
                     macControlCenter
                     className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
-                >
-                    <h2 className="font-bold text-3xl pb-4 border-b mb-3">
+                > */}
+                    <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10">
                         Misi
                     </h2>
                     <div className="flex flex-col gap-3 justify-between">
@@ -312,7 +318,7 @@ export default function Home() {
                 >
                     <div className="flex justify-between">
                         <h2 className="font-bold text-3xl pb-4 border-b mb-3">
-                            Even Terdekat
+                            Event Terdekat
                         </h2>
 
                         <Link href={route('akademik.kalender-akademik')}>

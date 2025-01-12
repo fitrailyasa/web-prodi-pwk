@@ -6,6 +6,20 @@ import { Image } from '@nextui-org/react'
 import { logoBox } from '@/Constants'
 
 export const Footer: React.FC = () => {
+    const aboutMenu = [
+        // {
+        //     title: 'Akademik',
+        //     link: '#'
+        // },
+        {
+            title: 'Kurikulum',
+            link: '#'
+        },
+        {
+            title: 'berita',
+            link: route('berita')
+        }
+    ]
     return (
         <footer className="bg-gray-50 w-full mt-5">
             <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 justify-around py-5 px-5">
@@ -65,9 +79,11 @@ export const Footer: React.FC = () => {
                     </span>
 
                     <div className="py-6">
-                        <a href="#" className="block">
-                            Tentang Perusahaan
-                        </a>
+                        {aboutMenu.map((item, index) => (
+                            <a key={index} href="#" className="block">
+                                {item.title}
+                            </a>
+                        ))}
                     </div>
                 </div>
             </div>
