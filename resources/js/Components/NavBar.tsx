@@ -123,7 +123,7 @@ export default function NavBar() {
             icon: <LightBulbIcon className="fill-[#4005e1]" />
         },
         {
-            title: 'Sejaran',
+            title: 'Sejarah',
             href: '#',
             description: 'Sejarah Program Studi Perencanaan Wilayah dan Kota',
             icon: null
@@ -174,13 +174,13 @@ export default function NavBar() {
             icon: <LightBulbIcon className="fill-[#4005e1]" />
         },
         {
-            title: 'Kuriulum',
+            title: 'Kurikulum',
             href: '#',
             description: 'Kuriulum Program Studi Perencanaan Wilayah dan Kota',
             icon: <LightBulbIcon className="fill-[#4005e1]" />
         },
         {
-            title: 'Kalender Akademin',
+            title: 'Kalender Akademik',
             href: route('akademik.kalender-akademik'),
             description: 'Kalender Akademik Institut Teknologi Sumatera',
             icon: <LightBulbIcon className="fill-[#4005e1]" />
