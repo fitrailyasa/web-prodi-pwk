@@ -1,4 +1,5 @@
 {
+    "name": "web-prodi-pwk",
     "private": true,
     "type": "module",
     "scripts": {
