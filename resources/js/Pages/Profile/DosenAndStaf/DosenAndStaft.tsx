@@ -89,7 +89,7 @@ const DosenAndStaf: React.FC = () => {
         },
         {
             name: 'Dr. Ir. M. Syahril, M.T.',
-            // position
+            position: 'staf',
             image: TestImage,
             id: 4
         }
@@ -114,13 +114,45 @@ const DosenAndStaf: React.FC = () => {
 
                     <div className="flex flex-wrap gap-7 justify-center">
                         {dataDosen
-                            .filter(item => item.position)
+                            .filter(
+                                item =>
+                                    item.position &&
+                                    item.position?.toLowerCase() !== 'staf'
+                            )
                             .map((item, index) => (
                                 <DosenAndStafCard key={index} staf={item} />
                             ))}
                     </div>
                 </SectionTrigerScroll>
-                <SectionTrigerScroll
+                <SectionTrigerScroll id="list-berita" className="mt-10 p-5 ">
+                    <h2 className="font-bold text-3xl pb-4">
+                        Dosen Program Studi PWK ITERA
+                    </h2>
+
+                    <div className="flex flex-wrap gap-7 justify-center">
+                        {dataDosen
+                            .filter(item => !item.position)
+                            .map((item, index) => (
+                                <DosenAndStafCard key={index} staf={item} />
+                            ))}
+                    </div>
+                </SectionTrigerScroll>
+                <SectionTrigerScroll id="list-berita" className="mt-10 p-5 ">
+                    <h2 className="font-bold text-3xl pb-4">Tendik Dan Staf</h2>
+
+                    <div className="flex flex-wrap gap-7 justify-center">
+                        {dataDosen
+                            .filter(
+                                item =>
+                                    item.position &&
+                                    item.position?.toLowerCase() === 'staf'
+                            )
+                            .map((item, index) => (
+                                <DosenAndStafCard key={index} staf={item} />
+                            ))}
+                    </div>
+                </SectionTrigerScroll>
+                {/* <SectionTrigerScroll
                     id={'visi'}
                     macControlCenter
                     className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
@@ -135,7 +167,7 @@ const DosenAndStaf: React.FC = () => {
                             </Button>
                         </Link>
                     </div>
-                </SectionTrigerScroll>
+                </SectionTrigerScroll> */}
             </div>
         </AppLayout>
     )

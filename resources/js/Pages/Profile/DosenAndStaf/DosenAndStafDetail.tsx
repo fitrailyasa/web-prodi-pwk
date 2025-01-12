@@ -6,7 +6,10 @@ import EyeIcon from '@/Components/Icon/EyeInco'
 import LinkedInIcon from '@/Components/Icon/LinkedInInco'
 import LoveIcon from '@/Components/Icon/LoveInco'
 import WhatAppIcon from '@/Components/Icon/WhatAppInco'
-import TabHome from '@/Components/Profile/DetailTabs/TabHome'
+import TabCourse from '@/Components/Profile/DetailTabs/TabCourse'
+import TabOther from '@/Components/Profile/DetailTabs/TabOther'
+import TabPublication from '@/Components/Profile/DetailTabs/TabPuBlication'
+import TabResume from '@/Components/Profile/DetailTabs/TabResume'
 import BgImageComponent from '@/Components/Utils/BgImage'
 import { TestImage } from '@/Constants'
 
@@ -25,24 +28,26 @@ const DosenAndStafDetail: React.FC = () => {
 
     const TabsDetailDosenAndStaf = [
         {
-            title: 'Home',
-            tabContent: <TabHome data={data} />
+            title: 'Resume',
+            tabContent: <TabResume data={data} />
         },
         {
-            title: 'Resume',
-            tabContent:
-                'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+            title: 'Penelitian Dan Publikasi',
+            tabContent: <TabPublication data={data} />
         },
         {
             title: 'Courses',
-            tabContent:
-                'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+            tabContent: <TabCourse data={data} />
+        },
+        {
+            title: 'Other',
+            tabContent: <TabOther data={data} />
         }
     ]
 
     return (
         <AppLayout title="Dosen Or Staf Detal">
-            <div className="container mx-auto px-4 py-3 relative h-screen">
+            <div className="container mx-auto px-4 py-3 relative min-h-screen">
                 <SectionTrigerScroll
                     macControlCenter
                     id="card_dosen_and_staf"
@@ -105,9 +110,9 @@ const DosenAndStafDetail: React.FC = () => {
                         variant="solid"
                         classNames={{
                             tabList:
-                                'gap-6 w-full relative rounded-none p-0 border-b border-divider',
+                                ' gap-1 md:gap-6 w-full flex-wrap relative rounded-none p-0 border-b border-divider',
                             cursor: 'w-full bg-[#22d3ee]',
-                            tab: 'max-w-fit px-10 h-12',
+                            tab: 'max-w-fit px-2 md:px-10 h-12',
                             tabContent:
                                 'group-data-[selected=true]:text-[#06b6d4]'
                         }}
