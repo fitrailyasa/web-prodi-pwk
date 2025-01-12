@@ -35,14 +35,14 @@ const KalenderAkademik: React.FC = () => {
                     className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
                 >
                     <h2 className="font-bold text-3xl pb-4 border-b mb-3">
-                        Event Akademik 2024
+                        Kelender Akademik 2024
                     </h2>
 
                     <div className=" mb-3 py-2 flex justify-end">
-                        <div className="flex justify-end items-center gap-5 w-1/2">
+                        <div className="flex justify-end items-center gap-1 md:gap-5 md:w-1/2">
                             <DateRangePicker
                                 key={'outside-left'}
-                                className="w-1/2"
+                                className="md:w-1/2"
                                 visibleMonths={2}
                                 labelPlacement={'outside-left'}
                             />

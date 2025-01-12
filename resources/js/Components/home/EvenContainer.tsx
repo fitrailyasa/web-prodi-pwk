@@ -12,6 +12,7 @@ import {
 } from '@nextui-org/react'
 import ClaenderIcon from '../Icon/CalenderIcon'
 import ControlCenterMac from '../ControlCenterMac'
+import ShareIcon from '../Icon/ShareInco'
 
 const EvenContainer: React.FC<eventTypes> = ({
     title,
@@ -94,6 +95,13 @@ const EvenContainer: React.FC<eventTypes> = ({
                                     onPress={onClose}
                                 >
                                     Close
+                                </Button>
+                                <Button
+                                    className="bg-main-green flex gap-1 text-white font-semibold"
+                                    // onPress={onClose}
+                                >
+                                    Save to Calender
+                                    <ShareIcon size={1} className="text-xl" />
                                 </Button>
                             </ModalFooter>
                         </>

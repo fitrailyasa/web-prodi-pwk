@@ -51,27 +51,27 @@ const DosenAndStafDetail: React.FC = () => {
                 <SectionTrigerScroll
                     macControlCenter
                     id="card_dosen_and_staf"
-                    className="mt-10 bg-white p-5 rounded-3xl shadow-xl border-2"
+                    className=" bg-white p-5 rounded-3xl shadow-xl border-2"
                 >
-                    <div className="px-10 flex flex-nowrap items-end">
-                        <div className="aspect-[3/4] w-52 rounded-3xl p-1 bg-main-green">
+                    <div className="flex md:flex-nowrap  items-start md:items-end">
+                        <div className="aspect-[3/4] w-52 rounded-xl md:rounded-3xl p-1 border-2 border-main-green">
                             <BgImageComponent
                                 Possition="bg-bottom"
                                 src={TestImage}
                                 alt="foto-dosen-1"
-                                className="rounded-3xl w-full h-full"
+                                className="rounded-xl md:rounded-3xl min-w-20 w-full h-full"
                             />
                         </div>
                         <div className="flex flex-1 flex-col justify-center pl-5">
                             <div className="">
-                                <h2 className="font-bold text-3xl pb-4">
+                                <h2 className="font-bold text-wrap text-xl md:text-3xl pb-4">
                                     {data.name}
                                 </h2>
-                                <p className="text-gray-500 text-lg">
+                                <p className="text-gray-500 text-md  text-wrap md:text-lg">
                                     {data.position}
                                 </p>
                             </div>
-                            <div className="flex gap-5 items-center mt-2">
+                            <div className="flex flex-wrap gap-5 items-center mt-2">
                                 <div className="flex items-center gap-3">
                                     <EmailIcon
                                         size={2}
@@ -81,7 +81,7 @@ const DosenAndStafDetail: React.FC = () => {
                                         {data.email}
                                     </span>
                                 </div>
-                                <div className="flex items-center gap-3">
+                                {/* <div className="flex items-center gap-3">
                                     <WhatAppIcon
                                         size={2}
                                         className="text-main-green text-xs"
@@ -89,7 +89,7 @@ const DosenAndStafDetail: React.FC = () => {
                                     <span className="font-semibold">
                                         {data.whatsapp}
                                     </span>
-                                </div>
+                                </div> */}
                                 <div className="flex items-center gap-3">
                                     <LinkedInIcon
                                         size={2}
@@ -108,13 +108,14 @@ const DosenAndStafDetail: React.FC = () => {
                     <Tabs
                         aria-label="Options"
                         variant="solid"
+                        // color=""
                         classNames={{
                             tabList:
-                                ' gap-1 md:gap-6 w-full flex-wrap relative rounded-none p-0 border-b border-divider',
-                            cursor: 'w-full bg-[#22d3ee]',
+                                ' gap-1 md:gap-6 w-full flex-wrap relative rounded-none p-0 border-b border-divider  ',
+                            cursor: 'w-full bg-main-green',
                             tab: 'max-w-fit px-2 md:px-10 h-12',
                             tabContent:
-                                'group-data-[selected=true]:text-[#06b6d4]'
+                                'group-data-[selected=true]:text-black group-data-[selected=false]:text-gray-500 text-md md:text-lg font-semibold '
                         }}
                     >
                         {TabsDetailDosenAndStaf.map((tab, index) => (

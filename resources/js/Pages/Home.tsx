@@ -5,6 +5,7 @@ import ControlCenterMac from '@/Components/ControlCenterMac'
 import MultyPersonIcon from '@/Components/Icon/MultyPersonIcon'
 import NextIcon from '@/Components/Icon/NextIcon'
 import PrevIcon from '@/Components/Icon/PrevIcon'
+import TargetIcon from '@/Components/Icon/TargetInco'
 import EvenContainer from '@/Components/home/EvenContainer'
 import { SliderNews } from '@/Components/home/SliderNews'
 import { beritaConstants, eventsConstants, misiConstants } from '@/Constants'
@@ -269,18 +270,17 @@ export default function Home() {
                     <h2 className="font-bold text-3xl pb-4 border-b mb-3">
                         Visi
                     </h2>
-                    <div className=" grid grid-cols-2 md:grid-cols-5 gap-10 justify-between">
-                        <div className="col-span-2">
+                    <div className="  md:grid-cols-5 gap-10 justify-between">
+                        {/* <div className="col-span-2">
                             <Image src={logoBox} className="" />
-                        </div>
+                        </div> */}
                         <div className="col-span-3">
                             <p className="py-2">
-                                Lorem ipsum, dolor sit amet consectetur
-                                adipisicing elit. Natus sapiente eaque deleniti
-                                reiciendis sunt explicabo consectetur quae sequi
-                                itaque maiores? Impedit aspernatur eum animi
-                                provident! Perferendis eveniet adipisci sequi
-                                quisquam?
+                                Program Studi Perencanaan Wilayah dan Kota ITERA
+                                Sebagai Program Studi Unggulan Di Pulau Sumatera
+                                yang Menghasilkan Perencana Wilayah dan Kota
+                                Berwawasan Teknologi, Inklusif dan Pembangunan
+                                Berkelanjutan
                             </p>
                         </div>
                     </div>
@@ -300,8 +300,8 @@ export default function Home() {
                                 key={index}
                                 className="border p-3 rounded-2xl flex gap-3 items-center"
                             >
-                                <MultyPersonIcon
-                                    size={60}
+                                <TargetIcon
+                                    size={2.5}
                                     className="stroke-main-green fill-main-green"
                                 />
                                 <p className="py-2">{item.title}</p>

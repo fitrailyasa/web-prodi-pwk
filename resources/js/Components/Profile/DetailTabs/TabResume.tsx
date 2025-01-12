@@ -6,6 +6,9 @@ type TabResumeProps = {
 }
 
 const TabResume: React.FC<TabResumeProps> = ({ data }) => {
+    data.sinta = 'asdjfhakjhflaskdhjf'
+    data.scopus = '-'
+    data.scholar = 'asdjfhakjhflaskdhjf'
     return (
         <>
             <SectionTrigerScroll
@@ -22,7 +25,7 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                     corporis?"
                 </p>
                 <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10">
-                    Bio Data
+                    Biodata
                 </h2>
                 <div className="gap-10 justify-between">
                     <div className="">
@@ -42,19 +45,19 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                             <td>{data.nidn}</td>
                         </tr>
                         <tr>
-                            <td className="font-bold pe-10">Scoclar</td>
+                            <td className="font-bold pe-10">Scholar</td>
                             <td>:</td>
-                            <td>{data.nidn}</td>
+                            <td>{data.scholar}</td>
                         </tr>
                         <tr>
                             <td className="font-bold pe-10">Scopus</td>
                             <td>:</td>
-                            <td>{data.nidn}</td>
+                            <td>{data.scopus}</td>
                         </tr>
                         <tr>
-                            <td className="font-bold pe-10">Sinata </td>
+                            <td className="font-bold pe-10">Sinta</td>
                             <td>:</td>
-                            <td>{data.nidn}</td>
+                            <td>{data.sinta}</td>
                         </tr>
                     </div>
                 </div>
@@ -65,9 +68,28 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                 className="mt-10 bg-white p-5 rounded-3xl shadow-xl border-2"
             >
                 <h2 className="font-bold text-3xl pb-4 border-b mb-3">
-                    Latar Belakang
+                    Riwayat Pendidikan
                 </h2>
                 <div className="my-5">
+                    {/* <h3 className="font-bold text-2xl pb-3 border-b mb-3">
+                        Latar Belakang Pendidikan
+                    </h3> */}
+                    <tr>
+                        <td className="font-bold pe-10">S!</td>
+                        <td>:</td>
+                        <td>
+                            {data.s1} {data.tahun}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td className="font-bold pe-10">S2</td>
+                        <td>:</td>
+                        <td>
+                            {data.s1} {data.tahun}
+                        </td>
+                    </tr>
+                </div>
+                {/* <div className="my-5">
                     <h3 className="font-bold text-2xl pb-3 border-b mb-3">
                         Latar Belakang Pendidikan
                     </h3>
@@ -85,26 +107,7 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                             {data.s1} {data.tahun}
                         </td>
                     </tr>
-                </div>
-                <div className="my-5">
-                    <h3 className="font-bold text-2xl pb-3 border-b mb-3">
-                        Latar Belakang Pendidikan
-                    </h3>
-                    <tr>
-                        <td className="font-bold pe-10">S!</td>
-                        <td>:</td>
-                        <td>
-                            {data.s1} {data.tahun}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="font-bold pe-10">S2</td>
-                        <td>:</td>
-                        <td>
-                            {data.s1} {data.tahun}
-                        </td>
-                    </tr>
-                </div>
+                </div> */}
             </SectionTrigerScroll>
         </>
     )
