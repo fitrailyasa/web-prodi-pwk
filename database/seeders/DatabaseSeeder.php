@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TagSeeder::class);
         $this->call(BeritaSeeder::class);
         $this->call(EventSeeder::class);
+        $this->call(KalenderSeeder::class);
     }
 }

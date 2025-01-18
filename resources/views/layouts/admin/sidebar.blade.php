@@ -73,6 +73,13 @@
                                     <p>Modul Kuliah</p>
                                 </a>
                             </li>
+                            <li class="nav-item ms-3">
+                                <a href="{{ route('admin.kalender.index') }}"
+                                    class="nav-link text-white {{ Request::routeIs('admin.kalender.index') ? 'aktif' : '' }}">
+                                    <i class="nav-icon fas fa-book"></i>
+                                    <p>Kalender Akademik</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li

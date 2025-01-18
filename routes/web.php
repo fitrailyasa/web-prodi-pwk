@@ -14,10 +14,15 @@ use App\Http\Controllers\Admin\AdminMedpartController;
 use App\Http\Controllers\Admin\AdminTentangController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminEventController;
+use App\Http\Controllers\Admin\AdminKalenderController;
 use App\Http\Controllers\Admin\AdminModulController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminTagController;
 use App\Http\Controllers\Auth\ProviderController;
+
+use App\Http\Controllers\NavbarController;
+
+Route::get('/navbar', [NavbarController::class, 'index'])->name('navbar');
 
 // CLIENT SIDE
 // Route::get('/', [HomeController::class, 'index'])->name('beranda');
@@ -141,13 +146,11 @@ Route::middleware(['auth'])->group(function () {
 
         // CRUD TENTANG
         Route::get('/tentang', [AdminTentangController::class, 'index'])->name('tentang.index');
-        Route::post('/tentang', [AdminTentangController::class, 'store'])->name('tentang.store');
         Route::put('/tentang/{id}/update', [AdminTentangController::class, 'update'])->name('tentang.update');
-        Route::delete('/tentang/{id}/destroy', [AdminTentangController::class, 'destroy'])->name('tentang.destroy');
-        Route::post('/tentang/import', [AdminTentangController::class, 'import'])->name('tentang.import');
-        Route::get('/tentang/export', [AdminTentangController::class, 'export'])->name('tentang.export');
-        Route::delete('/tentang/deleteAll', [AdminTentangController::class, 'destroyAll'])->name('tentang.destroyAll');
         Route::post('/admin/tentang/upload-image', [AdminTentangController::class, 'uploadImage'])->name('tentang.upload_image');
+
+        Route::get('/kalender', [AdminKalenderController::class, 'index'])->name('kalender.index');
+        Route::put('/kalender/{id}/update', [AdminKalenderController::class, 'update'])->name('kalender.update');
     });
 
     // CMS DOSEN

@@ -14,7 +14,7 @@ class Event extends Model
     protected $connection;
     protected $table = 'events';
     protected $primaryKey = 'id';
-    protected $fillable = ['id', 'name', 'slug', 'desc', 'img', 'status', 'event_date', 'publish_date', 'tag_id', 'user_id'];
+    protected $fillable = ['id', 'name', 'slug', 'desc', 'img', 'status', 'event_date', 'publish_date', 'views', 'tag_id', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 
     public static function setDynamicConnection()

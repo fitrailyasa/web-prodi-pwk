@@ -1,108 +1,109 @@
-<x-admin-table>
+<x-admin-layout>
     <!-- Title -->
     <x-slot name="title">
-        Profile
+        Edit Profile
     </x-slot>
 
-    <!-- Button Form Create -->
-    <x-slot name="formCreate">
-        @include('admin.tentang.create')
-    </x-slot>
+    <form method="POST" action="{{ route('admin.tentang.update', $tentang->id) }}" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
 
-    <!-- Button Import -->
-    <x-slot name="import">
-        @include('admin.tentang.import')
-    </x-slot>
+        <div class="modal-body text-left">
+            <div class="row">
+                <!-- Nama -->
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label class="form-label">{{ __('Nama') }}</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                            value="{{ old('name', $tentang->name) }}" required>
+                        @error('name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
 
-    <!-- Button Export -->
-    <x-slot name="export">
-        @include('admin.tentang.export')
-    </x-slot>
+                <!-- Vision -->
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label class="form-label">{{ __('Visi') }}</label>
+                        <textarea class="form-control @error('vision') is-invalid @enderror" name="vision" rows="3" required>{{ old('vision', $tentang->vision) }}</textarea>
+                        @error('vision')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
 
-    <!-- Button Delete All -->
-    <x-slot name="deleteAll">
-        {{-- @include('admin.tentang.deleteAll') --}}
-    </x-slot>
+                <!-- Mission -->
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label class="form-label">{{ __('Misi') }}</label>
+                        <textarea class="form-control @error('mission') is-invalid @enderror" name="mission" id="edit_mission" rows="3"
+                            required>{{ old('mission', $tentang->mission) }}</textarea>
+                        @error('mission')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
 
-    <!-- Search & Pagination -->
-    <x-slot name="search">
-        @include('layouts.admin.search')
-    </x-slot>
+                <!-- Goals -->
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label class="form-label">{{ __('Tujuan') }}</label>
+                        <textarea class="form-control @error('goals') is-invalid @enderror" name="goals" id="edit_goals" rows="3"
+                            required>{{ old('goals', $tentang->goals) }}</textarea>
+                        @error('goals')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
 
-    <!-- Table -->
-    <table id="" class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>{{ __('No') }}</th>
-                <th>{{ __('Visi') }}</th>
-                <th>{{ __('Misi') }}</th>
-                <th>{{ __('Tujuan') }}</th>
-                <th>{{ __('Total Dosen') }}</th>
-                <th>{{ __('Total Mahasiswa') }}</th>
-                <th>{{ __('Total Tenaga Kependidikan') }}</th>
-                <th class="text-center">{{ __('Aksi') }}</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($tentangs as $tentang)
-                <tr @if ($tentang) class="text-muted" @endif>
-                    <td>{{ $counter++ }}</td>
-                    <td>{{ $tentang->vision ?? '-' }}</td>
-                    <td>{!! $tentang->mission !!}</td>
-                    <td>{!! $tentang->goals !!}</td>
-                    <td>{{ $tentang->total_lecture ?? '-' }}</td>
-                    <td>{{ $tentang->total_student ?? '-' }}</td>
-                    <td>{{ $tentang->total_teaching_staff ?? '-' }}</td>
-                    <td class="manage-row text-center">
-                        @if (auth()->user()->role == 'admin')
-                            <!-- Edit and Delete Buttons -->
-                            @include('admin.tentang.edit')
-                            @include('admin.tentang.delete')
-                        @endif
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-    {{ $tentangs->appends(['perPage' => $perPage, 'search' => $search])->links() }}
+                <!-- Total Lecture -->
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label">{{ __('Jumlah Dosen') }}</label>
+                        <input type="number" class="form-control @error('total_lecture') is-invalid @enderror"
+                            name="total_lecture" value="{{ old('total_lecture', $tentang->total_lecture) }}">
+                        @error('total_lecture')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
+                <!-- Total Student -->
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label">{{ __('Jumlah Mahasiswa') }}</label>
+                        <input type="number" class="form-control @error('total_student') is-invalid @enderror"
+                            name="total_student" value="{{ old('total_student', $tentang->total_student) }}">
+                        @error('total_student')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
+                <!-- Total Teaching Staff -->
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label class="form-label">{{ __('Jumlah Tendik') }}</label>
+                        <input type="number" class="form-control @error('total_teaching_staff') is-invalid @enderror"
+                            name="total_teaching_staff"
+                            value="{{ old('total_teaching_staff', $tentang->total_teaching_staff) }}">
+                        @error('total_teaching_staff')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> {{ __('Simpan') }}</button>
+        </div>
+    </form>
+
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
 <script>
-    // Inisialisasi CKEditor untuk misi dan tujuan dengan dukungan unggah gambar
-    ClassicEditor
-        .create(document.querySelector('#create_mission'), {
-            ckfinder: {
-                uploadUrl: '{{route('admin.tentang.upload_image').'?_token='.csrf_token()}}',
-            },
-            toolbar: [
-                'heading', '|',
-                'bold', 'italic', 'link', '|',
-                'bulletedList', 'numberedList', '|',
-                'imageUpload',
-                'blockQuote', 'undo', 'redo'
-            ]
-        })
-        .catch(error => {
-            console.error(error);
-        });
-
-    ClassicEditor
-        .create(document.querySelector('#create_goals'), {
-            ckfinder: {
-                uploadUrl: '{{route('admin.tentang.upload_image').'?_token='.csrf_token()}}',
-            },
-            toolbar: [
-                'heading', '|',
-                'bold', 'italic', 'link', '|',
-                'bulletedList', 'numberedList', '|',
-                'imageUpload',
-                'blockQuote', 'undo', 'redo'
-            ]
-        })
-        .catch(error => {
-            console.error(error);
-        });
-
     ClassicEditor
         .create(document.querySelector('#edit_mission'), {
             ckfinder: {
@@ -138,4 +139,4 @@
         });
 </script>
 
-</x-admin-table>
+</x-admin-layout>

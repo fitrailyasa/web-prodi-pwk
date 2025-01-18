@@ -26,4 +26,9 @@ class Link extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function scopeByCategory($query, $category)
+    {
+        return $query->where('category', $category);
+    }
 }
