@@ -114,21 +114,21 @@ export const beritaConstants = [
     {
         title: 'Gelar LMBKA Karya Studio Setingkat Nasional',
         date: new Date(),
-        image: './assets/img/test.png'
+        image: TestImage
     },
     {
         title: 'Staf Pengajar Prodi Desain Komunikasi Visual Raih Penghargaan',
         date: new Date(),
-        image: './assets/img/test.png'
+        image: TestImage
     },
     {
         title: 'Staf Pengajar Prodi Desain Komunikasi Visual Raih Penghargaan',
         date: new Date(),
-        image: './assets/img/test.png'
+        image: TestImage
     },
     {
         title: 'Staf Pengajar Prodi Desain Komunikasi Visual Raih Penghargaan',
         date: new Date(),
-        image: './assets/img/test.png'
+        image: TestImage
     }
 ]

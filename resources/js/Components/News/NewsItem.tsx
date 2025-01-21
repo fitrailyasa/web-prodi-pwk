@@ -5,17 +5,25 @@ import LoveIcon from '../Icon/LoveInco'
 import ChatIcon from '../Icon/ChatInco'
 import { NewsItemProps } from '@/types'
 import ShareIcon from '../Icon/ShareInco'
+import { router } from '@inertiajs/react'
 
 const NewsItem = (props: NewsItemProps) => {
+    const handleClick = (id: number) => {
+        //navigate to news detail
+        router.get(route('berita.show', { id }))
+    }
     return (
-        <div className="bg-white p-5 rounded-3xl shadow-xl">
+        <div
+            onClick={() => handleClick(props.id)}
+            className="bg-white p-5 rounded-3xl shadow-xl"
+        >
             <div className="  flex justify-start gap-5">
                 <Image
                     src={props.image}
-                    alt="itera"
+                    alt={props.title}
                     // width={100}
                     // height={100}
-                    className="rounded-3xl aspect-square max-h-[100px]"
+                    className="rounded-3xl aspect-square w-[100px] min-w-[100px] max-w-[100px]"
                 />
                 <div className=" flex flex-col">
                     <h3 className="font-bold text-xl">{props.title}</h3>
