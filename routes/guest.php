@@ -43,6 +43,12 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
             'name' => 'test'
         ]);
     })->name('dosen-and-staf.detail');
+
+    Route::get('/trace-study', function () {
+        return Inertia::render('Profile/Alumni', [
+            'name' => 'test'
+        ]);
+    })->name('alumni');
 });
 
 

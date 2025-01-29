@@ -20,9 +20,6 @@ import React, { useState } from 'react'
 import AnggleDownIcon from './Icon/AnggleDownIcon'
 import { TypingAnimation } from '@/Animation/TypingMotions'
 import LightBulbIcon from './Icon/LightBulbIcon'
-import { p } from 'framer-motion/client'
-import WhatAppIcon from './Icon/WhatAppInco'
-import LinkedInIcon from './Icon/LinkedInInco'
 import IDIcon from './Icon/IDInco'
 import ENIcon from './Icon/ENInco'
 
@@ -140,6 +137,13 @@ export default function NavBar() {
             href: '#',
             description:
                 'Kelompok Keahlian Program Studi Perencanaan Wilayah dan Kota',
+            icon: <LightBulbIcon className="fill-[#4005e1]" />
+        },
+        {
+            title: 'Alumni',
+            href: route('profile.alumni'),
+            description:
+                'Alumni Program Studi Perencanaan Wilayah dan Kota Institut Teknologi Sumatera',
             icon: <LightBulbIcon className="fill-[#4005e1]" />
         }
     ]

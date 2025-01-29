@@ -51,3 +51,51 @@ export type BgImageProps = {
     alt: string
     children?: React.ReactNode
 }
+
+// export type AlumniItemtypes = {
+//     name: string
+//     tahun_masuk: string
+//     tahun_lulus: string
+//     image: string
+//     email?: string
+//     nomor_telepon?: string
+//     id?: number
+//     tempat_magang?: string
+//     tempat_kerja?: string
+//     judul_penelitian?: string
+// }
+
+export type AlumniItemTypes = {
+    id?: number
+    name: string
+    tahun_masuk: string
+    tahun_lulus: string
+    image: string
+    email?: string
+    nomor_telepon?: string
+
+    // Pendidikan & Akademik
+    judul_penelitian?: string
+    ipk?: number
+    prestasi_akademik?: string[]
+    organisasi_kampus?: string[]
+
+    // Pekerjaan & Karier
+    posisi_pekerjaan?: string
+    nama_perusahaan?: string
+    bidang_industri?: string
+    pengalaman_kerja?: string[]
+    linkedin?: string
+    github?: string
+    portofolio?: string
+
+    // Magang & Penelitian
+    dosen_pembimbing?: string
+    bidang_penelitian?: string
+    publikasi_ilmiah?: string[]
+
+    // Lain-lain
+    prestasi_non_akademik?: string[]
+    kegiatan_sosial?: string[]
+    hobi_minat?: string[]
+}
