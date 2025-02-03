@@ -15,22 +15,22 @@ const alumniData: AlumniItemTypes[] = [
         email: 'johndoe@example.com',
         nomor_telepon: '08123456789',
         judul_penelitian: 'Pemanfaatan AI dalam Analisis Data',
-        ipk: 3.75,
+
         prestasi_akademik: ['Juara 1 Lomba Data Science', 'Cum Laude'],
         organisasi_kampus: ['BEM', 'Himpunan Mahasiswa Informatika'],
+
         posisi_pekerjaan: 'Software Engineer',
         nama_perusahaan: 'Tech Corp',
         bidang_industri: 'Teknologi',
         pengalaman_kerja: ['Intern di Google', 'Full-time di Tech Corp'],
+
         linkedin: 'https://linkedin.com/in/johndoe',
         github: 'https://github.com/johndoe',
         portofolio: 'https://johndoe.dev',
+        instagram: 'https://instagram.com',
+
         dosen_pembimbing: 'Dr. Jane Smith',
-        bidang_penelitian: 'Artificial Intelligence',
-        publikasi_ilmiah: ['AI in Data Analysis - IEEE'],
-        prestasi_non_akademik: ['Juara 1 Hackathon', 'Volunteer di NGO'],
-        kegiatan_sosial: ['Pengajar di komunitas coding'],
-        hobi_minat: ['Programming', 'Photography']
+        bidang_penelitian: 'Artificial Intelligence'
     },
     {
         id: 2,
@@ -40,23 +40,24 @@ const alumniData: AlumniItemTypes[] = [
         image: TestImage,
         email: 'janesmith@example.com',
         nomor_telepon: '08234567890',
-        judul_penelitian: 'Blockchain untuk Keamanan Siber',
-        ipk: 3.85,
+        judul_penelitian:
+            'Blockchain untuk Keamanan Siber loremasjkdglskjfd g sfashbdr;yweopri8ywoehirbchxqwhdfA:KLhsf;dybiweortiy;oiwehfhs DKJFH;Alkiy;ofdy',
+
         prestasi_akademik: ['Best Thesis Award'],
         organisasi_kampus: ['Cyber Security Club'],
+
         posisi_pekerjaan: 'Cyber Security Analyst',
         nama_perusahaan: 'SecureTech',
         bidang_industri: 'Cyber Security',
         pengalaman_kerja: ['Intern di IBM', 'Full-time di SecureTech'],
+
         linkedin: 'https://linkedin.com/in/janesmith',
         github: 'https://github.com/janesmith',
         portofolio: 'https://janesmith.dev',
+        instagram: 'https://instagram.com',
+
         dosen_pembimbing: 'Dr. Robert Brown',
-        bidang_penelitian: 'Blockchain Security',
-        publikasi_ilmiah: ['Blockchain and Cybersecurity - ACM'],
-        prestasi_non_akademik: ['Pembicara di Cyber Conference'],
-        kegiatan_sosial: ['Relawan di program edukasi digital'],
-        hobi_minat: ['Cybersecurity', 'Public Speaking']
+        bidang_penelitian: 'Blockchain Security'
     }
 ]
 const Alumni: React.FC = () => {

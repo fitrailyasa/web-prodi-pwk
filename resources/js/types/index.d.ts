@@ -71,8 +71,6 @@ export type AlumniItemTypes = {
     tahun_masuk: string
     tahun_lulus: string
     image: string
-    email?: string
-    nomor_telepon?: string
 
     // Pendidikan & Akademik
     judul_penelitian?: string
@@ -85,17 +83,16 @@ export type AlumniItemTypes = {
     nama_perusahaan?: string
     bidang_industri?: string
     pengalaman_kerja?: string[]
+
+    //contact
     linkedin?: string
     github?: string
     portofolio?: string
+    instagram?: string
+    email?: string
+    nomor_telepon?: string
 
     // Magang & Penelitian
     dosen_pembimbing?: string
     bidang_penelitian?: string
-    publikasi_ilmiah?: string[]
-
-    // Lain-lain
-    prestasi_non_akademik?: string[]
-    kegiatan_sosial?: string[]
-    hobi_minat?: string[]
 }

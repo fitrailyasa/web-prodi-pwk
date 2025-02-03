@@ -1,9 +1,8 @@
 import ControlCenterMac from '@/Components/ControlCenterMac'
-import EvenContainer from '@/Components/home/EvenContainer'
-import ClaenderIcon from '@/Components/Icon/CalenderIcon'
-import EyeIcon from '@/Components/Icon/EyeInco'
-import ShareIcon from '@/Components/Icon/ShareInco'
-import { DateFormater } from '@/Helper/DateFormater'
+import EmailIcon from '@/Components/Icon/EmialInco'
+import InstagramIcon from '@/Components/Icon/InstagramInco'
+import LinkedInIcon from '@/Components/Icon/LinkedInInco'
+import WhatAppIcon from '@/Components/Icon/WhatAppInco'
 import { AlumniItemTypes } from '@/types'
 
 import {
@@ -16,7 +15,6 @@ import {
     ModalHeader,
     useDisclosure
 } from '@nextui-org/react'
-import { data } from 'framer-motion/client'
 
 type AlumniItemProps = {
     data: AlumniItemTypes
@@ -30,18 +28,21 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                 onClick={onOpen}
                 className="bg-white p-5 rounded-3xl shadow-xl min-w-96"
             >
-                <div className="flex justify-start gap-5">
+                <ControlCenterMac />
+                <div className="flex justify-start gap-5 pt-5">
                     <Image
                         src={data.image}
                         alt={data.image}
-                        className="rounded-3xl aspect-square w-[300px] min-w-[300px] max-w-[100px]"
+                        className="rounded-3xl aspect-square w-[200px] min-w-[200px] max-w-[100px]"
                     />
                     <div className=" flex flex-col">
                         <h3 className="font-bold text-3xl">{data.name}</h3>
-                        <p>
+                        <p className="pt-1">
                             {data.tahun_masuk} - {data.tahun_lulus}
                         </p>
-                        <p>{data.email}</p>
+                        <p className="uppercase font-semibold pt-3">
+                            {data.bidang_industri}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -59,7 +60,7 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                                 <ControlCenterMac />
                             </ModalHeader>
                             <ModalBody className="px-10 py-4">
-                                <div className="flex gap-3  py-3">
+                                <div className="flex gap-10  py-3">
                                     <Image
                                         src={data.image}
                                         alt={data.image}
@@ -70,18 +71,101 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                                             {data.name}
                                         </h1>
                                         <p>
-                                            {data.tahun_masuk} -{' '}
+                                            {data.tahun_masuk}
+                                            {' - '}
                                             {data.tahun_lulus}
                                         </p>
-                                        <p>{data.email}</p>
-                                        <p>{data.nomor_telepon}</p>
-                                        <p>{data.posisi_pekerjaan}</p>
-                                        <p>
-                                            {JSON.stringify(
-                                                data.pengalaman_kerja
-                                            )}
-                                        </p>
-                                        <p>{data.judul_penelitian}</p>
+                                        <div className="flex flex-wrap gap-3 pt-5">
+                                            <div className="flex items-center gap-1">
+                                                <EmailIcon
+                                                    size={2}
+                                                    className="text-main-green text-xs"
+                                                />
+                                                <span className="font-semibold">
+                                                    {data.email}
+                                                </span>
+                                            </div>
+                                            <div className="flex items-center gap-1">
+                                                <WhatAppIcon
+                                                    size={2}
+                                                    className="text-main-green text-xs"
+                                                />
+                                                <span className="font-semibold">
+                                                    {data.nomor_telepon}
+                                                </span>
+                                            </div>
+                                            <div className="flex items-center gap-1">
+                                                <InstagramIcon
+                                                    size={2}
+                                                    className="text-main-green text-xs"
+                                                />
+                                                <span className="font-semibold">
+                                                    {data.instagram}
+                                                </span>
+                                            </div>
+                                            <div className="flex items-center gap-1">
+                                                <LinkedInIcon
+                                                    size={2}
+                                                    className="text-main-green text-xs"
+                                                />
+                                                <span className="font-semibold">
+                                                    {data.linkedin}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        {/* // description */}
+
+                                        <div className="pt-10">
+                                            <tr>
+                                                <td className="font-bold text-nowrap">
+                                                    Judul Penelitian
+                                                </td>
+                                                <td>
+                                                    {' '}
+                                                    :{' '}
+                                                    <span className="text-wrap">
+                                                        {data.judul_penelitian}
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td className="font-bold text-nowrap">
+                                                    Bidang kerja
+                                                </td>
+                                                <td>
+                                                    {' '}
+                                                    : {data.bidang_industri}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td className="font-bold text-nowrap">
+                                                    Tempat kerja
+                                                </td>
+                                                <td>
+                                                    {' '}
+                                                    : {data.nama_perusahaan}
+                                                </td>
+                                            </tr>
+
+                                            {/* <p>
+                                                <span className="font-bold text-nowrap">
+                                                    Judul Penelitian{' : '}
+                                                </span>
+                                                {data.judul_penelitian}
+                                            </p>
+                                            <p>
+                                                <span className="font-bold">
+                                                    Bidang kerja{' : '}
+                                                </span>
+                                                {data.bidang_industri}
+                                            </p>
+                                            <p>
+                                                <span className="font-bold">
+                                                    Tempat kerja{' : '}
+                                                </span>
+                                                {data.nama_perusahaan}
+                                            </p> */}
+                                        </div>
                                     </div>
                                 </div>
                             </ModalBody>
@@ -92,10 +176,6 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                                 >
                                     Close
                                 </Button>
-                                {/* <Button className="bg-main-green flex gap-1 text-white font-semibold">
-                                    Save to Calender
-                                    <ShareIcon size={1} className="text-xl" />
-                                </Button> */}
                             </ModalFooter>
                         </>
                     )}
