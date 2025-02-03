@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Link;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Middleware;
@@ -37,18 +38,24 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
-             'flash' => [
-                'status' => fn () => $request->session()->get('status')
+            'flash' => [
+                'status' => fn() => $request->session()->get('status')
             ],
-            // 'auth' => function () use ($request) {
-            //     return [
-            //         'user' => $request->user(),
-            //     ];
-            // },
-            'auth' => Inertia::share('user', fn (Request $request) => $request->user()
-                ? $request->user()->only('id', 'name', 'email')
-                : null
-            )
+            'auth' => Inertia::share(
+                'user',
+                fn(Request $request) => $request->user()
+                    ? $request->user()->only('id', 'name', 'email')
+                    : null
+            ),
+            'nav_link' => Link::get()->map(function ($link) {
+                return [
+                    'id' => $link->id,
+                    'title' => $link->name,
+                    'description' => $link->desc,
+                    'href' => $link->link,
+                    'category' => $link->category,
+                ];
+            })
         ]);
     }
 }

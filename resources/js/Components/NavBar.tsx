@@ -22,6 +22,8 @@ import { TypingAnimation } from '@/Animation/TypingMotions'
 import LightBulbIcon from './Icon/LightBulbIcon'
 import IDIcon from './Icon/IDInco'
 import ENIcon from './Icon/ENInco'
+import { usePage } from '@inertiajs/react'
+import { navLinkType } from '@/types'
 
 type DropdownMenuItem = {
     title: string
@@ -106,10 +108,61 @@ function MobileLink(prop: DropdownMenuItem) {
 }
 
 export default function NavBar() {
+    const { nav_link } = usePage<{
+        nav_link: navLinkType[]
+    }>().props
+
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const auth = false
 
     const Logo_img = '/assets/img/logo.png'
+
+    const FasilityMenu: DropdownMenuItem[] = nav_link
+        .filter(item => item.category === 'fasilitas')
+        .map(item => {
+            return {
+                title: item.title,
+                href: item.href,
+                description: item.description,
+                icon: <LightBulbIcon className="fill-[#4005e1]" />
+            }
+        })
+
+    const AcademicMenu: DropdownMenuItem[] = nav_link
+        .filter(item => item.category === 'akademik')
+        .map(item => {
+            return {
+                title: item.title,
+                href: item.href,
+                description: item.description,
+                icon: <LightBulbIcon className="fill-[#4005e1]" />
+            }
+        })
+
+    const otherAcademicMenu = [
+        {
+            title: 'Kurikulum',
+            href: '#',
+            description: 'Kuriulum Program Studi Perencanaan Wilayah dan Kota',
+            icon: <LightBulbIcon className="fill-[#4005e1]" />
+        },
+        {
+            title: 'Kalender Akademik',
+            href: route('akademik.kalender-akademik'),
+            description: 'Kalender Akademik Institut Teknologi Sumatera',
+            icon: <LightBulbIcon className="fill-[#4005e1]" />
+        },
+        {
+            title: 'MBKM',
+            href: '#',
+            description:
+                'Mata Kuliah Berbasis Kompetensi Institut Teknologi Sumatera',
+            icon: <LightBulbIcon className="fill-[#4005e1]" />
+        }
+    ]
+
+    AcademicMenu.push(...otherAcademicMenu)
+
+    // console.log(FasilityMenu)
 
     const DropdwonProfleMenu: DropdownMenuItem[] = [
         {
@@ -144,102 +197,6 @@ export default function NavBar() {
             href: route('profile.alumni'),
             description:
                 'Alumni Program Studi Perencanaan Wilayah dan Kota Institut Teknologi Sumatera',
-            icon: <LightBulbIcon className="fill-[#4005e1]" />
-        }
-    ]
-
-    const DropdwonAkademikMenu: DropdownMenuItem[] = [
-        {
-            title: 'Siakad',
-            href: '#',
-            newTab: true,
-            description:
-                'Sistem Informasi Akademik Institut Teknologi Sumatera',
-            icon: <LightBulbIcon className="fill-[#4005e1]" />
-        },
-        {
-            title: 'E-Learning',
-            href: '#',
-            newTab: true,
-            description: 'E-Learning Institut Teknologi Sumatera',
-            icon: <LightBulbIcon className="fill-[#4005e1]" />
-        },
-        {
-            title: 'KKN',
-            href: '#',
-            newTab: true,
-            description: 'Kuliah Kerja Nyata Institut Teknologi Sumatera',
-            icon: <LightBulbIcon className="fill-[#4005e1]" />
-        },
-        {
-            title: 'jurnal',
-            href: '#',
-            newTab: true,
-            description: 'Jurnal Institut Teknologi Sumatera',
-            icon: <LightBulbIcon className="fill-[#4005e1]" />
-        },
-        {
-            title: 'Kurikulum',
-            href: '#',
-            description: 'Kuriulum Program Studi Perencanaan Wilayah dan Kota',
-            icon: <LightBulbIcon className="fill-[#4005e1]" />
-        },
-        {
-            title: 'Kalender Akademik',
-            href: route('akademik.kalender-akademik'),
-            description: 'Kalender Akademik Institut Teknologi Sumatera',
-            icon: <LightBulbIcon className="fill-[#4005e1]" />
-        },
-        {
-            title: 'MBKM',
-            href: '#',
-            description:
-                'Mata Kuliah Berbasis Kompetensi Institut Teknologi Sumatera',
-            icon: <LightBulbIcon className="fill-[#4005e1]" />
-        }
-    ]
-
-    const DropdwonFasilitasMenu: DropdownMenuItem[] = [
-        {
-            title: 'Website ITERA',
-            href: 'https://itera.ac.id',
-            newTab: true,
-            description: 'Website Institut Teknologi Sumatera',
-            icon: <LightBulbIcon className="fill-[#4005e1]" />
-        },
-        {
-            title: 'Perpustakaan ITERA',
-            href: 'https://itera.ac.id',
-            newTab: true,
-            description: 'Perpustakaan Institut Teknologi Sumatera',
-            icon: <LightBulbIcon className="fill-[#4005e1]" />
-        },
-        {
-            title: 'Laboratorium',
-            href: 'https://itera.ac.id',
-            newTab: true,
-            description: 'Laboratorium Institut Teknologi Sumatera',
-            icon: <LightBulbIcon className="fill-[#4005e1]" />
-        },
-        {
-            title: 'Kemahaswaan',
-            href: 'https://itera.ac.id',
-            newTab: true,
-            description: 'Kemahasiswaan Institut Teknologi Sumatera',
-            icon: <LightBulbIcon className="fill-[#4005e1]" />
-        },
-        {
-            title: 'HelpDesk',
-            href: 'https://itera.ac.id',
-            newTab: true,
-            description: 'HelpDesk Institut Teknologi Sumatera',
-            icon: <LightBulbIcon className="fill-[#4005e1]" />
-        },
-        {
-            title: 'INCITE',
-            href: 'https://itera.ac.id',
-            newTab: true,
-            description: 'UPA Bahasa Institut Teknologi Sumatera',
             icon: <LightBulbIcon className="fill-[#4005e1]" />
         }
     ]
@@ -284,13 +241,10 @@ export default function NavBar() {
                     <NavDropdown title="Profile" item={DropdwonProfleMenu} />
                 </NavbarItem>
                 <NavbarItem>
-                    <NavDropdown title="Akademik" item={DropdwonAkademikMenu} />
+                    <NavDropdown title="Akademik" item={AcademicMenu} />
                 </NavbarItem>
                 <NavbarItem>
-                    <NavDropdown
-                        title="Fasilitas"
-                        item={DropdwonFasilitasMenu}
-                    />
+                    <NavDropdown title="Fasilitas" item={FasilityMenu} />
                 </NavbarItem>
                 <NavbarItem>
                     <Link className="text-black text-md" href={route('berita')}>
@@ -362,7 +316,7 @@ export default function NavBar() {
                         aria-label="Akademik"
                         title="Akademik"
                     >
-                        {DropdwonAkademikMenu.map((item, index) => (
+                        {AcademicMenu.map((item, index) => (
                             <AccordionLink
                                 key={index}
                                 href={item.href}
@@ -377,7 +331,7 @@ export default function NavBar() {
                         aria-label="Fasilitas"
                         title="Fasilitas"
                     >
-                        {DropdwonFasilitasMenu.map((item, index) => (
+                        {FasilityMenu.map((item, index) => (
                             <AccordionLink
                                 key={index}
                                 href={item.href}

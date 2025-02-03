@@ -96,3 +96,11 @@ export type AlumniItemTypes = {
     dosen_pembimbing?: string
     bidang_penelitian?: string
 }
+
+export type navLinkType = {
+    id?: number
+    title: string
+    description: string
+    href: string
+    category: string
+}
