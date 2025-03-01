@@ -17,6 +17,8 @@ class Tentang extends Model
     protected $fillable = ['id', 'name', 'vision', 'mission', 'goals', 'total_lecture', 'total_student', 'total_teaching_staff', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 
+    // kurang summary
+
     public static function setDynamicConnection()
     {
         DB::setDefaultConnection(env('DB_CONNECTION'));

@@ -7,7 +7,10 @@ export const DateFormater = ({ date }: { date: Date }) => {
     }).format(new Date(date))
 }
 
-export const DateExtraktor = ({ date }: { date: Date }) => {
+export const DateExtraktor = ({ date }: { date: Date | string }) => {
+    if (typeof date === 'string') {
+        date = new Date(date)
+    }
     return {
         date: date.getDate(),
         month: date.toLocaleString('default', { month: 'short' }),

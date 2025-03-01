@@ -1,3 +1,5 @@
+import { eventTypes, MisiType } from './PropsType'
+
 export type AuthData = {
     user: AuthenticatedUserData
 }
@@ -19,13 +21,15 @@ export type PagePropsData = {
 
 export type NewsItemProps = {
     title: string
+    slug?: string
     date: Date
+    tag?: string
     description?: string
     image: string
     id: number
     see: number
-    like: number
-    comment: number
+    like?: number
+    comment?: number
 }
 
 export type DosenCardType = {
@@ -103,4 +107,25 @@ export type navLinkType = {
     description: string
     href: string
     category: string
+}
+
+export type pageProps<t> = T
+
+export type statustic = {
+    total_tendik: number
+    total_dosen: number
+    total_mahasiswa: number
+}
+
+export type aboutPWK = {
+    tantang: string
+    visi: string
+    misi: MisiType[]
+}
+
+export type HomeProps = {
+    popularNews: NewsItemProps[]
+    statistic: statustic
+    aboutPWK: aboutPWK
+    event: eventTypes[]
 }

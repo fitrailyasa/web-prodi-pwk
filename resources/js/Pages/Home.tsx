@@ -8,18 +8,31 @@ import PrevIcon from '@/Components/Icon/PrevIcon'
 import TargetIcon from '@/Components/Icon/TargetInco'
 import EvenContainer from '@/Components/home/EvenContainer'
 import { SliderNews } from '@/Components/home/SliderNews'
-import { beritaConstants, eventsConstants, misiConstants } from '@/Constants'
+import {
+    beritaConstants,
+    eventsConstants,
+    misiConstants,
+    TestImage
+} from '@/Constants'
 import { DateFormater } from '@/Helper/DateFormater'
 import AppLayout from '@/Layouts/AppLayout'
+import { HomeProps, pageProps } from '@/types'
 import { Button, Image, Link } from '@nextui-org/react'
 import { useScroll } from 'framer-motion'
 import React, { ReactNode, useEffect, useRef, useState } from 'react'
 
-export default function Home() {
+export default function Home({
+    popularNews,
+    statistic,
+    aboutPWK,
+    event
+}: HomeProps) {
     const [pageIndicator, setPageIndicator] = useState<ReactNode>(null)
     const sliderRef = useRef<{
         sliderFunction: (newDirection: number) => void
     }>(null)
+
+    // console.log(popularNews, statistic, aboutPWK, event)
 
     const newsCurentRef = useRef(null)
     const [isInView, setIsInView] = useState(false)
@@ -27,8 +40,6 @@ export default function Home() {
     const newsScorllObserver = useScroll({
         target: newsCurentRef
     })
-
-    const logoBox = '/assets/img/logo-box.png'
 
     const handleSlideBTN = (newDirection: number) => {
         sliderRef.current?.sliderFunction(newDirection)
@@ -56,7 +67,7 @@ export default function Home() {
                         >
                             <div className="flex gap-2 items-center flex-wrap">
                                 <h1 className="text-2xl font-bold pe-10">
-                                    Berita Terpopular
+                                    Berita Terpopuler
                                 </h1>
                             </div>
                             <div className="flex gap-2">
@@ -89,7 +100,7 @@ export default function Home() {
                             getPageIndicator={setPageIndicator}
                             className="h-56 md:h-96 "
                         >
-                            {beritaConstants.map((item, index) => (
+                            {popularNews.map((item, index) => (
                                 <div
                                     key={index}
                                     className="w-full h-56 md:h-96 bg-cover bg-center rounded-3xl overflow-hidden border shadow-xl bg-white"
@@ -98,7 +109,8 @@ export default function Home() {
                                         <div className="relative">
                                             <div className=" absolute bottom-0 right-0  bg-main-blue bg-opacity-40 self-end h-8 w-10"></div>
                                             <p className="absolute rounded-3xl w-full bg-white h-full flex flex-1 px-5 items-center text-2xl font-bold z-10">
-                                                Kategori Berita
+                                                {/* {Kategori Berita} */}
+                                                {item.tag}
                                             </p>
                                         </div>
                                         <div className="bg-white  rounded-t-3xl overflow-hidden">
@@ -133,7 +145,8 @@ export default function Home() {
                                             >
                                                 <div className="w-[100%] md:w-[90%] rounded-xl md:rounded-3xl overflow-hidden border-3 border-main-green p-2">
                                                     <Image
-                                                        src={item.image}
+                                                        // src={item.image}
+                                                        src={TestImage}
                                                         alt={item.title}
                                                         className=" aspect-video object-cover object-bottom rounded-xl md:rounded-3xl"
                                                     />
@@ -164,7 +177,7 @@ export default function Home() {
                                 <div className="flex flex-col gap-1">
                                     <CountAnimation
                                         from={0}
-                                        to={100}
+                                        to={statistic.total_mahasiswa}
                                         duration={2}
                                         className="font-bold text-4xl text-main-green"
                                     />
@@ -181,7 +194,7 @@ export default function Home() {
                                 <div className="flex flex-col gap-1">
                                     <CountAnimation
                                         from={0}
-                                        to={100}
+                                        to={statistic.total_dosen}
                                         duration={2}
                                         className="font-bold text-4xl text-main-green"
                                     />
@@ -199,12 +212,12 @@ export default function Home() {
                                 <div className="flex flex-col gap-1">
                                     <CountAnimation
                                         from={0}
-                                        to={100}
+                                        to={statistic.total_tendik}
                                         duration={2}
                                         className="font-bold text-4xl text-main-green"
                                     />
                                     <p className="font-semibold text-lg">
-                                        tendik
+                                        Tenaga Pendidik
                                     </p>
                                 </div>
                             </div>
@@ -237,18 +250,11 @@ export default function Home() {
                             <h1 className="text-4xl font-bold">
                                 Perencanaan Wilayah Dan Kota ITERA
                             </h1>
-                            <p className="py-2">
-                                Lorem ipsum, dolor sit amet consectetur
-                                adipisicing elit. Natus sapiente eaque deleniti
-                                reiciendis sunt explicabo consectetur quae sequi
-                                itaque maiores? Impedit aspernatur eum animi
-                                provident! Perferendis eveniet adipisci sequi
-                                quisquam?
-                            </p>
+                            <p className="py-2">{aboutPWK.tantang}</p>
 
-                            <Button className="bg-main-green font-semibold text-white inline-block">
+                            {/* <Button className="bg-main-green font-semibold text-white inline-block">
                                 Baca Selengkapnya
-                            </Button>
+                            </Button> */}
                         </div>
                         <div className="col-span-2">
                             <div
@@ -276,11 +282,12 @@ export default function Home() {
                         </div> */}
                         <div className="col-span-3">
                             <p className="py-2">
-                                Program Studi Perencanaan Wilayah dan Kota ITERA
+                                {/* Program Studi Perencanaan Wilayah dan Kota ITERA
                                 Sebagai Program Studi Unggulan Di Pulau Sumatera
                                 yang Menghasilkan Perencana Wilayah dan Kota
                                 Berwawasan Teknologi, Inklusif dan Pembangunan
-                                Berkelanjutan
+                                Berkelanjutan */}
+                                {aboutPWK.visi}
                             </p>
                         </div>
                     </div>
@@ -295,7 +302,7 @@ export default function Home() {
                         Misi
                     </h2>
                     <div className="flex flex-col gap-3 justify-between">
-                        {misiConstants.map((item, index) => (
+                        {aboutPWK.misi.map((item, index) => (
                             <div
                                 key={index}
                                 className="border p-3 rounded-2xl flex gap-3 items-center"
@@ -328,7 +335,7 @@ export default function Home() {
                         </Link>
                     </div>
                     <div className="flex flex-wrap gap-3">
-                        {eventsConstants.map((item, index) => (
+                        {event.map((item, index) => (
                             <EvenContainer
                                 key={index}
                                 title={item.title}
@@ -342,7 +349,7 @@ export default function Home() {
                 </SectionTrigerScroll>
 
                 {/* med pat */}
-                <SectionTrigerScroll
+                {/* <SectionTrigerScroll
                     id={'medpat'}
                     macControlCenter
                     className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
@@ -362,7 +369,7 @@ export default function Home() {
                             />
                         ))}
                     </div>
-                </SectionTrigerScroll>
+                </SectionTrigerScroll> */}
 
                 {/* other section  */}
                 {/* <SectionTrigerScroll className="mt-10 h-screen bg-blue-500">
