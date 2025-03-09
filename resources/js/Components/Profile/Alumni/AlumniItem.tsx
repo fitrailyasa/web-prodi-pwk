@@ -41,7 +41,7 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                             {data.tahun_masuk} - {data.tahun_lulus}
                         </p>
                         <p className="uppercase font-semibold pt-3">
-                            {data.bidang_industri}
+                            {data.posisi_pekerjaan}
                         </p>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                             <ModalHeader>
                                 <ControlCenterMac />
                             </ModalHeader>
-                            <ModalBody className="px-10 py-4">
+                            <ModalBody className="px-10 py-4 overflow-hidden">
                                 <div className="flex gap-10  py-3">
                                     <Image
                                         src={data.image}
@@ -115,7 +115,7 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                                         </div>
                                         {/* // description */}
 
-                                        <div className="pt-10">
+                                        <div className="pt-10 ">
                                             <tr>
                                                 <td className="font-bold text-nowrap">
                                                     Judul Penelitian
@@ -130,11 +130,11 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                                             </tr>
                                             <tr>
                                                 <td className="font-bold text-nowrap">
-                                                    Bidang kerja
+                                                    Pekerjaan
                                                 </td>
                                                 <td>
                                                     {' '}
-                                                    : {data.bidang_industri}
+                                                    : {data.posisi_pekerjaan}
                                                 </td>
                                             </tr>
                                             <tr>
@@ -146,25 +146,6 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                                                     : {data.nama_perusahaan}
                                                 </td>
                                             </tr>
-
-                                            {/* <p>
-                                                <span className="font-bold text-nowrap">
-                                                    Judul Penelitian{' : '}
-                                                </span>
-                                                {data.judul_penelitian}
-                                            </p>
-                                            <p>
-                                                <span className="font-bold">
-                                                    Bidang kerja{' : '}
-                                                </span>
-                                                {data.bidang_industri}
-                                            </p>
-                                            <p>
-                                                <span className="font-bold">
-                                                    Tempat kerja{' : '}
-                                                </span>
-                                                {data.nama_perusahaan}
-                                            </p> */}
                                         </div>
                                     </div>
                                 </div>

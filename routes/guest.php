@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Client\AlumniController;
 use App\Http\Controllers\guest\BeritaController;
 use App\Http\Controllers\guest\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -45,11 +46,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
         ]);
     })->name('dosen-and-staf.detail');
 
-    Route::get('/trace-study', function () {
-        return Inertia::render('Profile/Alumni', [
-            'name' => 'test'
-        ]);
-    })->name('alumni');
+    Route::get('/trace-study', [AlumniController::class, 'index'])->name('alumni');
 });
 
 

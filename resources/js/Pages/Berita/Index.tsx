@@ -49,11 +49,7 @@ export default function BeritaPage({ berita }: BeritaPageProps) {
                     </div>
                 </SectionTrigerScroll>
 
-                <SectionTrigerScroll
-                    id="list-berita"
-                    // macControlCenter
-                    className="mt-10 p-5 "
-                >
+                <SectionTrigerScroll id="list-berita" className="mt-10 p-5 ">
                     <h2 className="font-bold text-3xl pb-4 border-b">
                         Akademik
                     </h2>

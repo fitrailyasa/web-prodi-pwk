@@ -251,10 +251,6 @@ export default function Home({
                                 Perencanaan Wilayah Dan Kota ITERA
                             </h1>
                             <p className="py-2">{aboutPWK.tantang}</p>
-
-                            {/* <Button className="bg-main-green font-semibold text-white inline-block">
-                                Baca Selengkapnya
-                            </Button> */}
                         </div>
                         <div className="col-span-2">
                             <div
@@ -277,27 +273,11 @@ export default function Home({
                         Visi
                     </h2>
                     <div className="  md:grid-cols-5 gap-10 justify-between">
-                        {/* <div className="col-span-2">
-                            <Image src={logoBox} className="" />
-                        </div> */}
                         <div className="col-span-3">
-                            <p className="py-2">
-                                {/* Program Studi Perencanaan Wilayah dan Kota ITERA
-                                Sebagai Program Studi Unggulan Di Pulau Sumatera
-                                yang Menghasilkan Perencana Wilayah dan Kota
-                                Berwawasan Teknologi, Inklusif dan Pembangunan
-                                Berkelanjutan */}
-                                {aboutPWK.visi}
-                            </p>
+                            <p className="py-2">{aboutPWK.visi}</p>
                         </div>
                     </div>
-                    {/* </SectionTrigerScroll>
 
-                <SectionTrigerScroll
-                    id={'misi'}
-                    macControlCenter
-                    className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
-                > */}
                     <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10">
                         Misi
                     </h2>

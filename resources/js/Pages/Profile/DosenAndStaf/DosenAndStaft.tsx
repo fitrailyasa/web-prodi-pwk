@@ -2,11 +2,14 @@ import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
 import DosenAndStafCard from '@/Components/Profile/DosenCard'
 import { TestImage } from '@/Constants'
 import AppLayout from '@/Layouts/AppLayout'
-import { DosenCardType } from '@/types'
+import { DosenCardType, EmployePageProps } from '@/types'
 import { Button, Card, CardBody, Image, Link } from '@nextui-org/react'
 import React from 'react'
 
-const DosenAndStaf: React.FC = () => {
+const DosenAndStaf: React.FC<EmployePageProps> = ({
+    koordinator,
+    employee
+}) => {
     const DataKoordianator: DosenCardType = {
         name: 'Dr. Ir. M. Syahril, M.T.',
         position: 'Koordinator Program Studi Pwk Itera',

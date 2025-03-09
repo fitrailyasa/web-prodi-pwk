@@ -79,26 +79,16 @@ export type AlumniItemTypes = {
     // Pendidikan & Akademik
     judul_penelitian?: string
     ipk?: number
-    prestasi_akademik?: string[]
-    organisasi_kampus?: string[]
 
     // Pekerjaan & Karier
     posisi_pekerjaan?: string
     nama_perusahaan?: string
-    bidang_industri?: string
-    pengalaman_kerja?: string[]
 
     //contact
     linkedin?: string
-    github?: string
-    portofolio?: string
     instagram?: string
     email?: string
     nomor_telepon?: string
-
-    // Magang & Penelitian
-    dosen_pembimbing?: string
-    bidang_penelitian?: string
 }
 
 export type navLinkType = {
@@ -128,4 +118,13 @@ export type HomeProps = {
     statistic: statustic
     aboutPWK: aboutPWK
     event: eventTypes[]
+}
+
+export type EmployePageProps = {
+    koordinator: DosenCardType
+    employee: DosenCardType[]
+}
+
+export type AlumniPageProps = {
+    alumni: AlumniItemTypes[]
 }
