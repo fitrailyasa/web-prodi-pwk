@@ -3,7 +3,7 @@ import './bootstrap'
 
 import { Ziggy } from '@/ziggy'
 import { createInertiaApp } from '@inertiajs/react'
-import { NextUIProvider } from '@nextui-org/react'
+import { HeroUIProvider } from '@heroui/react'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
@@ -29,9 +29,9 @@ createInertiaApp({
         const appElement = (
             <React.StrictMode>
                 <VisitorProvider>
-                    <NextUIProvider>
+                    <HeroUIProvider>
                         <App {...props} />
-                    </NextUIProvider>
+                    </HeroUIProvider>
                 </VisitorProvider>
             </React.StrictMode>
         )

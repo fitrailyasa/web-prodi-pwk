@@ -3,7 +3,7 @@ import DosenAndStafCard from '@/Components/Profile/DosenCard'
 import { TestImage } from '@/Constants'
 import AppLayout from '@/Layouts/AppLayout'
 import { DosenCardType, EmployePageProps } from '@/types'
-import { Button, Card, CardBody, Image, Link } from '@nextui-org/react'
+import { Button, Card, CardBody, Image, Link } from '@heroui/react'
 import React from 'react'
 
 const DosenAndStaf: React.FC<EmployePageProps> = ({

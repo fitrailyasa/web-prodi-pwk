@@ -1,21 +1,3 @@
-import {
-    Accordion,
-    AccordionItem,
-    Button,
-    Dropdown,
-    DropdownItem,
-    DropdownMenu,
-    DropdownTrigger,
-    Navbar,
-    NavbarBrand,
-    NavbarContent,
-    NavbarItem,
-    NavbarMenu,
-    NavbarMenuToggle,
-    Link,
-    Switch,
-    LinkIcon
-} from '@nextui-org/react'
 import React, { useState } from 'react'
 import AnggleDownIcon from './Icon/AnggleDownIcon'
 import { TypingAnimation } from '@/Animation/TypingMotions'
@@ -24,6 +6,23 @@ import IDIcon from './Icon/IDInco'
 import ENIcon from './Icon/ENInco'
 import { usePage } from '@inertiajs/react'
 import { navLinkType } from '@/types'
+import {
+    Accordion,
+    AccordionItem,
+    Button,
+    Dropdown,
+    DropdownItem,
+    DropdownMenu,
+    DropdownTrigger,
+    Link,
+    Navbar,
+    NavbarBrand,
+    NavbarContent,
+    NavbarItem,
+    NavbarMenu,
+    NavbarMenuToggle,
+    Switch
+} from '@heroui/react'
 
 type DropdownMenuItem = {
     title: string

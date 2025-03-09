@@ -9,7 +9,7 @@ import {
     ModalFooter,
     ModalHeader,
     useDisclosure
-} from '@nextui-org/react'
+} from '@heroui/react'
 import ClaenderIcon from '../Icon/CalenderIcon'
 import ControlCenterMac from '../ControlCenterMac'
 import ShareIcon from '../Icon/ShareInco'

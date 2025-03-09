@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Client\AlumniController;
+use App\Http\Controllers\guest\AlumniController;
 use App\Http\Controllers\guest\BeritaController;
 use App\Http\Controllers\guest\HomeController;
 use Illuminate\Support\Facades\Route;

@@ -1,6 +1,7 @@
 import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
 import ControlCenterMac from '@/Components/ControlCenterMac'
 import AlumniItem from '@/Components/Profile/Alumni/AlumniItem'
+import PaginationComponent from '@/Components/Utils/Pagination'
 import { TestImage } from '@/Constants'
 import AppLayout from '@/Layouts/AppLayout'
 import { AlumniItemTypes, AlumniPageProps } from '@/types'
@@ -12,54 +13,22 @@ import {
     ModalContent,
     ModalFooter,
     ModalHeader,
+    Pagination,
     Select,
     SelectItem,
     useDisclosure
-} from '@nextui-org/react'
+} from '@heroui/react'
 import React from 'react'
 
-// const alumniData: AlumniItemTypes[] = [
-//     {
-//         id: 1,
-//         name: 'John Doe',
-//         tahun_masuk: '2015',
-//         tahun_lulus: '2019',
-//         image: 'https://example.com/image.jpg',
-//         email: 'johndoe@example.com',
-//         nomor_telepon: '08123456789',
-//         judul_penelitian: 'Pemanfaatan AI dalam Analisis Data',
-
-//         posisi_pekerjaan: 'Software Engineer',
-//         nama_perusahaan: 'Tech Corp',
-
-//         linkedin: 'https://linkedin.com/in/johndoe',
-//         instagram: 'https://instagram.com'
-//     },
-//     {
-//         id: 2,
-//         name: 'Jane Smith',
-//         tahun_masuk: '2016',
-//         tahun_lulus: '2020',
-//         image: TestImage,
-//         email: 'janesmith@example.com',
-//         nomor_telepon: '08234567890',
-//         judul_penelitian:
-//             'Blockchain untuk Keamanan Siber loremasjkdglskjfd g ',
-
-//         posisi_pekerjaan: 'Cyber Security Analyst',
-//         nama_perusahaan: 'SecureTech',
-
-//         linkedin: 'https://linkedin.com/in/janesmith',
-//         instagram: 'https://instagram.com'
-//     }
-// ]
 const Alumni: React.FC<AlumniPageProps> = ({ alumni }) => {
     const {
         isOpen: isOpenFilter,
         onOpen: onOpenFilter,
         onOpenChange: onOpenChengeFilter
     } = useDisclosure()
+
     console.log(alumni)
+    // console.log(pagination)
 
     const dataYear = [
         {
@@ -140,10 +109,17 @@ const Alumni: React.FC<AlumniPageProps> = ({ alumni }) => {
                     </ModalContent>
                 </Modal>
                 <div className="flex flex-wrap gap-5 justify-center">
-                    {alumni.map((item, index) => (
+                    {alumni.data.map((item, index) => (
                         <AlumniItem key={index} data={item} />
                     ))}
                 </div>
+
+                <PaginationComponent
+                    current_page={alumni.current_page}
+                    page_url={alumni.path}
+                    las_page={alumni.last_page}
+                    total={alumni.total}
+                />
             </div>
         </AppLayout>
     )

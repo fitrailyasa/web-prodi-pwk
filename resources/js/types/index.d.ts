@@ -1,5 +1,15 @@
 import { eventTypes, MisiType } from './PropsType'
 
+export type DataPagienation<T> = {
+    current_page: number
+    data: T[]
+    from: number | null
+    last_page: number
+    path: string
+    to: number | null
+    total: number
+}
+
 export type AuthData = {
     user: AuthenticatedUserData
 }
@@ -126,5 +136,6 @@ export type EmployePageProps = {
 }
 
 export type AlumniPageProps = {
-    alumni: AlumniItemTypes[]
+    // alumni: AlumniItemTypes[]
+    alumni: DataPagienation<AlumniItemTypes>
 }

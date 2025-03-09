@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers\guest;
 
 use App\Http\Controllers\Controller;
 use App\Models\Alumni;
@@ -9,10 +9,9 @@ use Inertia\Inertia;
 
 class AlumniController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $alumniData = Alumni::get();
-
+        $alumniData = Alumni::paginate(2);
         $returnAlumniData = $alumniData->map(function ($item) {
             return [
                 'id' => $item->id,
@@ -31,8 +30,20 @@ class AlumniController extends Controller
             ];
         });
 
+        $pagienatedData = [
+            'current_page' => $alumniData->currentPage(),
+            'data' => $returnAlumniData,
+            'from' => $alumniData->firstItem(),
+            'last_page' => $alumniData->lastPage(),
+            'path' => $alumniData->path(),
+            'per_page' => $alumniData->perPage(),
+            'to' => $alumniData->lastItem(),
+            'total' => $alumniData->total(),
+        ];
+
+
         return Inertia::render('Profile/Alumni', [
-            'alumni' => $returnAlumniData
+            'alumni' => $pagienatedData,
         ]);
     }
 }

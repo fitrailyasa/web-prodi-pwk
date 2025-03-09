@@ -2,7 +2,7 @@ import AppLayout from '../../Layouts/AppLayout'
 import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
 import NewsItem from '@/Components/News/NewsItem'
 import { TestImage } from '@/Constants'
-import { Button, DateRangePicker } from '@nextui-org/react'
+import { Button, DateRangePicker } from '@heroui/react'
 
 type BeritaPageProps = {
     berita: Array<{

@@ -1,5 +1,5 @@
 import { DosenCardType } from '@/types'
-import { Button, Card, CardBody, Image, Link } from '@nextui-org/react'
+import { Button, Card, CardBody, Image, Link } from '@heroui/react'
 
 const DosenAndStafCard: React.FC<{ staf: DosenCardType }> = ({ staf }) => {
     return (

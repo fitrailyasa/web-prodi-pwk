@@ -1,13 +1,6 @@
 import IconHome from '@/Components/Icon/IconHome'
 import AppLayout from '../Layouts/AppLayout'
-import {
-    Button,
-    Card,
-    CardBody,
-    CardHeader,
-    Image,
-    Link
-} from '@nextui-org/react'
+import { Button, Card, CardBody, CardHeader, Image, Link } from '@heroui/react'
 import { motion } from 'framer-motion'
 import { useVisitor } from '@/Providers/VisitorProvider'
 import { Slider } from '@/Components/Slider'

@@ -3,7 +3,7 @@ import EvenContainer from '@/Components/home/EvenContainer'
 import { eventsConstants } from '@/Constants'
 import AppLayout from '@/Layouts/AppLayout'
 import { evenByBulanType, eventTypes } from '@/types/PropsType'
-import { Button, DateRangePicker, Link } from '@nextui-org/react'
+import { Button, DateRangePicker, Link } from '@heroui/react'
 import React from 'react'
 
 const KalenderAkademik: React.FC = () => {

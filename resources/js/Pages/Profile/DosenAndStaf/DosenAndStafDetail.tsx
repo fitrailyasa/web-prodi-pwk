@@ -14,7 +14,7 @@ import BgImageComponent from '@/Components/Utils/BgImage'
 import { TestImage } from '@/Constants'
 
 import AppLayout from '@/Layouts/AppLayout'
-import { Card, CardBody, Image, Tab, Tabs } from '@nextui-org/react'
+import { Card, CardBody, Image, Tab, Tabs } from '@heroui/react'
 import React from 'react'
 
 const DosenAndStafDetail: React.FC = () => {

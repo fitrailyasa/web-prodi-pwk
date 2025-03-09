@@ -14,7 +14,7 @@ import {
     ModalFooter,
     ModalHeader,
     useDisclosure
-} from '@nextui-org/react'
+} from '@heroui/react'
 
 type AlumniItemProps = {
     data: AlumniItemTypes

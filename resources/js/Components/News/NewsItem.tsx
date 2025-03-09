@@ -1,5 +1,5 @@
 import { DateFormater } from '@/Helper/DateFormater'
-import { Image } from '@nextui-org/react'
+import { Image } from '@heroui/react'
 import EyeIcon from '../Icon/EyeInco'
 import LoveIcon from '../Icon/LoveInco'
 import ChatIcon from '../Icon/ChatInco'

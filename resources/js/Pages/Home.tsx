@@ -17,7 +17,7 @@ import {
 import { DateFormater } from '@/Helper/DateFormater'
 import AppLayout from '@/Layouts/AppLayout'
 import { HomeProps, pageProps } from '@/types'
-import { Button, Image, Link } from '@nextui-org/react'
+import { Button, Image, Link } from '@heroui/react'
 import { useScroll } from 'framer-motion'
 import React, { ReactNode, useEffect, useRef, useState } from 'react'
 

@@ -2,7 +2,7 @@ import React from 'react'
 import InstagramIcon from './Icon/InstagramInco'
 import YoutubeIcon from './Icon/YoutubeIcon'
 import TikTokIcon from './Icon/TiktokIcon'
-import { Image } from '@nextui-org/react'
+import { Image } from '@heroui/react'
 import { logoBox } from '@/Constants'
 
 export const Footer: React.FC = () => {

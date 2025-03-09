@@ -32,7 +32,7 @@
         "vite-plugin-watch": "^0.3.1"
     },
     "dependencies": {
-        "@nextui-org/react": "^2.4.8",
+        "@heroui/react": "^2.7.5",
         "framer-motion": "^11.11.11",
         "popmotion": "^11.0.5"
     }
