@@ -11,7 +11,7 @@ class KalenderRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,7 @@ class KalenderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,pdf|max:5120',
+            'file' => 'required|mimes:pdf|max:5120',
         ];
     }
 
@@ -30,7 +30,7 @@ class KalenderRequest extends FormRequest
     {
         return [
             'file.required' => 'File tidak boleh kosong!',
-            'file.mimes' => 'File harus berupa pdf, jpeg, png, jpg, gif, svg!',
+            'file.mimes' => 'File harus berupa pdf!',
             'file.max' => 'File maksimal 5mb!',
         ];
     }

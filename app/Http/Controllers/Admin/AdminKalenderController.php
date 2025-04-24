@@ -16,16 +16,20 @@ class AdminKalenderController extends Controller
         return view('admin.kalender.index', compact('kalender'));
     }
 
-    public function update(kalenderRequest $request, $id)
+    public function update(KalenderRequest $request, $id)
     {
-        $kalender = Kalender::first($id);
+        $kalender = Kalender::findOrFail($id);
         $validatedData = $request->validated();
 
         $validatedData['user_id'] = $kalender->user_id;
 
         // upload file
         if ($request->hasFile('file')) {
-            $validatedData['file'] = $request->file('file')->store('file');
+            // Delete old file if exists
+            if ($kalender->file) {
+                Storage::delete($kalender->file);
+            }
+            $validatedData['file'] = $request->file('file')->store('kalender', 'public');
         }
 
         $kalender->update($validatedData);
