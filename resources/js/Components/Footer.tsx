@@ -1,96 +1,153 @@
 import React from 'react'
-import InstagramIcon from './Icon/InstagramInco'
-import YoutubeIcon from './Icon/YoutubeIcon'
-import TikTokIcon from './Icon/TiktokIcon'
-import { Image } from '@heroui/react'
-import { logoBox } from '@/Constants'
+import {
+    FaMapMarkerAlt,
+    FaInstagram,
+    FaYoutube,
+    FaTiktok
+} from 'react-icons/fa'
+import { Link, Image } from '@heroui/react'
 
-export const Footer: React.FC = () => {
-    const aboutMenu = [
-        // {
-        //     title: 'Akademik',
-        //     link: '#'
-        // },
-        {
-            title: 'Kurikulum',
-            link: '#'
-        },
-        {
-            title: 'berita',
-            link: route('berita')
-        }
-    ]
-    return (
-        <footer className="bg-gray-50 w-full mt-5">
-            <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 justify-around py-5 px-5">
-                <div className="profile">
-                    <span className="font-bold border-s-4 border-black px-3">
-                        Perencanaan Wilayah Dan Kota{' '}
-                        <span className="text-main-green">ITERA</span>
-                    </span>
-                    <div className="flex gap-5 py-6">
-                        <Image
-                            src={logoBox}
-                            width={90}
-                            height={90}
-                            alt="logo"
-                            // className='w-[90px] h-[90px]'
-                        />
+interface FooterProps {
+    tentang?: {
+        name: string
+        address: string
+        phone: string
+        email: string
+        instagram_url: string
+        youtube_url: string
+        tiktok_url: string
+    }
+}
 
-                        <div className="text-sm">
-                            <span className="font-bold">Ikuti Kami</span>
-                            <div className="flex gap-2 pt-2">
-                                <a target="_blank" href="#" className="mr-2">
-                                    <InstagramIcon
-                                        size={2}
-                                        className=" text-main-green text-xs"
-                                    />
-                                </a>
-                                <a target="_blank" href="#" className="mr-2">
-                                    <YoutubeIcon
-                                        size={2}
-                                        className=" text-main-green text-xs"
-                                    />
-                                </a>
-                                <a target="_blank" href="#" className="mr-2">
-                                    <TikTokIcon
-                                        size={2}
-                                        className=" text-main-green text-xs"
-                                    />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="contact ">
-                    <span className="font-bold border-s-4 border-black px-3">
-                        Hubungi Kami{' '}
-                    </span>
-                    <div className="py-6">
-                        <p className="align-top">
-                            Jl. Tabak No.09, Madukoro, Kec. Kotabumi Utara,
-                            Kabupaten Lampung Utara, Lampung 34511
+export function Footer({ tentang }: FooterProps) {
+    const Logo_img = '/assets/img/logo.png'
+
+    if (!tentang) {
+        return (
+            <footer className="bg-white py-12 mt-auto">
+                <div className="container mx-auto px-4">
+                    <div className="text-center">
+                        <p className="text-main-blue/60">
+                            Data sedang tidak tersedia. Silakan coba lagi nanti.
                         </p>
                     </div>
                 </div>
-                <div className="help">
-                    <span className="font-bold border-s-4 border-black px-3">
-                        Tentang Kami
-                    </span>
+            </footer>
+        )
+    }
 
-                    <div className="py-6">
-                        {aboutMenu.map((item, index) => (
-                            <a key={index} href="#" className="block">
-                                {item.title}
-                            </a>
-                        ))}
+    return (
+        <footer className="bg-white py-12 mt-7 border-t border-main-blue/10">
+            <div className="container mx-auto px-4">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    {/* Left Column */}
+                    <div className="lg:col-span-1">
+                        <div className="mb-8">
+                            <Link
+                                href="/"
+                                className="flex items-center gap-4 mb-4"
+                            >
+                                <Image
+                                    src={Logo_img}
+                                    alt="Logo"
+                                    className="w-16 h-16 object-contain"
+                                />
+                                <div>
+                                    <h2 className="text-2xl font-bold text-main-blue">
+                                        {tentang.name}
+                                    </h2>
+                                    <h3 className="text-xl font-semibold text-main-green">
+                                        ITERA
+                                    </h3>
+                                </div>
+                            </Link>
+                        </div>
+
+                        <div className="mb-8">
+                            <h3 className="text-xl font-bold text-main-blue mb-4">
+                                Ikuti Kami
+                            </h3>
+                            <div className="flex gap-4">
+                                <Link
+                                    href={tentang.instagram_url}
+                                    target="_blank"
+                                    className="text-main-blue hover:text-main-green transition-colors"
+                                >
+                                    <FaInstagram size={24} />
+                                </Link>
+                                <Link
+                                    href={tentang.youtube_url}
+                                    target="_blank"
+                                    className="text-main-blue hover:text-main-green transition-colors"
+                                >
+                                    <FaYoutube size={24} />
+                                </Link>
+                                <Link
+                                    href={tentang.tiktok_url}
+                                    target="_blank"
+                                    className="text-main-blue hover:text-main-green transition-colors"
+                                >
+                                    <FaTiktok size={24} />
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Middle Column */}
+                    <div className="lg:col-span-1">
+                        <h3 className="text-xl font-bold text-main-blue mb-4">
+                            Hubungi Kami
+                        </h3>
+                        <div className="space-y-4">
+                            <div className="flex items-start gap-3">
+                                <FaMapMarkerAlt className="text-main-green text-xl mt-1" />
+                                <p className="text-main-blue">
+                                    {tentang.address}
+                                </p>
+                            </div>
+                            <div className="flex items-start gap-3">
+                                <p className="text-main-blue">
+                                    {tentang.phone}
+                                </p>
+                            </div>
+                            <div className="flex items-start gap-3">
+                                <p className="text-main-blue">
+                                    {tentang.email}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Column */}
+                    <div className="lg:col-span-1">
+                        <h3 className="text-xl font-bold text-main-blue mb-4">
+                            Tentang Kami
+                        </h3>
+                        <div className="space-y-2">
+                            <Link
+                                href="/kurikulum"
+                                className="block text-main-blue hover:text-main-green transition-colors"
+                            >
+                                Kurikulum
+                            </Link>
+                            <Link
+                                href="/berita"
+                                className="block text-main-blue hover:text-main-green transition-colors"
+                            >
+                                Berita
+                            </Link>
+                        </div>
                     </div>
                 </div>
+
+                {/* Copyright */}
+                <div className="mt-12 pt-8 border-t border-main-blue/10">
+                    <p className="text-center text-main-blue/60">
+                        © {new Date().getFullYear()} {tentang.name}. All rights
+                        reserved.
+                    </p>
+                </div>
             </div>
-            <p className="text-center py-3 bg-sky-900 text-gray-200">
-                &copy; {new Date().getFullYear()} Perencanaan Wilayah Dan Kota
-                ITERA. All rights reserved.
-            </p>
         </footer>
     )
 }

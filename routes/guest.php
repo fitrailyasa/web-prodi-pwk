@@ -4,6 +4,7 @@ use App\Http\Controllers\guest\AlumniController;
 use App\Http\Controllers\guest\BeritaController;
 use App\Http\Controllers\guest\HomeController;
 use App\Http\Controllers\guest\ContactController;
+use App\Http\Controllers\guest\DosenController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -33,18 +34,8 @@ Route::group(['prefix' => 'akademik', 'as' => 'akademik.'], function () {
 
 // Profile routes
 Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
-    Route::get('/dosen-and-staf', function () {
-        return Inertia::render('Profile/DosenAndStaf/DosenAndStaft', [
-            'name' => 'test'
-        ]);
-    })->name('dosen-and-staf');
-
-    Route::get('/dosen-and-staf/{id}', function () {
-        return Inertia::render('Profile/DosenAndStaf/DosenAndStafDetail', [
-            'name' => 'test'
-        ]);
-    })->name('dosen-and-staf.detail');
-
+    Route::get('/dosen-and-staf', [DosenController::class, 'index'])->name('dosen-and-staf');
+    Route::get('/dosen-and-staf/{id}', [DosenController::class, 'show'])->name('dosen-and-staf.detail');
     Route::get('/trace-study', [AlumniController::class, 'index'])->name('alumni');
 });
 
