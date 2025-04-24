@@ -6,9 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\ChatbotQuestion;
 use App\Models\ChatbotAnswer;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\ChatbotExport;
-use App\Imports\ChatbotImport;
 use App\Http\Requests\ChatbotRequest;
 
 class AdminChatbotController extends Controller
@@ -36,21 +33,6 @@ class AdminChatbotController extends Controller
         $counter = ($chatbots->currentPage() - 1) * $chatbots->perPage() + 1;
 
         return view('admin.chatbot.index', compact('chatbots', 'counter', 'search', 'perPage'));
-    }
-
-    public function import(Request $request)
-    {
-        $request->validate([
-            'file' => 'required|mimes:xlsx,xls'
-        ]);
-
-        Excel::import(new ChatbotImport, $request->file('file'));
-        return back()->with('alert', 'Berhasil mengimport data chatbot!');
-    }
-
-    public function export()
-    {
-        return Excel::download(new ChatbotExport, 'Data Chatbot.xlsx');
     }
 
     public function store(ChatbotRequest $request)

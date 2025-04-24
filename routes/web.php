@@ -26,21 +26,6 @@ use App\Http\Controllers\Admin\AdminChatbotController;
 
 Route::get('/navbar', [NavbarController::class, 'index'])->name('navbar');
 
-// CLIENT SIDE
-// Route::get('/', [HomeController::class, 'index'])->name('beranda');
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'name' => 'Laravel'
-//     ]);
-// })->name('beranda');
-// Route::get('/about', function () {
-//     return Inertia::render('About', [
-//         'name' => 'test'
-//     ]);
-// })->name('about');
-
-// Route::get('/search', [HomeController::class, 'search'])->name('search');
-
 // Chatbot route - outside auth middleware
 Route::post('/chatbot/response', [ChatbotController::class, 'getResponse'])->name('chatbot.response')->middleware('web');
 
@@ -163,8 +148,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/chatbot', [AdminChatbotController::class, 'store'])->name('chatbot.store');
         Route::put('/chatbot/{id}/update', [AdminChatbotController::class, 'update'])->name('chatbot.update');
         Route::delete('/chatbot/{id}/destroy', [AdminChatbotController::class, 'destroy'])->name('chatbot.destroy');
-        Route::post('/chatbot/import', [AdminChatbotController::class, 'import'])->name('chatbot.import');
-        Route::get('/chatbot/export', [AdminChatbotController::class, 'export'])->name('chatbot.export');
         Route::delete('/chatbot/deleteAll', [AdminChatbotController::class, 'destroyAll'])->name('chatbot.destroyAll');
     });
 

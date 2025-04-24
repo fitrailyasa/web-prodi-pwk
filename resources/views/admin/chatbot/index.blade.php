@@ -10,16 +10,6 @@
         @include('admin.chatbot.create')
     </x-slot>
 
-    <!-- Button Import -->
-    <x-slot name="import">
-        @include('admin.chatbot.import')
-    </x-slot>
-
-    <!-- Button Export -->
-    <x-slot name="export">
-        @include('admin.chatbot.export')
-    </x-slot>
-
     <!-- Button Delete All -->
     <x-slot name="deleteAll">
         {{-- @include('admin.chatbot.deleteAll') --}}
