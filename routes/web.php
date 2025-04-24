@@ -21,6 +21,8 @@ use App\Http\Controllers\Admin\AdminTagController;
 use App\Http\Controllers\Auth\ProviderController;
 
 use App\Http\Controllers\NavbarController;
+use App\Http\Controllers\ChatbotController;
+use App\Http\Controllers\Admin\AdminChatbotController;
 
 Route::get('/navbar', [NavbarController::class, 'index'])->name('navbar');
 
@@ -38,6 +40,9 @@ Route::get('/navbar', [NavbarController::class, 'index'])->name('navbar');
 // })->name('about');
 
 // Route::get('/search', [HomeController::class, 'search'])->name('search');
+
+// Chatbot route - outside auth middleware
+Route::post('/chatbot/response', [ChatbotController::class, 'getResponse'])->name('chatbot.response')->middleware('web');
 
 // OAuth
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])->name('auth.redirect');
@@ -88,7 +93,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/jadwal/import', [AdminJadwalController::class, 'import'])->name('jadwal.import');
         Route::get('/jadwal/export', [AdminJadwalController::class, 'export'])->name('jadwal.export');
         Route::delete('/jadwal/deleteAll', [AdminJadwalController::class, 'destroyAll'])->name('jadwal.destroyAll');
-        
+
         // CRUD EVENT
         Route::get('/event', [AdminEventController::class, 'index'])->name('event.index');
         Route::post('/event', [AdminEventController::class, 'store'])->name('event.store');
@@ -116,7 +121,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/matkul/import', [AdminMatkulController::class, 'import'])->name('matkul.import');
         Route::get('/matkul/export', [AdminMatkulController::class, 'export'])->name('matkul.export');
         Route::delete('/matkul/deleteAll', [AdminMatkulController::class, 'destroyAll'])->name('matkul.destroyAll');
-        
+
         // CRUD MODUL KULIAH
         Route::get('/modul', [AdminModulController::class, 'index'])->name('modul.index');
         Route::post('/modul', [AdminModulController::class, 'store'])->name('modul.store');
@@ -151,6 +156,16 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/kalender', [AdminKalenderController::class, 'index'])->name('kalender.index');
         Route::put('/kalender/{id}/update', [AdminKalenderController::class, 'update'])->name('kalender.update');
+
+        // CRUD CHATBOT
+        Route::get('/chatbot', [AdminChatbotController::class, 'index'])->name('chatbot.index');
+        Route::get('/chatbot/{id}', [AdminChatbotController::class, 'show'])->name('chatbot.show');
+        Route::post('/chatbot', [AdminChatbotController::class, 'store'])->name('chatbot.store');
+        Route::put('/chatbot/{id}/update', [AdminChatbotController::class, 'update'])->name('chatbot.update');
+        Route::delete('/chatbot/{id}/destroy', [AdminChatbotController::class, 'destroy'])->name('chatbot.destroy');
+        Route::post('/chatbot/import', [AdminChatbotController::class, 'import'])->name('chatbot.import');
+        Route::get('/chatbot/export', [AdminChatbotController::class, 'export'])->name('chatbot.export');
+        Route::delete('/chatbot/deleteAll', [AdminChatbotController::class, 'destroyAll'])->name('chatbot.destroyAll');
     });
 
     // CMS DOSEN

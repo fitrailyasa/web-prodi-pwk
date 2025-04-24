@@ -18,6 +18,9 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/css/OverlayScrollbars.min.css">
     <script src="https://kit.fontawesome.com/2a99f4df77.js" crossorigin="anonymous"></script>
 
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
     <style>
         thead {
             background-color: rgb(0, 0, 66);
@@ -38,6 +41,13 @@
 
         .aktif {
             background-color: rgb(20, 20, 187);
+        }
+
+        /* Chart Container Styles */
+        .chart-container {
+            position: relative;
+            height: 250px;
+            width: 100%;
         }
     </style>
 

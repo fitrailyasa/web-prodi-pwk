@@ -1,21 +1,26 @@
+import React, { ReactNode } from 'react'
+import { Head } from '@inertiajs/react'
+import NavBar from '@/Components/NavBar'
 import { Footer } from '@/Components/Footer'
-import AppHead from '../Components/AppHead'
-import NavBar from '../Components/NavBar'
+import Chatbot from '@/Components/Chatbot'
 
 interface AppLayoutProps {
     title: string
-    children: React.ReactNode
+    children: ReactNode
 }
 
-export default function AppLayout({ title, children }: AppLayoutProps) {
+const AppLayout: React.FC<AppLayoutProps> = ({ title, children }) => {
     return (
         <>
-            <AppHead title={title} />
-            <main className="rounded-xl bg-main-bg min-h-screen">
+            <Head title={title} />
+            <div className="min-h-screen bg-gray-100">
                 <NavBar />
-                {children}
+                <main>{children}</main>
                 <Footer />
-            </main>
+                <Chatbot />
+            </div>
         </>
     )
 }
+
+export default AppLayout

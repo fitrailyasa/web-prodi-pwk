@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BeritaSeeder::class);
         $this->call(EventSeeder::class);
         $this->call(KalenderSeeder::class);
+        $this->call(ChatbotSeeder::class);
     }
 }
