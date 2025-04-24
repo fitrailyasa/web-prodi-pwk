@@ -14,7 +14,7 @@ class Matkul extends Model
     protected $connection;
     protected $table = 'matkuls';
     protected $primaryKey = 'id';
-    protected $fillable = ['id', 'name', 'code', 'slug', 'credits', 'class', 'room', 'lecture', 'day', 'start_time', 'end_time', 'user_id'];
+    protected $fillable = ['id', 'name', 'code', 'slug', 'credits', 'semester', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 
     public static function setDynamicConnection()
@@ -22,12 +22,6 @@ class Matkul extends Model
         DB::setDefaultConnection(env('DB_CONNECTION'));
         // DB::setDefaultConnection(env('DB2_CONNECTION'));
     }
-
-    public function dosen()
-    {
-        return $this->belongsTo(User::class, 'lecture', 'id');
-    }
-
 
     public function moduls()
     {

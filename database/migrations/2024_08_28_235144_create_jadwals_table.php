@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('desc')->nullable();
-            $table->string('img')->nullable();
+            $table->foreignId('matkul_id')->nullable();
+            $table->string('class')->nullable();
+            $table->string('room')->nullable();
+            $table->foreignId('lecture')->nullable();
+            $table->enum('day', ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'])->nullable();
+            $table->time('start_time')->nullable();
+            $table->time('end_time')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

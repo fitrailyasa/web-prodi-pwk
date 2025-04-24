@@ -17,9 +17,13 @@ class JadwalFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'desc' => fake()->realText(100),
-            'img' => 'logo.png',
+            'matkul_id' => fake()->numberBetween(1, 20),
+            'class' => fake()->randomElement(['R' . fake()->randomElement(['A', 'B', 'C', 'D']), 'R']),
+            'room' => fake()->randomElement(['GK1', 'GK12', 'Labtek 1', 'Labtek 2']) . '-' . fake()->numberBetween(111, 444),
+            'lecture' => fake()->numberBetween(3, 22),
+            'day' => fake()->randomElement(['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu']),
+            'start_time' => fake()->time('H:i'),
+            'end_time' => fake()->time('H:i'),
             'user_id' => 1
         ];
     }

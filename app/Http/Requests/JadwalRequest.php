@@ -28,9 +28,13 @@ class JadwalRequest extends FormRequest
         // dd($db->getConnection()->getDatabaseName());
 
         return [
-            'name' => 'required|max:100',
-            'desc' => 'required|max:1000',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
+            'matkul_id' => 'required|exists:matkuls,id',
+            'class' => 'required|string',
+            'room' => 'required|string',
+            'lecture' => 'required|integer',
+            'day' => 'required|string',
+            'start_time' => 'required|date_format:H:i',
+            'end_time' => 'required|date_format:H:i',
         ];
     }
 }

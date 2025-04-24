@@ -29,16 +29,9 @@ class MatkulRequest extends FormRequest
 
         return [
             'name' => 'required|max:100',
-            'code' => 'required|max:10',
+            'code' => 'required|max:10|unique:matkuls,code,' . $this->id,
             'credits' => 'required|max_digits:values:4',
-            'lecture' => 'required|max:100',
-            'credits' => 'required|max:6',
-            'class' => 'required|max:100',
-            'room' => 'required|max:100',
-            'lecture' => 'required|max:100',
-            'day' => 'required|in:Senin,Selasa,Rabu,Kamis,Jumat,Sabtu,Minggu',
-            'start_time' => 'required|date_format:H:i',
-            'end_time' => 'required|date_format:H:i',
+            'semester' => 'required|max_digits:values:8',
         ];
     }
 
@@ -49,16 +42,11 @@ class MatkulRequest extends FormRequest
             'name.max' => 'Mata kuliah maksimal 100 karakter!',
             'code.required' => 'Kode tidak boleh kosong!',
             'code.max' => 'Kode maksimal 10 karakter!',
+            'code.unique' => 'Kode sudah ada!',
             'credits.required' => 'SKS tidak boleh kosong!',
             'credits.max' => 'SKS maksimal 4 karakter!',
-            'lecture.required' => 'Dosen tidak boleh kosong!',
-            'lecture.max' => 'Dosen maksimal 100 karakter!',
-            'day.required' => 'Hari tidak boleh kosong!',
-            'day.in' => 'Hari harus Senin, Selasa, Rabu, Kamis, Jumat, Sabtu, Minggu!',
-            'start_time.required' => 'Waktu tidak boleh kosong!',
-            'start_time.date_format' => 'Format waktu harus HH:MM!',
-            'end_time.required' => 'Waktu tidak boleh kosong!',
-            'end_time.date_format' => 'Format waktu harus HH:MM!',
+            'semester.required' => 'Semester tidak boleh kosong!',
+            'semester.max' => 'Semester maksimal 8 karakter!',
         ];
     }
 }

@@ -22,9 +22,12 @@ class JadwalExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
         foreach ($Jadwals as $Jadwal) {
             $collection[] = [
                 'No' => $no++,
-                'Name' => $Jadwal->name ?? '',
-                'Img' => $Jadwal->img ?? '',
-                'Desc' => $Jadwal->desc ?? '',
+                'Matkul' => $Jadwal->matkul->name ?? '',
+                'Kelas' => $Jadwal->class ?? '',
+                'Ruangan' => $Jadwal->room ?? '',
+                'Dosen' => $Jadwal->lecture ?? '',
+                'Hari' => $Jadwal->day ?? '',
+                'Waktu' => $Jadwal->start_time . ' - ' . $Jadwal->end_time ?? '',
             ];
         }
 
@@ -39,16 +42,19 @@ class JadwalExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
             [''],
             [
                 'No',
-                'Name',
-                'Img',
-                'Desc',
+                'Matkul',
+                'Kelas',
+                'Ruangan',
+                'Dosen',
+                'Hari',
+                'Waktu',
             ]
         ];
     }
 
     public function styles(Worksheet $sheet)
     {
-        $sheet->mergeCells('A1:D1');
+        $sheet->mergeCells('A1:G1');
 
         $borderStyle = [
             'borders' => [

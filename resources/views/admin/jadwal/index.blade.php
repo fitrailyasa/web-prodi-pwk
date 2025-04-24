@@ -2,7 +2,7 @@
 
     <!-- Title -->
     <x-slot name="title">
-        Jadwal Event
+        Jadwal Kuliah
     </x-slot>
 
     <!-- Button Form Create -->
@@ -35,9 +35,12 @@
         <thead>
             <tr>
                 <th>{{ __('No') }}</th>
-                <th>{{ __('Nama') }}</th>
-                <th>{{ __('Gambar') }}</th>
-                <th>{{ __('Deskripsi') }}</th>
+                <th>{{ __('Mata Kuliah') }}</th>
+                <th>{{ __('Kelas') }}</th>
+                <th>{{ __('Ruangan') }}</th>
+                <th>{{ __('Dosen') }}</th>
+                <th>{{ __('Hari') }}</th>
+                <th>{{ __('Waktu') }}</th>
                 <th class="text-center">{{ __('Aksi') }}</th>
             </tr>
         </thead>
@@ -45,50 +48,12 @@
             @foreach ($jadwals as $jadwal)
                 <tr @if ($jadwal) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
-                    <td>{{ $jadwal->name ?? '-' }}</td>
-                    <td>
-                        @if ($jadwal->img == null)
-                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $jadwal->name }}"
-                                width="100">
-                        @else
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{ $jadwal->id }}">
-                                <img class="img img-fluid rounded" src="{{ asset('storage/' . $jadwal->img) }}"
-                                    alt="{{ $jadwal->img }}" width="100" loading="lazy">
-                            </a>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="myModal{{ $jadwal->id }}" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-body text-left">
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <h3 class="card-title">{{ $jadwal->name }}</h3>
-                                                    <div class="card-tools">
-                                                        <button type="button" class="btn btn-tool"
-                                                            data-card-widget="maximize"><i
-                                                                class="fas fa-expand"></i></button>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    <img class="img img-fluid col-12"
-                                                        src="{{ asset('storage/' . $jadwal->img) }}"
-                                                        alt="{{ $jadwal->img }}">
-                                                    <!-- Tombol Download -->
-                                                    <a href="{{ asset('storage/' . $jadwal->img) }}"
-                                                        download="{{ $jadwal->img }}"
-                                                        class="btn btn-success mt-2 col-12">Download
-                                                        Gambar</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                    </td>
-                    <td>{{ $jadwal->desc ?? '-' }}</td>
+                    <td>{{ $jadwal->matkul->name }}</td>
+                    <td>{{ $jadwal->class }}</td>
+                    <td>{{ $jadwal->room }}</td>
+                    <td>{{ $jadwal->dosen->name }}</td>
+                    <td>{{ $jadwal->day }}</td>
+                    <td>{{ $jadwal->start_time }} - {{ $jadwal->end_time }}</td>
                     <td class="manage-row text-center">
                         @if (auth()->user()->role == 'admin' || auth()->user()->role == 'dosen')
                             <!-- Edit and Delete Buttons -->

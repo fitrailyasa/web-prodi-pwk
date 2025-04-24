@@ -10,27 +10,37 @@ class JadwalImport implements ToModel, WithStartRow
 {
     public function model(array $row)
     {
-        $name = $row[1];
-        $img = $row[2] ?? null;
-        $desc = $row[3] ?? null;
-        $user_id = auth()->user()->id;
+        $matkul_id = $row[1];
+        $class = $row[2];
+        $room = $row[3];
+        $lecture = $row[4];
+        $day = $row[5];
+        $start_time = $row[6];
+        $end_time = $row[7];
 
-        $checkJadwal = Jadwal::where('name', $name)->first();
+        $checkJadwal = Jadwal::where('matkul_id', $matkul_id)->where('class', $class)->where('room', $room)->where('lecture', $lecture)->where('day', $day)->where('start_time', $start_time)->where('end_time', $end_time)->first();
 
         if ($checkJadwal) {
             $checkJadwal->update([
-                'img' => $img,
-                'desc' => $desc,
-                'user_id' => $user_id,
+                'matkul_id' => $matkul_id,
+                'class' => $class,
+                'room' => $room,
+                'lecture' => $lecture,
+                'day' => $day,
+                'start_time' => $start_time,
+                'end_time' => $end_time,
             ]);
 
             return null;
         } else {
             return new Jadwal([
-                'name' => $name,
-                'img' => $img,
-                'desc' => $desc,
-                'user_id' => $user_id,
+                'matkul_id' => $matkul_id,
+                'class' => $class,
+                'room' => $room,
+                'lecture' => $lecture,
+                'day' => $day,
+                'start_time' => $start_time,
+                'end_time' => $end_time,
             ]);
         }
     }

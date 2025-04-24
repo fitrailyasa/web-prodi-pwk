@@ -22,39 +22,79 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Nama') }}</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="nama" name="name" id="name" value="{{ old('name') }}" required>
-                            @error('name')
+                            <label class="form-label">{{ __('Mata Kuliah') }}</label>
+                            <select class="form-select @error('matkul_id') is-invalid @enderror" name="matkul_id"
+                                id="matkul_id">
+                                <option value="">Pilih Mata Kuliah</option>
+                                @foreach ($matkuls as $matkul)
+                                    <option value="{{ $matkul->id }}">{{ $matkul->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('matkul_id')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Gambar') }}</label>
-                            <input id="image-input" accept="image/*" type="file"
-                                class="form-control @error('img') is-invalid @enderror" placeholder="img" name="img"
-                                id="img" value="{{ old('img') }}">
-                            @error('img')
+                            <label class="form-label">{{ __('Hari') }}</label>
+                            <select class="form-select @error('day') is-invalid @enderror" name="day" id="day">
+                                <option value="">Pilih Hari</option>
+                                @foreach ($days as $day)
+                                    <option value="{{ $day }}">{{ $day }}</option>
+                                @endforeach
+                            </select>
+                            @error('day')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Waktu Mulai') }}</label>
+                            <input type="time" class="form-control @error('start_time') is-invalid @enderror"
+                                name="start_time" id="start_time" value="{{ old('start_time') }}" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Waktu Selesai') }}</label>
+                            <input type="time" class="form-control @error('end_time') is-invalid @enderror"
+                                name="end_time" id="end_time" value="{{ old('end_time') }}" required>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Deskripsi') }}</label>
-                            <textarea class="form-control @error('desc') is-invalid @enderror" placeholder="deskripsi" name="desc" id="desc"
-                                rows="3">{{ old('desc') }}</textarea>
-                            @error('desc')
+                            <label class="form-label">{{ __('Dosen') }}</label>
+                            <select class="form-select @error('lecture') is-invalid @enderror" name="lecture" id="lecture">
+                                <option value="">Pilih Dosen</option>
+                                @foreach ($lectures as $lecture)
+                                    <option value="{{ $lecture->id }}">{{ $lecture->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('lecture')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-12 text-center">
+                    <div class="col-md-6">
                         <div class="mb-3">
-                            <img class="img-fluid py-3" id="image-preview" width="200px"
-                                src="{{ asset('assets/profile/default.png') }}" alt="Image Preview">
+                            <label class="form-label">{{ __('Ruangan') }}</label>
+                            <input type="text" class="form-control @error('room') is-invalid @enderror"
+                                name="room" id="room" placeholder="GK1-111" value="{{ old('room') }}" required>
+                            @error('room')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Kelas') }}</label>
+                            <input type="text" class="form-control @error('class') is-invalid @enderror"
+                                name="class" id="class" placeholder="RA" value="{{ old('class') }}" required>
+                            @error('class')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                 </div>

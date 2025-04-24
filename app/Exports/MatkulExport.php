@@ -28,27 +28,23 @@ class MatkulExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
             if ($groupedMatkuls->has($day)) {
                 // Menambahkan hari ke baris pertama untuk setiap grup
                 $collection[] = [
-                    'Hari' => $day,
-                    'Waktu Mulai' => '',
-                    'Waktu Selesai' => '',
-                    'Mata Kuliah' => '',
+                    'ID' => '',
+                    'Nama' => '',
+                    'Kode' => '',
                     'SKS' => '',
-                    'Kelas' => '',
-                    'Dosen Pengampu' => '',
-                    'Ruang' => '',
+                    'Semester' => '',
+                    'Dosen' => '',
                 ];
 
                 // Menambahkan mata kuliah di bawahnya
                 foreach ($groupedMatkuls->get($day) as $Matkul) {
                     $collection[] = [
-                        'Hari' => '',
-                        'Waktu Mulai' => $Matkul->start_time ?? '',
-                        'Waktu Selesai' => $Matkul->end_time ?? '',
-                        'Mata Kuliah' => $Matkul->name ?? '',
-                        'SKS' => $Matkul->credits ?? '',
-                        'Kelas' => $Matkul->class ?? '',
-                        'Dosen Pengampu' => $Matkul->dosen->name ?? '',
-                        'Ruang' => $Matkul->room ?? '',
+                        'ID' => $Matkul->id,
+                        'Nama' => $Matkul->name,
+                        'Kode' => $Matkul->code,
+                        'SKS' => $Matkul->credits,
+                        'Semester' => $Matkul->semester,
+                        'Dosen' => $Matkul->dosen->name,
                     ];
                 }
             }
@@ -63,14 +59,12 @@ class MatkulExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
             ['Data Jadwal Mata Kuliah'], // Judul Utama
             [''],
             [
-                'Hari',
-                'Waktu Mulai',
-                'Waktu Selesai',
-                'Mata Kuliah',
+                'ID',
+                'Nama',
+                'Kode',
                 'SKS',
-                'Kelas',
-                'Dosen Pengampu',
-                'Ruang',
+                'Semester',
+                'Dosen',
             ]
         ];
     }
@@ -78,7 +72,7 @@ class MatkulExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
     public function styles(Worksheet $sheet)
     {
         // Merge sel untuk judul utama
-        $sheet->mergeCells('A1:H1');
+        $sheet->mergeCells('A1:F1');
 
         // Style border tipis
         $borderStyle = [

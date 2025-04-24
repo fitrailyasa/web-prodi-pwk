@@ -29,33 +29,10 @@ class AdminMatkulController extends Controller
 
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
-        $days = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"];
-        $lectures = User::where('role', 'dosen')->get();
-
-        // Define custom ordering for days
-        $dayOrder = "CASE 
-            WHEN day = 'Senin' THEN 1 
-            WHEN day = 'Selasa' THEN 2 
-            WHEN day = 'Rabu' THEN 3 
-            WHEN day = 'Kamis' THEN 4 
-            WHEN day = 'Jumat' THEN 5 
-            WHEN day = 'Sabtu' THEN 6 
-            WHEN day = 'Minggu' THEN 7 
-            ELSE 8 END";
-
-        // Query with search and ordering
-        if ($search) {
-            $matkuls = Matkul::where('name', 'like', "%{$search}%")
-                ->orderByRaw($dayOrder)
-                ->paginate($validPerPage);
-        } else {
-            $matkuls = Matkul::orderByRaw($dayOrder)
-                ->paginate($validPerPage);
-        }
-
+        $matkuls = Matkul::orderBy('name', 'asc')->paginate($validPerPage);
         $counter = ($matkuls->currentPage() - 1) * $matkuls->perPage() + 1;
 
-        return view("admin.matkul.index", compact('matkuls', 'days', 'lectures', 'counter', 'search', 'perPage'));
+        return view("admin.matkul.index", compact('matkuls', 'counter', 'search', 'perPage'));
     }
 
     public function import(Request $request)

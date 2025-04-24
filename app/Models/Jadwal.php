@@ -14,7 +14,7 @@ class Jadwal extends Model
     protected $connection;
     protected $table = 'jadwals';
     protected $primaryKey = 'id';
-    protected $fillable = ['id', 'name', 'desc', 'img', 'user_id'];
+    protected $fillable = ['id', 'matkul_id', 'class', 'room', 'lecture', 'day', 'start_time', 'end_time', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 
     public static function setDynamicConnection()
@@ -26,5 +26,15 @@ class Jadwal extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function matkul()
+    {
+        return $this->belongsTo(Matkul::class);
+    }
+    
+    public function dosen()
+    {
+        return $this->belongsTo(User::class, 'lecture', 'id');
     }
 }

@@ -43,26 +43,6 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Kelas') }}</label>
-                            <input type="text" class="form-control @error('class') is-invalid @enderror"
-                                placeholder="RA" name="class" id="class" value="{{ old('class') }}" required>
-                            @error('class')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label class="form-label">{{ __('Ruangan') }}</label>
-                            <input type="text" class="form-control @error('room') is-invalid @enderror"
-                                placeholder="GK1-112" name="room" id="room" value="{{ old('room') }}" required>
-                            @error('room')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="mb-3">
                             <label class="form-label">{{ __('Jumlah SKS') }}</label>
                             <input type="number" class="form-control @error('credits') is-invalid @enderror"
                                 placeholder="3" name="credits" id="credits" value="{{ old('credits') }}" required>
@@ -73,48 +53,10 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Hari Pelaksanaan') }}</label>
-                            <select name="day" class="form-select" id="day">
-                                @foreach ($days as $day)
-                                    <option value="{{ $day }}">
-                                        {{ $day }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('day')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label class="form-label">{{ __('Jam Mulai') }}</label>
-                            <input type="time" class="form-control @error('start_time') is-invalid @enderror"
-                                placeholder="" name="start_time" id="start_time" value="{{ old('start_time') }}" required>
-                            @error('start_time')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label class="form-label">{{ __('Jam Selesai') }}</label>
-                            <input type="time" class="form-control @error('end_time') is-invalid @enderror"
-                                placeholder="" name="end_time" id="end_time" value="{{ old('end_time') }}" required>
-                            @error('end_time')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <label class="form-label">{{ __('Nama Dosen') }}</label>
-                            <select name="lecture" class="form-select" id="lecture">
-                                @foreach ($lectures as $lecture)
-                                    <option value="{{ $lecture->id }}">{{ $lecture->name }}</option>
-                                @endforeach
-                            </select>
-                            @error('lecture')
+                            <label class="form-label">{{ __('Semester') }}</label>
+                            <input type="number" class="form-control @error('semester') is-invalid @enderror"
+                                placeholder="3" name="semester" id="semester" value="{{ old('semester') }}" required>
+                            @error('semester')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
