@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\Link;
+use App\Models\Tentang;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Middleware;
@@ -55,7 +56,16 @@ class HandleInertiaRequests extends Middleware
                     'href' => $link->link,
                     'category' => $link->category,
                 ];
-            })
+            }),
+            'tentang' => Tentang::first() ?? [
+                'name' => 'Program Studi Perencanaan Wilayah dan Kota',
+                'address' => 'Jalan Terusan Ryacudu, Way Huwi, Kec. Jati Agung, Kabupaten Lampung Selatan, Lampung 35365',
+                'phone' => '(0721) 8030188',
+                'email' => 'pwk@itera.ac.id',
+                'instagram_url' => 'https://instagram.com/pwkitera',
+                'youtube_url' => 'https://youtube.com/@pwkitera',
+                'tiktok_url' => 'https://tiktok.com/@pwkitera'
+            ]
         ]);
     }
 }
