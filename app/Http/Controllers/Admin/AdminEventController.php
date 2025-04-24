@@ -64,18 +64,30 @@ class AdminEventController extends Controller
         $validatedData = $request->validated();
         $validatedData['user_id'] = auth()->id();
 
+        if ($request->hasFile('img')) {
+            $validatedData['img'] = $request->file('img')->store('event', 'public');
+        }
+
         Event::create($validatedData);
         return back()->with('alert', 'Berhasil Tambah Data Event!');
     }
 
     public function update(EventRequest $request, $id)
     {
-        $Event = Event::findOrFail($id);
+        $event = Event::findOrFail($id);
         $validatedData = $request->validated();
 
-        $validatedData['user_id'] = $Event->user_id;
+        $validatedData['user_id'] = $event->user_id;
 
-        $Event->update($validatedData);
+        if ($request->hasFile('img')) {
+            if ($event->img && Storage::exists('public/' . $event->img)) {
+                Storage::delete('public/' . $event->img);
+            }
+
+            $validatedData['img'] = $request->file('img')->store('event', 'public');
+        }
+
+        $event->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Event!');
     }
 
@@ -98,7 +110,7 @@ class AdminEventController extends Controller
         ]);
 
         $path = $request->file('upload')->store('images', 'public');
-        
+
         $url = Storage::url($path);
 
         return response()->json([

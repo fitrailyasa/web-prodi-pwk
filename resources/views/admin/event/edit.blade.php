@@ -37,7 +37,7 @@
                         <div class="mb-3">
                             <label class="form-label">{{ __('Konten Event') }}</label>
                             <textarea class="form-control @error('desc') is-invalid @enderror" placeholder="deskripsi..." name="desc"
-                                id="edit_desc">{{ old('desc', $event->desc) }}</textarea>
+                                id="edit_desc_{{ $event->id }}">{{ old('desc', $event->desc) }}</textarea>
                             @error('desc')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -88,8 +88,8 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">{{ __('Tag event') }}</label>
-                            <select class="form-select @error('tag_id') is-invalid @enderror" name="tag_id" id="tag_id"
-                                required>
+                            <select class="form-select @error('tag_id') is-invalid @enderror" name="tag_id"
+                                id="tag_id" required>
                                 <option value="">-- Pilih Tag --</option>
                                 @foreach ($tags as $tag)
                                     <option value="{{ $tag->id }}"
@@ -101,6 +101,31 @@
                             @error('tag_id')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
+                        </div>
+                    </div>
+
+                    <!-- Gambar (Image) -->
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Gambar') }}</label>
+                            <input id="image-input" accept="image/*" type="file"
+                                class="form-control @error('img') is-invalid @enderror" name="img">
+                            @error('img')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <!-- Preview Gambar -->
+                    <div class="col-md-12 text-center">
+                        <div class="mb-3">
+                            @if ($event->img)
+                                <img class="img-fluid py-3" id="image-preview" width="200px"
+                                    src="{{ asset('storage/' . $event->img) }}" alt="{{ $event->name }}">
+                            @else
+                                <img class="img-fluid py-3" id="image-preview" width="200px"
+                                    src="{{ asset('assets/profile/default.png') }}" alt="Image Preview">
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -115,3 +140,63 @@
         </div>
     </div>
 </div>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+<script>
+    // Image preview
+    document.getElementById('image-input').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('image-preview').src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // CKEditor
+    let editor;
+    ClassicEditor
+        .create(document.querySelector('#edit_desc_{{ $event->id }}'), {
+            ckfinder: {
+                uploadUrl: '{{ route('admin.event.upload_image') . '?_token=' . csrf_token() }}',
+            },
+            toolbar: {
+                items: [
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    'link',
+                    '|',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'imageUpload',
+                    'blockQuote',
+                    'insertTable',
+                    'undo',
+                    'redo'
+                ]
+            },
+            removePlugins: ['MediaEmbed']
+        })
+        .then(newEditor => {
+            editor = newEditor;
+            // Set editor height
+            const editorElement = editor.ui.getEditableElement();
+            editorElement.style.minHeight = '300px';
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+    // Clean up on modal close
+    document.querySelector('.formEdit{{ $event->id }}').addEventListener('hidden.bs.modal', function() {
+        if (editor) {
+            const originalContent = `{{ old('desc', $event->desc) }}`;
+            editor.setData(originalContent);
+        }
+    });
+</script>

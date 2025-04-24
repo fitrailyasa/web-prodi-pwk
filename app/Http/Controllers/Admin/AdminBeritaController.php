@@ -62,8 +62,11 @@ class AdminBeritaController extends Controller
     public function store(BeritaRequest $request)
     {
         $validatedData = $request->validated();
-        // dd($validatedData);
         $validatedData['user_id'] = auth()->id();
+
+        if ($request->hasFile('img')) {
+            $validatedData['img'] = $request->file('img')->store('berita', 'public');
+        }
 
         Berita::create($validatedData);
         return back()->with('alert', 'Berhasil Tambah Data Berita!');
@@ -71,12 +74,20 @@ class AdminBeritaController extends Controller
 
     public function update(BeritaRequest $request, $id)
     {
-        $Berita = Berita::findOrFail($id);
+        $berita = Berita::findOrFail($id);
         $validatedData = $request->validated();
 
-        $validatedData['user_id'] = $Berita->user_id;
+        $validatedData['user_id'] = $berita->user_id;
 
-        $Berita->update($validatedData);
+        if ($request->hasFile('img')) {
+            if ($berita->img && Storage::exists('public/' . $berita->img)) {
+                Storage::delete('public/' . $berita->img);
+            }
+
+            $validatedData['img'] = $request->file('img')->store('berita', 'public');
+        }
+
+        $berita->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Berita!');
     }
 
@@ -99,7 +110,7 @@ class AdminBeritaController extends Controller
         ]);
 
         $path = $request->file('upload')->store('images', 'public');
-        
+
         $url = Storage::url($path);
 
         return response()->json([

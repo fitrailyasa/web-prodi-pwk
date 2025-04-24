@@ -33,7 +33,8 @@ class EventRequest extends FormRequest
             'status' => 'required',
             'event_date' => 'required|date',
             'publish_date' => 'required|date',
-            'tag_id ' => 'required|max:100',
+            'tag_id' => 'nullable|max:100',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
 
@@ -49,8 +50,10 @@ class EventRequest extends FormRequest
             'event_date.date' => 'Tanggal Event harus berupa tanggal!',
             'publish_date.required' => 'Tanggal Publish tidak boleh kosong!',
             'publish_date.date' => 'Tanggal Publish harus berupa tanggal!',
-            'tag_id.required' => 'Tag tidak boleh kosong!',
             'tag_id.max' => 'Tag maksimal 100 karakter!',
+            'img.image' => 'File harus berupa gambar!',
+            'img.mimes' => 'Format gambar yang didukung: jpeg, png, jpg, gif!',
+            'img.max' => 'Ukuran gambar maksimal 2MB!',
         ];
     }
 }

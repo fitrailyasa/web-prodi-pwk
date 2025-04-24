@@ -36,7 +36,7 @@
             <tr>
                 <th>{{ __('No') }}</th>
                 <th>{{ __('Judul Event') }}</th>
-                {{-- <th>{{ __('Konten Event') }}</th> --}}
+                <th>{{ __('Thumbnail') }}</th>
                 <th>{{ __('Status') }}</th>
                 <th>{{ __('Tanggal Pelaksanaan') }}</th>
                 <th>{{ __('Tanggal Publikasi') }}</th>
@@ -50,7 +50,48 @@
                 <tr @if ($event) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
                     <td>{{ $event->name ?? '-' }}</td>
-                    {{-- <td>{!! $event->desc !!}</td> --}}
+                    <td>
+                        @if ($event->img == null)
+                            <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $event->name }}"
+                                width="100">
+                        @else
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#myModal{{ $event->id }}">
+                                <img class="img img-fluid rounded" src="{{ asset('storage/' . $event->img) }}"
+                                    alt="{{ $event->img }}" width="100" loading="lazy">
+                            </a>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal{{ $event->id }}" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body text-left">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">{{ $event->name }}</h3>
+                                                    <div class="card-tools">
+                                                        <button type="button" class="btn btn-tool"
+                                                            data-card-widget="maximize"><i
+                                                                class="fas fa-expand"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <img class="img img-fluid col-12"
+                                                        src="{{ asset('storage/' . $event->img) }}"
+                                                        alt="{{ $event->img }}">
+                                                    <!-- Tombol Download -->
+                                                    <a href="{{ asset('storage/' . $event->img) }}"
+                                                        download="{{ $event->img }}"
+                                                        class="btn btn-success mt-2 col-12">Download
+                                                        Gambar</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    </td>
                     <td>
                         @if ($event->status == 'unpublish')
                             <span class="badge bg-secondary">Unpublished</span>
@@ -80,36 +121,36 @@
     <script>
         // Inisialisasi CKEditor untuk deskripsi
         ClassicEditor
-        .create(document.querySelector('#create_desc'), {
-            ckfinder: {
-                uploadUrl: '{{route('admin.event.upload_image').'?_token='.csrf_token()}}',
-            },
-            toolbar: [
-                'heading', '|',
-                'bold', 'italic', 'link', '|',
-                'bulletedList', 'numberedList', '|',
-                'imageUpload',
-                'blockQuote', 'undo', 'redo'
-            ]
-        })
-        .catch(error => {
-            console.error(error);
-        });
+            .create(document.querySelector('#create_desc'), {
+                ckfinder: {
+                    uploadUrl: '{{ route('admin.event.upload_image') . '?_token=' . csrf_token() }}',
+                },
+                toolbar: [
+                    'heading', '|',
+                    'bold', 'italic', 'link', '|',
+                    'bulletedList', 'numberedList', '|',
+                    'imageUpload',
+                    'blockQuote', 'undo', 'redo'
+                ]
+            })
+            .catch(error => {
+                console.error(error);
+            });
         ClassicEditor
-        .create(document.querySelector('#edit_desc'), {
-            ckfinder: {
-                uploadUrl: '{{route('admin.event.upload_image').'?_token='.csrf_token()}}',
-            },
-            toolbar: [
-                'heading', '|',
-                'bold', 'italic', 'link', '|',
-                'bulletedList', 'numberedList', '|',
-                'imageUpload',
-                'blockQuote', 'undo', 'redo'
-            ]
-        })
-        .catch(error => {
-            console.error(error);
-        });
+            .create(document.querySelector('#edit_desc'), {
+                ckfinder: {
+                    uploadUrl: '{{ route('admin.event.upload_image') . '?_token=' . csrf_token() }}',
+                },
+                toolbar: [
+                    'heading', '|',
+                    'bold', 'italic', 'link', '|',
+                    'bulletedList', 'numberedList', '|',
+                    'imageUpload',
+                    'blockQuote', 'undo', 'redo'
+                ]
+            })
+            .catch(error => {
+                console.error(error);
+            });
     </script>
 </x-admin-table>

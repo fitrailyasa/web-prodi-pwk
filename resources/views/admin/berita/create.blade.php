@@ -22,7 +22,8 @@
                         <div class="mb-3">
                             <label class="form-label">{{ __('Judul Berita') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="Judul Berita" name="name" id="name" value="{{ old('name') }}" required>
+                                placeholder="Judul Berita" name="name" id="name" value="{{ old('name') }}"
+                                required>
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -31,18 +32,19 @@
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label class="form-label">{{ __('Konten Berita') }}</label>
-                            <textarea class="form-control @error('desc') is-invalid @enderror" placeholder="deskripsi..." name="desc" id="create_desc"
-                                rows="5">{{ old('desc') }}</textarea>
+                            <textarea class="form-control @error('desc') is-invalid @enderror" placeholder="deskripsi..." name="desc"
+                                id="create_desc_berita">{{ old('desc') }}</textarea>
                             @error('desc')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                    </div>                    
+                    </div>
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">{{ __('Tanggal Pelaksanaan') }}</label>
                             <input type="date" class="form-control @error('event_date') is-invalid @enderror"
-                                placeholder="Tanggal Pelaksanaan" name="event_date" id="event_date" value="{{ old('event_date') }}" required>
+                                placeholder="Tanggal Pelaksanaan" name="event_date" id="event_date"
+                                value="{{ old('event_date') }}" required>
                             @error('event_date')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -52,7 +54,8 @@
                         <div class="mb-3">
                             <label class="form-label">{{ __('Tanggal Publikasi') }}</label>
                             <input type="date" class="form-control @error('publish_date') is-invalid @enderror"
-                                placeholder="Tanggal Publikasi" name="publish_date" id="publish_date" value="{{ old('publish_date') }}" required>
+                                placeholder="Tanggal Publikasi" name="publish_date" id="publish_date"
+                                value="{{ old('publish_date') }}" required>
                             @error('publish_date')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -87,13 +90,94 @@
                             @enderror
                         </div>
                     </div>
+
+                    <!-- Gambar (Image) -->
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('Gambar') }}</label>
+                            <input id="image-input" accept="image/*" type="file"
+                                class="form-control @error('img') is-invalid @enderror" name="img">
+                            @error('img')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <!-- Preview Gambar -->
+                    <div class="col-md-12 text-center">
+                        <div class="mb-3">
+                            <img class="img-fluid py-3" id="image-preview" width="200px"
+                                src="{{ asset('assets/profile/default.png') }}" alt="Image Preview">
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Tutup') }}</button>
-                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> {{ __('Simpan') }}</button>
+                <button type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal">{{ __('Tutup') }}</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>
+                    {{ __('Simpan') }}</button>
             </div>
             </form>
         </div>
     </div>
 </div>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+<script>
+    // Image preview
+    document.getElementById('image-input').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('image-preview').src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // CKEditor
+    let editor;
+    ClassicEditor
+        .create(document.querySelector('#create_desc_berita'), {
+            ckfinder: {
+                uploadUrl: '{{ route('admin.berita.upload_image') . '?_token=' . csrf_token() }}',
+            },
+            toolbar: {
+                items: [
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    'link',
+                    '|',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'imageUpload',
+                    'blockQuote',
+                    'insertTable',
+                    'undo',
+                    'redo'
+                ]
+            },
+            removePlugins: ['MediaEmbed']
+        })
+        .then(newEditor => {
+            editor = newEditor;
+            // Set editor height
+            const editorElement = editor.ui.getEditableElement();
+            editorElement.style.minHeight = '300px';
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+    // Clean up on modal close
+    document.querySelector('.formCreate').addEventListener('hidden.bs.modal', function() {
+        if (editor) {
+            editor.setData('');
+        }
+    });
+</script>
