@@ -23,7 +23,7 @@ class EventFactory extends Factory
             'status' => fake()->randomElement(['unpublish', 'publish']),
             'event_date' => fake()->date(),
             'publish_date' => fake()->date(),
-            'img' => 'logo.png',
+            'img' => null,
             'views' => 100,
             'tag_id' => 1,
             'user_id' => 1

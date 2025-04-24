@@ -19,7 +19,7 @@ class ModulFactory extends Factory
         return [
             'name' => fake()->name(),
             'file' => 'file.pdf',
-            'img' => 'logo.png',
+            'img' => null,
             'user_id' => 1
         ];
     }

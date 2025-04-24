@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'nip' => fake()->numberBetween(1000000000, 9999999999),
                 'position' => fake()->jobTitle(),
-                'img' => 'logo.png',
+                'img' => null,
                 'email_verified_at' => now(),
             ],
             [
@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'nip' => fake()->numberBetween(1000000000, 9999999999),
                 'position' => fake()->jobTitle(),
-                'img' => 'logo.png',
+                'img' => null,
                 'email_verified_at' => now(),
             ],
         ];

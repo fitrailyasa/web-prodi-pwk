@@ -28,7 +28,7 @@ class UserFactory extends Factory
             'password' => Hash::make('password'),
             'nip' => fake()->numberBetween(1000000000, 9999999999),
             'position' => fake()->randomElement(['Dosen', 'Tenaga Ahli', 'Tendik']),
-            'img' => 'logo.png',
+            'img' => null,
             'email_verified_at' => now(),
         ];
     }

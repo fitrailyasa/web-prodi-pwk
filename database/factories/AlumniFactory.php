@@ -22,7 +22,7 @@ class AlumniFactory extends Factory
             'graduation_year' => fake()->numberBetween(2024, 2028),
             'work' => fake()->jobTitle(),
             'company' => fake()->company(),
-            'img' => 'logo.png',
+            'img' => null,
             'user_id' => 1
         ];
     }
