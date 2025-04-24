@@ -9,6 +9,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\AlumniImport;
 use App\Exports\AlumniExport;
 use App\Http\Requests\AlumniRequest;
+use Illuminate\Support\Facades\Storage;
 
 class AdminAlumniController extends Controller
 {
@@ -57,9 +58,8 @@ class AdminAlumniController extends Controller
         $validatedData = $request->validated();
         $validatedData['user_id'] = auth()->id();
 
-        // upload img 
         if ($request->hasFile('img')) {
-            $validatedData['img'] = $request->file('img')->store('alumni');
+            $validatedData['img'] = $request->file('img')->store('alumni', 'public');
         }
 
         Alumni::create($validatedData);
@@ -73,9 +73,11 @@ class AdminAlumniController extends Controller
 
         $validatedData['user_id'] = $alumni->user_id;
 
-        // upload img 
         if ($request->hasFile('img')) {
-            $validatedData['img'] = $request->file('img')->store('alumni');
+            if ($alumni->img && Storage::exists('public/' . $alumni->img)) {
+                Storage::delete('public/' . $alumni->img);
+            }
+            $validatedData['img'] = $request->file('img')->store('alumni', 'public');
         }
 
         $alumni->update($validatedData);

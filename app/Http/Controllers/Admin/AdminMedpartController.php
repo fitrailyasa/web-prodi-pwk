@@ -9,6 +9,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\MedpartImport;
 use App\Exports\MedpartExport;
 use App\Http\Requests\MedpartRequest;
+use Illuminate\Support\Facades\Storage;
 
 class AdminMedpartController extends Controller
 {
@@ -57,18 +58,29 @@ class AdminMedpartController extends Controller
         $validatedData = $request->validated();
         $validatedData['user_id'] = auth()->id();
 
+        if ($request->hasFile('img')) {
+            $validatedData['img'] = $request->file('img')->store('medpart', 'public');
+        }
+
         Medpart::create($validatedData);
         return back()->with('alert', 'Berhasil Tambah Data Medpart!');
     }
 
     public function update(MedpartRequest $request, $id)
     {
-        $Medpart = Medpart::findOrFail($id);
+        $medpart = Medpart::findOrFail($id);
         $validatedData = $request->validated();
 
-        $validatedData['user_id'] = $Medpart->user_id;
+        $validatedData['user_id'] = $medpart->user_id;
 
-        $Medpart->update($validatedData);
+        if ($request->hasFile('img')) {
+            if ($medpart->img && Storage::exists('public/' . $medpart->img)) {
+                Storage::delete('public/' . $medpart->img);
+            }
+            $validatedData['img'] = $request->file('img')->store('medpart', 'public');
+        }
+
+        $medpart->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Medpart!');
     }
 
