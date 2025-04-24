@@ -43,20 +43,20 @@ export function Footer({ tentang }: FooterProps) {
                     {/* Left Column */}
                     <div className="lg:col-span-1">
                         <div className="mb-8">
-                            <Link
-                                href="/"
-                                className="flex items-center gap-4 mb-4"
-                            >
+                            <Link href="/" className="flex items-start gap-3">
                                 <Image
                                     src={Logo_img}
                                     alt="Logo"
-                                    className="w-16 h-16 object-contain"
+                                    className="w-14 h-14 object-contain"
                                 />
-                                <div>
-                                    <h2 className="text-2xl font-bold text-main-blue">
-                                        {tentang.name}
+                                <div className="flex flex-col mt-1">
+                                    <h2 className="text-base font-bold text-main-blue leading-snug">
+                                        Program Studi Perencanaan
                                     </h2>
-                                    <h3 className="text-xl font-semibold text-main-green">
+                                    <h2 className="text-base font-bold text-main-blue leading-snug">
+                                        Wilayah dan Kota
+                                    </h2>
+                                    <h3 className="text-sm font-semibold text-[#00923F]">
                                         ITERA
                                     </h3>
                                 </div>
