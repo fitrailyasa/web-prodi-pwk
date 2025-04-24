@@ -13,7 +13,7 @@
                 <!-- File -->
                 <div class="col-md-12">
                     <div class="mb-3">
-                        <label class="form-label">{{ __('Edit File') }}</label>
+                        <label class="form-label">{{ __('Edit File (PDF)') }}</label>
                         <input type="file" class="form-control @error('file') is-invalid @enderror" name="file"
                             value="{{ old('file', $kalender->file) }}" required>
                         @error('file')
