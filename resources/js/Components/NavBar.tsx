@@ -256,7 +256,10 @@ export default function NavBar() {
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Link className="text-black text-md" href={route('berita')}>
+                    <Link
+                        className="text-black text-md"
+                        href={route('contact')}
+                    >
                         <TypingAnimation
                             text="Kontak"
                             speed={0.05}
@@ -344,7 +347,7 @@ export default function NavBar() {
                     href={route('berita')}
                     title={'Berita dan Informasi'}
                 />
-                <MobileLink href="#" title={'Kontak'} />`
+                <MobileLink href={route('contact')} title={'Kontak'} />`
             </NavbarMenu>
         </Navbar>
     )
