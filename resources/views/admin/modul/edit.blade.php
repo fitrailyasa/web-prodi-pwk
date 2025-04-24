@@ -5,15 +5,16 @@
 
 <!-- Modal -->
 <div class="modal fade formEdit{{ $modul->id }}" tabindex="-1" role="dialog" aria-hidden="">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             @if (auth()->user()->role == 'admin')
-                <form method="POST" action="{{ route('admin.modul.update', $modul->id) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.modul.update', $modul->id) }}"
+                    enctype="multipart/form-data">
             @endif
             @csrf
             @method('PUT')
             <div class="modal-header">
-                <h5 class="modal-title" id="modalFormLabel">{{ __('Edit Data') }}
+                <h5 class="modal-title" id="modalFormLabel">{{ __('Edit Data Modul') }}
                 </h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -23,10 +24,10 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Nama') }}</label>
+                            <label class="form-label">{{ __('Nama Modul') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                placeholder="nama" name="name" id="name" value="{{ old('name', $modul->name) }}"
-                                required>
+                                placeholder="Masukkan nama modul" name="name" id="name"
+                                value="{{ old('name', $modul->name) }}" required>
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -34,24 +35,18 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Tautan') }}</label>
-                            <input type="text" class="form-control @error('link') is-invalid @enderror"
-                                placeholder="https://google.com" name="link" id="link" value="{{ old('link', $modul->link) }}" required>
-                            @error('link')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label class="form-label">{{ __('Kategori') }}</label>
-                            <select class="form-select @error('category') is-invalid @enderror" name="category" id="category">
-                                <option value="">-- Pilih Kategori --</option>
-                                <option value="akademik" {{ old('category', $modul->category) == 'akademik' ? 'selected' : '' }}>Akademik</option>
-                                <option value="fasilitas" {{ old('category', $modul->category) == 'fasilitas' ? 'selected' : '' }}>Fasilitas</option>
-                                <option value="lainnya" {{ old('category', $modul->category) == 'lainnya' ? 'selected' : '' }}>Lainnya</option>
+                            <label class="form-label">{{ __('Mata Kuliah') }}</label>
+                            <select class="form-select @error('matkul_id') is-invalid @enderror" name="matkul_id"
+                                id="matkul_id" required>
+                                <option value="">-- Pilih Mata Kuliah --</option>
+                                @foreach ($matkuls as $matkul)
+                                    <option value="{{ $matkul->id }}"
+                                        {{ old('matkul_id', $modul->matkul_id) == $matkul->id ? 'selected' : '' }}>
+                                        {{ $matkul->name }}
+                                    </option>
+                                @endforeach
                             </select>
-                            @error('category')
+                            @error('matkul_id')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
@@ -59,10 +54,35 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label class="form-label">{{ __('Gambar') }}</label>
-                            <input id="image-input" accept="image/*" type="file" id="img-input"
-                                class="form-control @error('img') is-invalid @enderror" placeholder="img" name="img"
-                                id="img" value="{{ old('img', $modul->img) }}">
+                            @if ($modul->img)
+                                <div class="mb-2">
+                                    <img src="{{ asset('storage/' . $modul->img) }}" alt="Current Image"
+                                        class="img-thumbnail" style="max-height: 100px;">
+                                </div>
+                            @endif
+                            <input type="file" accept="image/*"
+                                class="form-control @error('img') is-invalid @enderror" name="img" id="img">
+                            <small class="text-muted">Format: JPG, PNG, JPEG. Maksimal 2MB</small>
                             @error('img')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">{{ __('File Modul') }}</label>
+                            @if ($modul->file)
+                                <div class="mb-2">
+                                    <a href="{{ asset('storage/' . $modul->file) }}" target="_blank"
+                                        class="btn btn-sm btn-info">
+                                        <i class="fas fa-file"></i> Lihat File Saat Ini
+                                    </a>
+                                </div>
+                            @endif
+                            <input type="file" accept=".pdf,.doc,.docx"
+                                class="form-control @error('file') is-invalid @enderror" name="file" id="file">
+                            <small class="text-muted">Format: PDF, DOC, DOCX. Maksimal 5MB</small>
+                            @error('file')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
