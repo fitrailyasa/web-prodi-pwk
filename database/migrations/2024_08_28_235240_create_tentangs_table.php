@@ -14,13 +14,30 @@ return new class extends Migration
         Schema::create('tentangs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('vision');
+            $table->text('vision');
             $table->text('mission')->nullable();
             $table->text('goals')->nullable();
-            $table->string('total_lecture')->nullable();
-            $table->string('total_student')->nullable();
-            $table->string('total_teaching_staff')->nullable();
+            $table->integer('total_lecture')->nullable();
+            $table->integer('total_student')->nullable();
+            $table->integer('total_teaching_staff')->nullable();
             $table->string('img')->nullable();
+
+            // Contact Information
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->text('description')->nullable();
+
+            // Social Media Links
+            $table->string('instagram_url')->nullable();
+            $table->string('youtube_url')->nullable();
+            $table->string('tiktok_url')->nullable();
+
+            // Location Information
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('maps_url')->nullable();
+
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
