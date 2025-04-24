@@ -9,7 +9,7 @@ interface Message {
     sender: 'user' | 'bot'
 }
 
-const WELCOME_MESSAGES = [
+const WELCOME_MESSAGES: Message[] = [
     {
         text: 'Halo! Selamat datang di Chatbot PWK ITERA.',
         sender: 'bot'
