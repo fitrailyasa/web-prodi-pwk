@@ -1,9 +1,19 @@
 import { DosenCardType } from '@/types'
 import { Button, Card, CardBody, Image, Link } from '@heroui/react'
 
-const DosenAndStafCard: React.FC<{ staf: DosenCardType }> = ({ staf }) => {
+interface DosenAndStafCardProps {
+    staf: DosenCardType
+    isCoordinator?: boolean
+}
+
+const DosenAndStafCard: React.FC<DosenAndStafCardProps> = ({
+    staf,
+    isCoordinator = false
+}) => {
     return (
-        <Card className="w-64 hover:translate-x-2 hover:translate-y-2 transform transition-all duration-300">
+        <Card
+            className={`w-64 hover:translate-x-2 hover:translate-y-2 transform transition-all duration-300 ${isCoordinator ? 'border-2 border-main-green' : ''}`}
+        >
             <CardBody>
                 <Image
                     src={staf.image}

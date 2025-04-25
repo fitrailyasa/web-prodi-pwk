@@ -47,6 +47,7 @@ export type DosenCardType = {
     position?: string
     image: string
     id: number
+    isCoordinator?: boolean
 }
 
 export type BgImageProps = {
