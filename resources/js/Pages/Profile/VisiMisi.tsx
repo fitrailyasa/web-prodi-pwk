@@ -2,24 +2,45 @@ import React from 'react'
 import AppLayout from '@/Layouts/AppLayout'
 import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
 import { FaBullseye, FaListCheck, FaEye } from 'react-icons/fa6'
+import { useTranslation } from '@/Hooks/useTranslation'
+import { useLanguage } from '@/Providers/LanguageProvider'
 
 interface VisiMisiProps {
     visi: string | null
     misi: string[] | null
     tujuan: string[] | null
     message?: string
+    title?: string
 }
 
-const VisiMisi: React.FC<VisiMisiProps> = ({ visi, misi, tujuan, message }) => {
+const VisiMisi: React.FC<VisiMisiProps> = ({
+    visi,
+    misi,
+    tujuan,
+    message,
+    title
+}) => {
+    const { language } = useLanguage()
+
+    // Pre-translate all static text
+    const titleText = useTranslation(title || 'Visi & Misi')
+    const visiText = useTranslation('Visi')
+    const misiText = useTranslation('Misi')
+    const tujuanText = useTranslation('Tujuan')
+    const noDataText = useTranslation('Data visi misi belum tersedia')
+    const visiContent = visi ? useTranslation(visi) : null
+    
     if (!visi || !misi || !tujuan) {
         return (
-            <AppLayout title="Visi & Misi">
+            <AppLayout title={titleText}>
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-[74vh] max-w-7xl">
                     <SectionTrigerScroll
                         id="visi-misi"
                         className="bg-white p-8 rounded-3xl shadow-xl"
                     >
-                        <p className="text-lg text-gray-700">{message}</p>
+                        <p className="text-lg text-gray-700">
+                            {message ? useTranslation(message) : noDataText}
+                        </p>
                     </SectionTrigerScroll>
                 </div>
             </AppLayout>
@@ -27,7 +48,7 @@ const VisiMisi: React.FC<VisiMisiProps> = ({ visi, misi, tujuan, message }) => {
     }
 
     return (
-        <AppLayout title="Visi & Misi">
+        <AppLayout title={titleText}>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-[74vh] max-w-7xl">
                 <SectionTrigerScroll
                     id="visi"
@@ -38,11 +59,11 @@ const VisiMisi: React.FC<VisiMisiProps> = ({ visi, misi, tujuan, message }) => {
                             <FaEye className="text-2xl text-main-blue-light" />
                         </div>
                         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
-                            Visi
+                            {visiText}
                         </h2>
                     </div>
                     <p className="text-md sm:text-xl md:text-xl text-gray-700 pl-4 border-l-4 border-main-blue/30 text-justify">
-                        {visi}
+                        {visiContent}
                     </p>
                 </SectionTrigerScroll>
 
@@ -55,7 +76,7 @@ const VisiMisi: React.FC<VisiMisiProps> = ({ visi, misi, tujuan, message }) => {
                             <FaListCheck className="text-2xl text-main-blue-light" />
                         </div>
                         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
-                            Misi
+                            {misiText}
                         </h2>
                     </div>
                     <div className="space-y-4 pl-4">
@@ -70,7 +91,7 @@ const VisiMisi: React.FC<VisiMisiProps> = ({ visi, misi, tujuan, message }) => {
                                     </span>
                                 </div>
                                 <p className="text-md sm:text-xl md:text-xl text-gray-700 text-justify">
-                                    {item}
+                                    {useTranslation(item)}
                                 </p>
                             </div>
                         ))}
@@ -86,7 +107,7 @@ const VisiMisi: React.FC<VisiMisiProps> = ({ visi, misi, tujuan, message }) => {
                             <FaBullseye className="text-2xl text-main-blue-light" />
                         </div>
                         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
-                            Tujuan
+                            {tujuanText}
                         </h2>
                     </div>
                     <div className="space-y-4 pl-4">
@@ -101,7 +122,7 @@ const VisiMisi: React.FC<VisiMisiProps> = ({ visi, misi, tujuan, message }) => {
                                     </span>
                                 </div>
                                 <p className="text-md sm:text-xl md:text-xl text-gray-700 text-justify">
-                                    {item}
+                                    {useTranslation(item)}
                                 </p>
                             </div>
                         ))}
