@@ -2,13 +2,25 @@ import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
 import { Button } from '@heroui/react'
 
 type TabResumeProps = {
-    data: any
+    data: {
+        name: string
+        position: string
+        bio: string
+        education: string
+        expertise: string
+        dosenProfile: {
+            nip: string
+            nidn: string
+            google_scholar: string
+            scopus_id: string
+            sinta_id: string
+            research_interests: string
+            achievements: string
+        }
+    }
 }
 
 const TabResume: React.FC<TabResumeProps> = ({ data }) => {
-    data.sinta = 'asdjfhakjhflaskdhjf'
-    data.scopus = '-'
-    data.scholar = 'asdjfhakjhflaskdhjf'
     return (
         <>
             <SectionTrigerScroll
@@ -20,9 +32,7 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                     Profile
                 </h2>
                 <p className="">
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Rerum nulla esse quod ab quis ipsa a, dicta at numquam iusto
-                    corporis?"
+                    {data.bio || 'Belum ada biografi yang tersedia'}
                 </p>
                 <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10">
                     Biodata
@@ -35,29 +45,42 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                             <td>{data.name}</td>
                         </tr>
                         <tr>
-                            <td className="font-bold pe-10">NIK / NRK</td>
+                            <td className="font-bold pe-10">NIP</td>
                             <td>:</td>
-                            <td>{data.nik}</td>
+                            <td>{data.dosenProfile?.nip || '-'}</td>
                         </tr>
                         <tr>
                             <td className="font-bold pe-10">NIDN</td>
                             <td>:</td>
-                            <td>{data.nidn}</td>
+                            <td>{data.dosenProfile?.nidn || '-'}</td>
                         </tr>
                         <tr>
-                            <td className="font-bold pe-10">Scholar</td>
+                            <td className="font-bold pe-10">Google Scholar</td>
                             <td>:</td>
-                            <td>{data.scholar}</td>
+                            <td>
+                                {data.dosenProfile?.google_scholar ? (
+                                    <a
+                                        href={data.dosenProfile.google_scholar}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-500 hover:underline"
+                                    >
+                                        {data.dosenProfile.google_scholar}
+                                    </a>
+                                ) : (
+                                    '-'
+                                )}
+                            </td>
                         </tr>
                         <tr>
-                            <td className="font-bold pe-10">Scopus</td>
+                            <td className="font-bold pe-10">Scopus ID</td>
                             <td>:</td>
-                            <td>{data.scopus}</td>
+                            <td>{data.dosenProfile?.scopus_id || '-'}</td>
                         </tr>
                         <tr>
-                            <td className="font-bold pe-10">Sinta</td>
+                            <td className="font-bold pe-10">SINTA ID</td>
                             <td>:</td>
-                            <td>{data.sinta}</td>
+                            <td>{data.dosenProfile?.sinta_id || '-'}</td>
                         </tr>
                     </div>
                 </div>
@@ -71,43 +94,53 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                     Riwayat Pendidikan
                 </h2>
                 <div className="my-5">
-                    {/* <h3 className="font-bold text-2xl pb-3 border-b mb-3">
-                        Latar Belakang Pendidikan
-                    </h3> */}
-                    <tr>
-                        <td className="font-bold pe-10">S!</td>
-                        <td>:</td>
-                        <td>
-                            {data.s1} {data.tahun}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="font-bold pe-10">S2</td>
-                        <td>:</td>
-                        <td>
-                            {data.s1} {data.tahun}
-                        </td>
-                    </tr>
+                    {data.education ? (
+                        <div className="whitespace-pre-line">
+                            {data.education}
+                        </div>
+                    ) : (
+                        <p>Belum ada data pendidikan yang tersedia</p>
+                    )}
                 </div>
-                {/* <div className="my-5">
-                    <h3 className="font-bold text-2xl pb-3 border-b mb-3">
-                        Latar Belakang Pendidikan
-                    </h3>
-                    <tr>
-                        <td className="font-bold pe-10">S!</td>
-                        <td>:</td>
-                        <td>
-                            {data.s1} {data.tahun}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="font-bold pe-10">S2</td>
-                        <td>:</td>
-                        <td>
-                            {data.s1} {data.tahun}
-                        </td>
-                    </tr>
-                </div> */}
+
+                <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10">
+                    Bidang Keahlian
+                </h2>
+                <div className="my-5">
+                    {data.expertise ? (
+                        <div className="whitespace-pre-line">
+                            {data.expertise}
+                        </div>
+                    ) : (
+                        <p>Belum ada data bidang keahlian yang tersedia</p>
+                    )}
+                </div>
+
+                <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10">
+                    Minat Penelitian
+                </h2>
+                <div className="my-5">
+                    {data.dosenProfile?.research_interests ? (
+                        <div className="whitespace-pre-line">
+                            {data.dosenProfile.research_interests}
+                        </div>
+                    ) : (
+                        <p>Belum ada data minat penelitian yang tersedia</p>
+                    )}
+                </div>
+
+                <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10">
+                    Prestasi
+                </h2>
+                <div className="my-5">
+                    {data.dosenProfile?.achievements ? (
+                        <div className="whitespace-pre-line">
+                            {data.dosenProfile.achievements}
+                        </div>
+                    ) : (
+                        <p>Belum ada data prestasi yang tersedia</p>
+                    )}
+                </div>
             </SectionTrigerScroll>
         </>
     )

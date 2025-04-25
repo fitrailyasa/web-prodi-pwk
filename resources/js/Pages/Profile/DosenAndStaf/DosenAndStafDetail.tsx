@@ -11,37 +11,27 @@ import TabOther from '@/Components/Profile/DetailTabs/TabOther'
 import TabPublication from '@/Components/Profile/DetailTabs/TabPuBlication'
 import TabResume from '@/Components/Profile/DetailTabs/TabResume'
 import BgImageComponent from '@/Components/Utils/BgImage'
-import { TestImage } from '@/Constants'
-
 import AppLayout from '@/Layouts/AppLayout'
 import { Card, CardBody, Image, Tab, Tabs } from '@heroui/react'
 import React from 'react'
 
-const DosenAndStafDetail: React.FC = () => {
-    const data = {
-        name: 'Dr. Ir. M. Syahril, M.T.',
-        position: 'Koordinator Program Studi PWK ITERA',
-        email: 'asdasd@mail.com',
-        whatsapp: 'asdasd',
-        linkedin: 'asdasd'
-    }
-
+const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
     const TabsDetailDosenAndStaf = [
         {
             title: 'Resume',
-            tabContent: <TabResume data={data} />
+            tabContent: <TabResume data={dosen} />
         },
         {
             title: 'Penelitian Dan Publikasi',
-            tabContent: <TabPublication data={data} />
+            tabContent: <TabPublication data={dosen} />
         },
         {
             title: 'Courses',
-            tabContent: <TabCourse data={data} />
+            tabContent: <TabCourse data={dosen} />
         },
         {
             title: 'Other',
-            tabContent: <TabOther data={data} />
+            tabContent: <TabOther data={dosen} />
         }
     ]
 
@@ -57,18 +47,18 @@ const DosenAndStafDetail: React.FC = () => {
                         <div className="aspect-[3/4] w-52 rounded-xl md:rounded-3xl p-1 border-2 border-main-green">
                             <BgImageComponent
                                 Possition="bg-bottom"
-                                src={TestImage}
-                                alt="foto-dosen-1"
+                                src={dosen.image}
+                                alt={`foto-${dosen.name}`}
                                 className="rounded-xl md:rounded-3xl min-w-20 w-full h-full"
                             />
                         </div>
                         <div className="flex flex-1 flex-col justify-center pl-5">
                             <div className="">
                                 <h2 className="font-bold text-wrap text-xl md:text-3xl pb-4">
-                                    {data.name}
+                                    {dosen.name}
                                 </h2>
                                 <p className="text-gray-500 text-md  text-wrap md:text-lg">
-                                    {data.position}
+                                    {dosen.position}
                                 </p>
                             </div>
                             <div className="flex flex-wrap gap-5 items-center mt-2">
@@ -78,25 +68,16 @@ const DosenAndStafDetail: React.FC = () => {
                                         className="text-main-green text-xs"
                                     />
                                     <span className="font-semibold">
-                                        {data.email}
+                                        {dosen.email}
                                     </span>
                                 </div>
-                                {/* <div className="flex items-center gap-3">
-                                    <WhatAppIcon
-                                        size={2}
-                                        className="text-main-green text-xs"
-                                    />
-                                    <span className="font-semibold">
-                                        {data.whatsapp}
-                                    </span>
-                                </div> */}
                                 <div className="flex items-center gap-3">
                                     <LinkedInIcon
                                         size={2}
                                         className="text-main-green text-xs"
                                     />
                                     <span className="font-semibold">
-                                        {data.linkedin}
+                                        {dosen.linkedin}
                                     </span>
                                 </div>
                             </div>
@@ -108,7 +89,6 @@ const DosenAndStafDetail: React.FC = () => {
                     <Tabs
                         aria-label="Options"
                         variant="solid"
-                        // color=""
                         classNames={{
                             tabList:
                                 ' gap-1 md:gap-6 w-full flex-wrap relative rounded-none p-0 border-b border-divider  ',

@@ -31,6 +31,11 @@ class User extends Authenticatable
         'password',
         'role',
         'status',
+        'whatsapp',
+        'linkedin',
+        'bio',
+        'education',
+        'expertise'
     ];
 
     /**
@@ -60,5 +65,20 @@ class User extends Authenticatable
     {
         DB::setDefaultConnection(env('DB_CONNECTION'));
         // DB::setDefaultConnection(env('DB2_CONNECTION'));
+    }
+
+    public function publications()
+    {
+        return $this->hasMany(Publication::class);
+    }
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
+
+    public function dosenProfile()
+    {
+        return $this->hasOne(DosenProfile::class);
     }
 }

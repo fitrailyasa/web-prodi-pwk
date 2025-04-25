@@ -1,176 +1,64 @@
 import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
 import DosenAndStafCard from '@/Components/Profile/DosenCard'
-import { TestImage } from '@/Constants'
 import AppLayout from '@/Layouts/AppLayout'
 import { DosenCardType, EmployePageProps } from '@/types'
-import { Button, Card, CardBody, Image, Link } from '@heroui/react'
 import React from 'react'
+
+interface SectionProps {
+    title: string
+    users: DosenCardType[]
+    className?: string
+}
+
+const Section: React.FC<SectionProps> = ({ title, users, className = '' }) => {
+    if (!users || users.length === 0) return null
+
+    return (
+        <SectionTrigerScroll
+            id="list-berita"
+            className={`mt-10 p-5 ${className}`}
+        >
+            <h2 className="font-bold text-3xl pb-4">{title}</h2>
+            <div className="flex flex-wrap gap-7 justify-center">
+                {users.map((user, index) => (
+                    <DosenAndStafCard key={index} staf={user} />
+                ))}
+            </div>
+        </SectionTrigerScroll>
+    )
+}
 
 const DosenAndStaf: React.FC<EmployePageProps> = ({
     koordinator,
-    employee
+    employee,
+    staff
 }) => {
-    const DataKoordianator: DosenCardType = {
-        name: 'Dr. Ir. M. Syahril, M.T.',
-        position: 'Koordinator Program Studi Pwk Itera',
-        image: TestImage,
-        id: 1
-    }
+    const pengurus =
+        employee?.filter(
+            item => item.position && item.position.toLowerCase() !== 'staf'
+        ) || []
 
-    const dataDosen: Array<DosenCardType> = [
-        {
-            name: 'Dr. Ir. M. Syahril, M.T.',
-            position: 'sekertaris program studi pwk itera',
-            image: TestImage,
-            id: 1
-        },
-        {
-            name: 'Dr. Ir. M. Syahril, M.T.',
-            position: 'Bendahara Program Studi Pwk Itera',
-            image: TestImage,
-            id: 2
-        },
-        {
-            name: 'Dr. Ir. M. Syahril, M.T.',
-            position: 'Koordinator Kurikulum Program Studi Pwk Itera',
-            image: TestImage,
-            id: 3
-        },
-        {
-            name: 'Dr. Ir. M. Syahril, M.T.',
-            position: 'Koordinator Laboratorium Program Studi Pwk Itera',
-            image: TestImage,
-            id: 4
-        },
-        {
-            name: 'Dr. Ir. M. Syahril, M.T.',
-            position: 'Koordinator Humas Program Studi Pwk Itera',
-            image: TestImage,
-            id: 4
-        },
-        {
-            name: 'Dr. Ir. M. Syahril, M.T.',
-            position: 'Koordinator Kemahasiswaan Program Studi Pwk Itera',
-            image: TestImage,
-            id: 4
-        },
-        {
-            name: 'Dr. Ir. M. Syahril, M.T.',
-            // position
-            image: TestImage,
-            id: 4
-        },
-        {
-            name: 'Dr. Ir. M. Syahril, M.T.',
-            // position
-            image: TestImage,
-            id: 4
-        },
-        {
-            name: 'Dr. Ir. M. Syahril, M.T.',
-            // position
-            image: TestImage,
-            id: 4
-        },
-        {
-            name: 'Dr. Ir. M. Syahril, M.T.',
-            // position
-            image: TestImage,
-            id: 4
-        },
-        {
-            name: 'Dr. Ir. M. Syahril, M.T.',
-            // position
-            image: TestImage,
-            id: 4
-        },
-        {
-            name: 'Dr. Ir. M. Syahril, M.T.',
-            // position
-            image: TestImage,
-            id: 4
-        },
-        {
-            name: 'Dr. Ir. M. Syahril, M.T.',
-            position: 'staf',
-            image: TestImage,
-            id: 4
-        }
-    ]
+    const dosen = employee?.filter(item => !item.position) || []
 
     return (
-        <AppLayout title="Dosent & Staf">
+        <AppLayout title="Dosen & Staf">
             <div className="container mx-auto px-4 py-3 relative">
-                <SectionTrigerScroll id="list-berita" className="mt-10 p-5 ">
-                    <h2 className="font-bold text-3xl pb-4">
-                        Koordinator Program Studi PWK ITERA
-                    </h2>
+                {koordinator && (
+                    <Section
+                        title="Koordinator Program Studi PWK ITERA"
+                        users={[koordinator]}
+                        className="flex justify-center"
+                    />
+                )}
 
-                    <div className="flex justify-center">
-                        <DosenAndStafCard staf={DataKoordianator} />
-                    </div>
-                </SectionTrigerScroll>
-                <SectionTrigerScroll id="list-berita" className="mt-10 p-5 ">
-                    <h2 className="font-bold text-3xl pb-4">
-                        Pengurus Program Studi PWK ITERA
-                    </h2>
+                <Section
+                    title="Pengurus Program Studi PWK ITERA"
+                    users={pengurus}
+                />
 
-                    <div className="flex flex-wrap gap-7 justify-center">
-                        {dataDosen
-                            .filter(
-                                item =>
-                                    item.position &&
-                                    item.position?.toLowerCase() !== 'staf'
-                            )
-                            .map((item, index) => (
-                                <DosenAndStafCard key={index} staf={item} />
-                            ))}
-                    </div>
-                </SectionTrigerScroll>
-                <SectionTrigerScroll id="list-berita" className="mt-10 p-5 ">
-                    <h2 className="font-bold text-3xl pb-4">
-                        Dosen Program Studi PWK ITERA
-                    </h2>
+                <Section title="Dosen Program Studi PWK ITERA" users={dosen} />
 
-                    <div className="flex flex-wrap gap-7 justify-center">
-                        {dataDosen
-                            .filter(item => !item.position)
-                            .map((item, index) => (
-                                <DosenAndStafCard key={index} staf={item} />
-                            ))}
-                    </div>
-                </SectionTrigerScroll>
-                <SectionTrigerScroll id="list-berita" className="mt-10 p-5 ">
-                    <h2 className="font-bold text-3xl pb-4">Tendik Dan Staf</h2>
-
-                    <div className="flex flex-wrap gap-7 justify-center">
-                        {dataDosen
-                            .filter(
-                                item =>
-                                    item.position &&
-                                    item.position?.toLowerCase() === 'staf'
-                            )
-                            .map((item, index) => (
-                                <DosenAndStafCard key={index} staf={item} />
-                            ))}
-                    </div>
-                </SectionTrigerScroll>
-                {/* <SectionTrigerScroll
-                    id={'visi'}
-                    macControlCenter
-                    className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
-                >
-                    <h2 className="font-bold text-3xl pb-4 border-b mb-3">
-                        Kalender Akademik ITERA 2024-2025
-                    </h2>
-                    <div className="">
-                        <Link href="#">
-                            <Button className="bg-main-green font-semibold text-white inline-block">
-                                Download
-                            </Button>
-                        </Link>
-                    </div>
-                </SectionTrigerScroll> */}
+                <Section title="Tendik Dan Staf" users={staff || []} />
             </div>
         </AppLayout>
     )

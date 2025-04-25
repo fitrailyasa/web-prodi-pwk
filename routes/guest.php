@@ -9,6 +9,7 @@ use App\Http\Controllers\guest\KurikulumController;
 use App\Http\Controllers\guest\MbkmController;
 use App\Http\Controllers\guest\KelompokKeahlianController;
 use App\Http\Controllers\guest\SejarahController;
+use App\Http\Controllers\guest\VisiMisiController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -34,22 +35,12 @@ Route::group(['prefix' => 'akademik', 'as' => 'akademik.'], function () {
 
 // Profile routes
 Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
-    Route::get('/dosen-and-staf', function () {
-        return Inertia::render('Profile/DosenAndStaf/DosenAndStaft', [
-            'name' => 'test'
-        ]);
-    })->name('dosen-and-staf');
-    Route::get('/dosen-and-staf/{id}', function () {
-        return Inertia::render('Profile/DosenAndStaf/DosenAndStafDetail', [
-            'name' => 'test'
-        ]);
-    })->name('dosen-and-staf.detail');
+    Route::get('/dosen-and-staf', [DosenController::class, 'index'])->name('dosen-and-staf');
+    Route::get('/dosen-and-staf/{id}', [DosenController::class, 'show'])->name('dosen-and-staf.detail');
     Route::get('/trace-study', [AlumniController::class, 'index'])->name('alumni');
 
     // New profile pages
-    Route::get('/visi-misi', function () {
-        return Inertia::render('Profile/VisiMisi');
-    })->name('visi-misi');
+    Route::get('/visi-misi', [VisiMisiController::class, 'index'])->name('visi-misi');
 
     Route::get('/sejarah', [SejarahController::class, 'index'])->name('sejarah');
 
