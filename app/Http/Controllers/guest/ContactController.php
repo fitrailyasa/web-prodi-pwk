@@ -14,7 +14,7 @@ class ContactController extends Controller
         $tentang = \App\Models\Tentang::first();
 
         return Inertia::render('Contact', [
-            'title' => 'Kontak',
+            'title' => __('Kontak'),
             'tentang' => $tentang
         ]);
     }

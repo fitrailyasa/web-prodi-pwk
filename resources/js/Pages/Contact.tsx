@@ -13,6 +13,7 @@ import { router } from '@inertiajs/react'
 import { Button, Link } from '@heroui/react'
 import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
 import BouncingAnimation from '@/Animation/BouncingAnimation'
+import { useTranslation } from '@/Hooks/useTranslation'
 
 interface ContactProps {
     title: string
@@ -39,6 +40,7 @@ interface FormData {
 }
 
 export default function Contact({ title, tentang }: ContactProps) {
+    const translate = useTranslation
     const [formData, setFormData] = useState<FormData>({
         name: '',
         email: '',
@@ -50,16 +52,17 @@ export default function Contact({ title, tentang }: ContactProps) {
     if (!tentang) {
         return (
             <AppLayout title={title}>
-                <Head title="Kontak" />
+                <Head title={translate('Kontak')} />
                 <div className="min-h-screen bg-gray-100 py-12">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center">
                             <h1 className="text-3xl font-bold text-gray-900">
-                                Contact Us
+                                {translate('Contact Us')}
                             </h1>
                             <p className="mt-4 text-lg text-gray-600">
-                                Data sedang tidak tersedia. Silakan coba lagi
-                                nanti.
+                                {translate(
+                                    'Data sedang tidak tersedia. Silakan coba lagi nanti.'
+                                )}
                             </p>
                         </div>
                     </div>
@@ -101,13 +104,13 @@ Pesan: ${formData.message}
 
     return (
         <AppLayout title={title} tentang={tentang}>
-            <Head title="Kontak" />
+            <Head title={translate('Kontak')} />
 
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-[74vh] max-w-7xl relative">
                 {/* Title Section */}
                 <div className="text-center mb-12">
                     <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
-                        Hubungi Kami
+                        {translate('Hubungi Kami')}
                     </h1>
                 </div>
 
@@ -117,7 +120,7 @@ Pesan: ${formData.message}
                         <div className="flex items-center gap-3 mb-4">
                             <FaMapMarkerAlt className="text-main-green text-2xl" />
                             <h3 className="text-xl font-bold text-main-blue-light">
-                                Alamat
+                                {translate('Alamat')}
                             </h3>
                         </div>
                         <p className="text-main-blue/70">{tentang.address}</p>
@@ -126,7 +129,7 @@ Pesan: ${formData.message}
                         <div className="flex items-center gap-3 mb-4">
                             <FaPhone className="text-main-green text-2xl" />
                             <h3 className="text-xl font-bold text-main-blue-light">
-                                Telepon
+                                {translate('Telepon')}
                             </h3>
                         </div>
                         <p className="text-main-blue/70">{tentang.phone}</p>
@@ -138,12 +141,12 @@ Pesan: ${formData.message}
                         <div className="flex items-center gap-3 mb-4">
                             <FaEnvelope className="text-main-green text-2xl" />
                             <h3 className="text-xl font-bold text-main-blue-light">
-                                Email
+                                {translate('Email')}
                             </h3>
                         </div>
                         <p className="text-main-blue/70">{tentang.email}</p>
                         <p className="text-sm text-main-green mt-2">
-                            Klik untuk mengirim email langsung
+                            {translate('Klik untuk mengirim email langsung')}
                         </p>
                     </div>
                 </div>
@@ -152,7 +155,7 @@ Pesan: ${formData.message}
                 <div className="mb-12">
                     <div className="bg-white p-6 rounded-3xl shadow-xl">
                         <h2 className="text-xl font-bold text-main-blue-light mb-6">
-                            Lokasi Kami
+                            {translate('Lokasi Kami')}
                         </h2>
                         <div className="w-full h-[400px] rounded-xl overflow-hidden">
                             <iframe
@@ -172,7 +175,7 @@ Pesan: ${formData.message}
                 <div className="mt-12">
                     <div className="bg-white p-6 rounded-3xl shadow-xl">
                         <h2 className="text-xl font-bold text-main-blue-light mb-6">
-                            Kirim Pesan
+                            {translate('Kirim Pesan')}
                         </h2>
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -182,7 +185,7 @@ Pesan: ${formData.message}
                                     value={formData.name}
                                     onChange={handleChange}
                                     className="w-full px-4 py-2 rounded-xl border border-main-blue/20 focus:outline-none focus:ring-2 focus:ring-main-blue focus:border-transparent text-main-blue-light placeholder-main-blue/50"
-                                    placeholder="Nama"
+                                    placeholder={translate('Nama')}
                                     required
                                 />
                                 <input
@@ -191,7 +194,7 @@ Pesan: ${formData.message}
                                     value={formData.email}
                                     onChange={handleChange}
                                     className="w-full px-4 py-2 rounded-xl border border-main-blue/20 focus:outline-none focus:ring-2 focus:ring-main-blue focus:border-transparent text-main-blue-light placeholder-main-blue/50"
-                                    placeholder="Email"
+                                    placeholder={translate('Email')}
                                     required
                                 />
                             </div>
@@ -201,7 +204,7 @@ Pesan: ${formData.message}
                                 value={formData.subject}
                                 onChange={handleChange}
                                 className="w-full px-4 py-2 rounded-xl border border-main-blue/20 focus:outline-none focus:ring-2 focus:ring-main-blue focus:border-transparent text-main-blue-light placeholder-main-blue/50"
-                                placeholder="Subjek"
+                                placeholder={translate('Subjek')}
                                 required
                             />
                             <textarea
@@ -210,14 +213,14 @@ Pesan: ${formData.message}
                                 onChange={handleChange}
                                 className="w-full px-4 py-2 rounded-xl border border-main-blue/20 focus:outline-none focus:ring-2 focus:ring-main-blue focus:border-transparent text-main-blue-light placeholder-main-blue/50"
                                 rows={4}
-                                placeholder="Pesan"
+                                placeholder={translate('Pesan')}
                                 required
                             />
                             <Button
                                 type="submit"
                                 className="w-full bg-main-green text-white font-semibold py-2 rounded-xl hover:bg-opacity-90 transition-all"
                             >
-                                Kirim Pesan
+                                {translate('Kirim Pesan')}
                             </Button>
                         </form>
                     </div>
