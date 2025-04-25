@@ -1,18 +1,13 @@
 import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
-import ControlCenterMac from '@/Components/ControlCenterMac'
-import ChatIcon from '@/Components/Icon/ChatInco'
 import EmailIcon from '@/Components/Icon/EmialInco'
-import EyeIcon from '@/Components/Icon/EyeInco'
 import LinkedInIcon from '@/Components/Icon/LinkedInInco'
-import LoveIcon from '@/Components/Icon/LoveInco'
-import WhatAppIcon from '@/Components/Icon/WhatAppInco'
 import TabCourse from '@/Components/Profile/DetailTabs/TabCourse'
 import TabOther from '@/Components/Profile/DetailTabs/TabOther'
 import TabPublication from '@/Components/Profile/DetailTabs/TabPuBlication'
 import TabResume from '@/Components/Profile/DetailTabs/TabResume'
 import BgImageComponent from '@/Components/Utils/BgImage'
 import AppLayout from '@/Layouts/AppLayout'
-import { Card, CardBody, Image, Tab, Tabs } from '@heroui/react'
+import { Tab, Tabs } from '@heroui/react'
 import React from 'react'
 
 const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
@@ -54,10 +49,10 @@ const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
                         </div>
                         <div className="flex flex-1 flex-col justify-center pl-5">
                             <div className="">
-                                <h2 className="font-bold text-wrap text-xl md:text-3xl pb-4">
+                                <h2 className="font-bold text-wrap text-xl md:text-3xl pb-4 text-main-blue">
                                     {dosen.name}
                                 </h2>
-                                <p className="text-gray-500 text-md  text-wrap md:text-lg">
+                                <p className="text-main-blue text-md text-wrap md:text-lg">
                                     {dosen.position}
                                 </p>
                             </div>
@@ -67,7 +62,7 @@ const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
                                         size={2}
                                         className="text-main-green text-xs"
                                     />
-                                    <span className="font-semibold">
+                                    <span className="font-semibold text-main-blue">
                                         {dosen.email}
                                     </span>
                                 </div>
@@ -76,7 +71,7 @@ const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
                                         size={2}
                                         className="text-main-green text-xs"
                                     />
-                                    <span className="font-semibold">
+                                    <span className="font-semibold text-main-blue">
                                         {dosen.linkedin}
                                     </span>
                                 </div>
@@ -95,7 +90,7 @@ const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
                             cursor: 'w-full bg-main-green',
                             tab: 'max-w-fit px-2 md:px-10 h-12',
                             tabContent:
-                                'group-data-[selected=true]:text-black group-data-[selected=false]:text-gray-500 text-md md:text-lg font-semibold '
+                                'group-data-[selected=true]:text-main-blue group-data-[selected=false]:text-main-blue/50 text-md md:text-lg font-semibold '
                         }}
                     >
                         {TabsDetailDosenAndStaf.map((tab, index) => (

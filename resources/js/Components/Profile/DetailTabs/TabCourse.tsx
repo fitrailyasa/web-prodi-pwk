@@ -21,7 +21,7 @@ const TabCourse: React.FC<TabCourseProps> = ({ data }) => {
             id="tab_course"
             className="bg-white p-5 rounded-3xl shadow-xl border-2"
         >
-            <h2 className="font-bold text-3xl pb-4 border-b mb-3">
+            <h2 className="font-bold text-3xl pb-4 border-b mb-3 text-main-blue">
                 Mata Kuliah yang Diajar
             </h2>
 
@@ -31,10 +31,10 @@ const TabCourse: React.FC<TabCourseProps> = ({ data }) => {
                         <div key={index} className="border-b pb-4">
                             <div className="flex justify-between items-start">
                                 <div>
-                                    <h3 className="font-semibold text-xl mb-1">
+                                    <h3 className="font-semibold text-xl mb-1 text-main-blue">
                                         {course.name}
                                     </h3>
-                                    <div className="text-gray-600 text-sm mb-2">
+                                    <div className="text-main-blue text-sm mb-2">
                                         <span className="font-medium">
                                             Kode:
                                         </span>{' '}
@@ -50,18 +50,20 @@ const TabCourse: React.FC<TabCourseProps> = ({ data }) => {
                                         </span>{' '}
                                         {course.semester}
                                     </div>
+                                    {course.description && (
+                                        <p className="text-main-blue mt-2">
+                                            {course.description}
+                                        </p>
+                                    )}
                                 </div>
                             </div>
-                            {course.description && (
-                                <p className="text-gray-700">
-                                    {course.description}
-                                </p>
-                            )}
                         </div>
                     ))}
                 </div>
             ) : (
-                <p>Belum ada mata kuliah yang tersedia</p>
+                <p className="text-main-blue">
+                    Belum ada data mata kuliah yang tersedia
+                </p>
             )}
         </SectionTrigerScroll>
     )

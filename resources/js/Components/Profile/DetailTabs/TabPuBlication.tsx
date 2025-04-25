@@ -22,16 +22,16 @@ const TabPublication: React.FC<TabPublicationProps> = ({ data }) => {
             id="tab_publication"
             className="bg-white p-5 rounded-3xl shadow-xl border-2"
         >
-            <h2 className="font-bold text-3xl pb-4 border-b mb-3">Publikasi</h2>
+            <h2 className="font-bold text-3xl pb-4 border-b mb-3 text-main-blue">Publikasi</h2>
 
             {data.publications && data.publications.length > 0 ? (
                 <div className="space-y-6">
                     {data.publications.map((pub, index) => (
                         <div key={index} className="border-b pb-4">
-                            <h3 className="font-semibold text-xl mb-2">
+                            <h3 className="font-semibold text-xl mb-2 text-main-blue">
                                 {pub.title}
                             </h3>
-                            <div className="text-gray-600 text-sm mb-2">
+                            <div className="text-main-blue text-sm mb-2">
                                 <span className="font-medium">Tipe:</span>{' '}
                                 {pub.type}
                                 {pub.publisher && (
@@ -48,7 +48,7 @@ const TabPublication: React.FC<TabPublicationProps> = ({ data }) => {
                                 {pub.year}
                             </div>
                             {pub.description && (
-                                <p className="text-gray-700 mb-2">
+                                <p className="text-main-blue mt-2">
                                     {pub.description}
                                 </p>
                             )}

@@ -2,9 +2,8 @@ import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
 import ControlCenterMac from '@/Components/ControlCenterMac'
 import AlumniItem from '@/Components/Profile/Alumni/AlumniItem'
 import PaginationComponent from '@/Components/Utils/Pagination'
-import { TestImage } from '@/Constants'
 import AppLayout from '@/Layouts/AppLayout'
-import { AlumniItemTypes, AlumniPageProps } from '@/types'
+import { AlumniPageProps } from '@/types'
 import {
     Button,
     Input,
@@ -44,7 +43,7 @@ const Alumni: React.FC<AlumniPageProps> = ({ alumni }) => {
         <AppLayout title="Kalender Akademik">
             <div className="container mx-auto px-4 py-3 min-h-[74vh]">
                 <SectionTrigerScroll id={'alummi-header'}>
-                    <h1 className="font-bold text-3xl pb-4 border-b mb-3">
+                    <h1 className="font-bold text-3xl text-main-blue pb-4 border-b mb-3">
                         Alumni PWK ITERA
                     </h1>
                 </SectionTrigerScroll>

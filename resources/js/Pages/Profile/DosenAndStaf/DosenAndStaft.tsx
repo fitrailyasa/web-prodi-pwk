@@ -22,7 +22,7 @@ const Section: React.FC<SectionProps> = ({
     return (
         <SectionTrigerScroll id="list-berita" className={`mt-10 ${className}`}>
             <h2
-                className={`font-bold text-center ${isCoordinator ? 'text-4xl mb-8' : 'text-3xl'} pb-4`}
+                className={`font-bold text-center text-main-blue text-4xl mb-4 pb-4`}
             >
                 {title}
             </h2>
@@ -55,12 +55,12 @@ const DosenAndStaf: React.FC<EmployePageProps> = ({
 
     return (
         <AppLayout title="Dosen & Staf">
-            <div className="container mx-auto px-4 py-3 relative">
+            <div className="container mx-auto px-4 relative">
                 {koordinator && (
                     <Section
                         title="Koordinator Program Studi PWK ITERA"
                         users={[koordinator]}
-                        className="flex flex-col items-center max-w-4xl mx-auto"
+                        className="flex flex-col items-center max-w-4xl mx-auto mb-12"
                         isCoordinator={true}
                     />
                 )}
@@ -68,11 +68,20 @@ const DosenAndStaf: React.FC<EmployePageProps> = ({
                 <Section
                     title="Pengurus Program Studi PWK ITERA"
                     users={pengurus}
+                    className="mb-12"
                 />
 
-                <Section title="Dosen Program Studi PWK ITERA" users={dosen} />
+                <Section
+                    title="Dosen Program Studi PWK ITERA"
+                    users={dosen}
+                    className="mb-12"
+                />
 
-                <Section title="Tendik Dan Staf" users={staff || []} />
+                <Section
+                    title="Tendik Dan Staf"
+                    users={staff || []}
+                    className="mb-12"
+                />
             </div>
         </AppLayout>
     )

@@ -36,11 +36,13 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                         className="rounded-3xl aspect-square w-[200px] min-w-[200px] max-w-[100px]"
                     />
                     <div className=" flex flex-col">
-                        <h3 className="font-bold text-3xl">{data.name}</h3>
-                        <p className="pt-1">
+                        <h3 className="font-bold text-3xl text-main-blue">
+                            {data.name}
+                        </h3>
+                        <p className="pt-1 text-main-blue">
                             {data.tahun_masuk} - {data.tahun_lulus}
                         </p>
-                        <p className="uppercase font-semibold pt-3">
+                        <p className="uppercase font-semibold pt-3 text-main-blue">
                             {data.posisi_pekerjaan}
                         </p>
                     </div>

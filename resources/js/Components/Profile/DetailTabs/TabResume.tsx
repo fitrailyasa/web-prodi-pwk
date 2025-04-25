@@ -28,35 +28,47 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                 id="tab_resume"
                 className="bg-white p-5 rounded-3xl shadow-xl border-2"
             >
-                <h2 className="font-bold text-3xl pb-4 border-b mb-3">
+                <h2 className="font-bold text-3xl pb-4 border-b mb-3 text-main-blue">
                     Profile
                 </h2>
-                <p className="">
+                <p className="text-main-blue">
                     {data.bio || 'Belum ada biografi yang tersedia'}
                 </p>
-                <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10">
+                <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10 text-main-blue">
                     Biodata
                 </h2>
                 <div className="gap-10 justify-between">
                     <div className="">
                         <tr>
-                            <td className="font-bold pe-10">Nama</td>
-                            <td>:</td>
-                            <td>{data.name}</td>
+                            <td className="font-bold pe-10 text-main-blue">
+                                Nama
+                            </td>
+                            <td className="text-main-blue">:</td>
+                            <td className="text-main-blue">{data.name}</td>
                         </tr>
                         <tr>
-                            <td className="font-bold pe-10">NIP</td>
-                            <td>:</td>
-                            <td>{data.dosenProfile?.nip || '-'}</td>
+                            <td className="font-bold pe-10 text-main-blue">
+                                NIP
+                            </td>
+                            <td className="text-main-blue">:</td>
+                            <td className="text-main-blue">
+                                {data.dosenProfile?.nip || '-'}
+                            </td>
                         </tr>
                         <tr>
-                            <td className="font-bold pe-10">NIDN</td>
-                            <td>:</td>
-                            <td>{data.dosenProfile?.nidn || '-'}</td>
+                            <td className="font-bold pe-10 text-main-blue">
+                                NIDN
+                            </td>
+                            <td className="text-main-blue">:</td>
+                            <td className="text-main-blue">
+                                {data.dosenProfile?.nidn || '-'}
+                            </td>
                         </tr>
                         <tr>
-                            <td className="font-bold pe-10">Google Scholar</td>
-                            <td>:</td>
+                            <td className="font-bold pe-10 text-main-blue">
+                                Google Scholar
+                            </td>
+                            <td className="text-main-blue">:</td>
                             <td>
                                 {data.dosenProfile?.google_scholar ? (
                                     <a
@@ -73,14 +85,22 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                             </td>
                         </tr>
                         <tr>
-                            <td className="font-bold pe-10">Scopus ID</td>
-                            <td>:</td>
-                            <td>{data.dosenProfile?.scopus_id || '-'}</td>
+                            <td className="font-bold pe-10 text-main-blue">
+                                Scopus ID
+                            </td>
+                            <td className="text-main-blue">:</td>
+                            <td className="text-main-blue">
+                                {data.dosenProfile?.scopus_id || '-'}
+                            </td>
                         </tr>
                         <tr>
-                            <td className="font-bold pe-10">SINTA ID</td>
-                            <td>:</td>
-                            <td>{data.dosenProfile?.sinta_id || '-'}</td>
+                            <td className="font-bold pe-10 text-main-blue">
+                                SINTA ID
+                            </td>
+                            <td className="text-main-blue">:</td>
+                            <td className="text-main-blue">
+                                {data.dosenProfile?.sinta_id || '-'}
+                            </td>
                         </tr>
                     </div>
                 </div>
@@ -90,55 +110,63 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                 id="tab_home"
                 className="mt-10 bg-white p-5 rounded-3xl shadow-xl border-2"
             >
-                <h2 className="font-bold text-3xl pb-4 border-b mb-3">
+                <h2 className="font-bold text-3xl pb-4 border-b mb-3 text-main-blue">
                     Riwayat Pendidikan
                 </h2>
                 <div className="my-5">
                     {data.education ? (
-                        <div className="whitespace-pre-line">
+                        <div className="whitespace-pre-line text-main-blue">
                             {data.education}
                         </div>
                     ) : (
-                        <p>Belum ada data pendidikan yang tersedia</p>
+                        <p className="text-main-blue">
+                            Belum ada data pendidikan yang tersedia
+                        </p>
                     )}
                 </div>
 
-                <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10">
+                <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10 text-main-blue">
                     Bidang Keahlian
                 </h2>
                 <div className="my-5">
                     {data.expertise ? (
-                        <div className="whitespace-pre-line">
+                        <div className="whitespace-pre-line text-main-blue">
                             {data.expertise}
                         </div>
                     ) : (
-                        <p>Belum ada data bidang keahlian yang tersedia</p>
+                        <p className="text-main-blue">
+                            Belum ada data bidang keahlian yang tersedia
+                        </p>
                     )}
                 </div>
 
-                <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10">
+                <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10 text-main-blue">
                     Minat Penelitian
                 </h2>
                 <div className="my-5">
                     {data.dosenProfile?.research_interests ? (
-                        <div className="whitespace-pre-line">
+                        <div className="whitespace-pre-line text-main-blue">
                             {data.dosenProfile.research_interests}
                         </div>
                     ) : (
-                        <p>Belum ada data minat penelitian yang tersedia</p>
+                        <p className="text-main-blue">
+                            Belum ada data minat penelitian yang tersedia
+                        </p>
                     )}
                 </div>
 
-                <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10">
+                <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10 text-main-blue">
                     Prestasi
                 </h2>
                 <div className="my-5">
                     {data.dosenProfile?.achievements ? (
-                        <div className="whitespace-pre-line">
+                        <div className="whitespace-pre-line text-main-blue">
                             {data.dosenProfile.achievements}
                         </div>
                     ) : (
-                        <p>Belum ada data prestasi yang tersedia</p>
+                        <p className="text-main-blue">
+                            Belum ada data prestasi yang tersedia
+                        </p>
                     )}
                 </div>
             </SectionTrigerScroll>
