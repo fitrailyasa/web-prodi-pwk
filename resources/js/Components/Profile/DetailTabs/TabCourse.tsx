@@ -1,5 +1,6 @@
 import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
 import { Button } from '@heroui/react'
+import { useTranslation } from '@/Hooks/useTranslation'
 
 type TabCourseProps = {
     data: {
@@ -15,6 +16,15 @@ type TabCourseProps = {
 }
 
 const TabCourse: React.FC<TabCourseProps> = ({ data }) => {
+    // Translate section titles and labels
+    const coursesTitle = useTranslation('Mata Kuliah yang Diajar')
+    const codeText = useTranslation('Kode')
+    const creditsText = useTranslation('SKS')
+    const semesterText = useTranslation('Semester')
+    const noCoursesText = useTranslation(
+        'Belum ada data mata kuliah yang tersedia'
+    )
+
     return (
         <SectionTrigerScroll
             macControlCenter
@@ -22,7 +32,7 @@ const TabCourse: React.FC<TabCourseProps> = ({ data }) => {
             className="bg-white p-5 rounded-3xl shadow-xl border-2"
         >
             <h2 className="font-bold text-3xl pb-4 border-b mb-3 text-main-blue-light">
-                Mata Kuliah yang Diajar
+                {coursesTitle}
             </h2>
 
             {data.courses && data.courses.length > 0 ? (
@@ -32,27 +42,27 @@ const TabCourse: React.FC<TabCourseProps> = ({ data }) => {
                             <div className="flex justify-between items-start">
                                 <div>
                                     <h3 className="font-semibold text-xl mb-1 text-main-blue-light">
-                                        {course.name}
+                                        {useTranslation(course.name)}
                                     </h3>
                                     <div className="text-main-blue-light text-sm mb-2">
                                         <span className="font-medium">
-                                            Kode:
+                                            {codeText}:
                                         </span>{' '}
                                         {course.code}
                                         <span className="mx-2">|</span>
                                         <span className="font-medium">
-                                            SKS:
+                                            {creditsText}:
                                         </span>{' '}
                                         {course.credits}
                                         <span className="mx-2">|</span>
                                         <span className="font-medium">
-                                            Semester:
+                                            {semesterText}:
                                         </span>{' '}
                                         {course.semester}
                                     </div>
                                     {course.description && (
                                         <p className="text-main-blue-light mt-2">
-                                            {course.description}
+                                            {useTranslation(course.description)}
                                         </p>
                                     )}
                                 </div>
@@ -61,9 +71,7 @@ const TabCourse: React.FC<TabCourseProps> = ({ data }) => {
                     ))}
                 </div>
             ) : (
-                <p className="text-main-blue-light">
-                    Belum ada data mata kuliah yang tersedia
-                </p>
+                <p className="text-main-blue-light">{noCoursesText}</p>
             )}
         </SectionTrigerScroll>
     )

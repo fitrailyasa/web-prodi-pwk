@@ -138,6 +138,6 @@ export type EmployePageProps = {
 }
 
 export type AlumniPageProps = {
-    // alumni: AlumniItemTypes[]
     alumni: DataPagienation<AlumniItemTypes>
+    title?: string
 }

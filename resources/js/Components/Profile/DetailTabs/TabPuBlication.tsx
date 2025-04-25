@@ -1,5 +1,6 @@
 import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
 import { Button } from '@heroui/react'
+import { useTranslation } from '@/Hooks/useTranslation'
 
 type TabPublicationProps = {
     data: {
@@ -16,6 +17,16 @@ type TabPublicationProps = {
 }
 
 const TabPublication: React.FC<TabPublicationProps> = ({ data }) => {
+    // Translate section titles and labels
+    const publicationText = useTranslation('Publikasi')
+    const typeText = useTranslation('Tipe')
+    const publisherText = useTranslation('Penerbit')
+    const yearText = useTranslation('Tahun')
+    const viewPublicationText = useTranslation('Lihat Publikasi')
+    const noPublicationsText = useTranslation(
+        'Belum ada publikasi yang tersedia'
+    )
+
     return (
         <SectionTrigerScroll
             macControlCenter
@@ -23,7 +34,7 @@ const TabPublication: React.FC<TabPublicationProps> = ({ data }) => {
             className="bg-white p-5 rounded-3xl shadow-xl border-2"
         >
             <h2 className="font-bold text-3xl pb-4 border-b mb-3 text-main-blue-light">
-                Publikasi
+                {publicationText}
             </h2>
 
             {data.publications && data.publications.length > 0 ? (
@@ -31,27 +42,29 @@ const TabPublication: React.FC<TabPublicationProps> = ({ data }) => {
                     {data.publications.map((pub, index) => (
                         <div key={index} className="border-b pb-4">
                             <h3 className="font-semibold text-xl mb-2 text-main-blue-light">
-                                {pub.title}
+                                {useTranslation(pub.title)}
                             </h3>
                             <div className="text-main-blue-light text-sm mb-2">
-                                <span className="font-medium">Tipe:</span>{' '}
-                                {pub.type}
+                                <span className="font-medium">{typeText}:</span>{' '}
+                                {useTranslation(pub.type)}
                                 {pub.publisher && (
                                     <>
                                         <span className="mx-2">|</span>
                                         <span className="font-medium">
-                                            Penerbit:
+                                            {publisherText}:
                                         </span>{' '}
-                                        {pub.publisher}
+                                        {useTranslation(pub.publisher)}
                                     </>
                                 )}
                                 <span className="mx-2">|</span>
-                                <span className="font-medium">Tahun:</span>{' '}
+                                <span className="font-medium">
+                                    {yearText}:
+                                </span>{' '}
                                 {pub.year}
                             </div>
                             {pub.description && (
                                 <p className="text-main-blue-light mt-2">
-                                    {pub.description}
+                                    {useTranslation(pub.description)}
                                 </p>
                             )}
                             {pub.link && (
@@ -61,7 +74,7 @@ const TabPublication: React.FC<TabPublicationProps> = ({ data }) => {
                                     rel="noopener noreferrer"
                                     className="text-blue-500 hover:underline inline-flex items-center"
                                 >
-                                    <span>Lihat Publikasi</span>
+                                    <span>{viewPublicationText}</span>
                                     <svg
                                         className="w-4 h-4 ml-1"
                                         fill="none"
@@ -81,7 +94,7 @@ const TabPublication: React.FC<TabPublicationProps> = ({ data }) => {
                     ))}
                 </div>
             ) : (
-                <p>Belum ada publikasi yang tersedia</p>
+                <p className="text-main-blue-light">{noPublicationsText}</p>
             )}
         </SectionTrigerScroll>
     )

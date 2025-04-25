@@ -3,6 +3,7 @@ import DosenAndStafCard from '@/Components/Profile/DosenCard'
 import AppLayout from '@/Layouts/AppLayout'
 import { DosenCardType, EmployePageProps } from '@/types'
 import React from 'react'
+import { useTranslation } from '@/Hooks/useTranslation'
 
 interface SectionProps {
     title: string
@@ -17,15 +18,18 @@ const Section: React.FC<SectionProps> = ({
     className = '',
     isCoordinator = false
 }) => {
+    const translatedTitle = useTranslation(title)
+
     if (!users || users.length === 0) return null
 
     return (
         <SectionTrigerScroll id="list-berita" className={`mt-10 ${className}`}>
-            <h2
-                className={`font-bold text-center text-main-blue-light text-4xl mb-4 pb-4`}
-            >
-                {title}
-            </h2>
+            <div className="text-center mb-8">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
+                    {translatedTitle}
+                </h2>
+                <div className="w-full max-w-[100px] h-1 bg-gradient-to-r from-main-blue to-main-green mx-auto rounded-full"></div>
+            </div>
             <div
                 className={`flex flex-wrap gap-7 ${isCoordinator ? 'justify-center' : 'justify-center'}`}
             >
@@ -46,6 +50,14 @@ const DosenAndStaf: React.FC<EmployePageProps> = ({
     employee,
     staff
 }) => {
+    const pageTitle = useTranslation('Dosen & Staf')
+    const koordinatorTitle = useTranslation(
+        'Koordinator Program Studi PWK ITERA'
+    )
+    const pengurusTitle = useTranslation('Pengurus Program Studi PWK ITERA')
+    const dosenTitle = useTranslation('Dosen Program Studi PWK ITERA')
+    const tendikTitle = useTranslation('Tendik Dan Staf')
+
     const pengurus =
         employee?.filter(
             item => item.position && item.position.toLowerCase() !== 'staf'
@@ -54,11 +66,11 @@ const DosenAndStaf: React.FC<EmployePageProps> = ({
     const dosen = employee?.filter(item => !item.position) || []
 
     return (
-        <AppLayout title="Dosen & Staf">
+        <AppLayout title={pageTitle}>
             <div className="container mx-auto px-4 relative">
                 {koordinator && (
                     <Section
-                        title="Koordinator Program Studi PWK ITERA"
+                        title={koordinatorTitle}
                         users={[koordinator]}
                         className="flex flex-col items-center max-w-4xl mx-auto mb-12"
                         isCoordinator={true}
@@ -66,19 +78,15 @@ const DosenAndStaf: React.FC<EmployePageProps> = ({
                 )}
 
                 <Section
-                    title="Pengurus Program Studi PWK ITERA"
+                    title={pengurusTitle}
                     users={pengurus}
                     className="mb-12"
                 />
 
-                <Section
-                    title="Dosen Program Studi PWK ITERA"
-                    users={dosen}
-                    className="mb-12"
-                />
+                <Section title={dosenTitle} users={dosen} className="mb-12" />
 
                 <Section
-                    title="Tendik Dan Staf"
+                    title={tendikTitle}
                     users={staff || []}
                     className="mb-12"
                 />

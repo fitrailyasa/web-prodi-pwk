@@ -1,5 +1,6 @@
 import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
 import { Button } from '@heroui/react'
+import { useTranslation } from '@/Hooks/useTranslation'
 
 type TabResumeProps = {
     data: {
@@ -21,6 +22,30 @@ type TabResumeProps = {
 }
 
 const TabResume: React.FC<TabResumeProps> = ({ data }) => {
+    // Translate section titles
+    const profileText = useTranslation('Profile')
+    const biodataText = useTranslation('Biodata')
+    const educationText = useTranslation('Riwayat Pendidikan')
+    const expertiseText = useTranslation('Bidang Keahlian')
+    const researchInterestsText = useTranslation('Minat Penelitian')
+    const achievementsText = useTranslation('Prestasi')
+
+    // Translate labels and placeholders
+    const nameText = useTranslation('Nama')
+    const noBioText = useTranslation('Belum ada biografi yang tersedia')
+    const noEducationText = useTranslation(
+        'Belum ada data pendidikan yang tersedia'
+    )
+    const noExpertiseText = useTranslation(
+        'Belum ada data bidang keahlian yang tersedia'
+    )
+    const noResearchText = useTranslation(
+        'Belum ada data minat penelitian yang tersedia'
+    )
+    const noAchievementsText = useTranslation(
+        'Belum ada data prestasi yang tersedia'
+    )
+
     return (
         <>
             <SectionTrigerScroll
@@ -29,19 +54,17 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                 className="bg-white p-5 rounded-3xl shadow-xl border-2"
             >
                 <h2 className="font-bold text-3xl pb-4 border-b mb-3 text-main-blue-light">
-                    Profile
+                    {profileText}
                 </h2>
-                <p className="text-main-blue-light">
-                    {data.bio || 'Belum ada biografi yang tersedia'}
-                </p>
+                <p className="text-main-blue-light">{data.bio || noBioText}</p>
                 <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10 text-main-blue-light">
-                    Biodata
+                    {biodataText}
                 </h2>
                 <div className="gap-10 justify-between">
                     <div className="">
                         <tr>
                             <td className="font-bold pe-10 text-main-blue-light">
-                                Nama
+                                {nameText}
                             </td>
                             <td className="text-main-blue-light">:</td>
                             <td className="text-main-blue-light">
@@ -113,7 +136,7 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                 className="mt-10 bg-white p-5 rounded-3xl shadow-xl border-2"
             >
                 <h2 className="font-bold text-3xl pb-4 border-b mb-3 text-main-blue-light">
-                    Riwayat Pendidikan
+                    {educationText}
                 </h2>
                 <div className="my-5">
                     {data.education ? (
@@ -122,13 +145,13 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                         </div>
                     ) : (
                         <p className="text-main-blue-light">
-                            Belum ada data pendidikan yang tersedia
+                            {noEducationText}
                         </p>
                     )}
                 </div>
 
                 <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10 text-main-blue-light">
-                    Bidang Keahlian
+                    {expertiseText}
                 </h2>
                 <div className="my-5">
                     {data.expertise ? (
@@ -137,13 +160,13 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                         </div>
                     ) : (
                         <p className="text-main-blue-light">
-                            Belum ada data bidang keahlian yang tersedia
+                            {noExpertiseText}
                         </p>
                     )}
                 </div>
 
                 <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10 text-main-blue-light">
-                    Minat Penelitian
+                    {researchInterestsText}
                 </h2>
                 <div className="my-5">
                     {data.dosenProfile?.research_interests ? (
@@ -151,14 +174,12 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                             {data.dosenProfile.research_interests}
                         </div>
                     ) : (
-                        <p className="text-main-blue-light">
-                            Belum ada data minat penelitian yang tersedia
-                        </p>
+                        <p className="text-main-blue-light">{noResearchText}</p>
                     )}
                 </div>
 
                 <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10 text-main-blue-light">
-                    Prestasi
+                    {achievementsText}
                 </h2>
                 <div className="my-5">
                     {data.dosenProfile?.achievements ? (
@@ -167,7 +188,7 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                         </div>
                     ) : (
                         <p className="text-main-blue-light">
-                            Belum ada data prestasi yang tersedia
+                            {noAchievementsText}
                         </p>
                     )}
                 </div>

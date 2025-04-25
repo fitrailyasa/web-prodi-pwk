@@ -1,5 +1,6 @@
 import { DosenCardType } from '@/types'
 import { Button, Card, CardBody, Image, Link } from '@heroui/react'
+import { useTranslation } from '@/Hooks/useTranslation'
 
 interface DosenAndStafCardProps {
     staf: DosenCardType
@@ -10,6 +11,8 @@ const DosenAndStafCard: React.FC<DosenAndStafCardProps> = ({
     staf,
     isCoordinator = false
 }) => {
+    const detailText = useTranslation('Detail')
+
     return (
         <Card
             className={`w-64 hover:translate-x-2 hover:translate-y-2 transform transition-all duration-300 ${isCoordinator ? 'border-2 border-main-green' : ''}`}
@@ -17,7 +20,7 @@ const DosenAndStafCard: React.FC<DosenAndStafCardProps> = ({
             <CardBody>
                 <Image
                     src={staf.image}
-                    alt="foto-dosen-1"
+                    alt={`foto-${staf.name}`}
                     width={'100%'}
                     className="aspect-[4/3] rounded-xl"
                 />
@@ -26,7 +29,7 @@ const DosenAndStafCard: React.FC<DosenAndStafCardProps> = ({
                 </h3>
                 {staf.position && (
                     <p className="text-center text-main-blue-light text-sm">
-                        {staf.position}
+                        {useTranslation(staf.position)}
                     </p>
                 )}
                 <div className="flex justify-end items-center mt-3">
@@ -34,7 +37,7 @@ const DosenAndStafCard: React.FC<DosenAndStafCardProps> = ({
                         href={route('profile.dosen-and-staf.detail', staf.id)}
                     >
                         <Button className="bg-main-green font-semibold text-white inline-block">
-                            Detail
+                            {detailText}
                         </Button>
                     </Link>
                 </div>

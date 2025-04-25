@@ -9,36 +9,43 @@ import BgImageComponent from '@/Components/Utils/BgImage'
 import AppLayout from '@/Layouts/AppLayout'
 import { Tab, Tabs } from '@heroui/react'
 import React from 'react'
+import { useTranslation } from '@/Hooks/useTranslation'
 
 const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
+    const pageTitle = useTranslation('Detail Dosen & Staf')
+    const resumeText = useTranslation('Ringkasan')
+    const publicationText = useTranslation('Penelitian Dan Publikasi')
+    const coursesText = useTranslation('Mata Kuliah')
+    const otherText = useTranslation('Lainnya')
+
     const TabsDetailDosenAndStaf = [
         {
-            title: 'Resume',
+            title: resumeText,
             tabContent: <TabResume data={dosen} />
         },
         {
-            title: 'Penelitian Dan Publikasi',
+            title: publicationText,
             tabContent: <TabPublication data={dosen} />
         },
         {
-            title: 'Courses',
+            title: coursesText,
             tabContent: <TabCourse data={dosen} />
         },
         {
-            title: 'Other',
+            title: otherText,
             tabContent: <TabOther data={dosen} />
         }
     ]
 
     return (
-        <AppLayout title="Dosen Or Staf Detal">
+        <AppLayout title={pageTitle}>
             <div className="container mx-auto px-4 py-3 relative min-h-screen">
                 <SectionTrigerScroll
                     macControlCenter
                     id="card_dosen_and_staf"
-                    className=" bg-white p-5 rounded-3xl shadow-xl border-2"
+                    className="bg-white p-5 rounded-3xl shadow-xl border-2"
                 >
-                    <div className="flex md:flex-nowrap  items-start md:items-end">
+                    <div className="flex md:flex-nowrap items-start md:items-end">
                         <div className="aspect-[3/4] w-52 rounded-xl md:rounded-3xl p-1 border-2 border-main-green">
                             <BgImageComponent
                                 Possition="bg-bottom"
@@ -53,7 +60,7 @@ const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
                                     {dosen.name}
                                 </h2>
                                 <p className="text-main-blue-light text-md text-wrap md:text-lg">
-                                    {dosen.position}
+                                    {useTranslation(dosen.position)}
                                 </p>
                             </div>
                             <div className="flex flex-wrap gap-5 items-center mt-2">
@@ -86,11 +93,11 @@ const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
                         variant="solid"
                         classNames={{
                             tabList:
-                                ' gap-1 md:gap-6 w-full flex-wrap relative rounded-none p-0 border-b border-divider  ',
+                                'gap-1 md:gap-6 w-full flex-wrap relative rounded-none p-0 border-b border-divider',
                             cursor: 'w-full bg-main-green',
                             tab: 'max-w-fit px-2 md:px-10 h-12',
                             tabContent:
-                                'group-data-[selected=true]:text-main-blue-light group-data-[selected=false]:text-main-blue/50 text-md md:text-lg font-semibold '
+                                'group-data-[selected=true]:text-main-blue-light group-data-[selected=false]:text-main-blue/50 text-md md:text-lg font-semibold'
                         }}
                     >
                         {TabsDetailDosenAndStaf.map((tab, index) => (
