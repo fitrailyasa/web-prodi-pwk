@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\AdminKalenderController;
 use App\Http\Controllers\Admin\AdminModulController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminTagController;
+use App\Http\Controllers\Admin\AdminMbkmController;
 use App\Http\Controllers\Auth\ProviderController;
 
 use App\Http\Controllers\NavbarController;
@@ -149,6 +150,14 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/chatbot/{id}/update', [AdminChatbotController::class, 'update'])->name('chatbot.update');
         Route::delete('/chatbot/{id}/destroy', [AdminChatbotController::class, 'destroy'])->name('chatbot.destroy');
         Route::delete('/chatbot/deleteAll', [AdminChatbotController::class, 'destroyAll'])->name('chatbot.destroyAll');
+        
+        // CRUD MBKM
+        Route::get('/mbkm', [AdminMbkmController::class, 'index'])->name('mbkm.index');
+        Route::get('/mbkm/{id}', [AdminMbkmController::class, 'show'])->name('mbkm.show');
+        Route::post('/mbkm', [AdminMbkmController::class, 'store'])->name('mbkm.store');
+        Route::put('/mbkm/{id}/update', [AdminMbkmController::class, 'update'])->name('mbkm.update');
+        Route::delete('/mbkm/{id}/destroy', [AdminMbkmController::class, 'destroy'])->name('mbkm.destroy');
+        Route::delete('/mbkm/deleteAll', [AdminMbkmController::class, 'destroyAll'])->name('mbkm.destroyAll');
     });
 
     // CMS DOSEN

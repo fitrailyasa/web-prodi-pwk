@@ -80,6 +80,13 @@
                                     <p>Kalender Akademik</p>
                                 </a>
                             </li>
+                            <li class="nav-item ms-3">
+                                <a href="{{ route('admin.mbkm.index') }}"
+                                    class="nav-link text-white {{ Request::routeIs('admin.mbkm.index') ? 'aktif' : '' }}">
+                                    <i class="nav-icon fas fa-book-open"></i>
+                                    <p>MBKM</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
 
