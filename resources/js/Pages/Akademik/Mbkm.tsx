@@ -8,7 +8,7 @@ interface MbkmProps {
         id: number
         title: string
         description: string
-        benefits: string
+        benefits: string[] | string
         link: string
     }>
 }
@@ -57,9 +57,8 @@ const Mbkm: React.FC<MbkmProps> = ({ mbkmPrograms }) => {
                                         </h4>
                                         <ul className="space-y-2">
                                             {program.benefits ? (
-                                                program.benefits
-                                                    .split(', ')
-                                                    .map((benefit, idx) => (
+                                                Array.isArray(program.benefits) ? (
+                                                    program.benefits.map((benefit, idx) => (
                                                         <li
                                                             key={idx}
                                                             className="flex items-start"
@@ -73,9 +72,7 @@ const Mbkm: React.FC<MbkmProps> = ({ mbkmPrograms }) => {
                                                                 <path
                                                                     strokeLinecap="round"
                                                                     strokeLinejoin="round"
-                                                                    strokeWidth={
-                                                                        2
-                                                                    }
+                                                                    strokeWidth={2}
                                                                     d="M5 13l4 4L19 7"
                                                                 />
                                                             </svg>
@@ -84,10 +81,34 @@ const Mbkm: React.FC<MbkmProps> = ({ mbkmPrograms }) => {
                                                             </span>
                                                         </li>
                                                     ))
+                                                ) : (
+                                                    program.benefits.split(', ').map((benefit, idx) => (
+                                                        <li
+                                                            key={idx}
+                                                            className="flex items-start"
+                                                        >
+                                                            <svg
+                                                                className="w-5 h-5 text-main-green mt-1 mr-2 flex-shrink-0"
+                                                                fill="none"
+                                                                stroke="currentColor"
+                                                                viewBox="0 0 24 24"
+                                                            >
+                                                                <path
+                                                                    strokeLinecap="round"
+                                                                    strokeLinejoin="round"
+                                                                    strokeWidth={2}
+                                                                    d="M5 13l4 4L19 7"
+                                                                />
+                                                            </svg>
+                                                            <span className="text-gray-600">
+                                                                {benefit}
+                                                            </span>
+                                                        </li>
+                                                    ))
+                                                )
                                             ) : (
                                                 <li className="text-gray-500 italic">
-                                                    Tidak ada manfaat yang
-                                                    tersedia
+                                                    Tidak ada manfaat yang tersedia
                                                 </li>
                                             )}
                                         </ul>
