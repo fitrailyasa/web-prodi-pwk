@@ -56,7 +56,7 @@ export default function PaginationComponent(DataPagination: DataPagienation) {
                     key={key}
                     className={cn(
                         className,
-                        'bg-default-200/50 min-w-8 w-8 h-8'
+                        'bg-main-blue/10 text-main-blue hover:bg-main-blue/20 min-w-8 w-8 h-8'
                     )}
                     onClick={onNext}
                 >
@@ -71,7 +71,7 @@ export default function PaginationComponent(DataPagination: DataPagienation) {
                     key={key}
                     className={cn(
                         className,
-                        'bg-default-200/50 min-w-8 w-8 h-8'
+                        'bg-main-blue/10 text-main-blue hover:bg-main-blue/20 min-w-8 w-8 h-8'
                     )}
                     onClick={onPrevious}
                 >
@@ -82,7 +82,7 @@ export default function PaginationComponent(DataPagination: DataPagienation) {
 
         if (value === PaginationItemType.DOTS) {
             return (
-                <button key={key} className={className}>
+                <button key={key} className={cn(className, 'text-main-blue')}>
                     ...
                 </button>
             )
@@ -94,8 +94,9 @@ export default function PaginationComponent(DataPagination: DataPagienation) {
                 ref={ref}
                 className={cn(
                     className,
-                    isActive &&
-                        'text-white bg-gradient-to-br from-indigo-500 to-pink-500 font-bold'
+                    isActive
+                        ? 'bg-main-blue text-white font-bold'
+                        : 'text-main-blue hover:bg-main-yellow/20'
                 )}
                 onClick={() => setPage(value)}
             >
@@ -110,7 +111,7 @@ export default function PaginationComponent(DataPagination: DataPagienation) {
 
     return (
         <div className="flex flex-col items-center mt-5">
-            <p className="text-center">
+            <p className="text-center text-main-blue">
                 Total Item <span>: {DataPagination.total}</span>
             </p>
             {/* <div className="flex justify-center"> */}

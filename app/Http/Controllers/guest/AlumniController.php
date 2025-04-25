@@ -11,7 +11,7 @@ class AlumniController extends Controller
 {
     public function index(Request $request)
     {
-        $alumniData = Alumni::paginate(2);
+        $alumniData = Alumni::paginate(12);
         $returnAlumniData = $alumniData->map(function ($item) {
             return [
                 'id' => $item->id,

@@ -26,25 +26,29 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
         <>
             <div
                 onClick={onOpen}
-                className="bg-white p-5 rounded-3xl shadow-xl min-w-96"
+                className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer overflow-hidden"
             >
-                <ControlCenterMac />
-                <div className="flex justify-start gap-5 pt-5">
-                    <Image
-                        src={data.image}
-                        alt={data.image}
-                        className="rounded-3xl aspect-square w-[200px] min-w-[200px] max-w-[100px]"
-                    />
-                    <div className=" flex flex-col">
-                        <h3 className="font-bold text-3xl text-main-blue">
-                            {data.name}
-                        </h3>
-                        <p className="pt-1 text-main-blue">
-                            {data.tahun_masuk} - {data.tahun_lulus}
-                        </p>
-                        <p className="uppercase font-semibold pt-3 text-main-blue">
-                            {data.posisi_pekerjaan}
-                        </p>
+                <div className="p-2">
+                    <ControlCenterMac />
+                </div>
+                <div className="p-3">
+                    <div className="flex flex-col items-center">
+                        <Image
+                            src={data.image}
+                            alt={data.name}
+                            className="rounded-xl aspect-square w-full object-cover h-32 md:h-48"
+                        />
+                        <div className="mt-2 md:mt-4 text-center">
+                            <h3 className="font-bold text-base md:text-xl text-main-blue line-clamp-1">
+                                {data.name}
+                            </h3>
+                            <p className="text-xs md:text-sm text-main-blue mt-0.5 md:mt-1">
+                                {data.tahun_masuk} - {data.tahun_lulus}
+                            </p>
+                            <p className="text-main-blue font-medium mt-1 md:mt-2 text-xs md:text-sm line-clamp-2">
+                                {data.posisi_pekerjaan}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -61,93 +65,86 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                             <ModalHeader>
                                 <ControlCenterMac />
                             </ModalHeader>
-                            <ModalBody className="px-10 py-4 overflow-hidden">
-                                <div className="flex gap-10  py-3">
+                            <ModalBody className="px-6 py-4 overflow-hidden">
+                                <div className="flex flex-col md:flex-row gap-6">
                                     <Image
                                         src={data.image}
-                                        alt={data.image}
-                                        className="rounded-3xl aspect-square w-[300px] min-w-[300px] max-w-[100px]"
+                                        alt={data.name}
+                                        className="rounded-xl aspect-square w-full md:w-[300px] object-cover"
                                     />
-                                    <div className="">
-                                        <h1 className="text-2xl font-bold">
+                                    <div className="flex-1">
+                                        <h1 className="text-2xl font-bold text-main-blue">
                                             {data.name}
                                         </h1>
-                                        <p>
+                                        <p className="text-gray-600">
                                             {data.tahun_masuk}
                                             {' - '}
                                             {data.tahun_lulus}
                                         </p>
-                                        <div className="flex flex-wrap gap-3 pt-5">
-                                            <div className="flex items-center gap-1">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+                                            <div className="flex items-center gap-2">
                                                 <EmailIcon
                                                     size={2}
-                                                    className="text-main-green text-xs"
+                                                    className="text-main-green"
                                                 />
-                                                <span className="font-semibold">
+                                                <span className="text-sm">
                                                     {data.email}
                                                 </span>
                                             </div>
-                                            <div className="flex items-center gap-1">
+                                            <div className="flex items-center gap-2">
                                                 <WhatAppIcon
                                                     size={2}
-                                                    className="text-main-green text-xs"
+                                                    className="text-main-green"
                                                 />
-                                                <span className="font-semibold">
+                                                <span className="text-sm">
                                                     {data.nomor_telepon}
                                                 </span>
                                             </div>
-                                            <div className="flex items-center gap-1">
+                                            <div className="flex items-center gap-2">
                                                 <InstagramIcon
                                                     size={2}
-                                                    className="text-main-green text-xs"
+                                                    className="text-main-green"
                                                 />
-                                                <span className="font-semibold">
+                                                <span className="text-sm">
                                                     {data.instagram}
                                                 </span>
                                             </div>
-                                            <div className="flex items-center gap-1">
+                                            <div className="flex items-center gap-2">
                                                 <LinkedInIcon
                                                     size={2}
-                                                    className="text-main-green text-xs"
+                                                    className="text-main-green"
                                                 />
-                                                <span className="font-semibold">
+                                                <span className="text-sm">
                                                     {data.linkedin}
                                                 </span>
                                             </div>
                                         </div>
-                                        {/* // description */}
 
-                                        <div className="pt-10 ">
-                                            <tr>
-                                                <td className="font-bold text-nowrap">
+                                        <div className="mt-6 space-y-3">
+                                            <div className="grid grid-cols-[120px,1fr] gap-2">
+                                                <span className="font-semibold text-main-blue">
                                                     Judul Penelitian
-                                                </td>
-                                                <td>
-                                                    {' '}
-                                                    :{' '}
-                                                    <span className="text-wrap">
-                                                        {data.judul_penelitian}
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td className="font-bold text-nowrap">
+                                                </span>
+                                                <span>
+                                                    : {data.judul_penelitian}
+                                                </span>
+                                            </div>
+                                            <div className="grid grid-cols-[120px,1fr] gap-2">
+                                                <span className="font-semibold text-main-blue">
                                                     Pekerjaan
-                                                </td>
-                                                <td>
-                                                    {' '}
+                                                </span>
+                                                <span>
                                                     : {data.posisi_pekerjaan}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td className="font-bold text-nowrap">
+                                                </span>
+                                            </div>
+                                            <div className="grid grid-cols-[120px,1fr] gap-2">
+                                                <span className="font-semibold text-main-blue">
                                                     Tempat kerja
-                                                </td>
-                                                <td>
-                                                    {' '}
+                                                </span>
+                                                <span>
                                                     : {data.nama_perusahaan}
-                                                </td>
-                                            </tr>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
