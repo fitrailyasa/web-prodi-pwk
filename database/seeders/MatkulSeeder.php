@@ -12,6 +12,6 @@ class MatkulSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Matkul::factory(20)->create();
+        \App\Models\Matkul::factory(40)->create();
     }
 }

@@ -12,6 +12,6 @@ class JadwalSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Jadwal::factory(30)->create();
+        \App\Models\Jadwal::factory(80)->create();
     }
 }

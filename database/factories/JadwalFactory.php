@@ -17,7 +17,7 @@ class JadwalFactory extends Factory
     public function definition(): array
     {
         return [
-            'matkul_id' => fake()->numberBetween(1, 20),
+            'matkul_id' => fake()->numberBetween(1, 40),
             'class' => fake()->randomElement(['R' . fake()->randomElement(['A', 'B', 'C', 'D']), 'R']),
             'room' => fake()->randomElement(['GK1', 'GK12', 'Labtek 1', 'Labtek 2']) . '-' . fake()->numberBetween(111, 444),
             'lecture' => fake()->numberBetween(3, 22),

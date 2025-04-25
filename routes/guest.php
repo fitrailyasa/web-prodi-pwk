@@ -5,6 +5,8 @@ use App\Http\Controllers\guest\BeritaController;
 use App\Http\Controllers\guest\HomeController;
 use App\Http\Controllers\guest\ContactController;
 use App\Http\Controllers\guest\DosenController;
+use App\Http\Controllers\guest\KurikulumController;
+use App\Http\Controllers\guest\MbkmController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -15,12 +17,6 @@ Route::get('/', function () {
 
 // Main pages
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/about', function () {
-    return Inertia::render('About', [
-        'name' => 'test'
-    ]);
-})->name('about');
-
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 // Akademik routes
@@ -30,13 +26,36 @@ Route::group(['prefix' => 'akademik', 'as' => 'akademik.'], function () {
             'name' => 'test'
         ]);
     })->name('kalender-akademik');
+    Route::get('/kurikulum', [KurikulumController::class, 'index'])->name('kurikulum');
+    Route::get('/mbkm', [MbkmController::class, 'index'])->name('mbkm');
 });
 
 // Profile routes
 Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
-    Route::get('/dosen-and-staf', [DosenController::class, 'index'])->name('dosen-and-staf');
-    Route::get('/dosen-and-staf/{id}', [DosenController::class, 'show'])->name('dosen-and-staf.detail');
+    Route::get('/dosen-and-staf', function () {
+        return Inertia::render('Profile/DosenAndStaf/DosenAndStaft', [
+            'name' => 'test'
+        ]);
+    })->name('dosen-and-staf');
+    Route::get('/dosen-and-staf/{id}', function () {
+        return Inertia::render('Profile/DosenAndStaf/DosenAndStafDetail', [
+            'name' => 'test'
+        ]);
+    })->name('dosen-and-staf.detail');
     Route::get('/trace-study', [AlumniController::class, 'index'])->name('alumni');
+
+    // New profile pages
+    Route::get('/visi-misi', function () {
+        return Inertia::render('Profile/VisiMisi');
+    })->name('visi-misi');
+
+    Route::get('/sejarah', function () {
+        return Inertia::render('Profile/Sejarah');
+    })->name('sejarah');
+
+    Route::get('/kelompok-keahlian', function () {
+        return Inertia::render('Profile/KelompokKeahlian');
+    })->name('kelompok-keahlian');
 });
 
 // Berita routes

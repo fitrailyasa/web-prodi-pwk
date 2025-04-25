@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import AnggleDownIcon from './Icon/AnggleDownIcon'
-import { TypingAnimation } from '@/Animation/TypingMotions'
 import LightBulbIcon from './Icon/LightBulbIcon'
 import IDIcon from './Icon/IDInco'
 import ENIcon from './Icon/ENInco'
@@ -43,19 +42,15 @@ function NavDropdown({ title, icon, item }: propsDropdown) {
             <DropdownTrigger>
                 <Button
                     disableRipple
-                    className="p-0 flex gap-1 bg-transparent data-[hover=true]:bg-transparent text-md"
+                    className="p-0 flex gap-1 bg-transparent data-[hover=true]:bg-transparent text-md font-medium hover:text-[#4005e1] transition-colors duration-200"
                     radius="sm"
                     variant="light"
                 >
-                    <TypingAnimation
-                        className="p-0"
-                        text={title}
-                        ishover={true}
-                    />
+                    {title}
                     {icon ?? (
                         <AnggleDownIcon
                             size={12}
-                            className="fill-gray-600 w-fit"
+                            className="fill-gray-600 w-fit group-hover:fill-[#4005e1] transition-colors duration-200"
                         />
                     )}
                 </Button>
@@ -64,8 +59,11 @@ function NavDropdown({ title, icon, item }: propsDropdown) {
             <DropdownMenu
                 aria-label={title}
                 itemClasses={{
-                    base: 'gap-4'
+                    base: 'gap-4 p-2',
+                    title: 'text-sm font-medium',
+                    description: 'text-xs text-gray-500'
                 }}
+                className="min-w-[250px] shadow-lg rounded-lg"
             >
                 {item.map((item, index) => (
                     <DropdownItem
@@ -74,6 +72,7 @@ function NavDropdown({ title, icon, item }: propsDropdown) {
                         key={index}
                         description={item.description ?? null}
                         startContent={item.icon ?? null}
+                        className="hover:bg-[#4005e1]/10 rounded-lg transition-colors duration-200"
                     >
                         {item.title}
                     </DropdownItem>
@@ -86,10 +85,9 @@ function NavDropdown({ title, icon, item }: propsDropdown) {
 function AccordionLink(prop: DropdownMenuItem) {
     return (
         <Link
-            className="w-full block text-md text-black bg-slate-200 hover:bg-slate-400 my-2 py-2 px-3 rounded-lg"
+            className="w-full block text-md text-black hover:bg-[#4005e1]/10 my-2 py-2 px-3 rounded-lg transition-colors duration-200"
             href={prop.href}
             isExternal={prop.newTab ?? false}
-            // sizes="lg"
         >
             {prop.title}
         </Link>
@@ -98,7 +96,7 @@ function AccordionLink(prop: DropdownMenuItem) {
 function MobileLink(prop: DropdownMenuItem) {
     return (
         <Link
-            className="bg-white text-md text-black border hover:bg-gray-100 mt-0 mb-1 mx-2 p-4 rounded-xl"
+            className="bg-white text-md text-black hover:bg-[#4005e1]/10 mt-0 mb-1 mx-2 p-4 rounded-xl transition-colors duration-200"
             href={prop.href}
         >
             {prop.title}
@@ -140,7 +138,7 @@ export default function NavBar() {
     const otherAcademicMenu = [
         {
             title: 'Kurikulum',
-            href: '#',
+            href: route('akademik.kurikulum'),
             description: 'Kuriulum Program Studi Perencanaan Wilayah dan Kota',
             icon: <LightBulbIcon className="fill-[#4005e1]" />
         },
@@ -152,9 +150,9 @@ export default function NavBar() {
         },
         {
             title: 'MBKM',
-            href: '#',
+            href: route('akademik.mbkm'),
             description:
-                'Mata Kuliah Berbasis Kompetensi Institut Teknologi Sumatera',
+                'Merdeka Belajar Kampus Merdeka Program Studi Perencanaan Wilayah dan Kota',
             icon: <LightBulbIcon className="fill-[#4005e1]" />
         }
     ]
@@ -166,14 +164,14 @@ export default function NavBar() {
     const DropdwonProfleMenu: DropdownMenuItem[] = [
         {
             title: 'Visi & Misi',
-            href: '#',
+            href: route('profile.visi-misi'),
             description:
                 'Visi dan Misi Program Studi Perencanaan Wilayah dan Kota',
             icon: <LightBulbIcon className="fill-[#4005e1]" />
         },
         {
             title: 'Sejarah',
-            href: '#',
+            href: route('profile.sejarah'),
             description: 'Sejarah Program Studi Perencanaan Wilayah dan Kota',
             icon: <LightBulbIcon className="fill-[#4005e1]" />
         },
@@ -186,7 +184,7 @@ export default function NavBar() {
         },
         {
             title: 'Kelompok Keahlian',
-            href: '#',
+            href: route('profile.kelompok-keahlian'),
             description:
                 'Kelompok Keahlian Program Studi Perencanaan Wilayah dan Kota',
             icon: <LightBulbIcon className="fill-[#4005e1]" />
@@ -205,11 +203,11 @@ export default function NavBar() {
             maxWidth="2xl"
             position="sticky"
             onMenuOpenChange={setIsMenuOpen}
-            className="flex justify-around top-0 z-50"
+            className="flex justify-around top-0 z-50 bg-white/80 backdrop-blur-sm shadow-sm"
         >
             <Link
                 href={route('home')}
-                className="font-bold text-inherit w-full"
+                className="font-bold text-inherit w-full hover:opacity-80 transition-opacity duration-200"
             >
                 <NavbarBrand>
                     <img
@@ -218,22 +216,18 @@ export default function NavBar() {
                         loading="lazy"
                         className="w-16 h-13"
                     />
-                    <TypingAnimation
-                        className="hidden min-[380px]:block"
-                        text="Perencanaan Wilayah dan Kota"
-                        speed={0.01}
-                    />
+                    <span className="hidden min-[380px]:block text-lg font-semibold pl-4">
+                        Perencanaan Wilayah dan Kota
+                    </span>
                 </NavbarBrand>
             </Link>
-            <NavbarContent className="hidden md:flex" justify="center">
+            <NavbarContent className="hidden md:flex gap-6" justify="center">
                 <NavbarItem>
-                    <Link className="text-black text-md" href={route('home')}>
-                        <TypingAnimation
-                            text="Beranda"
-                            // speed={0.05}
-                            ishover={true}
-                            // isBorderLeft={true}
-                        />
+                    <Link
+                        className="text-black text-md font-medium hover:text-[#4005e1] transition-colors duration-200"
+                        href={route('home')}
+                    >
+                        Beranda
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
@@ -246,29 +240,22 @@ export default function NavBar() {
                     <NavDropdown title="Fasilitas" item={FasilityMenu} />
                 </NavbarItem>
                 <NavbarItem>
-                    <Link className="text-black text-md" href={route('berita')}>
-                        <TypingAnimation
-                            text="Berita dan Informasi"
-                            speed={0.05}
-                            ishover={true}
-                            // isBorderLeft={true}
-                        />
+                    <Link
+                        className="text-black text-md font-medium hover:text-[#4005e1] transition-colors duration-200"
+                        href={route('berita')}
+                    >
+                        Berita dan Informasi
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
                     <Link
-                        className="text-black text-md"
+                        className="text-black text-md font-medium hover:text-[#4005e1] transition-colors duration-200"
                         href={route('contact')}
                     >
-                        <TypingAnimation
-                            text="Kontak"
-                            speed={0.05}
-                            ishover={true}
-                            // isBorderLeft={true}
-                        />
+                        Kontak
                     </Link>
                 </NavbarItem>
-                <div>
+                <div className="ml-4">
                     <Switch
                         defaultSelected
                         color="secondary"
@@ -284,21 +271,20 @@ export default function NavBar() {
                                 />
                             )
                         }
-                    >
-                        {/* Dark mode */}
-                    </Switch>
+                    />
                 </div>
             </NavbarContent>
             <NavbarContent className="md:hidden" justify="end">
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+                    className="text-black hover:text-[#4005e1] transition-colors duration-200"
                 />
             </NavbarContent>
-            <NavbarMenu>
+            <NavbarMenu className="bg-white/95 backdrop-blur-sm">
                 <MobileLink href={route('home')} title={'Beranda'} />
-                <Accordion variant="splitted">
+                <Accordion variant="splitted" className="px-2">
                     <AccordionItem
-                        className="hover:bg-gray-100 text-md"
+                        className="hover:bg-[#4005e1]/10 text-md font-medium rounded-lg transition-colors duration-200"
                         key="1"
                         aria-label="Profile"
                         title="Profile"
@@ -313,7 +299,7 @@ export default function NavBar() {
                         ))}
                     </AccordionItem>
                     <AccordionItem
-                        className="hover:bg-gray-100 text-md"
+                        className="hover:bg-[#4005e1]/10 text-md font-medium rounded-lg transition-colors duration-200"
                         key="2"
                         aria-label="Akademik"
                         title="Akademik"
@@ -328,7 +314,7 @@ export default function NavBar() {
                         ))}
                     </AccordionItem>
                     <AccordionItem
-                        className="hover:bg-gray-100 text-md"
+                        className="hover:bg-[#4005e1]/10 text-md font-medium rounded-lg transition-colors duration-200"
                         key="3"
                         aria-label="Fasilitas"
                         title="Fasilitas"
@@ -347,7 +333,7 @@ export default function NavBar() {
                     href={route('berita')}
                     title={'Berita dan Informasi'}
                 />
-                <MobileLink href={route('contact')} title={'Kontak'} />`
+                <MobileLink href={route('contact')} title={'Kontak'} />
             </NavbarMenu>
         </Navbar>
     )
