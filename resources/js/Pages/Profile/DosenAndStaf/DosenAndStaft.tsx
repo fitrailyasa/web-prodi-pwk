@@ -8,20 +8,33 @@ interface SectionProps {
     title: string
     users: DosenCardType[]
     className?: string
+    isCoordinator?: boolean
 }
 
-const Section: React.FC<SectionProps> = ({ title, users, className = '' }) => {
+const Section: React.FC<SectionProps> = ({
+    title,
+    users,
+    className = '',
+    isCoordinator = false
+}) => {
     if (!users || users.length === 0) return null
 
     return (
-        <SectionTrigerScroll
-            id="list-berita"
-            className={`mt-10 p-5 ${className}`}
-        >
-            <h2 className="font-bold text-3xl pb-4">{title}</h2>
-            <div className="flex flex-wrap gap-7 justify-center">
+        <SectionTrigerScroll id="list-berita" className={`mt-10 ${className}`}>
+            <h2
+                className={`font-bold text-center ${isCoordinator ? 'text-4xl mb-8' : 'text-3xl'} pb-4`}
+            >
+                {title}
+            </h2>
+            <div
+                className={`flex flex-wrap gap-7 ${isCoordinator ? 'justify-center' : 'justify-center'}`}
+            >
                 {users.map((user, index) => (
-                    <DosenAndStafCard key={index} staf={user} />
+                    <DosenAndStafCard
+                        key={index}
+                        staf={user}
+                        isCoordinator={isCoordinator}
+                    />
                 ))}
             </div>
         </SectionTrigerScroll>
@@ -47,7 +60,8 @@ const DosenAndStaf: React.FC<EmployePageProps> = ({
                     <Section
                         title="Koordinator Program Studi PWK ITERA"
                         users={[koordinator]}
-                        className="flex justify-center"
+                        className="flex flex-col items-center max-w-4xl mx-auto"
+                        isCoordinator={true}
                     />
                 )}
 
