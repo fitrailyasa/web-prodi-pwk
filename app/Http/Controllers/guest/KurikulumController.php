@@ -16,7 +16,7 @@ class KurikulumController extends Controller
         $jadwals = Jadwal::all();
 
         return Inertia::render('Akademik/Kurikulum', [
-            'title' => 'Kurikulum Program Studi',
+            'title' => __('Kurikulum Program Studi'),
             'matkuls' => $matkuls,
             'jadwals' => $jadwals
         ]);

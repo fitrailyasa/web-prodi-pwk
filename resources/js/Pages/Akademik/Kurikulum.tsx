@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { usePage } from '@inertiajs/react'
 import AppLayout from '@/Layouts/AppLayout'
 import {
@@ -25,6 +25,8 @@ import {
     Badge
 } from '@heroui/react'
 import { motion } from 'framer-motion'
+import { useTranslation } from '@/Hooks/useTranslation'
+import { useLanguage } from '@/Providers/LanguageProvider'
 
 interface Modul {
     id: number
@@ -60,10 +62,35 @@ interface PageProps {
 
 export default function Kurikulum() {
     const { props } = usePage<{ props: PageProps }>()
-    const matkuls: Matkul[] = Array.isArray(props.matkuls) ? props.matkuls : []
-    const jadwals: Jadwal[] = Array.isArray(props.jadwals) ? props.jadwals : []
+    const { language } = useLanguage()
     const [selectedSemester, setSelectedSemester] = useState<number>(1)
     const [isLoading, setIsLoading] = useState(true)
+
+    // Pre-translate all static text
+    const translations = {
+        title: useTranslation('Kurikulum Program Studi'),
+        description: useTranslation(
+            'Informasi lengkap mengenai mata kuliah, modul pembelajaran, dan jadwal perkuliahan Program Studi Perencanaan Wilayah dan Kota'
+        ),
+        semester: useTranslation('Semester'),
+        mataKuliah: useTranslation('Mata Kuliah'),
+        modulPembelajaran: useTranslation('Modul Pembelajaran'),
+        jadwalPerkuliahan: useTranslation('Jadwal Perkuliahan'),
+        hari: useTranslation('Hari'),
+        kelas: useTranslation('Kelas'),
+        ruang: useTranslation('Ruang'),
+        dosen: useTranslation('Dosen'),
+        waktu: useTranslation('Waktu'),
+        senin: useTranslation('Senin'),
+        selasa: useTranslation('Selasa'),
+        rabu: useTranslation('Rabu'),
+        kamis: useTranslation('Kamis'),
+        jumat: useTranslation('Jumat'),
+        sabtu: useTranslation('Sabtu')
+    }
+
+    const matkuls: Matkul[] = Array.isArray(props.matkuls) ? props.matkuls : []
+    const jadwals: Jadwal[] = Array.isArray(props.jadwals) ? props.jadwals : []
 
     useEffect(() => {
         if (matkuls.length > 0 && jadwals.length > 0) {
@@ -71,31 +98,58 @@ export default function Kurikulum() {
         }
     }, [matkuls, jadwals])
 
-    const filteredMatkuls = matkuls.filter(
-        (matkul: Matkul) => matkul.semester === selectedSemester
+    const filteredMatkuls = useMemo(
+        () =>
+            matkuls.filter(
+                (matkul: Matkul) => matkul.semester === selectedSemester
+            ),
+        [matkuls, selectedSemester]
     )
 
-    const days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']
-    const filteredJadwals = jadwals.filter((jadwal: Jadwal) =>
-        matkuls.some(
-            (matkul: Matkul) =>
-                matkul.id === jadwal.matkul_id &&
-                matkul.semester === selectedSemester
-        )
-    )
-
-    if (isLoading) {
-        return (
-            <div className="flex justify-center items-center min-h-screen">
-                <Spinner size="lg" />
-            </div>
-        )
+    const dayMapping = {
+        Senin: translations.senin,
+        Selasa: translations.selasa,
+        Rabu: translations.rabu,
+        Kamis: translations.kamis,
+        Jumat: translations.jumat,
+        Sabtu: translations.sabtu
     }
 
-    const renderJadwalRows = () => {
-        return days.flatMap(day => {
+    const days = useMemo(
+        () => [
+            translations.senin,
+            translations.selasa,
+            translations.rabu,
+            translations.kamis,
+            translations.jumat,
+            translations.sabtu
+        ],
+        [translations]
+    )
+
+    const filteredJadwals = useMemo(
+        () =>
+            jadwals.filter((jadwal: Jadwal) =>
+                matkuls.some(
+                    (matkul: Matkul) =>
+                        matkul.id === jadwal.matkul_id &&
+                        matkul.semester === selectedSemester
+                )
+            ),
+        [jadwals, matkuls, selectedSemester]
+    )
+
+    const jadwalRows = useMemo(() => {
+        return days.flatMap(translatedDay => {
+            // Find the original day value that matches this translation
+            const originalDay = Object.entries(dayMapping).find(
+                ([_, translated]) => translated === translatedDay
+            )?.[0]
+
+            if (!originalDay) return []
+
             const dayJadwals = filteredJadwals.filter(
-                (jadwal: Jadwal) => jadwal.day === day
+                (jadwal: Jadwal) => jadwal.day === originalDay
             )
             if (dayJadwals.length === 0) return []
 
@@ -114,7 +168,7 @@ export default function Kurikulum() {
                                     variant="flat"
                                     className="bg-[#003366] text-white text-xs sm:text-sm"
                                 >
-                                    {day}
+                                    {translatedDay}
                                 </Badge>
                             </TableCell>
                             <TableCell className="font-medium text-[#003366] line-clamp-1">
@@ -139,10 +193,18 @@ export default function Kurikulum() {
                 })
                 .filter((row): row is JSX.Element => row !== null)
         })
+    }, [days, filteredJadwals, matkuls, dayMapping])
+
+    if (isLoading) {
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <Spinner size="lg" />
+            </div>
+        )
     }
 
     return (
-        <AppLayout title="Kurikulum Program Studi">
+        <AppLayout title={translations.title}>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-[74vh] max-w-7xl">
                 {/* Hero Section */}
                 <motion.div
@@ -152,12 +214,10 @@ export default function Kurikulum() {
                     className="text-center mb-8 sm:mb-12 px-2 sm:px-0"
                 >
                     <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
-                        Kurikulum Program Studi
+                        {translations.title}
                     </h1>
                     <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
-                        Informasi lengkap mengenai mata kuliah, modul
-                        pembelajaran, dan jadwal perkuliahan Program Studi
-                        Perencanaan Wilayah dan Kota
+                        {translations.description}
                     </p>
                 </motion.div>
 
@@ -178,8 +238,8 @@ export default function Kurikulum() {
                                 variant="bordered"
                                 classNames={{
                                     tabList:
-                                        'gap-2 sm:gap-4 md:gap-6 w-full justify-center',
-                                    tab: 'px-3 sm:px-4 md:px-6 py-1 sm:py-2 text-sm sm:text-base md:text-lg font-medium flex-1 max-w-[120px]',
+                                        'gap-1 w-full flex justify-between px-2',
+                                    tab: 'px-2 py-2 text-sm sm:text-base font-medium min-w-[100px]',
                                     cursor: 'bg-[#003366]',
                                     base: 'w-full'
                                 }}
@@ -187,7 +247,7 @@ export default function Kurikulum() {
                                 {[1, 2, 3, 4, 5, 6, 7, 8].map(semester => (
                                     <Tab
                                         key={semester}
-                                        title={`Semester ${semester}`}
+                                        title={`${translations.semester} ${semester}`}
                                     />
                                 ))}
                             </Tabs>
@@ -204,14 +264,14 @@ export default function Kurikulum() {
                 >
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 gap-2 sm:gap-0">
                         <h2 className="text-xl sm:text-2xl font-bold text-[#003366]">
-                            Mata Kuliah Semester {selectedSemester}
+                            {translations.mataKuliah} {selectedSemester}
                         </h2>
                         <Badge
                             color="primary"
                             variant="flat"
                             className="bg-[#003366] text-white text-sm sm:text-base"
                         >
-                            {filteredMatkuls.length} Mata Kuliah
+                            {filteredMatkuls.length} {translations.mataKuliah}
                         </Badge>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -253,7 +313,8 @@ export default function Kurikulum() {
                                                     variant="flat"
                                                     className="bg-[#FFD700] text-[#003366] text-xs sm:text-sm"
                                                 >
-                                                    Semester {matkul.semester}
+                                                    {translations.semester}{' '}
+                                                    {matkul.semester}
                                                 </Badge>
                                             </div>
                                             {matkul.moduls &&
@@ -261,8 +322,12 @@ export default function Kurikulum() {
                                                     <Accordion>
                                                         <AccordionItem
                                                             key="modul"
-                                                            aria-label="Modul Pembelajaran"
-                                                            title="Modul Pembelajaran"
+                                                            aria-label={
+                                                                translations.modulPembelajaran
+                                                            }
+                                                            title={
+                                                                translations.modulPembelajaran
+                                                            }
                                                             classNames={{
                                                                 title: 'text-xs sm:text-sm font-medium text-[#003366]',
                                                                 content:
@@ -312,19 +377,19 @@ export default function Kurikulum() {
                 >
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 gap-2 sm:gap-0">
                         <h2 className="text-xl sm:text-2xl font-bold text-[#003366]">
-                            Jadwal Perkuliahan
+                            {translations.jadwalPerkuliahan}
                         </h2>
                         <Badge
                             color="primary"
                             variant="flat"
                             className="bg-[#003366] text-white text-sm sm:text-base"
                         >
-                            Semester {selectedSemester}
+                            {translations.semester} {selectedSemester}
                         </Badge>
                     </div>
                     <div className="overflow-x-auto rounded-lg shadow-md">
                         <Table
-                            aria-label="Jadwal Perkuliahan"
+                            aria-label={translations.jadwalPerkuliahan}
                             classNames={{
                                 wrapper: 'rounded-lg min-w-[800px]',
                                 th: 'bg-[#003366] text-white text-xs sm:text-sm',
@@ -334,23 +399,25 @@ export default function Kurikulum() {
                         >
                             <TableHeader>
                                 <TableColumn className="w-[100px]">
-                                    Hari
+                                    {translations.hari}
                                 </TableColumn>
-                                <TableColumn>Mata Kuliah</TableColumn>
+                                <TableColumn>
+                                    {translations.mataKuliah}
+                                </TableColumn>
                                 <TableColumn className="w-[80px]">
-                                    Kelas
+                                    {translations.kelas}
                                 </TableColumn>
                                 <TableColumn className="w-[90px]">
-                                    Ruang
+                                    {translations.ruang}
                                 </TableColumn>
                                 <TableColumn className="w-[200px]">
-                                    Dosen
+                                    {translations.dosen}
                                 </TableColumn>
                                 <TableColumn className="w-[120px]">
-                                    Waktu
+                                    {translations.waktu}
                                 </TableColumn>
                             </TableHeader>
-                            <TableBody>{renderJadwalRows()}</TableBody>
+                            <TableBody>{jadwalRows}</TableBody>
                         </Table>
                     </div>
                 </motion.div>
