@@ -13,6 +13,7 @@ class KelompokKeahlianController extends Controller
         $kelompokKeahlian = KelompokKeahlian::all();
 
         return Inertia::render('Profile/KelompokKeahlian', [
+            'title' => __('Kelompok Keahlian'),
             'kelompokKeahlian' => $kelompokKeahlian
         ]);
     }

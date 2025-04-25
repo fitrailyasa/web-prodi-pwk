@@ -2,6 +2,7 @@ import React from 'react'
 import AppLayout from '@/Layouts/AppLayout'
 import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
 import { Card, CardBody, CardHeader } from '@heroui/react'
+import { useTranslation } from '@/Hooks/useTranslation'
 
 interface KelompokKeahlianProps {
     kelompokKeahlian: Array<{
@@ -10,17 +11,29 @@ interface KelompokKeahlianProps {
         description: string
         bidang: string[]
     }>
+    title?: string
 }
 
 const KelompokKeahlian: React.FC<KelompokKeahlianProps> = ({
-    kelompokKeahlian
+    kelompokKeahlian,
+    title
 }) => {
+    // Pre-translate all static text
+    const titleText = useTranslation(title || 'Kelompok Keahlian')
+    const subtitleText = useTranslation(
+        'Kelompok Keahlian Program Studi PWK ITERA'
+    )
+    const bidangKeahlianText = useTranslation('Bidang Keahlian:')
+
     return (
-        <AppLayout title="Kelompok Keahlian">
+        <AppLayout title={titleText}>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-[74vh] max-w-7xl">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
-                    Kelompok Keahlian Program Studi PWK ITERA
-                </h2>
+                <div className="text-center mb-8">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
+                        {subtitleText}
+                    </h2>
+                    <div className="w-full max-w-[100px] h-1 bg-gradient-to-r from-main-blue to-main-green mx-auto rounded-full"></div>
+                </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {kelompokKeahlian.map(kelompok => (
@@ -30,16 +43,16 @@ const KelompokKeahlian: React.FC<KelompokKeahlianProps> = ({
                         >
                             <CardHeader className="border-b border-gray-200 pb-4">
                                 <h3 className="text-xl font-bold text-main-blue-light">
-                                    {kelompok.name}
+                                    {useTranslation(kelompok.name)}
                                 </h3>
                             </CardHeader>
                             <CardBody className="p-6">
                                 <p className="text-gray-600 mb-6 line-clamp-3">
-                                    {kelompok.description}
+                                    {useTranslation(kelompok.description)}
                                 </p>
                                 <div className="space-y-3">
                                     <h4 className="font-semibold text-main-blue-light text-lg">
-                                        Bidang Keahlian:
+                                        {bidangKeahlianText}
                                     </h4>
                                     <ul className="space-y-2">
                                         {kelompok.bidang.map((bidang, idx) => (
@@ -61,7 +74,7 @@ const KelompokKeahlian: React.FC<KelompokKeahlianProps> = ({
                                                     />
                                                 </svg>
                                                 <span className="text-gray-700">
-                                                    {bidang}
+                                                    {useTranslation(bidang)}
                                                 </span>
                                             </li>
                                         ))}
