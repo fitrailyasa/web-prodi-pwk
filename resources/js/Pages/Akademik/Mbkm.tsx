@@ -1,6 +1,5 @@
 import React from 'react'
 import AppLayout from '@/Layouts/AppLayout'
-import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
 import { Card, CardBody, CardHeader, Button, Link } from '@heroui/react'
 
 interface MbkmProps {
@@ -33,7 +32,7 @@ const Mbkm: React.FC<MbkmProps> = ({ mbkmPrograms }) => {
                 </div>
 
                 <div>
-                    <h2 className="text-3xl font-bold text-main-blue-light mb-8">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
                         Program MBKM yang Tersedia
                     </h2>
                     {!mbkmPrograms ? (

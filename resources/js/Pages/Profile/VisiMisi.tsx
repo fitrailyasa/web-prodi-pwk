@@ -37,11 +37,11 @@ const VisiMisi: React.FC<VisiMisiProps> = ({ visi, misi, tujuan, message }) => {
                         <div className="p-3 bg-main-blue/10 rounded-full">
                             <FaEye className="text-2xl text-main-blue-light" />
                         </div>
-                        <h2 className="text-3xl font-bold text-main-blue-light">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
                             Visi
                         </h2>
                     </div>
-                    <p className="text-lg text-gray-700 pl-4 border-l-4 border-main-blue/30">
+                    <p className="text-md sm:text-xl md:text-xl text-gray-700 pl-4 border-l-4 border-main-blue/30 text-justify">
                         {visi}
                     </p>
                 </SectionTrigerScroll>
@@ -54,7 +54,7 @@ const VisiMisi: React.FC<VisiMisiProps> = ({ visi, misi, tujuan, message }) => {
                         <div className="p-3 bg-main-blue/10 rounded-full">
                             <FaListCheck className="text-2xl text-main-blue-light" />
                         </div>
-                        <h2 className="text-3xl font-bold text-main-blue-light">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
                             Misi
                         </h2>
                     </div>
@@ -69,7 +69,7 @@ const VisiMisi: React.FC<VisiMisiProps> = ({ visi, misi, tujuan, message }) => {
                                         {index + 1}
                                     </span>
                                 </div>
-                                <p className="text-lg text-gray-700 group-hover:text-main-blue/80 transition-colors duration-300">
+                                <p className="text-md sm:text-xl md:text-xl text-gray-700 text-justify">
                                     {item}
                                 </p>
                             </div>
@@ -85,7 +85,7 @@ const VisiMisi: React.FC<VisiMisiProps> = ({ visi, misi, tujuan, message }) => {
                         <div className="p-3 bg-main-blue/10 rounded-full">
                             <FaBullseye className="text-2xl text-main-blue-light" />
                         </div>
-                        <h2 className="text-3xl font-bold text-main-blue-light">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
                             Tujuan
                         </h2>
                     </div>
@@ -100,7 +100,7 @@ const VisiMisi: React.FC<VisiMisiProps> = ({ visi, misi, tujuan, message }) => {
                                         {index + 1}
                                     </span>
                                 </div>
-                                <p className="text-lg text-gray-700 group-hover:text-main-blue/80 transition-colors duration-300">
+                                <p className="text-md sm:text-xl md:text-xl text-gray-700 text-justify">
                                     {item}
                                 </p>
                             </div>

@@ -18,7 +18,7 @@ const KelompokKeahlian: React.FC<KelompokKeahlianProps> = ({
     return (
         <AppLayout title="Kelompok Keahlian">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-[74vh] max-w-7xl">
-                <h2 className="text-3xl font-bold text-main-blue-light mb-8">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
                     Kelompok Keahlian Program Studi PWK ITERA
                 </h2>
 
