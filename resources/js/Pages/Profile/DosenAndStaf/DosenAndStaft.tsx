@@ -22,7 +22,7 @@ const Section: React.FC<SectionProps> = ({
     return (
         <SectionTrigerScroll id="list-berita" className={`mt-10 ${className}`}>
             <h2
-                className={`font-bold text-center text-main-blue text-4xl mb-4 pb-4`}
+                className={`font-bold text-center text-main-blue-light text-4xl mb-4 pb-4`}
             >
                 {title}
             </h2>

@@ -49,10 +49,10 @@ const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
                         </div>
                         <div className="flex flex-1 flex-col justify-center pl-5">
                             <div className="">
-                                <h2 className="font-bold text-wrap text-xl md:text-3xl pb-4 text-main-blue">
+                                <h2 className="font-bold text-wrap text-xl md:text-3xl pb-4 text-main-blue-light">
                                     {dosen.name}
                                 </h2>
-                                <p className="text-main-blue text-md text-wrap md:text-lg">
+                                <p className="text-main-blue-light text-md text-wrap md:text-lg">
                                     {dosen.position}
                                 </p>
                             </div>
@@ -62,7 +62,7 @@ const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
                                         size={2}
                                         className="text-main-green text-xs"
                                     />
-                                    <span className="font-semibold text-main-blue">
+                                    <span className="font-semibold text-main-blue-light">
                                         {dosen.email}
                                     </span>
                                 </div>
@@ -71,7 +71,7 @@ const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
                                         size={2}
                                         className="text-main-green text-xs"
                                     />
-                                    <span className="font-semibold text-main-blue">
+                                    <span className="font-semibold text-main-blue-light">
                                         {dosen.linkedin}
                                     </span>
                                 </div>
@@ -90,7 +90,7 @@ const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
                             cursor: 'w-full bg-main-green',
                             tab: 'max-w-fit px-2 md:px-10 h-12',
                             tabContent:
-                                'group-data-[selected=true]:text-main-blue group-data-[selected=false]:text-main-blue/50 text-md md:text-lg font-semibold '
+                                'group-data-[selected=true]:text-main-blue-light group-data-[selected=false]:text-main-blue/50 text-md md:text-lg font-semibold '
                         }}
                     >
                         {TabsDetailDosenAndStaf.map((tab, index) => (

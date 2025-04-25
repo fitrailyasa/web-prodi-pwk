@@ -103,10 +103,10 @@ Pesan: ${formData.message}
         <AppLayout title={title} tentang={tentang}>
             <Head title="Kontak" />
 
-            <div className="container mx-auto px-4 py-8 relative">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-[74vh] max-w-7xl relative">
                 {/* Title Section */}
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl font-bold text-main-blue mb-4">
+                    <h1 className="text-4xl font-bold text-main-blue-light mb-4">
                         Hubungi Kami
                     </h1>
                 </div>
@@ -116,7 +116,7 @@ Pesan: ${formData.message}
                     <div className="bg-white p-6 rounded-3xl shadow-xl">
                         <div className="flex items-center gap-3 mb-4">
                             <FaMapMarkerAlt className="text-main-green text-2xl" />
-                            <h3 className="text-xl font-bold text-main-blue">
+                            <h3 className="text-xl font-bold text-main-blue-light">
                                 Alamat
                             </h3>
                         </div>
@@ -125,7 +125,7 @@ Pesan: ${formData.message}
                     <div className="bg-white p-6 rounded-3xl shadow-xl">
                         <div className="flex items-center gap-3 mb-4">
                             <FaPhone className="text-main-green text-2xl" />
-                            <h3 className="text-xl font-bold text-main-blue">
+                            <h3 className="text-xl font-bold text-main-blue-light">
                                 Telepon
                             </h3>
                         </div>
@@ -137,7 +137,7 @@ Pesan: ${formData.message}
                     >
                         <div className="flex items-center gap-3 mb-4">
                             <FaEnvelope className="text-main-green text-2xl" />
-                            <h3 className="text-xl font-bold text-main-blue">
+                            <h3 className="text-xl font-bold text-main-blue-light">
                                 Email
                             </h3>
                         </div>
@@ -151,7 +151,7 @@ Pesan: ${formData.message}
                 {/* Google Maps Section */}
                 <div className="mb-12">
                     <div className="bg-white p-6 rounded-3xl shadow-xl">
-                        <h2 className="text-xl font-bold text-main-blue mb-6">
+                        <h2 className="text-xl font-bold text-main-blue-light mb-6">
                             Lokasi Kami
                         </h2>
                         <div className="w-full h-[400px] rounded-xl overflow-hidden">
@@ -171,7 +171,7 @@ Pesan: ${formData.message}
                 {/* Contact Form Section */}
                 <div className="mt-12">
                     <div className="bg-white p-6 rounded-3xl shadow-xl">
-                        <h2 className="text-xl font-bold text-main-blue mb-6">
+                        <h2 className="text-xl font-bold text-main-blue-light mb-6">
                             Kirim Pesan
                         </h2>
                         <form onSubmit={handleSubmit} className="space-y-4">
@@ -181,7 +181,7 @@ Pesan: ${formData.message}
                                     name="name"
                                     value={formData.name}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-2 rounded-xl border border-main-blue/20 focus:outline-none focus:ring-2 focus:ring-main-blue focus:border-transparent text-main-blue placeholder-main-blue/50"
+                                    className="w-full px-4 py-2 rounded-xl border border-main-blue/20 focus:outline-none focus:ring-2 focus:ring-main-blue focus:border-transparent text-main-blue-light placeholder-main-blue/50"
                                     placeholder="Nama"
                                     required
                                 />
@@ -190,7 +190,7 @@ Pesan: ${formData.message}
                                     name="email"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-2 rounded-xl border border-main-blue/20 focus:outline-none focus:ring-2 focus:ring-main-blue focus:border-transparent text-main-blue placeholder-main-blue/50"
+                                    className="w-full px-4 py-2 rounded-xl border border-main-blue/20 focus:outline-none focus:ring-2 focus:ring-main-blue focus:border-transparent text-main-blue-light placeholder-main-blue/50"
                                     placeholder="Email"
                                     required
                                 />
@@ -200,7 +200,7 @@ Pesan: ${formData.message}
                                 name="subject"
                                 value={formData.subject}
                                 onChange={handleChange}
-                                className="w-full px-4 py-2 rounded-xl border border-main-blue/20 focus:outline-none focus:ring-2 focus:ring-main-blue focus:border-transparent text-main-blue placeholder-main-blue/50"
+                                className="w-full px-4 py-2 rounded-xl border border-main-blue/20 focus:outline-none focus:ring-2 focus:ring-main-blue focus:border-transparent text-main-blue-light placeholder-main-blue/50"
                                 placeholder="Subjek"
                                 required
                             />
@@ -208,7 +208,7 @@ Pesan: ${formData.message}
                                 name="message"
                                 value={formData.message}
                                 onChange={handleChange}
-                                className="w-full px-4 py-2 rounded-xl border border-main-blue/20 focus:outline-none focus:ring-2 focus:ring-main-blue focus:border-transparent text-main-blue placeholder-main-blue/50"
+                                className="w-full px-4 py-2 rounded-xl border border-main-blue/20 focus:outline-none focus:ring-2 focus:ring-main-blue focus:border-transparent text-main-blue-light placeholder-main-blue/50"
                                 rows={4}
                                 placeholder="Pesan"
                                 required

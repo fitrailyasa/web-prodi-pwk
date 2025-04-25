@@ -16,9 +16,9 @@ interface MbkmProps {
 const Mbkm: React.FC<MbkmProps> = ({ mbkmPrograms }) => {
     return (
         <AppLayout title="MBKM">
-            <div className="container mx-auto px-4 py-8">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-[74vh] max-w-7xl">
                 <div className="mb-8">
-                    <h2 className="text-3xl font-bold text-main-blue mb-6">
+                    <h2 className="text-3xl font-bold text-main-blue-light mb-6">
                         Merdeka Belajar Kampus Merdeka (MBKM)
                     </h2>
                     <p className="text-lg text-gray-700 mb-6">
@@ -33,7 +33,7 @@ const Mbkm: React.FC<MbkmProps> = ({ mbkmPrograms }) => {
                 </div>
 
                 <div>
-                    <h2 className="text-3xl font-bold text-main-blue mb-8">
+                    <h2 className="text-3xl font-bold text-main-blue-light mb-8">
                         Program MBKM yang Tersedia
                     </h2>
                     {!mbkmPrograms ? (
@@ -50,7 +50,7 @@ const Mbkm: React.FC<MbkmProps> = ({ mbkmPrograms }) => {
                                     className="bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                                 >
                                     <CardHeader className="border-b border-gray-200 pb-4">
-                                        <h3 className="text-xl font-bold text-main-blue">
+                                        <h3 className="text-xl font-bold text-main-blue-light">
                                             {program.title}
                                         </h3>
                                     </CardHeader>
@@ -59,7 +59,7 @@ const Mbkm: React.FC<MbkmProps> = ({ mbkmPrograms }) => {
                                             {program.description}
                                         </p>
                                         <div className="space-y-3 mb-6">
-                                            <h4 className="font-semibold text-main-blue text-lg">
+                                            <h4 className="font-semibold text-main-blue-light text-lg">
                                                 Manfaat Program:
                                             </h4>
                                             <ul className="space-y-2">

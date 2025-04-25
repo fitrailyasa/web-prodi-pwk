@@ -39,13 +39,13 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                             className="rounded-xl aspect-square w-full object-cover h-32 md:h-48"
                         />
                         <div className="mt-2 md:mt-4 text-center">
-                            <h3 className="font-bold text-base md:text-xl text-main-blue line-clamp-1">
+                            <h3 className="font-bold text-base md:text-xl text-main-blue-light line-clamp-1">
                                 {data.name}
                             </h3>
-                            <p className="text-xs md:text-sm text-main-blue mt-0.5 md:mt-1">
+                            <p className="text-xs md:text-sm text-main-blue-light mt-0.5 md:mt-1">
                                 {data.tahun_masuk} - {data.tahun_lulus}
                             </p>
-                            <p className="text-main-blue font-medium mt-1 md:mt-2 text-xs md:text-sm line-clamp-2">
+                            <p className="text-main-blue-light font-medium mt-1 md:mt-2 text-xs md:text-sm line-clamp-2">
                                 {data.posisi_pekerjaan}
                             </p>
                         </div>
@@ -73,7 +73,7 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                                         className="rounded-xl aspect-square w-full md:w-[300px] object-cover"
                                     />
                                     <div className="flex-1">
-                                        <h1 className="text-2xl font-bold text-main-blue">
+                                        <h1 className="text-2xl font-bold text-main-blue-light">
                                             {data.name}
                                         </h1>
                                         <p className="text-gray-600">
@@ -122,7 +122,7 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
 
                                         <div className="mt-6 space-y-3">
                                             <div className="grid grid-cols-[120px,1fr] gap-2">
-                                                <span className="font-semibold text-main-blue">
+                                                <span className="font-semibold text-main-blue-light">
                                                     Judul Penelitian
                                                 </span>
                                                 <span>
@@ -130,7 +130,7 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                                                 </span>
                                             </div>
                                             <div className="grid grid-cols-[120px,1fr] gap-2">
-                                                <span className="font-semibold text-main-blue">
+                                                <span className="font-semibold text-main-blue-light">
                                                     Pekerjaan
                                                 </span>
                                                 <span>
@@ -138,7 +138,7 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                                                 </span>
                                             </div>
                                             <div className="grid grid-cols-[120px,1fr] gap-2">
-                                                <span className="font-semibold text-main-blue">
+                                                <span className="font-semibold text-main-blue-light">
                                                     Tempat kerja
                                                 </span>
                                                 <span>

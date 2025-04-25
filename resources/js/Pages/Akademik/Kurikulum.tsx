@@ -143,7 +143,7 @@ export default function Kurikulum() {
 
     return (
         <AppLayout title="Kurikulum Program Studi">
-            <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-[74vh] max-w-7xl">
                 {/* Hero Section */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -151,7 +151,7 @@ export default function Kurikulum() {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-8 sm:mb-12 px-2 sm:px-0"
                 >
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r from-[#003366] to-[#FFD700] bg-clip-text text-transparent">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text text-transparent">
                         Kurikulum Program Studi
                     </h1>
                     <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto">

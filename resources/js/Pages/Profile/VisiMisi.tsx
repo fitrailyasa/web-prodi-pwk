@@ -14,7 +14,7 @@ const VisiMisi: React.FC<VisiMisiProps> = ({ visi, misi, tujuan, message }) => {
     if (!visi || !misi || !tujuan) {
         return (
             <AppLayout title="Visi & Misi">
-                <div className="container mx-auto px-4 py-8">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-[74vh] max-w-7xl">
                     <SectionTrigerScroll
                         id="visi-misi"
                         className="bg-white p-8 rounded-3xl shadow-xl"
@@ -28,16 +28,16 @@ const VisiMisi: React.FC<VisiMisiProps> = ({ visi, misi, tujuan, message }) => {
 
     return (
         <AppLayout title="Visi & Misi">
-            <div className="container mx-auto px-4 py-8">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-[74vh] max-w-7xl">
                 <SectionTrigerScroll
                     id="visi"
                     className="bg-white p-8 rounded-3xl shadow-xl mb-8 hover:shadow-2xl transition-all duration-300"
                 >
                     <div className="flex items-center gap-4 mb-6">
                         <div className="p-3 bg-main-blue/10 rounded-full">
-                            <FaEye className="text-2xl text-main-blue" />
+                            <FaEye className="text-2xl text-main-blue-light" />
                         </div>
-                        <h2 className="text-3xl font-bold text-main-blue">
+                        <h2 className="text-3xl font-bold text-main-blue-light">
                             Visi
                         </h2>
                     </div>
@@ -52,9 +52,9 @@ const VisiMisi: React.FC<VisiMisiProps> = ({ visi, misi, tujuan, message }) => {
                 >
                     <div className="flex items-center gap-4 mb-6">
                         <div className="p-3 bg-main-blue/10 rounded-full">
-                            <FaListCheck className="text-2xl text-main-blue" />
+                            <FaListCheck className="text-2xl text-main-blue-light" />
                         </div>
-                        <h2 className="text-3xl font-bold text-main-blue">
+                        <h2 className="text-3xl font-bold text-main-blue-light">
                             Misi
                         </h2>
                     </div>
@@ -65,7 +65,7 @@ const VisiMisi: React.FC<VisiMisiProps> = ({ visi, misi, tujuan, message }) => {
                                 className="flex items-start gap-3 group"
                             >
                                 <div className="flex-shrink-0 w-8 h-8 bg-main-blue/10 rounded-full flex items-center justify-center mt-1 group-hover:bg-main-blue/20 transition-colors duration-300">
-                                    <span className="text-main-blue font-medium">
+                                    <span className="text-main-blue-light font-medium">
                                         {index + 1}
                                     </span>
                                 </div>
@@ -83,9 +83,9 @@ const VisiMisi: React.FC<VisiMisiProps> = ({ visi, misi, tujuan, message }) => {
                 >
                     <div className="flex items-center gap-4 mb-6">
                         <div className="p-3 bg-main-blue/10 rounded-full">
-                            <FaBullseye className="text-2xl text-main-blue" />
+                            <FaBullseye className="text-2xl text-main-blue-light" />
                         </div>
-                        <h2 className="text-3xl font-bold text-main-blue">
+                        <h2 className="text-3xl font-bold text-main-blue-light">
                             Tujuan
                         </h2>
                     </div>
@@ -96,7 +96,7 @@ const VisiMisi: React.FC<VisiMisiProps> = ({ visi, misi, tujuan, message }) => {
                                 className="flex items-start gap-3 group"
                             >
                                 <div className="flex-shrink-0 w-8 h-8 bg-main-blue/10 rounded-full flex items-center justify-center mt-1 group-hover:bg-main-blue/20 transition-colors duration-300">
-                                    <span className="text-main-blue font-medium">
+                                    <span className="text-main-blue-light font-medium">
                                         {index + 1}
                                     </span>
                                 </div>

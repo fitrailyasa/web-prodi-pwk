@@ -56,7 +56,7 @@ export default function PaginationComponent(DataPagination: DataPagienation) {
                     key={key}
                     className={cn(
                         className,
-                        'bg-main-blue/10 text-main-blue hover:bg-main-blue/20 min-w-8 w-8 h-8'
+                        'bg-main-blue/10 text-main-blue-light hover:bg-main-blue/20 min-w-8 w-8 h-8'
                     )}
                     onClick={onNext}
                 >
@@ -71,7 +71,7 @@ export default function PaginationComponent(DataPagination: DataPagienation) {
                     key={key}
                     className={cn(
                         className,
-                        'bg-main-blue/10 text-main-blue hover:bg-main-blue/20 min-w-8 w-8 h-8'
+                        'bg-main-blue/10 text-main-blue-light hover:bg-main-blue/20 min-w-8 w-8 h-8'
                     )}
                     onClick={onPrevious}
                 >
@@ -96,7 +96,7 @@ export default function PaginationComponent(DataPagination: DataPagienation) {
                     className,
                     isActive
                         ? 'bg-main-blue text-white font-bold'
-                        : 'text-main-blue hover:bg-main-yellow/20'
+                        : 'text-main-blue-light hover:bg-main-yellow/20'
                 )}
                 onClick={() => setPage(value)}
             >
@@ -111,7 +111,7 @@ export default function PaginationComponent(DataPagination: DataPagienation) {
 
     return (
         <div className="flex flex-col items-center mt-5">
-            <p className="text-center text-main-blue">
+            <p className="text-center text-main-blue-light">
                 Total Item <span>: {DataPagination.total}</span>
             </p>
             {/* <div className="flex justify-center"> */}

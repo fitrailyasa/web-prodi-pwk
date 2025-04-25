@@ -50,10 +50,10 @@ export function Footer({ tentang }: FooterProps) {
                                     className="w-14 h-14 object-contain"
                                 />
                                 <div className="flex flex-col mt-1">
-                                    <h2 className="text-base font-bold text-main-blue leading-snug">
+                                    <h2 className="text-base font-bold text-main-blue-light leading-snug">
                                         Program Studi Perencanaan
                                     </h2>
-                                    <h2 className="text-base font-bold text-main-blue leading-snug">
+                                    <h2 className="text-base font-bold text-main-blue-light leading-snug">
                                         Wilayah dan Kota
                                     </h2>
                                     <h3 className="text-sm font-semibold text-[#00923F]">
@@ -64,28 +64,28 @@ export function Footer({ tentang }: FooterProps) {
                         </div>
 
                         <div className="mb-8">
-                            <h3 className="text-xl font-bold text-main-blue mb-4">
+                            <h3 className="text-xl font-bold text-main-blue-light mb-4">
                                 Ikuti Kami
                             </h3>
                             <div className="flex gap-4">
                                 <Link
                                     href={tentang.instagram_url}
                                     target="_blank"
-                                    className="text-main-blue hover:text-main-green transition-colors"
+                                    className="text-main-blue-light hover:text-main-green transition-colors"
                                 >
                                     <FaInstagram size={24} />
                                 </Link>
                                 <Link
                                     href={tentang.youtube_url}
                                     target="_blank"
-                                    className="text-main-blue hover:text-main-green transition-colors"
+                                    className="text-main-blue-light hover:text-main-green transition-colors"
                                 >
                                     <FaYoutube size={24} />
                                 </Link>
                                 <Link
                                     href={tentang.tiktok_url}
                                     target="_blank"
-                                    className="text-main-blue hover:text-main-green transition-colors"
+                                    className="text-main-blue-light hover:text-main-green transition-colors"
                                 >
                                     <FaTiktok size={24} />
                                 </Link>
@@ -95,23 +95,23 @@ export function Footer({ tentang }: FooterProps) {
 
                     {/* Middle Column */}
                     <div className="lg:col-span-1">
-                        <h3 className="text-xl font-bold text-main-blue mb-4">
+                        <h3 className="text-xl font-bold text-main-blue-light mb-4">
                             Hubungi Kami
                         </h3>
                         <div className="space-y-4">
                             <div className="flex items-start gap-3">
                                 <FaMapMarkerAlt className="text-main-green text-xl mt-1" />
-                                <p className="text-main-blue">
+                                <p className="text-main-blue-light">
                                     {tentang.address}
                                 </p>
                             </div>
                             <div className="flex items-start gap-3">
-                                <p className="text-main-blue">
+                                <p className="text-main-blue-light">
                                     {tentang.phone}
                                 </p>
                             </div>
                             <div className="flex items-start gap-3">
-                                <p className="text-main-blue">
+                                <p className="text-main-blue-light">
                                     {tentang.email}
                                 </p>
                             </div>
@@ -120,19 +120,19 @@ export function Footer({ tentang }: FooterProps) {
 
                     {/* Right Column */}
                     <div className="lg:col-span-1">
-                        <h3 className="text-xl font-bold text-main-blue mb-4">
+                        <h3 className="text-xl font-bold text-main-blue-light mb-4">
                             Tentang Kami
                         </h3>
                         <div className="space-y-2">
                             <Link
                                 href="/kurikulum"
-                                className="block text-main-blue hover:text-main-green transition-colors"
+                                className="block text-main-blue-light hover:text-main-green transition-colors"
                             >
                                 Kurikulum
                             </Link>
                             <Link
                                 href="/berita"
-                                className="block text-main-blue hover:text-main-green transition-colors"
+                                className="block text-main-blue-light hover:text-main-green transition-colors"
                             >
                                 Berita
                             </Link>

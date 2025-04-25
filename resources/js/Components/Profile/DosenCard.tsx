@@ -21,11 +21,11 @@ const DosenAndStafCard: React.FC<DosenAndStafCardProps> = ({
                     width={'100%'}
                     className="aspect-[4/3] rounded-xl"
                 />
-                <h3 className="font-bold text-center text-wrap text-lg pt-3 pb-1 text-main-blue">
+                <h3 className="font-bold text-center text-wrap text-lg pt-3 pb-1 text-main-blue-light">
                     {staf.name}
                 </h3>
                 {staf.position && (
-                    <p className="text-center text-main-blue text-sm">
+                    <p className="text-center text-main-blue-light text-sm">
                         {staf.position}
                     </p>
                 )}

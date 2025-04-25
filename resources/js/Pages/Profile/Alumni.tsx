@@ -10,7 +10,7 @@ const Alumni: React.FC<AlumniPageProps> = ({ alumni }) => {
         <AppLayout title="Alumni PWK ITERA">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-[74vh] max-w-7xl">
                 <SectionTrigerScroll id={'alummi-header'}>
-                    <h1 className="font-bold text-3xl text-main-blue pb-4 border-b mb-8 text-center md:text-left">
+                    <h1 className="font-bold text-3xl text-main-blue-light pb-4 border-b mb-8 text-center md:text-left">
                         Alumni PWK ITERA
                     </h1>
                 </SectionTrigerScroll>
