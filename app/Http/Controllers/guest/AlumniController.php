@@ -43,6 +43,7 @@ class AlumniController extends Controller
 
 
         return Inertia::render('Profile/Alumni', [
+            'title' => __('Alumni PWK ITERA'),
             'alumni' => $pagienatedData,
         ]);
     }

@@ -4,6 +4,7 @@ import InstagramIcon from '@/Components/Icon/InstagramInco'
 import LinkedInIcon from '@/Components/Icon/LinkedInInco'
 import WhatAppIcon from '@/Components/Icon/WhatAppInco'
 import { AlumniItemTypes } from '@/types'
+import { useTranslation } from '@/Hooks/useTranslation'
 
 import {
     Button,
@@ -22,6 +23,12 @@ type AlumniItemProps = {
 
 const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
     const { isOpen, onOpen, onOpenChange } = useDisclosure()
+
+    const closeText = useTranslation('Close')
+    const researchTitleText = useTranslation('Judul Penelitian')
+    const positionText = useTranslation('Pekerjaan')
+    const workplaceText = useTranslation('Tempat kerja')
+
     return (
         <>
             <div
@@ -123,7 +130,7 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                                         <div className="mt-6 space-y-3">
                                             <div className="grid grid-cols-[120px,1fr] gap-2">
                                                 <span className="font-semibold text-main-blue-light">
-                                                    Judul Penelitian
+                                                    {researchTitleText}
                                                 </span>
                                                 <span>
                                                     : {data.judul_penelitian}
@@ -131,7 +138,7 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                                             </div>
                                             <div className="grid grid-cols-[120px,1fr] gap-2">
                                                 <span className="font-semibold text-main-blue-light">
-                                                    Pekerjaan
+                                                    {positionText}
                                                 </span>
                                                 <span>
                                                     : {data.posisi_pekerjaan}
@@ -139,7 +146,7 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                                             </div>
                                             <div className="grid grid-cols-[120px,1fr] gap-2">
                                                 <span className="font-semibold text-main-blue-light">
-                                                    Tempat kerja
+                                                    {workplaceText}
                                                 </span>
                                                 <span>
                                                     : {data.nama_perusahaan}
@@ -154,7 +161,7 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                                     className="bg-red-500 text-white font-semibold"
                                     onPress={onClose}
                                 >
-                                    Close
+                                    {closeText}
                                 </Button>
                             </ModalFooter>
                         </>
