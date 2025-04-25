@@ -17,7 +17,7 @@ class SejarahSeeder extends Seeder
             [
                 'year' => '2014',
                 'title' => 'Pendirian Program Studi',
-                'description' => 'Program Studi Perencanaan Wilayah dan Kota (PWK) Institut Teknologi Sumatera (ITERA) didirikan sebagai salah satu program studi di bawah naungan Fakultas Teknik Sipil dan Perencanaan (FTSP) ITERA.',
+                'description' => 'Program Studi Perencanaan Wilayah dan Kota (PWK) Institut Teknologi Sumatera (ITERA) didirikan sebagai salah satu program studi di bawah naungan Fakultas Teknologi dan Industri (FTI) ITERA.',
                 'user_id' => 1
             ],
             [

@@ -13,6 +13,7 @@ class SejarahController extends Controller
         $timelineEvents = Sejarah::orderBy('year', 'asc')->get();
 
         return Inertia::render('Profile/Sejarah', [
+            'title' => __('Sejarah'),
             'timelineEvents' => $timelineEvents
         ]);
     }

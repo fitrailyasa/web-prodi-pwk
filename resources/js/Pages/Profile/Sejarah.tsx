@@ -1,6 +1,7 @@
 import React from 'react'
 import AppLayout from '@/Layouts/AppLayout'
 import { Card, CardBody } from '@heroui/react'
+import { useTranslation } from '@/Hooks/useTranslation'
 
 interface TimelineEvent {
     id: number
@@ -11,14 +12,19 @@ interface TimelineEvent {
 
 interface Props {
     timelineEvents: TimelineEvent[]
+    title?: string
 }
 
-const Sejarah: React.FC<Props> = ({ timelineEvents }) => {
+const Sejarah: React.FC<Props> = ({ timelineEvents, title }) => {
+    // Pre-translate all static text
+    const titleText = useTranslation(title || 'Sejarah')
+    const subtitleText = useTranslation('Sejarah Program Studi PWK ITERA')
+
     return (
-        <AppLayout title="Sejarah">
+        <AppLayout title={titleText}>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 min-h-[74vh] max-w-7xl">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
-                    Sejarah Program Studi PWK ITERA
+                    {subtitleText}
                 </h2>
 
                 <div className="relative">
@@ -38,11 +44,11 @@ const Sejarah: React.FC<Props> = ({ timelineEvents }) => {
                                                 {event.year}
                                             </span>
                                             <h3 className="text-xl font-semibold text-main-blue-light">
-                                                {event.title}
+                                                {useTranslation(event.title)}
                                             </h3>
                                         </div>
                                         <p className="text-gray-700 leading-relaxed text-justify">
-                                            {event.description}
+                                            {useTranslation(event.description)}
                                         </p>
                                     </CardBody>
                                 </Card>
