@@ -8,7 +8,7 @@ interface MbkmProps {
         id: number
         title: string
         description: string
-        benefits: string[]
+        benefits: string[] | string
         link: string
     }>
 }
@@ -56,30 +56,60 @@ const Mbkm: React.FC<MbkmProps> = ({ mbkmPrograms }) => {
                                             Manfaat Program:
                                         </h4>
                                         <ul className="space-y-2">
-                                            {program.benefits.map(
-                                                (benefit, idx) => (
-                                                    <li
-                                                        key={idx}
-                                                        className="flex items-start"
-                                                    >
-                                                        <svg
-                                                            className="w-5 h-5 text-main-green mt-1 mr-2 flex-shrink-0"
-                                                            fill="none"
-                                                            stroke="currentColor"
-                                                            viewBox="0 0 24 24"
+                                            {program.benefits ? (
+                                                Array.isArray(program.benefits) ? (
+                                                    program.benefits.map((benefit, idx) => (
+                                                        <li
+                                                            key={idx}
+                                                            className="flex items-start"
                                                         >
-                                                            <path
-                                                                strokeLinecap="round"
-                                                                strokeLinejoin="round"
-                                                                strokeWidth={2}
-                                                                d="M5 13l4 4L19 7"
-                                                            />
-                                                        </svg>
-                                                        <span className="text-gray-700">
-                                                            {benefit}
-                                                        </span>
-                                                    </li>
+                                                            <svg
+                                                                className="w-5 h-5 text-main-green mt-1 mr-2 flex-shrink-0"
+                                                                fill="none"
+                                                                stroke="currentColor"
+                                                                viewBox="0 0 24 24"
+                                                            >
+                                                                <path
+                                                                    strokeLinecap="round"
+                                                                    strokeLinejoin="round"
+                                                                    strokeWidth={2}
+                                                                    d="M5 13l4 4L19 7"
+                                                                />
+                                                            </svg>
+                                                            <span className="text-gray-600">
+                                                                {benefit}
+                                                            </span>
+                                                        </li>
+                                                    ))
+                                                ) : (
+                                                    program.benefits.split(', ').map((benefit, idx) => (
+                                                        <li
+                                                            key={idx}
+                                                            className="flex items-start"
+                                                        >
+                                                            <svg
+                                                                className="w-5 h-5 text-main-green mt-1 mr-2 flex-shrink-0"
+                                                                fill="none"
+                                                                stroke="currentColor"
+                                                                viewBox="0 0 24 24"
+                                                            >
+                                                                <path
+                                                                    strokeLinecap="round"
+                                                                    strokeLinejoin="round"
+                                                                    strokeWidth={2}
+                                                                    d="M5 13l4 4L19 7"
+                                                                />
+                                                            </svg>
+                                                            <span className="text-gray-600">
+                                                                {benefit}
+                                                            </span>
+                                                        </li>
+                                                    ))
                                                 )
+                                            ) : (
+                                                <li className="text-gray-500 italic">
+                                                    Tidak ada manfaat yang tersedia
+                                                </li>
                                             )}
                                         </ul>
                                     </div>
