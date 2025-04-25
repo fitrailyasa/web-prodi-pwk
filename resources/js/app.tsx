@@ -9,6 +9,7 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { useRoute } from 'ziggy-js'
 import { VisitorProvider } from './Providers/VisitorProvider'
+import { LanguageProvider } from './Providers/LanguageProvider'
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel'
 
@@ -29,9 +30,11 @@ createInertiaApp({
         const appElement = (
             <React.StrictMode>
                 <VisitorProvider>
-                    <HeroUIProvider>
-                        <App {...props} />
-                    </HeroUIProvider>
+                    <LanguageProvider>
+                        <HeroUIProvider>
+                            <App {...props} />
+                        </HeroUIProvider>
+                    </LanguageProvider>
                 </VisitorProvider>
             </React.StrictMode>
         )

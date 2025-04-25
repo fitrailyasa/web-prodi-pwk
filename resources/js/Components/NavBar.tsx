@@ -5,6 +5,8 @@ import IDIcon from './Icon/IDInco'
 import ENIcon from './Icon/ENInco'
 import { usePage } from '@inertiajs/react'
 import { navLinkType } from '@/types'
+import { useLanguage } from '@/Providers/LanguageProvider'
+import { useTranslation } from '@/Hooks/useTranslation'
 import {
     Accordion,
     AccordionItem,
@@ -38,7 +40,10 @@ type propsDropdown = {
 }
 function NavDropdown({ title, icon, item }: propsDropdown) {
     return (
-        <Dropdown key={title} className="hidden sm:flex gap-2 text-main-blue-light">
+        <Dropdown
+            key={title}
+            className="hidden sm:flex gap-2 text-main-blue-light"
+        >
             <DropdownTrigger>
                 <Button
                     disableRipple
@@ -110,8 +115,16 @@ export default function NavBar() {
     }>().props
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const { language, setLanguage } = useLanguage()
+    const translate = useTranslation
 
     const Logo_img = '/assets/img/logo.png'
+
+    const handleLanguageChange = (isSelected: boolean) => {
+        const newLanguage = isSelected ? 'id' : 'en'
+        setLanguage(newLanguage)
+        localStorage.setItem('vite-language', newLanguage)
+    }
 
     const FasilityMenu: DropdownMenuItem[] = nav_link
         .filter(item => item.category === 'fasilitas')
@@ -217,7 +230,7 @@ export default function NavBar() {
                         className="w-16 h-13"
                     />
                     <span className="hidden min-[380px]:block text-lg font-bold pl-4">
-                        Perencanaan Wilayah dan Kota
+                        {translate('Perencanaan Wilayah dan Kota')}
                     </span>
                 </NavbarBrand>
             </Link>
@@ -227,24 +240,33 @@ export default function NavBar() {
                         className="text-main-blue-light text-md font-medium hover:text-[#4005e1] transition-colors duration-200"
                         href={route('home')}
                     >
-                        Beranda
+                        {translate('Beranda')}
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <NavDropdown title="Profile" item={DropdwonProfleMenu} />
+                    <NavDropdown
+                        title={translate('Profile')}
+                        item={DropdwonProfleMenu}
+                    />
                 </NavbarItem>
                 <NavbarItem>
-                    <NavDropdown title="Akademik" item={AcademicMenu} />
+                    <NavDropdown
+                        title={translate('Akademik')}
+                        item={AcademicMenu}
+                    />
                 </NavbarItem>
                 <NavbarItem>
-                    <NavDropdown title="Fasilitas" item={FasilityMenu} />
+                    <NavDropdown
+                        title={translate('Fasilitas')}
+                        item={FasilityMenu}
+                    />
                 </NavbarItem>
                 <NavbarItem>
                     <Link
                         className="text-main-blue-light text-md font-medium hover:text-[#4005e1] transition-colors duration-200"
                         href={route('berita')}
                     >
-                        Berita dan Informasi
+                        {translate('Berita dan Informasi')}
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
@@ -252,12 +274,13 @@ export default function NavBar() {
                         className="text-main-blue-light text-md font-medium hover:text-[#4005e1] transition-colors duration-200"
                         href={route('contact')}
                     >
-                        Kontak
+                        {translate('Kontak')}
                     </Link>
                 </NavbarItem>
                 <div className="ml-4">
                     <Switch
-                        defaultSelected
+                        isSelected={language === 'id'}
+                        onValueChange={handleLanguageChange}
                         color="secondary"
                         size="lg"
                         thumbIcon={({ isSelected, className }) =>

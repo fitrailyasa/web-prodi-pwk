@@ -6,6 +6,7 @@ import {
     FaTiktok
 } from 'react-icons/fa'
 import { Link, Image } from '@heroui/react'
+import { useTranslation } from '@/Hooks/useTranslation'
 
 interface FooterProps {
     tentang?: {
@@ -21,6 +22,7 @@ interface FooterProps {
 
 export function Footer({ tentang }: FooterProps) {
     const Logo_img = '/assets/img/logo.png'
+    const translate = useTranslation
 
     if (!tentang) {
         return (
@@ -28,7 +30,9 @@ export function Footer({ tentang }: FooterProps) {
                 <div className="container mx-auto px-4">
                     <div className="text-center">
                         <p className="text-main-blue/60">
-                            Data sedang tidak tersedia. Silakan coba lagi nanti.
+                            {translate(
+                                'Data sedang tidak tersedia. Silakan coba lagi nanti.'
+                            )}
                         </p>
                     </div>
                 </div>
@@ -51,10 +55,10 @@ export function Footer({ tentang }: FooterProps) {
                                 />
                                 <div className="flex flex-col mt-1">
                                     <h2 className="text-base font-bold text-main-blue-light leading-snug">
-                                        Program Studi Perencanaan
+                                        {translate('Program Studi Perencanaan')}
                                     </h2>
                                     <h2 className="text-base font-bold text-main-blue-light leading-snug">
-                                        Wilayah dan Kota
+                                        {translate('Wilayah dan Kota')}
                                     </h2>
                                     <h3 className="text-sm font-semibold text-[#00923F]">
                                         ITERA
@@ -65,7 +69,7 @@ export function Footer({ tentang }: FooterProps) {
 
                         <div className="mb-8">
                             <h3 className="text-xl font-bold text-main-blue-light mb-4">
-                                Ikuti Kami
+                                {translate('Ikuti Kami')}
                             </h3>
                             <div className="flex gap-4">
                                 <Link
@@ -96,7 +100,7 @@ export function Footer({ tentang }: FooterProps) {
                     {/* Middle Column */}
                     <div className="lg:col-span-1">
                         <h3 className="text-xl font-bold text-main-blue-light mb-4">
-                            Hubungi Kami
+                            {translate('Hubungi Kami')}
                         </h3>
                         <div className="space-y-4">
                             <div className="flex items-start gap-3">
@@ -121,20 +125,20 @@ export function Footer({ tentang }: FooterProps) {
                     {/* Right Column */}
                     <div className="lg:col-span-1">
                         <h3 className="text-xl font-bold text-main-blue-light mb-4">
-                            Tentang Kami
+                            {translate('Tentang Kami')}
                         </h3>
                         <div className="space-y-2">
                             <Link
                                 href="/kurikulum"
                                 className="block text-main-blue-light hover:text-main-green transition-colors"
                             >
-                                Kurikulum
+                                {translate('Kurikulum')}
                             </Link>
                             <Link
                                 href="/berita"
                                 className="block text-main-blue-light hover:text-main-green transition-colors"
                             >
-                                Berita
+                                {translate('Berita')}
                             </Link>
                         </div>
                     </div>
@@ -143,8 +147,8 @@ export function Footer({ tentang }: FooterProps) {
                 {/* Copyright */}
                 <div className="mt-12 pt-8 border-t border-main-blue/10">
                     <p className="text-center text-main-blue/60">
-                        © {new Date().getFullYear()} {tentang.name}. All rights
-                        reserved.
+                        © {new Date().getFullYear()} {tentang.name}.{' '}
+                        {translate('All rights reserved.')}
                     </p>
                 </div>
             </div>
