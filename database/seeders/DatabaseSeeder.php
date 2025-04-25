@@ -25,5 +25,8 @@ class DatabaseSeeder extends Seeder
         $this->call(EventSeeder::class);
         $this->call(KalenderSeeder::class);
         $this->call(ChatbotSeeder::class);
+        $this->call(KelompokKeahlianSeeder::class);
+        $this->call(MbkmSeeder::class);
+        $this->call(SejarahSeeder::class);
     }
 }

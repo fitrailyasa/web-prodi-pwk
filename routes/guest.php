@@ -7,6 +7,8 @@ use App\Http\Controllers\guest\ContactController;
 use App\Http\Controllers\guest\DosenController;
 use App\Http\Controllers\guest\KurikulumController;
 use App\Http\Controllers\guest\MbkmController;
+use App\Http\Controllers\guest\KelompokKeahlianController;
+use App\Http\Controllers\guest\SejarahController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -49,13 +51,9 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
         return Inertia::render('Profile/VisiMisi');
     })->name('visi-misi');
 
-    Route::get('/sejarah', function () {
-        return Inertia::render('Profile/Sejarah');
-    })->name('sejarah');
+    Route::get('/sejarah', [SejarahController::class, 'index'])->name('sejarah');
 
-    Route::get('/kelompok-keahlian', function () {
-        return Inertia::render('Profile/KelompokKeahlian');
-    })->name('kelompok-keahlian');
+    Route::get('/kelompok-keahlian', [KelompokKeahlianController::class, 'index'])->name('kelompok-keahlian');
 });
 
 // Berita routes
