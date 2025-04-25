@@ -1,73 +1,110 @@
 import React from 'react'
 import AppLayout from '@/Layouts/AppLayout'
 import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
-import { Card, CardBody } from '@heroui/react'
+import { FaBullseye, FaListCheck, FaEye } from 'react-icons/fa6'
 
-const VisiMisi: React.FC = () => {
+interface VisiMisiProps {
+    visi: string | null
+    misi: string[] | null
+    tujuan: string[] | null
+    message?: string
+}
+
+const VisiMisi: React.FC<VisiMisiProps> = ({ visi, misi, tujuan, message }) => {
+    if (!visi || !misi || !tujuan) {
+        return (
+            <AppLayout title="Visi & Misi">
+                <div className="container mx-auto px-4 py-8">
+                    <SectionTrigerScroll
+                        id="visi-misi"
+                        className="bg-white p-8 rounded-3xl shadow-xl"
+                    >
+                        <p className="text-lg text-gray-700">{message}</p>
+                    </SectionTrigerScroll>
+                </div>
+            </AppLayout>
+        )
+    }
+
     return (
         <AppLayout title="Visi & Misi">
             <div className="container mx-auto px-4 py-8">
                 <SectionTrigerScroll
                     id="visi"
-                    className="bg-white p-8 rounded-3xl shadow-xl mb-8"
+                    className="bg-white p-8 rounded-3xl shadow-xl mb-8 hover:shadow-2xl transition-all duration-300"
                 >
-                    <h2 className="text-3xl font-bold text-main-blue mb-6">
-                        Visi
-                    </h2>
-                    <p className="text-lg text-gray-700">
-                        Menjadi Program Studi Perencanaan Wilayah dan Kota yang
-                        unggul dalam pengembangan ilmu pengetahuan dan teknologi
-                        di bidang perencanaan wilayah dan kota yang berwawasan
-                        lingkungan dan berkelanjutan di tingkat nasional pada
-                        tahun 2030.
+                    <div className="flex items-center gap-4 mb-6">
+                        <div className="p-3 bg-main-blue/10 rounded-full">
+                            <FaEye className="text-2xl text-main-blue" />
+                        </div>
+                        <h2 className="text-3xl font-bold text-main-blue">
+                            Visi
+                        </h2>
+                    </div>
+                    <p className="text-lg text-gray-700 pl-4 border-l-4 border-main-blue/30">
+                        {visi}
                     </p>
                 </SectionTrigerScroll>
 
                 <SectionTrigerScroll
                     id="misi"
-                    className="bg-white p-8 rounded-3xl shadow-xl"
+                    className="bg-white p-8 rounded-3xl shadow-xl mb-8 hover:shadow-2xl transition-all duration-300"
                 >
-                    <h2 className="text-3xl font-bold text-main-blue mb-6">
-                        Misi
-                    </h2>
-                    <div className="space-y-4">
-                        <Card className="bg-gray-50">
-                            <CardBody>
-                                <p className="text-lg text-gray-700">
-                                    1. Menyelenggarakan pendidikan tinggi di
-                                    bidang perencanaan wilayah dan kota yang
-                                    berkualitas dan berdaya saing.
+                    <div className="flex items-center gap-4 mb-6">
+                        <div className="p-3 bg-main-blue/10 rounded-full">
+                            <FaListCheck className="text-2xl text-main-blue" />
+                        </div>
+                        <h2 className="text-3xl font-bold text-main-blue">
+                            Misi
+                        </h2>
+                    </div>
+                    <div className="space-y-4 pl-4">
+                        {misi.map((item, index) => (
+                            <div
+                                key={index}
+                                className="flex items-start gap-3 group"
+                            >
+                                <div className="flex-shrink-0 w-8 h-8 bg-main-blue/10 rounded-full flex items-center justify-center mt-1 group-hover:bg-main-blue/20 transition-colors duration-300">
+                                    <span className="text-main-blue font-medium">
+                                        {index + 1}
+                                    </span>
+                                </div>
+                                <p className="text-lg text-gray-700 group-hover:text-main-blue/80 transition-colors duration-300">
+                                    {item}
                                 </p>
-                            </CardBody>
-                        </Card>
-                        <Card className="bg-gray-50">
-                            <CardBody>
-                                <p className="text-lg text-gray-700">
-                                    2. Mengembangkan penelitian di bidang
-                                    perencanaan wilayah dan kota yang inovatif
-                                    dan bermanfaat bagi masyarakat.
+                            </div>
+                        ))}
+                    </div>
+                </SectionTrigerScroll>
+
+                <SectionTrigerScroll
+                    id="tujuan"
+                    className="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300"
+                >
+                    <div className="flex items-center gap-4 mb-6">
+                        <div className="p-3 bg-main-blue/10 rounded-full">
+                            <FaBullseye className="text-2xl text-main-blue" />
+                        </div>
+                        <h2 className="text-3xl font-bold text-main-blue">
+                            Tujuan
+                        </h2>
+                    </div>
+                    <div className="space-y-4 pl-4">
+                        {tujuan.map((item, index) => (
+                            <div
+                                key={index}
+                                className="flex items-start gap-3 group"
+                            >
+                                <div className="flex-shrink-0 w-8 h-8 bg-main-blue/10 rounded-full flex items-center justify-center mt-1 group-hover:bg-main-blue/20 transition-colors duration-300">
+                                    <span className="text-main-blue font-medium">
+                                        {index + 1}
+                                    </span>
+                                </div>
+                                <p className="text-lg text-gray-700 group-hover:text-main-blue/80 transition-colors duration-300">
+                                    {item}
                                 </p>
-                            </CardBody>
-                        </Card>
-                        <Card className="bg-gray-50">
-                            <CardBody>
-                                <p className="text-lg text-gray-700">
-                                    3. Melaksanakan pengabdian kepada masyarakat
-                                    di bidang perencanaan wilayah dan kota yang
-                                    berkelanjutan.
-                                </p>
-                            </CardBody>
-                        </Card>
-                        <Card className="bg-gray-50">
-                            <CardBody>
-                                <p className="text-lg text-gray-700">
-                                    4. Membangun kerjasama dengan berbagai pihak
-                                    untuk pengembangan ilmu pengetahuan dan
-                                    teknologi di bidang perencanaan wilayah dan
-                                    kota.
-                                </p>
-                            </CardBody>
-                        </Card>
+                            </div>
+                        ))}
                     </div>
                 </SectionTrigerScroll>
             </div>
