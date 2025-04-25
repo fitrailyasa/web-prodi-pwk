@@ -38,11 +38,11 @@ type propsDropdown = {
 }
 function NavDropdown({ title, icon, item }: propsDropdown) {
     return (
-        <Dropdown key={title} className="hidden sm:flex gap-2">
+        <Dropdown key={title} className="hidden sm:flex gap-2 text-main-blue-light">
             <DropdownTrigger>
                 <Button
                     disableRipple
-                    className="p-0 flex gap-1 bg-transparent data-[hover=true]:bg-transparent text-md font-medium hover:text-[#4005e1] transition-colors duration-200"
+                    className="p-0 flex text-main-blue-light gap-1 bg-transparent data-[hover=true]:bg-transparent text-md font-medium hover:text-[#4005e1] transition-colors duration-200"
                     radius="sm"
                     variant="light"
                 >
@@ -85,7 +85,7 @@ function NavDropdown({ title, icon, item }: propsDropdown) {
 function AccordionLink(prop: DropdownMenuItem) {
     return (
         <Link
-            className="w-full block text-md text-black hover:bg-[#4005e1]/10 my-2 py-2 px-3 rounded-lg transition-colors duration-200"
+            className="w-full block text-md text-main-blue-light hover:bg-[#4005e1]/10 my-2 py-2 px-3 rounded-lg transition-colors duration-200"
             href={prop.href}
             isExternal={prop.newTab ?? false}
         >
@@ -96,7 +96,7 @@ function AccordionLink(prop: DropdownMenuItem) {
 function MobileLink(prop: DropdownMenuItem) {
     return (
         <Link
-            className="bg-white text-md text-black hover:bg-[#4005e1]/10 mt-0 mb-1 mx-2 p-4 rounded-xl transition-colors duration-200"
+            className="bg-white text-md text-main-blue-light hover:bg-[#4005e1]/10 mt-0 mb-1 mx-2 p-4 rounded-xl transition-colors duration-200"
             href={prop.href}
         >
             {prop.title}
@@ -216,7 +216,7 @@ export default function NavBar() {
                         loading="lazy"
                         className="w-16 h-13"
                     />
-                    <span className="hidden min-[380px]:block text-lg font-semibold pl-4">
+                    <span className="hidden min-[380px]:block text-lg font-bold pl-4">
                         Perencanaan Wilayah dan Kota
                     </span>
                 </NavbarBrand>
@@ -224,7 +224,7 @@ export default function NavBar() {
             <NavbarContent className="hidden md:flex gap-6" justify="center">
                 <NavbarItem>
                     <Link
-                        className="text-black text-md font-medium hover:text-[#4005e1] transition-colors duration-200"
+                        className="text-main-blue-light text-md font-medium hover:text-[#4005e1] transition-colors duration-200"
                         href={route('home')}
                     >
                         Beranda
@@ -241,7 +241,7 @@ export default function NavBar() {
                 </NavbarItem>
                 <NavbarItem>
                     <Link
-                        className="text-black text-md font-medium hover:text-[#4005e1] transition-colors duration-200"
+                        className="text-main-blue-light text-md font-medium hover:text-[#4005e1] transition-colors duration-200"
                         href={route('berita')}
                     >
                         Berita dan Informasi
@@ -249,7 +249,7 @@ export default function NavBar() {
                 </NavbarItem>
                 <NavbarItem>
                     <Link
-                        className="text-black text-md font-medium hover:text-[#4005e1] transition-colors duration-200"
+                        className="text-main-blue-light text-md font-medium hover:text-[#4005e1] transition-colors duration-200"
                         href={route('contact')}
                     >
                         Kontak
@@ -277,7 +277,7 @@ export default function NavBar() {
             <NavbarContent className="md:hidden" justify="end">
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-                    className="text-black hover:text-[#4005e1] transition-colors duration-200"
+                    className="text-main-blue-light hover:text-[#4005e1] transition-colors duration-200"
                 />
             </NavbarContent>
             <NavbarMenu className="bg-white/95 backdrop-blur-sm">

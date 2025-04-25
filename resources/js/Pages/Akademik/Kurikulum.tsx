@@ -151,7 +151,7 @@ export default function Kurikulum() {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-8 sm:mb-12 px-2 sm:px-0"
                 >
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text text-transparent">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
                         Kurikulum Program Studi
                     </h1>
                     <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
