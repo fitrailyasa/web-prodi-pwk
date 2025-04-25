@@ -111,6 +111,7 @@ Pesan: ${formData.message}
                 <div className="text-center mb-12">
                     <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
                         {translate('Hubungi Kami')}
+                        <div className="w-full max-w-[100px] h-1 bg-gradient-to-r from-main-blue to-main-green mx-auto rounded-full mt-2"></div>
                     </h1>
                 </div>
 

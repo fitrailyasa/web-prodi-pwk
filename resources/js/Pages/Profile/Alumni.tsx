@@ -12,6 +12,7 @@ const Alumni: React.FC<AlumniPageProps> = ({ alumni }) => {
                 <SectionTrigerScroll id={'alummi-header'}>
                     <h1 className="font-bold text-3xl text-main-blue-light pb-4 border-b mb-8 text-center md:text-left">
                         Alumni PWK ITERA
+                        <div className="w-full max-w-[100px] h-1 bg-gradient-to-r from-main-blue to-main-green rounded-full"></div>
                     </h1>
                 </SectionTrigerScroll>
 

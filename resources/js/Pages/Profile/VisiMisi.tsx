@@ -60,6 +60,7 @@ const VisiMisi: React.FC<VisiMisiProps> = ({
                         </div>
                         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
                             {visiText}
+                            <div className="w-full max-w-[100px] h-1 bg-gradient-to-r from-main-blue to-main-green rounded-full mt-2"></div>
                         </h2>
                     </div>
                     <p className="text-md sm:text-xl md:text-xl text-gray-700 pl-4 border-l-4 border-main-blue/30 text-justify">
@@ -77,6 +78,7 @@ const VisiMisi: React.FC<VisiMisiProps> = ({
                         </div>
                         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
                             {misiText}
+                            <div className="w-full max-w-[100px] h-1 bg-gradient-to-r from-main-blue to-main-green rounded-full mt-2"></div>
                         </h2>
                     </div>
                     <div className="space-y-4 pl-4">
@@ -108,6 +110,7 @@ const VisiMisi: React.FC<VisiMisiProps> = ({
                         </div>
                         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
                             {tujuanText}
+                            <div className="w-full max-w-[100px] h-1 bg-gradient-to-r from-main-blue to-main-green rounded-full mt-2"></div>
                         </h2>
                     </div>
                     <div className="space-y-4 pl-4">
