@@ -47,23 +47,12 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label class="form-label">{{ __('Gambar') }}</label>
-                            <input type="file" accept="image/*"
-                                class="form-control @error('img') is-invalid @enderror" name="img" id="img">
-                            <small class="text-muted">Format: JPG, PNG, JPEG. Maksimal 2MB</small>
-                            @error('img')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="mb-3">
                             <label class="form-label">{{ __('File Modul') }}</label>
                             <input type="file" accept=".pdf,.doc,.docx"
                                 class="form-control @error('file') is-invalid @enderror" name="file" id="file">
-                            <small class="text-muted">Format: PDF, DOC, DOCX. Maksimal 5MB</small>
+                            <small class="text-muted">Format: PDF, DOC, DOCX. Maksimal 10MB</small>
                             @error('file')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

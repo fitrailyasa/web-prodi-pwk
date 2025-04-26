@@ -118,7 +118,7 @@ export default function NavBar() {
     const { language, setLanguage } = useLanguage()
     const translate = useTranslation
 
-    const Logo_img = '/assets/img/logo.png'
+    const Logo_img = '/assets/img/logo-full.png'
 
     const handleLanguageChange = (isSelected: boolean) => {
         const newLanguage = isSelected ? 'id' : 'en'
@@ -218,22 +218,19 @@ export default function NavBar() {
             onMenuOpenChange={setIsMenuOpen}
             className="flex justify-around top-0 z-50 bg-white/80 backdrop-blur-sm shadow-sm"
         >
-            <Link
-                href={route('home')}
-                className="font-bold text-inherit w-full hover:opacity-80 transition-opacity duration-200"
-            >
-                <NavbarBrand>
+            <NavbarBrand>
+                <Link
+                    href={route('home')}
+                    className="font-bold text-inherit w-full hover:opacity-80 transition-opacity duration-200"
+                >
                     <img
                         src={Logo_img}
                         alt="Logo"
                         loading="lazy"
-                        className="w-16 h-13"
+                        className="w-60"
                     />
-                    <span className="hidden min-[380px]:block text-lg font-bold pl-4">
-                        {translate('Perencanaan Wilayah dan Kota')}
-                    </span>
-                </NavbarBrand>
-            </Link>
+                </Link>
+            </NavbarBrand>
             <NavbarContent className="hidden md:flex gap-6" justify="center">
                 <NavbarItem>
                     <Link
@@ -266,7 +263,7 @@ export default function NavBar() {
                         className="text-main-blue-light text-md font-medium hover:text-[#4005e1] transition-colors duration-200"
                         href={route('berita')}
                     >
-                        {translate('Berita dan Informasi')}
+                        {translate('Berita')}
                     </Link>
                 </NavbarItem>
                 <NavbarItem>
@@ -352,10 +349,7 @@ export default function NavBar() {
                         ))}
                     </AccordionItem>
                 </Accordion>
-                <MobileLink
-                    href={route('berita')}
-                    title={'Berita dan Informasi'}
-                />
+                <MobileLink href={route('berita')} title={'Berita'} />
                 <MobileLink href={route('contact')} title={'Kontak'} />
             </NavbarMenu>
         </Navbar>

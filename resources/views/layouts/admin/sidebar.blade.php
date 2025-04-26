@@ -29,7 +29,7 @@
                         <a href="{{ route('admin.tentang.index') }}"
                             class="nav-link text-white {{ Request::routeIs('admin.tentang.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-info-circle"></i>
-                            <p>Profile</p>
+                            <p>Profile Prodi</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -43,7 +43,7 @@
                     <!-- Akademik -->
                     <li class="nav-header text-white">AKADEMIK</li>
                     <li
-                        class="nav-item has-treeview {{ Request::routeIs('admin.matkul.index', 'admin.jadwal.index', 'admin.modul.index', 'admin.kalender.index') ? 'menu-open' : '' }}">
+                        class="nav-item has-treeview {{ Request::routeIs('admin.matkul.index', 'admin.jadwal.index', 'admin.modul.index', 'admin.kalender.index', 'admin.mbkm.index') ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link text-white">
                             <i class="nav-icon fas fa-graduation-cap"></i>
                             <p>

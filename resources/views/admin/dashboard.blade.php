@@ -60,33 +60,6 @@
             </div>
         </div>
 
-        <!-- Charts -->
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Monthly Statistics</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="monthlyChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Content Distribution</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="contentChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Recent Activity -->
         <div class="row">

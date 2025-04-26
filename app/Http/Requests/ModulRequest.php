@@ -26,15 +26,14 @@ class ModulRequest extends FormRequest
         $rules = [
             'name' => 'required|max:100',
             'matkul_id' => 'required|exists:matkuls,id',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ];
 
         // Jika method POST (create), file wajib
         if ($this->method() === 'POST') {
-            $rules['img'] = 'required|image|mimes:jpeg,png,jpg|max:2048';
             $rules['file'] = 'required|file|mimes:pdf,doc,docx|max:10240';
         } else {
             // Jika method PUT (update), file tidak wajib
-            $rules['img'] = 'nullable|image|mimes:jpeg,png,jpg|max:2048';
             $rules['file'] = 'nullable|file|mimes:pdf,doc,docx|max:10240';
         }
 
@@ -48,7 +47,6 @@ class ModulRequest extends FormRequest
             'name.max' => 'Nama modul maksimal 100 karakter!',
             'matkul_id.required' => 'Mata kuliah harus dipilih!',
             'matkul_id.exists' => 'Mata kuliah yang dipilih tidak valid!',
-            'img.required' => 'Gambar harus diupload!',
             'img.image' => 'Gambar harus berupa file gambar!',
             'img.mimes' => 'Gambar harus berupa JPG, PNG, atau JPEG!',
             'img.max' => 'Gambar maksimal 2MB!',

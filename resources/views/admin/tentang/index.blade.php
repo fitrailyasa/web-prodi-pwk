@@ -1,7 +1,7 @@
 <x-admin-layout>
     <!-- Title -->
     <x-slot name="title">
-        Edit Profile
+        Edit Profile Prodi
     </x-slot>
 
     <form method="POST" action="{{ route('admin.tentang.update', $tentang->id) }}" enctype="multipart/form-data">

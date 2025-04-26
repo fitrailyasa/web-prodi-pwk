@@ -113,9 +113,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/modul', [AdminModulController::class, 'store'])->name('modul.store');
         Route::put('/modul/{id}/update', [AdminModulController::class, 'update'])->name('modul.update');
         Route::delete('/modul/{id}/destroy', [AdminModulController::class, 'destroy'])->name('modul.destroy');
-        Route::post('/modul/import', [AdminModulController::class, 'import'])->name('modul.import');
-        Route::get('/modul/export', [AdminModulController::class, 'export'])->name('modul.export');
-        Route::delete('/modul/deleteAll', [AdminModulController::class, 'destroyAll'])->name('modul.destroyAll');
 
         // CRUD MEDIA PARTNER
         Route::get('/medpart', [AdminMedpartController::class, 'index'])->name('medpart.index');

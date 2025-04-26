@@ -5,14 +5,8 @@ import {
     FaMapMarkerAlt,
     FaPhone,
     FaEnvelope,
-    FaInstagram,
-    FaYoutube,
-    FaTiktok
 } from 'react-icons/fa'
-import { router } from '@inertiajs/react'
-import { Button, Link } from '@heroui/react'
-import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
-import BouncingAnimation from '@/Animation/BouncingAnimation'
+import { Button } from '@heroui/react'
 import { useTranslation } from '@/Hooks/useTranslation'
 
 interface ContactProps {
@@ -48,7 +42,6 @@ export default function Contact({ title, tentang }: ContactProps) {
         message: ''
     })
 
-    // Add fallback for when tentang is not available
     if (!tentang) {
         return (
             <AppLayout title={title}>
@@ -74,17 +67,14 @@ export default function Contact({ title, tentang }: ContactProps) {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
 
-        // Create email content
         const emailContent = `
 Nama: ${formData.name}
 Email: ${formData.email}
 Pesan: ${formData.message}
         `.trim()
 
-        // Create mailto link
         const mailtoLink = `mailto:${tentang.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(emailContent)}`
 
-        // Open email client
         window.location.href = mailtoLink
     }
 

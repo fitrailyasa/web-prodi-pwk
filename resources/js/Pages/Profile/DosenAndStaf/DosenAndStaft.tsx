@@ -67,30 +67,17 @@ const DosenAndStaf: React.FC<EmployePageProps> = ({
 
     return (
         <AppLayout title={pageTitle}>
-            <div className="container mx-auto px-4 relative">
                 {koordinator && (
                     <Section
                         title={koordinatorTitle}
                         users={[koordinator]}
-                        className="flex flex-col items-center max-w-4xl mx-auto mb-12"
+                        className="flex flex-col items-center max-w-4xl mx-auto"
                         isCoordinator={true}
                     />
                 )}
-
-                <Section
-                    title={pengurusTitle}
-                    users={pengurus}
-                    className="mb-12"
-                />
-
-                <Section title={dosenTitle} users={dosen} className="mb-12" />
-
-                <Section
-                    title={tendikTitle}
-                    users={staff || []}
-                    className="mb-12"
-                />
-            </div>
+                <Section title={pengurusTitle} users={pengurus} />
+                <Section title={dosenTitle} users={dosen} />
+                <Section title={tendikTitle} users={staff || []} />
         </AppLayout>
     )
 }
