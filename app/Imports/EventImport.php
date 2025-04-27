@@ -6,21 +6,28 @@ use App\Models\Event;
 use App\Models\Tag;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
+use Illuminate\Support\Facades\Auth;
 
 class EventImport implements ToModel, WithStartRow
 {
     public function model(array $row)
     {
-        $name = $row[1];
-        $desc = $row[2];
-        $status = $row[3];
-        $event_date = $row[4];
-        $publish_date = $row[5];
-        $tag = $row[6];
-        $user_id = auth()->user()->id;
+        if (empty($row[1])) {
+            return null;
+        }
 
-        // tag id by name
-        $tag = Tag::where('name', $tag)->first();
+        $name = trim($row[1]);
+        $desc = trim($row[2] ?? '');
+        $status = trim($row[3] ?? 'unpublish');
+        $event_date = $this->parseDate($row[4] ?? null);
+        $publish_date = $this->parseDate($row[5] ?? null);
+        $tagName = trim($row[6] ?? null);
+        $user_id = Auth::id();
+
+        $tag = Tag::firstOrCreate(
+            ['name' => $tagName],
+            ['user_id' => $user_id]
+        );
 
         $checkEvent = Event::where('name', $name)->first();
 
@@ -51,5 +58,22 @@ class EventImport implements ToModel, WithStartRow
     public function startRow(): int
     {
         return 3;
+    }
+
+    private function parseDate($date)
+    {
+        if (!$date) {
+            return null;
+        }
+
+        try {
+            return \Carbon\Carbon::createFromFormat('d/m/Y', $date)->format('Y-m-d');
+        } catch (\Exception $e) {
+            try {
+                return \Carbon\Carbon::parse($date)->format('Y-m-d');
+            } catch (\Exception $e) {
+                return null;
+            }
+        }
     }
 }

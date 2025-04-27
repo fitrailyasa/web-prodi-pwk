@@ -9,6 +9,7 @@ use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use PhpOffice\PhpSpreadsheet\Style\Border;
+use Carbon\Carbon;
 
 class BeritaExport implements FromCollection, WithHeadings, WithStyles, ShouldAutoSize
 {
@@ -25,8 +26,8 @@ class BeritaExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
                 'Judul Berita' => $Berita->name ?? '',
                 'Konten Berita' => $Berita->desc ?? '',
                 'Status' => $Berita->status ?? '',
-                'Tanggal Pelaksanaan' => $Berita->event_date ?? '',
-                'Tanggal Publikasi' => $Berita->publish_date ?? '',
+                'Tanggal Pelaksanaan' => $this->formatDate($Berita->event_date),
+                'Tanggal Publikasi' => $this->formatDate($Berita->publish_date),
                 'Tag Berita' => $Berita->tag->name ?? '',
             ];
         }
@@ -65,7 +66,7 @@ class BeritaExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
             ],
         ];
 
-        $sheet->getStyle('A1:D' . $sheet->getHighestRow())
+        $sheet->getStyle('A1:G' . $sheet->getHighestRow())
             ->applyFromArray($borderStyle);
 
         return [
@@ -94,5 +95,18 @@ class BeritaExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
                 ],
             ],
         ];
+    }
+
+    private function formatDate($date)
+    {
+        if (!$date) {
+            return '';
+        }
+
+        try {
+            return Carbon::parse($date)->format('d/m/Y');
+        } catch (\Exception $e) {
+            return '';
+        }
     }
 }

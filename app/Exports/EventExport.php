@@ -9,6 +9,7 @@ use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use PhpOffice\PhpSpreadsheet\Style\Border;
+use Carbon\Carbon;
 
 class EventExport implements FromCollection, WithHeadings, WithStyles, ShouldAutoSize
 {
@@ -22,9 +23,12 @@ class EventExport implements FromCollection, WithHeadings, WithStyles, ShouldAut
         foreach ($Events as $Event) {
             $collection[] = [
                 'No' => $no++,
-                'Name' => $Event->name ?? '',
-                'Img' => $Event->img ?? '',
-                'Desc' => $Event->desc ?? '',
+                'Judul Event' => $Event->name ?? '',
+                'Konten Event' => $Event->desc ?? '',
+                'Status' => $Event->status ?? '',
+                'Tanggal Pelaksanaan' => $this->formatDate($Event->event_date),
+                'Tanggal Publikasi' => $this->formatDate($Event->publish_date),
+                'Tag Event' => $Event->tag->name ?? '',
             ];
         }
 
@@ -39,16 +43,19 @@ class EventExport implements FromCollection, WithHeadings, WithStyles, ShouldAut
             [''],
             [
                 'No',
-                'Name',
-                'Img',
-                'Desc',
+                'Judul Event',
+                'Isi Event',
+                'Status',
+                'Tanggal Pelaksanaan',
+                'Tanggal Publikasi',
+                'Tag Event',
             ]
         ];
     }
 
     public function styles(Worksheet $sheet)
     {
-        $sheet->mergeCells('A1:D1');
+        $sheet->mergeCells('A1:G1');
 
         $borderStyle = [
             'borders' => [
@@ -59,7 +66,7 @@ class EventExport implements FromCollection, WithHeadings, WithStyles, ShouldAut
             ],
         ];
 
-        $sheet->getStyle('A1:D' . $sheet->getHighestRow())
+        $sheet->getStyle('A1:G' . $sheet->getHighestRow())
             ->applyFromArray($borderStyle);
 
         return [
@@ -88,5 +95,18 @@ class EventExport implements FromCollection, WithHeadings, WithStyles, ShouldAut
                 ],
             ],
         ];
+    }
+
+    private function formatDate($date)
+    {
+        if (!$date) {
+            return '';
+        }
+
+        try {
+            return Carbon::parse($date)->format('d/m/Y');
+        } catch (\Exception $e) {
+            return '';
+        }
     }
 }
