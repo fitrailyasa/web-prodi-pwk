@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('code')->nullable()->unique();
-            $table->string('slug')->nullable();
             $table->integer('credits')->nullable();
             $table->integer('semester')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

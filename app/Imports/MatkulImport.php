@@ -10,18 +10,21 @@ class MatkulImport implements ToModel, WithStartRow
 {
     public function model(array $row)
     {
-        $name = $row[1];
-        $code = $row[2];
-        $credits = $row[3];
-        $semester = $row[4];
-        $user_id = auth()->user()->id;
+        if (!isset($row[1]) || !isset($row[2])) {
+            return null;
+        }
+
+        $name = trim($row[1]);
+        $code = trim($row[2]);
+        $credits = (int) ($row[3] ?? 0);
+        $semester = (int) ($row[4] ?? 0);
+        $user_id = auth()->id();
 
         $checkMatkul = Matkul::where('code', $code)->first();
 
         if ($checkMatkul) {
             $checkMatkul->update([
                 'name' => $name,
-                'code' => $code,
                 'credits' => $credits,
                 'semester' => $semester,
                 'user_id' => $user_id,
@@ -39,9 +42,8 @@ class MatkulImport implements ToModel, WithStartRow
         }
     }
 
-
     public function startRow(): int
     {
-        return 4;
+        return 3;
     }
 }
