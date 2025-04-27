@@ -11,7 +11,7 @@ import { useRoute } from 'ziggy-js'
 import { VisitorProvider } from './Providers/VisitorProvider'
 import { LanguageProvider } from './Providers/LanguageProvider'
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel'
+const appName = import.meta.env.VITE_APP_NAME || 'PWK ITERA'
 
 createInertiaApp({
     title: title => (title ? `${title} - ${appName}` : appName),

@@ -13,6 +13,7 @@ class MbkmController extends Controller
         $mbkmPrograms = Mbkm::all();
 
         return Inertia::render('Akademik/Mbkm', [
+            'title' => __('MBKM'),
             'mbkmPrograms' => $mbkmPrograms
         ]);
     }
