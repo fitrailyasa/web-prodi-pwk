@@ -30,9 +30,12 @@
                             <label class="form-label">{{ __('Mata Kuliah') }}</label>
                             <select class="form-select @error('matkul_id') is-invalid @enderror" name="matkul_id"
                                 id="matkul_id">
-                                <option value="{{ $jadwal->matkul->id }}">{{ $jadwal->matkul->name }}</option>
+                                <option value="">-- Pilih Mata Kuliah --</option>
                                 @foreach ($matkuls as $matkul)
-                                    <option value="{{ $matkul->id }}">{{ $matkul->name }}</option>
+                                    <option value="{{ $matkul->id }}"
+                                        {{ $jadwal->matkul_id == $matkul->id ? 'selected' : '' }}>
+                                        {{ $matkul->name }}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('matkul_id')
@@ -45,9 +48,11 @@
                             <label class="form-label">{{ __('Hari') }}</label>
                             <select class="form-select @error('day') is-invalid @enderror" name="day"
                                 id="day">
-                                <option value="{{ $jadwal->day }}">{{ $jadwal->day }}</option>
+                                <option value="">-- Pilih Hari --</option>
                                 @foreach ($days as $day)
-                                    <option value="{{ $day }}">{{ $day }}</option>
+                                    <option value="{{ $day }}" {{ $jadwal->day == $day ? 'selected' : '' }}>
+                                        {{ $day }}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('day')
@@ -76,9 +81,12 @@
                             <label class="form-label">{{ __('Dosen') }}</label>
                             <select class="form-select @error('lecture') is-invalid @enderror" name="lecture"
                                 id="lecture">
-                                <option value="{{ $jadwal->dosen->id }}">{{ $jadwal->dosen->name }}</option>
+                                <option value="">-- Pilih Dosen --</option>
                                 @foreach ($lectures as $lecture)
-                                    <option value="{{ $lecture->id }}">{{ $lecture->name }}</option>
+                                    <option value="{{ $lecture->id }}"
+                                        {{ old('lecture', $jadwal->lecture) == $lecture->id ? 'selected' : '' }}>
+                                        {{ $lecture->name }}
+                                    </option>
                                 @endforeach
                             </select>
                             @error('lecture')

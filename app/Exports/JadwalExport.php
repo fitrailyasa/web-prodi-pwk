@@ -65,7 +65,7 @@ class JadwalExport implements FromCollection, WithHeadings, WithStyles, ShouldAu
             ],
         ];
 
-        $sheet->getStyle('A1:D' . $sheet->getHighestRow())
+        $sheet->getStyle('A1:G' . $sheet->getHighestRow())
             ->applyFromArray($borderStyle);
 
         return [
