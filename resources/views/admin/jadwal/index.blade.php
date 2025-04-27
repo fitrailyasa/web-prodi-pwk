@@ -48,12 +48,12 @@
             @foreach ($jadwals as $jadwal)
                 <tr @if ($jadwal) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
-                    <td>{{ $jadwal->matkul->name }}</td>
-                    <td>{{ $jadwal->class }}</td>
-                    <td>{{ $jadwal->room }}</td>
-                    <td>{{ $jadwal->dosen->name }}</td>
-                    <td>{{ $jadwal->day }}</td>
-                    <td>{{ $jadwal->start_time }} - {{ $jadwal->end_time }}</td>
+                    <td>{{ $jadwal->matkul->name ?? '-' }}</td>
+                    <td>{{ $jadwal->class ?? '-' }}</td>
+                    <td>{{ $jadwal->room ?? '-' }}</td>
+                    <td>{{ $jadwal->dosen->name ?? '-' }}</td>
+                    <td>{{ $jadwal->day ?? '-' }}</td>
+                    <td>{{ $jadwal->start_time ?? '-' }} - {{ $jadwal->end_time ?? '-' }}</td>
                     <td class="manage-row text-center">
                         @if (auth()->user()->role == 'admin' || auth()->user()->role == 'dosen')
                             <!-- Edit and Delete Buttons -->

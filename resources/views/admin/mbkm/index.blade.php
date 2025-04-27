@@ -36,13 +36,13 @@
             @foreach ($mbkms as $mbkm)
                 <tr @if ($mbkm) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
-                    <td>{{ $mbkm->title }}</td>
-                    <td>{{ $mbkm->description }}</td>
+                    <td>{{ $mbkm->title ?? '-' }}</td>
+                    <td>{{ $mbkm->description ?? '-' }}</td>
                     <td>
                         @if (is_array($mbkm->benefits))
                             <ul class="list-disc list-inside">
                                 @foreach ($mbkm->benefits as $benefit)
-                                    <li>{{ $benefit }}</li>
+                                    <li>{{ $benefit ?? '-' }}</li>
                                 @endforeach
                             </ul>
                         @else

@@ -46,10 +46,10 @@
             @foreach ($matkuls as $matkul)
                 <tr @if ($matkul) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
-                    <td>{{ $matkul->name }}</td>
-                    <td>{{ $matkul->code }}</td>
-                    <td>{{ $matkul->credits }}</td>
-                    <td>{{ $matkul->semester }}</td>
+                    <td>{{ $matkul->name ?? '-' }}</td>
+                    <td>{{ $matkul->code ?? '-' }}</td>
+                    <td>{{ $matkul->credits ?? '-' }}</td>
+                    <td>{{ $matkul->semester ?? '-' }}</td>
                     <td class="manage-row text-center">
                         @if (auth()->user()->role == 'admin' || auth()->user()->role == 'dosen')
                             <!-- Edit and Delete Buttons -->

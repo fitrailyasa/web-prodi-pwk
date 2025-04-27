@@ -31,7 +31,7 @@
                 <tr>
                     <td>{{ $counter++ }}</td>
                     <td>
-                        <strong>{{ $modul->name }}</strong>
+                        <strong>{{ $modul->name ?? '-' }}</strong>
                     </td>
                     <td>
                         {{ $modul->matkul->name ?? '-' }}

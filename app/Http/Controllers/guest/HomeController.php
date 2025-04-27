@@ -35,27 +35,16 @@ class HomeController extends Controller
         });
 
         $aboutPWK = [
-            'tantang' => $tentangData->summary ?? 'Lorem ipsum, dolor sit amet consectetur
+            'tantang' => $tentangData->description ?? 'Lorem ipsum, dolor sit amet consectetur
                                 adipisicing elit. Natus sapiente eaque deleniti
                                 reiciendis sunt explicabo consectetur quae sequi
                                 itaque maiores? Impedit aspernatur eum animi
                                 provident! Perferendis eveniet adipisci sequi
                                 quisquam?',
-            'visi' => $tentangData->vision,
-            'misi' => [
-                [
-                    'title' => 'Misi 1',
-                ],
-                [
-                    'title' => 'Misi 2',
-                ],
-                [
-                    'title' => 'Misi 3',
-                ],
-                [
-                    'title' => 'Misi 4',
-                ],
-            ],
+            'visi' => $tentangData->vision ?? 'Visi belum tersedia',
+            'misi' => array_map(function ($mission) {
+                return ['title' => $mission];
+            }, $tentangData->mission ?? [])
         ];
 
         $events = $evenData->map(function ($item) {
@@ -68,14 +57,12 @@ class HomeController extends Controller
             ];
         });
 
-
-
         return Inertia::render('Home', [
             'popularNews' => $popularNews,
             'statistic' => [
-                'total_tendik' => $tentangData->total_teaching_staff,
-                'total_mahasiswa' => $tentangData->total_student,
-                'total_dosen' => $tentangData->total_lecture,
+                'total_tendik' => $tentangData->total_teaching_staff ?? 0,
+                'total_mahasiswa' => $tentangData->total_student ?? 0,
+                'total_dosen' => $tentangData->total_lecture ?? 0,
             ],
             'aboutPWK' => $aboutPWK,
             'event' => $events,

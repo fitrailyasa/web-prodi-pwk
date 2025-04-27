@@ -35,12 +35,12 @@
             @foreach ($chatbots as $chatbot)
                 <tr @if ($chatbot) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
-                    <td>{{ $chatbot->question_text }}</td>
-                    <td>{{ $chatbot->keywords }}</td>
+                    <td>{{ $chatbot->question_text ?? '-' }}</td>
+                    <td>{{ $chatbot->keywords ?? '-' }}</td>
                     <td>
                         <ul class="list-unstyled mb-0">
                             @foreach ($chatbot->answers as $answer)
-                                <li>{{ $answer->answer_text }}</li>
+                                <li>{{ $answer->answer_text ?? '-' }}</li>
                             @endforeach
                         </ul>
                     </td>
