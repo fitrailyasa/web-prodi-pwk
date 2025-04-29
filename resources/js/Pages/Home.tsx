@@ -8,18 +8,13 @@ import PrevIcon from '@/Components/Icon/PrevIcon'
 import TargetIcon from '@/Components/Icon/TargetInco'
 import EvenContainer from '@/Components/home/EvenContainer'
 import { SliderNews } from '@/Components/home/SliderNews'
-import {
-    beritaConstants,
-    eventsConstants,
-    misiConstants,
-    TestImage
-} from '@/Constants'
+import { TestImage } from '@/Constants'
 import { DateFormater } from '@/Helper/DateFormater'
 import AppLayout from '@/Layouts/AppLayout'
-import { HomeProps, pageProps } from '@/types'
+import { HomeProps } from '@/types'
 import { Button, Image, Link } from '@heroui/react'
 import { useScroll } from 'framer-motion'
-import React, { ReactNode, useEffect, useRef, useState } from 'react'
+import { ReactNode, useEffect, useRef, useState } from 'react'
 
 export default function Home({
     popularNews,
@@ -31,8 +26,6 @@ export default function Home({
     const sliderRef = useRef<{
         sliderFunction: (newDirection: number) => void
     }>(null)
-
-    // console.log(popularNews, statistic, aboutPWK, event)
 
     const newsCurentRef = useRef(null)
     const [isInView, setIsInView] = useState(false)
@@ -109,7 +102,6 @@ export default function Home({
                                         <div className="relative">
                                             <div className=" absolute bottom-0 right-0  bg-main-blue bg-opacity-40 self-end h-8 w-10"></div>
                                             <p className="absolute rounded-3xl w-full bg-white h-full flex flex-1 px-5 items-center text-2xl font-bold z-10">
-                                                {/* {Kategori Berita} */}
                                                 {item.tag}
                                             </p>
                                         </div>
@@ -145,7 +137,6 @@ export default function Home({
                                             >
                                                 <div className="w-[100%] md:w-[90%] rounded-xl md:rounded-3xl overflow-hidden border-3 border-main-green p-2">
                                                     <Image
-                                                        // src={item.image}
                                                         src={TestImage}
                                                         alt={item.title}
                                                         className=" aspect-video object-cover object-bottom rounded-xl md:rounded-3xl"
@@ -161,7 +152,7 @@ export default function Home({
                         </SliderNews>
                     </div>
                 </SectionTrigerScroll>
-                {/* //stratistik section */}
+
                 <SectionTrigerScroll
                     id={'statistik'}
                     macControlCenter
@@ -236,7 +227,7 @@ export default function Home({
                         </div>
                     </div>
                 </SectionTrigerScroll>
-                {/* // abauth section */}
+
                 <SectionTrigerScroll
                     id={'tentang'}
                     macControlCenter
@@ -263,7 +254,7 @@ export default function Home({
                         </div>
                     </div>
                 </SectionTrigerScroll>
-                {/* // visi misi */}
+
                 <SectionTrigerScroll
                     id={'visi'}
                     macControlCenter
@@ -297,7 +288,6 @@ export default function Home({
                     </div>
                 </SectionTrigerScroll>
 
-                {/* even section */}
                 <SectionTrigerScroll
                     id={'even'}
                     macControlCenter
@@ -327,34 +317,6 @@ export default function Home({
                         ))}
                     </div>
                 </SectionTrigerScroll>
-
-                {/* med pat */}
-                {/* <SectionTrigerScroll
-                    id={'medpat'}
-                    macControlCenter
-                    className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
-                >
-                    <h2 className="font-bold text-3xl pb-4 border-b mb-3">
-                        Media Partner
-                    </h2>
-                    <div className="flex flex-wrap gap-3">
-                        {eventsConstants.map((item, index) => (
-                            <EvenContainer
-                                key={index}
-                                title={item.title}
-                                date={item.date}
-                                dateStart={item.dateStart}
-                                dateEnd={item.dateEnd}
-                                description={item.description}
-                            />
-                        ))}
-                    </div>
-                </SectionTrigerScroll> */}
-
-                {/* other section  */}
-                {/* <SectionTrigerScroll className="mt-10 h-screen bg-blue-500">
-                    <h1 className="text-4xl font-bold">ini home</h1>
-                </SectionTrigerScroll> */}
             </div>
         </AppLayout>
     )

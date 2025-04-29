@@ -26,7 +26,7 @@ class HomeController extends Controller
                 'id' => $item->id,
                 'title' => $item->name,
                 'slug' => $item->slug,
-                'tag' => $item->tag->name,
+                'tag' => $item->tag->name ?? '',
                 'image' => $item->img,
                 'see' => $item->views,
                 'date' => $item->publish_date,
@@ -35,7 +35,7 @@ class HomeController extends Controller
         });
 
         $aboutPWK = [
-            'tantang' => $tentangData->description ?? 'Lorem ipsum, dolor sit amet consectetur
+            'deskripsi' => $tentangData->description ?? 'Lorem ipsum, dolor sit amet consectetur
                                 adipisicing elit. Natus sapiente eaque deleniti
                                 reiciendis sunt explicabo consectetur quae sequi
                                 itaque maiores? Impedit aspernatur eum animi

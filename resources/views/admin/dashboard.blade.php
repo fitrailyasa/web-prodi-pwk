@@ -1,8 +1,11 @@
-@extends('layouts.admin.app')
+<x-admin-layout>
 
-@section('title', 'Dashboard')
+    <!-- Title -->
+    <x-slot name="title">
+        {{-- Dashboard --}}
+    </x-slot>
 
-@section('content')
+    <!-- Content -->
     <div class="container-fluid">
         <div class="row">
             <!-- Statistics Boxes -->
@@ -217,4 +220,5 @@
             });
         </script>
     @endpush
-@endsection
+
+</x-admin-layout>
