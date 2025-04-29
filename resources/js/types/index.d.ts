@@ -119,7 +119,7 @@ export type statustic = {
 }
 
 export type aboutPWK = {
-    tantang: string
+    deskripsi: string
     visi: string
     misi: MisiType[]
 }

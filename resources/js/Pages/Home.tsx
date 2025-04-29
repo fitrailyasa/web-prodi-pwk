@@ -250,7 +250,7 @@ export default function Home({
                             <h1 className="text-4xl font-bold">
                                 Perencanaan Wilayah Dan Kota ITERA
                             </h1>
-                            <p className="py-2">{aboutPWK.tantang}</p>
+                            <p className="py-2">{aboutPWK.deskripsi}</p>
                         </div>
                         <div className="col-span-2">
                             <div
