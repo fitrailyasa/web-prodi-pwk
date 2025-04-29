@@ -129,16 +129,22 @@ export function Footer({ tentang }: FooterProps) {
                         </h3>
                         <div className="space-y-2">
                             <Link
-                                href="/kurikulum"
+                                href={route('akademik.kurikulum')}
                                 className="block text-main-blue-light hover:text-main-green transition-colors"
                             >
                                 {translate('Kurikulum')}
                             </Link>
                             <Link
-                                href="/berita"
+                                href={route('berita')}
                                 className="block text-main-blue-light hover:text-main-green transition-colors"
                             >
                                 {translate('Berita')}
+                            </Link>
+                            <Link
+                                href={route('contact')}
+                                className="block text-main-blue-light hover:text-main-green transition-colors"
+                            >
+                                {translate('Kontak')}
                             </Link>
                         </div>
                     </div>
