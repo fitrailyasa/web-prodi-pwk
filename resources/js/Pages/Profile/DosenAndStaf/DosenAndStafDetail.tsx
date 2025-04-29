@@ -45,8 +45,8 @@ const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
                     id="card_dosen_and_staf"
                     className="bg-white p-5 rounded-3xl shadow-xl border-2"
                 >
-                    <div className="flex md:flex-nowrap items-start md:items-end">
-                        <div className="aspect-[3/4] w-52 rounded-xl md:rounded-3xl p-1 border-2 border-main-green">
+                    <div className="flex flex-col md:flex-row items-center md:items-end gap-4">
+                        <div className="aspect-[3/4] w-40 md:w-52 rounded-xl md:rounded-3xl p-1 border-2 border-main-green mb-4 md:mb-0">
                             <BgImageComponent
                                 Possition="bg-bottom"
                                 src={dosen.image}
@@ -95,7 +95,7 @@ const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
                             tabList:
                                 'gap-1 md:gap-6 w-full flex-wrap relative rounded-none p-0 border-b border-divider',
                             cursor: 'w-full bg-main-green',
-                            tab: 'max-w-fit px-2 md:px-10 h-12',
+                            tab: 'w-full md:max-w-fit px-2 md:px-10 h-12 text-center',
                             tabContent:
                                 'group-data-[selected=true]:text-main-blue-light group-data-[selected=false]:text-main-blue/50 text-md md:text-lg font-semibold'
                         }}
