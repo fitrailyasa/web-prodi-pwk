@@ -140,7 +140,7 @@ const Chatbot: React.FC = () => {
                 )}
             </div>
 
-            <div className="p-4 border-t">
+            <div className="p-2 border-t">
                 <div className="flex gap-2">
                     <input
                         type="text"
