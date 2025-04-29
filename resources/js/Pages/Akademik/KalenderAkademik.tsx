@@ -6,7 +6,13 @@ import { evenByBulanType, eventTypes } from '@/types/PropsType'
 import { Button, DateRangePicker, Link } from '@heroui/react'
 import React from 'react'
 
-const KalenderAkademik: React.FC = () => {
+interface KalenderAkademikProps {
+    kalender: {
+        file: string | null
+    } | null
+}
+
+const KalenderAkademik: React.FC<KalenderAkademikProps> = ({ kalender }) => {
     const evenByBulam = eventsConstants.reduce(
         (acc: evenByBulanType[], item: eventTypes) => {
             const bulan = new Date(item.date).toLocaleString('id-ID', {
@@ -81,11 +87,13 @@ const KalenderAkademik: React.FC = () => {
                         Kalender Akademik ITERA 2024-2025
                     </h2>
                     <div className="">
-                        <Link href="#">
-                            <Button className="bg-main-green font-semibold text-white inline-block">
-                                Download
-                            </Button>
-                        </Link>
+                        {kalender?.file && (
+                            <Link href={kalender.file} target="_blank" download>
+                                <Button className="bg-main-green font-semibold text-white inline-block">
+                                    Download
+                                </Button>
+                            </Link>
+                        )}
                     </div>
                 </SectionTrigerScroll>
             </div>

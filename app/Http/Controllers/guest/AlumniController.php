@@ -4,12 +4,11 @@ namespace App\Http\Controllers\guest;
 
 use App\Http\Controllers\Controller;
 use App\Models\Alumni;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class AlumniController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $alumniData = Alumni::paginate(12);
         $returnAlumniData = $alumniData->map(function ($item) {

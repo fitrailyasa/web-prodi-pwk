@@ -67,19 +67,6 @@ export type BgImageProps = {
     children?: React.ReactNode
 }
 
-// export type AlumniItemtypes = {
-//     name: string
-//     tahun_masuk: string
-//     tahun_lulus: string
-//     image: string
-//     email?: string
-//     nomor_telepon?: string
-//     id?: number
-//     tempat_magang?: string
-//     tempat_kerja?: string
-//     judul_penelitian?: string
-// }
-
 export type AlumniItemTypes = {
     id?: number
     name: string

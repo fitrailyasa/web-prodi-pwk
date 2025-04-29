@@ -11,19 +11,16 @@ class DosenController extends Controller
 {
     public function index()
     {
-        // Get coordinator (dosen with position 'koordinator')
         $koordinator = User::where('role', 'dosen')
             ->where('position', 'koordinator')
             ->with(['dosenProfile'])
             ->first();
 
-        // Get all other dosen
         $dosen = User::where('role', 'dosen')
             ->where('position', '!=', 'koordinator')
             ->with(['dosenProfile'])
             ->get();
 
-        // Get staff
         $staff = User::where('role', 'staff')
             ->with(['dosenProfile'])
             ->get();
