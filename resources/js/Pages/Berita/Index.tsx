@@ -1,3 +1,4 @@
+import LargeNewsItem from '@/Components/News/LargeNewsItem'
 import AppLayout from '../../Layouts/AppLayout'
 import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
 import NewsItem from '@/Components/News/NewsItem'
@@ -8,7 +9,11 @@ type BeritaPageProps = {
     berita: Array<{
         id: number
         judul: string
-        isi: string
+        image: string
+        slug: string
+        tag: string
+        description: string
+        date: string
     }>
 }
 
@@ -33,9 +38,9 @@ export default function BeritaPage({ berita }: BeritaPageProps) {
                             </Button>
                         </div>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
                         {berita.map((item, index) => (
-                            <NewsItem
+                            <LargeNewsItem
                                 id={item.id}
                                 key={index}
                                 title={item.judul}
@@ -45,6 +50,16 @@ export default function BeritaPage({ berita }: BeritaPageProps) {
                                 comment={10}
                                 see={10}
                             />
+                            // <NewsItem
+                            //     id={item.id}
+                            //     key={index}
+                            //     title={item.judul}
+                            //     date={new Date()}
+                            //     image={TestImage}
+                            //     like={10}
+                            //     comment={10}
+                            //     see={10}
+                            // />
                         ))}
                     </div>
                 </SectionTrigerScroll>

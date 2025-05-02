@@ -4,6 +4,7 @@ import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
 import { FaBullseye, FaListCheck, FaEye } from 'react-icons/fa6'
 import { useTranslation } from '@/Hooks/useTranslation'
 import { useLanguage } from '@/Providers/LanguageProvider'
+import ControlCenterMac from '@/Components/ControlCenterMac'
 
 interface VisiMisiProps {
     visi: string | null
@@ -29,7 +30,7 @@ const VisiMisi: React.FC<VisiMisiProps> = ({
     const tujuanText = useTranslation('Tujuan')
     const noDataText = useTranslation('Data visi misi belum tersedia')
     const visiContent = visi ? useTranslation(visi) : null
-    
+
     if (!visi || !misi || !tujuan) {
         return (
             <AppLayout title={titleText}>
@@ -54,6 +55,7 @@ const VisiMisi: React.FC<VisiMisiProps> = ({
                     id="visi"
                     className="bg-white p-8 rounded-3xl shadow-xl mb-8 hover:shadow-2xl transition-all duration-300"
                 >
+                    <ControlCenterMac className="pb-3" />
                     <div className="flex items-center gap-4 mb-6">
                         <div className="p-3 bg-main-blue/10 rounded-full">
                             <FaEye className="text-2xl text-main-blue-light" />
@@ -72,6 +74,8 @@ const VisiMisi: React.FC<VisiMisiProps> = ({
                     id="misi"
                     className="bg-white p-8 rounded-3xl shadow-xl mb-8 hover:shadow-2xl transition-all duration-300"
                 >
+                    <ControlCenterMac className="pb-3" />
+
                     <div className="flex items-center gap-4 mb-6">
                         <div className="p-3 bg-main-blue/10 rounded-full">
                             <FaListCheck className="text-2xl text-main-blue-light" />
@@ -104,6 +108,8 @@ const VisiMisi: React.FC<VisiMisiProps> = ({
                     id="tujuan"
                     className="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300"
                 >
+                    <ControlCenterMac className="pb-3" />
+
                     <div className="flex items-center gap-4 mb-6">
                         <div className="p-3 bg-main-blue/10 rounded-full">
                             <FaBullseye className="text-2xl text-main-blue-light" />

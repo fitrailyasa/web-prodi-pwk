@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\guest;
 
 use App\Http\Controllers\Controller;
+use App\Models\Berita;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -10,6 +11,32 @@ class BeritaController extends Controller
 {
     public function index()
     {
+        $beritaData = Berita::with(['tag'])
+            ->where('status', 'publish')
+            ->orderBy('event_date', 'desc')
+            ->get();
+
+
+        if ($beritaData->isEmpty()) {
+            return Inertia::render('Berita/Index', [
+                'berita' => null,
+                'message' => __('Data berita belum tersedia')
+            ]);
+        }
+
+        $berita = $beritaData->map(function ($item) {
+            return [
+                'id' => $item->id,
+                'judul' => $item->name,
+                'slug' => $item->slug,
+                'tag' => $item->tag->name ?? '',
+                'image' => $item->img,
+                'see' => $item->views,
+                'date' => $item->event_date,
+                'description' => $item->desc,
+            ];
+        });
+
         $berita = [
             [
                 'id' => 1,
@@ -77,5 +104,3 @@ class BeritaController extends Controller
         ]);
     }
 }
-
-
