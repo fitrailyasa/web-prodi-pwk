@@ -75,18 +75,19 @@ export type AlumniItemTypes = {
     image: string
 
     // Pendidikan & Akademik
-    judul_penelitian?: string
-    ipk?: number
+    // judul_penelitian?: string
+    // ipk?: number
 
     // Pekerjaan & Karier
     posisi_pekerjaan?: string
     nama_perusahaan?: string
+    review?: string
 
     //contact
-    linkedin?: string
-    instagram?: string
-    email?: string
-    nomor_telepon?: string
+    // linkedin?: string
+    // instagram?: string
+    // email?: string
+    // nomor_telepon?: string
 }
 
 export type navLinkType = {

@@ -18,14 +18,15 @@ class AlumniController extends Controller
                 'tahun_masuk' => $item->class_year,
                 'tahun_lulus' => $item->graduation_year,
                 'image' => $item->img,
-                'email' => 'johndoe@example.com',
-                'nomor_telepon' => '08123456789',
-                'judul_penelitian' => 'Pemanfaatan AI dalam Analisis Data',
+                'review' => 'data',
+                // 'email' => 'johndoe@example.com',
+                // 'nomor_telepon' => '08123456789',
+                // 'judul_penelitian' => 'Pemanfaatan AI dalam Analisis Data',
                 'posisi_pekerjaan' => $item->work,
                 'nama_perusahaan' => $item->company,
-                'bidang_industri' => 'Teknologi',
-                'linkedin' => 'https://linkedin.com/in/johndoe',
-                'instagram' => 'https://instagram.com',
+                // 'bidang_industri' => 'Teknologi',
+                // 'linkedin' => 'https://linkedin.com/in/johndoe',
+                // 'instagram' => 'https://instagram.com',
             ];
         });
 

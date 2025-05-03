@@ -3,7 +3,7 @@ import EmailIcon from '@/Components/Icon/EmialInco'
 import InstagramIcon from '@/Components/Icon/InstagramInco'
 import LinkedInIcon from '@/Components/Icon/LinkedInInco'
 import WhatAppIcon from '@/Components/Icon/WhatAppInco'
-import { AlumniItemTypes } from '@/types'
+import { AlumniItemTypes, StorageProps } from '@/types'
 import { useTranslation } from '@/Hooks/useTranslation'
 
 import {
@@ -16,18 +16,24 @@ import {
     ModalHeader,
     useDisclosure
 } from '@heroui/react'
+import { usePage } from '@inertiajs/react'
+import { TestImage } from '@/Constants'
 
 type AlumniItemProps = {
     data: AlumniItemTypes
 }
 
 const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
+    const { storage } = usePage<{
+        storage: StorageProps
+    }>().props
     const { isOpen, onOpen, onOpenChange } = useDisclosure()
 
     const closeText = useTranslation('Close')
-    const researchTitleText = useTranslation('Judul Penelitian')
     const positionText = useTranslation('Pekerjaan')
     const workplaceText = useTranslation('Tempat kerja')
+
+    const imageLink = data.image ? storage.link + data.image : TestImage
 
     return (
         <>
@@ -41,7 +47,7 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                 <div className="p-3">
                     <div className="flex flex-col items-center">
                         <Image
-                            src={data.image}
+                            src={imageLink}
                             alt={data.name}
                             className="rounded-xl aspect-square w-full object-cover h-32 md:h-48"
                         />
@@ -53,7 +59,7 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                                 {data.tahun_masuk} - {data.tahun_lulus}
                             </p>
                             <p className="text-main-blue-light font-medium mt-1 md:mt-2 text-xs md:text-sm line-clamp-2">
-                                {data.posisi_pekerjaan}
+                                {useTranslation(data.posisi_pekerjaan ?? '')}
                             </p>
                         </div>
                     </div>
@@ -75,7 +81,7 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                             <ModalBody className="px-6 py-4 overflow-hidden">
                                 <div className="flex flex-col md:flex-row gap-6">
                                     <Image
-                                        src={data.image}
+                                        src={imageLink}
                                         alt={data.name}
                                         className="rounded-xl aspect-square w-full md:w-[300px] object-cover"
                                     />
@@ -89,7 +95,7 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                                             {data.tahun_lulus}
                                         </p>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
-                                            <div className="flex items-center gap-2">
+                                            {/* <div className="flex items-center gap-2">
                                                 <EmailIcon
                                                     size={2}
                                                     className="text-main-green"
@@ -124,24 +130,28 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                                                 <span className="text-sm">
                                                     {data.linkedin}
                                                 </span>
-                                            </div>
+                                            </div> */}
                                         </div>
 
                                         <div className="mt-6 space-y-3">
-                                            <div className="grid grid-cols-[120px,1fr] gap-2">
+                                            {/* <div className="grid grid-cols-[120px,1fr] gap-2">
                                                 <span className="font-semibold text-main-blue-light">
                                                     {researchTitleText}
                                                 </span>
                                                 <span>
                                                     : {data.judul_penelitian}
                                                 </span>
-                                            </div>
+                                            </div> */}
                                             <div className="grid grid-cols-[120px,1fr] gap-2">
                                                 <span className="font-semibold text-main-blue-light">
                                                     {positionText}
                                                 </span>
                                                 <span>
-                                                    : {data.posisi_pekerjaan}
+                                                    :{' '}
+                                                    {useTranslation(
+                                                        data.posisi_pekerjaan ??
+                                                            ''
+                                                    )}
                                                 </span>
                                             </div>
                                             <div className="grid grid-cols-[120px,1fr] gap-2">
@@ -149,7 +159,22 @@ const AlumniItem: React.FC<AlumniItemProps> = ({ data }) => {
                                                     {workplaceText}
                                                 </span>
                                                 <span>
-                                                    : {data.nama_perusahaan}
+                                                    :{' '}
+                                                    {useTranslation(
+                                                        data.nama_perusahaan ??
+                                                            ''
+                                                    )}
+                                                </span>
+                                            </div>
+                                            <div className="grid grid-cols-[120px,1fr] gap-2">
+                                                <span className="font-semibold text-main-blue-light">
+                                                    {useTranslation('Tinjauan')}
+                                                </span>
+                                                <span>
+                                                    :{' '}
+                                                    {useTranslation(
+                                                        data.review ?? ''
+                                                    )}
                                                 </span>
                                             </div>
                                         </div>

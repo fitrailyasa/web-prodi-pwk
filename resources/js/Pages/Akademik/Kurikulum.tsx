@@ -58,6 +58,8 @@ interface Jadwal {
 interface PageProps {
     matkuls: Matkul[]
     jadwals: Jadwal[]
+    semesters: string
+    tahun_ajaran: string
 }
 
 export default function Kurikulum() {
@@ -91,6 +93,14 @@ export default function Kurikulum() {
 
     const matkuls: Matkul[] = Array.isArray(props.matkuls) ? props.matkuls : []
     const jadwals: Jadwal[] = Array.isArray(props.jadwals) ? props.jadwals : []
+
+    let semesterArr = [1, 2, 3, 4, 5, 6, 7, 8]
+
+    if (props.semesters === 'ganjil') {
+        semesterArr = [1, 3, 5, 7]
+    } else if (props.semesters === 'genap') {
+        semesterArr = [2, 4, 6, 8]
+    }
 
     useEffect(() => {
         if (matkuls.length > 0 && jadwals.length > 0) {
@@ -245,7 +255,7 @@ export default function Kurikulum() {
                                     base: 'w-full'
                                 }}
                             >
-                                {[1, 2, 3, 4, 5, 6, 7, 8].map(semester => (
+                                {semesterArr.map(semester => (
                                     <Tab
                                         key={semester}
                                         title={`${translations.semester} ${semester}`}

@@ -10,8 +10,15 @@ import AppLayout from '@/Layouts/AppLayout'
 import { Tab, Tabs } from '@heroui/react'
 import React from 'react'
 import { useTranslation } from '@/Hooks/useTranslation'
+import { usePage } from '@inertiajs/react'
+import { StorageProps } from '@/types'
+import { TestImage } from '@/Constants'
 
 const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
+    const { storage } = usePage<{
+        storage: StorageProps
+    }>().props
+    const imageLink = dosen.image ? storage.link + dosen.image : TestImage
     const pageTitle = useTranslation('Detail Dosen & Staf')
     const resumeText = useTranslation('Ringkasan')
     const publicationText = useTranslation('Penelitian Dan Publikasi')
@@ -49,7 +56,7 @@ const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
                         <div className="aspect-[3/4] w-40 md:w-52 rounded-xl md:rounded-3xl p-1 border-2 border-main-green mb-4 md:mb-0">
                             <BgImageComponent
                                 Possition="bg-bottom"
-                                src={dosen.image}
+                                src={imageLink}
                                 alt={`foto-${dosen.name}`}
                                 className="rounded-xl md:rounded-3xl min-w-20 w-full h-full"
                             />

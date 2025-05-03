@@ -1,3 +1,4 @@
+import { useTranslation } from '@/Hooks/useTranslation'
 import {
     Button,
     Modal,
@@ -72,7 +73,7 @@ const ShareBtn = ({
                     {onClose => (
                         <>
                             <ModalHeader className="flex flex-col gap-1">
-                                Modal Title
+                                {useTranslation('Bagikan')}
                             </ModalHeader>
                             <ModalBody>
                                 <div className="flex flex-wrap gap-4 justify-center">

@@ -1,6 +1,9 @@
 import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
 import { Button } from '@heroui/react'
 import { useTranslation } from '@/Hooks/useTranslation'
+import { StorageProps } from '@/types'
+import { usePage } from '@inertiajs/react'
+import { TestImage } from '@/Constants'
 
 type TabResumeProps = {
     data: {
@@ -73,7 +76,7 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                         </tr>
                         <tr>
                             <td className="font-bold pe-10 text-main-blue-light">
-                                NIP
+                                NIP/NRK
                             </td>
                             <td className="text-main-blue-light">:</td>
                             <td className="text-main-blue-light">
@@ -156,7 +159,7 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                 <div className="my-5">
                     {data.expertise ? (
                         <div className="whitespace-pre-line text-main-blue-light">
-                            {data.expertise}
+                            {useTranslation(data.expertise)}
                         </div>
                     ) : (
                         <p className="text-main-blue-light">
@@ -171,7 +174,9 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                 <div className="my-5">
                     {data.dosenProfile?.research_interests ? (
                         <div className="whitespace-pre-line text-main-blue-light">
-                            {data.dosenProfile.research_interests}
+                            {useTranslation(
+                                data.dosenProfile.research_interests
+                            )}
                         </div>
                     ) : (
                         <p className="text-main-blue-light">{noResearchText}</p>
@@ -184,7 +189,7 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                 <div className="my-5">
                     {data.dosenProfile?.achievements ? (
                         <div className="whitespace-pre-line text-main-blue-light">
-                            {data.dosenProfile.achievements}
+                            {useTranslation(data.dosenProfile.achievements)}
                         </div>
                     ) : (
                         <p className="text-main-blue-light">
