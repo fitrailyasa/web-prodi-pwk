@@ -49,10 +49,8 @@ const ShareBtn = ({
             console.error('Gagal menyalin link:', err)
         }
     }
-
     return (
         <>
-            {/* <Button onPress={onOpen}>share</Button> */}
             {children ? (
                 <div
                     onClick={onOpen}
@@ -137,14 +135,10 @@ const ShareBtn = ({
                             </ModalBody>
                             <ModalFooter>
                                 <Button
-                                    color="danger"
-                                    variant="light"
+                                    className="bg-red-500 text-white hover:bg-red-600"
                                     onPress={onClose}
                                 >
                                     Close
-                                </Button>
-                                <Button color="primary" onPress={onClose}>
-                                    Action
                                 </Button>
                             </ModalFooter>
                         </>
