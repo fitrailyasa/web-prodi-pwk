@@ -39,98 +39,22 @@ export default function BeritaPage({ berita }: BeritaPageProps) {
                         </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
-                        {berita.map((item, index) => (
-                            <LargeNewsItem
-                                id={item.id}
-                                key={index}
-                                title={item.judul}
-                                date={new Date()}
-                                image={TestImage}
-                                like={10}
-                                comment={10}
-                                see={10}
-                            />
-                            // <NewsItem
-                            //     id={item.id}
-                            //     key={index}
-                            //     title={item.judul}
-                            //     date={new Date()}
-                            //     image={TestImage}
-                            //     like={10}
-                            //     comment={10}
-                            //     see={10}
-                            // />
-                        ))}
-                    </div>
-                </SectionTrigerScroll>
-
-                <SectionTrigerScroll id="list-berita" className="mt-10 p-5 ">
-                    <h2 className="font-bold text-3xl pb-4 border-b">
-                        Akademik
-                    </h2>
-                    <div className=" mb-3 py-2 flex justify-end">
-                        <div className="flex justify-end items-center gap-5 w-1/2">
-                            <DateRangePicker
-                                key={'outside-left'}
-                                className="w-1/2"
-                                visibleMonths={2}
-                                labelPlacement={'outside-left'}
-                            />
-                            <Button className="bg-main-green font-semibold text-white inline-block">
-                                filter
-                            </Button>
-                        </div>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                        {berita.map((item, index) => (
-                            <NewsItem
-                                id={item.id}
-                                key={index}
-                                title={item.judul}
-                                date={new Date()}
-                                image={TestImage}
-                                like={10}
-                                comment={10}
-                                see={10}
-                            />
-                        ))}
-                    </div>
-                </SectionTrigerScroll>
-
-                <SectionTrigerScroll
-                    id="list-berita"
-                    // macControlCenter
-                    className="mt-10 p-5 "
-                >
-                    <h2 className="font-bold text-3xl pb-4 border-b">
-                        Prestasi
-                    </h2>
-                    <div className=" mb-3 py-2 flex justify-end">
-                        <div className="flex justify-end items-center gap-5 w-1/2">
-                            <DateRangePicker
-                                key={'outside-left'}
-                                className="w-1/2"
-                                visibleMonths={2}
-                                labelPlacement={'outside-left'}
-                            />
-                            <Button className="bg-main-green font-semibold text-white inline-block">
-                                filter
-                            </Button>
-                        </div>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                        {berita.map((item, index) => (
-                            <NewsItem
-                                id={item.id}
-                                key={index}
-                                title={item.judul}
-                                date={new Date()}
-                                image={TestImage}
-                                like={10}
-                                comment={10}
-                                see={10}
-                            />
-                        ))}
+                        {berita && berita.length > 0 ? (
+                            berita.map(item => (
+                                <LargeNewsItem
+                                    key={item.id}
+                                    id={item.id}
+                                    title={item.judul}
+                                    date={new Date(item.date)} // ganti sesuai struktur data
+                                    image={TestImage}
+                                    like={10}
+                                    comment={10}
+                                    see={10}
+                                />
+                            ))
+                        ) : (
+                            <p>Tidak ada berita tersedia</p>
+                        )}
                     </div>
                 </SectionTrigerScroll>
             </div>
