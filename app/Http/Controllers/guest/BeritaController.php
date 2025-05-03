@@ -4,7 +4,9 @@ namespace App\Http\Controllers\guest;
 
 use App\Http\Controllers\Controller;
 use App\Models\Berita;
+use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class BeritaController extends Controller
@@ -14,93 +16,53 @@ class BeritaController extends Controller
         $beritaData = Berita::with(['tag'])
             ->where('status', 'publish')
             ->orderBy('event_date', 'desc')
+            ->limit(10)
             ->get();
 
+        $tagsData = Tag::with('berita')->get();
+        $berita = [];
+        $tags = [];
 
-        if ($beritaData->isEmpty()) {
-            return Inertia::render('Berita/Index', [
-                'berita' => null,
-                'message' => __('Data berita belum tersedia')
-            ]);
+        if (!$beritaData->isEmpty()) {
+            $berita = $beritaData->map(function ($item) {
+                return [
+                    'id' => $item->id,
+                    'judul' => $item->name,
+                    'slug' => $item->slug,
+                    'tag' => $item->tag->name ?? '',
+                    'image' => $item->img,
+                    'see' => $item->views,
+                    'date' => $item->event_date,
+                    'description' => $item->desc,
+                ];
+            });
+            // return Inertia::render('Berita/Index', [
+            //     'berita' => [],
+            // 'tags' =>
+            //     'message' => __('Data berita belum tersedia')
+            // ]);
         }
 
-        $berita = $beritaData->map(function ($item) {
-            return [
-                'id' => $item->id,
-                'judul' => $item->name,
-                'slug' => $item->slug,
-                'tag' => $item->tag->name ?? '',
-                'image' => $item->img,
-                'see' => $item->views,
-                'date' => $item->event_date,
-                'description' => $item->desc,
-            ];
-        });
+        if (!$tagsData->isEmpty()) {
+            $tags = $tagsData;
+        }
 
-        // $berita = [
-        //     [
-        //         'id' => 1,
-        //         'judul' => 'Berita 1',
-        //         'isi' => 'Isi Berita 1'
-        //     ],
-        //     [
-        //         'id' => 2,
-        //         'judul' => 'Berita 2',
-        //         'isi' => 'Isi Berita 2'
-        //     ],
-        //     [
-        //         'id' => 3,
-        //         'judul' => 'Berita 3',
-        //         'isi' => 'Isi Berita 3'
-        //     ],
-        //     [
-        //         'id' => 4,
-        //         'judul' => 'Berita 4',
-        //         'isi' => 'Isi Berita 4'
-        //     ],
-        //     [
-        //         'id' => 5,
-        //         'judul' => 'Berita 5',
-        //         'isi' => 'Isi Berita 5'
-        //     ],
-        // ];
+
+
+
         return Inertia::render('Berita/Index', [
-            'berita' => $berita
+            'berita' => $berita,
+            'tags' => $tags
         ]);
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $berita = [
-            [
-                'id' => 1,
-                'judul' => 'Berita 1',
-                'isi' => 'Isi Berita 1'
-            ],
-            [
-                'id' => 2,
-                'judul' => 'Berita 2',
-                'isi' => 'Isi Berita 2'
-            ],
-            [
-                'id' => 3,
-                'judul' => 'Berita 3',
-                'isi' => 'Isi Berita 3'
-            ],
-            [
-                'id' => 4,
-                'judul' => 'Berita 4',
-                'isi' => 'Isi Berita 4'
-            ],
-            [
-                'id' => 5,
-                'judul' => 'Berita 5',
-                'isi' => 'Isi Berita 5'
-            ],
-        ];
-        $data = collect($berita)->where('id', $id)->first();
+
+
+        $beritaData = Berita::with('tag')->where('slug', $slug)->get();
         return Inertia::render('Berita/Show', [
-            'berita' => $data
+            'berita' => $beritaData
         ]);
     }
 }

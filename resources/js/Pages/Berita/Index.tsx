@@ -4,6 +4,7 @@ import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
 import NewsItem from '@/Components/News/NewsItem'
 import { TestImage } from '@/Constants'
 import { Button, DateRangePicker } from '@heroui/react'
+import { useTranslation } from '@/Hooks/useTranslation'
 
 type BeritaPageProps = {
     berita: Array<{
@@ -14,16 +15,19 @@ type BeritaPageProps = {
         tag: string
         description: string
         date: string
+        see: number
     }>
+    tags: Array<any>
 }
 
-export default function BeritaPage({ berita }: BeritaPageProps) {
+export default function BeritaPage({ berita, tags }: BeritaPageProps) {
+    console.log(tags)
     return (
         <AppLayout title={'Berita'}>
             <div className="container mx-auto px-4 py-3 relative">
                 <SectionTrigerScroll id="list-berita" className="mt-10 p-5 ">
                     <h2 className="font-bold text-3xl pb-4 border-b">
-                        Berita Terbaru
+                        {useTranslation('Berita Terbaru')}
                     </h2>
                     <div className=" mb-3 py-2 flex justify-end">
                         <div className="flex justify-end items-center gap-5 w-1/2">
@@ -40,18 +44,21 @@ export default function BeritaPage({ berita }: BeritaPageProps) {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
                         {berita && berita.length > 0 ? (
-                            berita.map(item => (
-                                <LargeNewsItem
-                                    key={item.id}
-                                    id={item.id}
-                                    title={item.judul}
-                                    date={new Date(item.date)} // ganti sesuai struktur data
-                                    image={TestImage}
-                                    like={10}
-                                    comment={10}
-                                    see={10}
-                                />
-                            ))
+                            berita.map(item => {
+                                console.log(item)
+                                return (
+                                    <LargeNewsItem
+                                        key={item.id}
+                                        id={item.id}
+                                        slug={item.slug}
+                                        title={item.judul}
+                                        date={new Date(item.date)} // ganti sesuai struktur data
+                                        image={item.image}
+                                        tag={item.tag}
+                                        see={item.see}
+                                    />
+                                )
+                            })
                         ) : (
                             <p>Tidak ada berita tersedia</p>
                         )}

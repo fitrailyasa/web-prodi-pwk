@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Models\Link;
 use App\Models\Tentang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Middleware;
 
@@ -65,7 +66,10 @@ class HandleInertiaRequests extends Middleware
                 'instagram_url' => 'https://instagram.com/pwkitera',
                 'youtube_url' => 'https://youtube.com/@pwkitera',
                 'tiktok_url' => 'https://tiktok.com/@pwkitera'
-            ]
+            ],
+            'storage' => [
+                'link' => Storage::url(''),
+            ],
         ]);
     }
 }

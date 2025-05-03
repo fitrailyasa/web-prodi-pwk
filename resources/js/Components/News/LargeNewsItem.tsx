@@ -3,29 +3,42 @@ import { Image } from '@heroui/react'
 import EyeIcon from '../Icon/EyeInco'
 import LoveIcon from '../Icon/LoveInco'
 import ChatIcon from '../Icon/ChatInco'
-import { NewsItemProps } from '@/types'
+import { NewsItemProps, StorageProps } from '@/types'
 import ShareIcon from '../Icon/ShareInco'
-import { router } from '@inertiajs/react'
+import { router, usePage } from '@inertiajs/react'
+import { TestImage } from '@/Constants'
+import { useTranslation } from '@/Hooks/useTranslation'
 
 const LargeNewsItem = (props: NewsItemProps) => {
-    const handleClick = (id: number) => {
+    const { storage } = usePage<{
+        storage: StorageProps
+    }>().props
+    const handleClick = (slug: string) => {
         //navigate to news detail
-        router.get(route('berita.show', { id }))
+        router.get(route('berita.show', { slug }))
     }
+
+    console.log(props.tag)
+    const imageLink = props.image ? storage.link + props.image : TestImage
     return (
         <div
-            onClick={() => handleClick(props.id)}
+            onClick={() => handleClick(props.slug)}
             className="bg-white p-5 rounded-3xl shadow-xl"
         >
+            <p className="rounded-lg bg-main-blue px-2 text-white mb-3  inline-block">
+                {useTranslation(props.tag ?? '')}
+            </p>
             <div className="flex justify-start gap-5">
                 <Image
-                    src={props.image}
+                    src={imageLink}
                     alt={props.title}
                     className="rounded-2xl aspect-video w-[200px] min-w-[200px] max-w-[400px]"
                 />
                 <div className=" flex flex-col">
-                    <h3 className="font-bold text-xl">{props.title}</h3>
-                    <p>{DateFormater({ date: props.date })}</p>
+                    <h3 className="font-bold text-xl">
+                        {useTranslation(props.title)}
+                    </h3>
+                    <p>{useTranslation(DateFormater({ date: props.date }))}</p>
                 </div>
             </div>
             <div className="flex justify-end items-center gap-5">

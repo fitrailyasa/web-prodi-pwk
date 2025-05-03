@@ -10,9 +10,11 @@ import EvenContainer from '@/Components/home/EvenContainer'
 import { SliderNews } from '@/Components/home/SliderNews'
 import { TestImage } from '@/Constants'
 import { DateFormater } from '@/Helper/DateFormater'
+import { useTranslation } from '@/Hooks/useTranslation'
 import AppLayout from '@/Layouts/AppLayout'
-import { HomeProps } from '@/types'
+import { HomeProps, StorageProps } from '@/types'
 import { Button, Image, Link } from '@heroui/react'
+import { router, usePage } from '@inertiajs/react'
 import { useScroll } from 'framer-motion'
 import { ReactNode, useEffect, useRef, useState } from 'react'
 
@@ -26,6 +28,9 @@ export default function Home({
     const sliderRef = useRef<{
         sliderFunction: (newDirection: number) => void
     }>(null)
+    const { storage } = usePage<{
+        storage: StorageProps
+    }>().props
 
     const newsCurentRef = useRef(null)
     const [isInView, setIsInView] = useState(false)
@@ -48,6 +53,10 @@ export default function Home({
     useEffect(() => {
         handleSlideBTN(1)
     }, [isInView])
+    const handleClick = (slug: string) => {
+        //navigate to news detail
+        router.get(route('berita.show', { slug }))
+    }
 
     return (
         <AppLayout title="home">
@@ -60,7 +69,7 @@ export default function Home({
                         >
                             <div className="flex gap-2 items-center flex-wrap">
                                 <h1 className="text-2xl font-bold pe-10">
-                                    Berita Terpopuler
+                                    {useTranslation('Berita Terpopuler')}
                                 </h1>
                             </div>
                             <div className="flex gap-2">
@@ -93,62 +102,82 @@ export default function Home({
                             getPageIndicator={setPageIndicator}
                             className="h-56 md:h-96 "
                         >
-                            {popularNews.map((item, index) => (
-                                <div
-                                    key={index}
-                                    className="w-full h-56 md:h-96 bg-cover bg-center rounded-3xl overflow-hidden border shadow-xl bg-white"
-                                >
-                                    <div className="grid grid-cols-2 rounded-3xl bg-sk">
-                                        <div className="relative">
-                                            <div className=" absolute bottom-0 right-0  bg-main-blue bg-opacity-40 self-end h-8 w-10"></div>
-                                            <p className="absolute rounded-3xl w-full bg-white h-full flex flex-1 px-5 items-center text-2xl font-bold z-10">
-                                                {item.tag}
-                                            </p>
-                                        </div>
-                                        <div className="bg-white  rounded-t-3xl overflow-hidden">
-                                            <div className="bg-main-blue bg-opacity-40 py-4 px-4 flex">
-                                                <Button className="bg-main-green font-semibold text-white inline-block rounded-lg">
-                                                    Baca Selengkapnya
-                                                </Button>
+                            {popularNews.map((item, index) => {
+                                const imageLink = item.image
+                                    ? storage.link + item.image
+                                    : TestImage
+                                return (
+                                    <div
+                                        key={index}
+                                        className="w-full h-56 md:h-96 bg-cover bg-center rounded-3xl overflow-hidden border shadow-xl bg-white"
+                                    >
+                                        <div className="grid grid-cols-2 rounded-3xl bg-sk">
+                                            <div className="relative">
+                                                <div className=" absolute bottom-0 right-0  bg-main-blue bg-opacity-40 self-end h-8 w-10"></div>
+                                                <p className="absolute rounded-3xl w-full bg-white h-full flex flex-1 px-5 items-center text-2xl font-bold z-10">
+                                                    {useTranslation(
+                                                        item.tag ?? ''
+                                                    )}
+                                                </p>
+                                            </div>
+                                            <div className="bg-white  rounded-t-3xl overflow-hidden">
+                                                <div className="bg-main-blue bg-opacity-40 py-4 px-4 flex">
+                                                    <Button
+                                                        onPress={() =>
+                                                            handleClick(
+                                                                item.slug
+                                                            )
+                                                        }
+                                                        className="bg-main-green font-semibold text-white inline-block rounded-lg"
+                                                    >
+                                                        {useTranslation(
+                                                            'Baca Selengkapnya'
+                                                        )}
+                                                    </Button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="bg-main-blue bg-opacity-40 col-span-2 rounded-l-3xl rounded-b-3xl p-4">
-                                        <div className="grid grid-cols-5 justify-between ">
-                                            <div className="col-span-3 overflow-hidden h-full">
-                                                <ControlCenterMac className="pb-3" />
-                                                <p className="text-white  text-md md:text-4xl pb-1 md:pb-10 font-semibold md:font-bold me-2 md:me-10 overflow-hidden line-clamp-3">
-                                                    {item.title}
-                                                </p>
-                                                <div className="">
-                                                    <p className="text-black text-xs md:text-sm ">
-                                                        {DateFormater({
-                                                            date: item.date
-                                                        })}
+                                        <div className="bg-main-blue bg-opacity-40 col-span-2 rounded-l-3xl rounded-b-3xl p-4">
+                                            <div className="grid grid-cols-5 justify-between ">
+                                                <div className="col-span-3 overflow-hidden h-full">
+                                                    <ControlCenterMac className="pb-3" />
+                                                    <p className="text-white  text-md md:text-4xl pb-1 md:pb-10 font-semibold md:font-bold me-2 md:me-10 overflow-hidden line-clamp-3">
+                                                        {useTranslation(
+                                                            item.title
+                                                        )}
                                                     </p>
-                                                    <div className="flex gap-2 py-2">
-                                                        {pageIndicator}
+                                                    <div className="">
+                                                        <p className="text-black text-xs md:text-sm ">
+                                                            {useTranslation(
+                                                                DateFormater({
+                                                                    date: item.date
+                                                                })
+                                                            )}
+                                                        </p>
+                                                        <div className="flex gap-2 py-2">
+                                                            {pageIndicator}
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <BouncingAnimation
+                                                    key={index}
+                                                    className="col-span-2 relative -end-2 -top-2 md:-top-5 lg:-top-6 aspect-square"
+                                                >
+                                                    <div className="w-[100%] md:w-[90%] rounded-xl md:rounded-3xl overflow-hidden border-3 border-main-green p-2">
+                                                        <Image
+                                                            src={imageLink}
+                                                            alt={item.title}
+                                                            className=" aspect-video object-cover object-bottom rounded-xl md:rounded-3xl"
+                                                        />
+                                                    </div>
+                                                    <div className="absolute -left-8 top-0 md:-left-12 md:top-10 lg:-left-20 w-20 h-20 lg:w-40 lg:h-40 bg-main-blue shadow-lg shadow-black/25 backdrop-blur-md rounded-full opacity-65 z-0"></div>
+                                                    <div className="absolute bottom-0 left-2 md:left-10 w-10 h-10 lg:w-28 lg:h-28 bg-yellow-400 shadow-lg shadow-black/25 backdrop-blur-md opacity-80  rounded-tl-[70%] rounded-tr-full rounded-br-[30%] z-10"></div>
+                                                </BouncingAnimation>
                                             </div>
-                                            <BouncingAnimation
-                                                key={index}
-                                                className="col-span-2 relative -end-2 -top-2 md:-top-5 lg:-top-6 aspect-square"
-                                            >
-                                                <div className="w-[100%] md:w-[90%] rounded-xl md:rounded-3xl overflow-hidden border-3 border-main-green p-2">
-                                                    <Image
-                                                        src={TestImage}
-                                                        alt={item.title}
-                                                        className=" aspect-video object-cover object-bottom rounded-xl md:rounded-3xl"
-                                                    />
-                                                </div>
-                                                <div className="absolute -left-8 top-0 md:-left-12 md:top-10 lg:-left-20 w-20 h-20 lg:w-40 lg:h-40 bg-main-blue shadow-lg shadow-black/25 backdrop-blur-md rounded-full opacity-65 z-0"></div>
-                                                <div className="absolute bottom-0 left-2 md:left-10 w-10 h-10 lg:w-28 lg:h-28 bg-yellow-400 shadow-lg shadow-black/25 backdrop-blur-md opacity-80  rounded-tl-[70%] rounded-tr-full rounded-br-[30%] z-10"></div>
-                                            </BouncingAnimation>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
+                                )
+                            })}
                         </SliderNews>
                     </div>
                 </SectionTrigerScroll>

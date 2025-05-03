@@ -34,7 +34,7 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
 
 // Berita routes
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita');
-Route::get('/berita/{id}', [BeritaController::class, 'show'])->name('berita.show');
+Route::get('/berita/{slug}', [BeritaController::class, 'show'])->name('berita.show');
 
 // Contact routes
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
