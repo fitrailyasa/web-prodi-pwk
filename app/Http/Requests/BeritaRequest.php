@@ -29,7 +29,7 @@ class BeritaRequest extends FormRequest
 
         return [
             'name' => 'required|max:100',
-            'desc' => 'required|max:1000',
+            'desc' => 'required|max:10000',
             'status' => 'required',
             'event_date' => 'required|date',
             'publish_date' => 'required|date',

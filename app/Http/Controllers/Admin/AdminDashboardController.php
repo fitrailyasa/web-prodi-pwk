@@ -36,7 +36,7 @@ class AdminDashboardController extends Controller
             ->take(5)
             ->get();
 
-        $recentJadwal = Jadwal::select('id', 'name as judul', 'created_at')
+        $recentJadwal = Jadwal::select('id', 'created_at')
             ->latest()
             ->take(5)
             ->get();

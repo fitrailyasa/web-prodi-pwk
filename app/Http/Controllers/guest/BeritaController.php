@@ -36,23 +36,33 @@ class BeritaController extends Controller
                     'description' => $item->desc,
                 ];
             });
-            // return Inertia::render('Berita/Index', [
-            //     'berita' => [],
-            // 'tags' =>
-            //     'message' => __('Data berita belum tersedia')
-            // ]);
         }
 
         if (!$tagsData->isEmpty()) {
             $tags = $tagsData;
         }
 
-
-
-
         return Inertia::render('Berita/Index', [
             'berita' => $berita,
-            'tags' => $tags
+            'tags' => $tags->map(function ($item) {
+                return [
+                    'id' => $item->id,
+                    'name' => $item->name,
+                    'slug' => $item->slug,
+                    'berita' => $item->berita->map(function ($berita) {
+                        return [
+                            'id' => $berita->id,
+                            'judul' => $berita->name,
+                            'slug' => $berita->slug,
+                            'tag' => $berita->tag->name ?? '',
+                            'image' => $berita->img,
+                            'see' => $berita->views,
+                            'date' => $berita->event_date,
+                            'description' => $berita->desc,
+                        ];
+                    }),
+                ];
+            })
         ]);
     }
 
@@ -60,9 +70,27 @@ class BeritaController extends Controller
     {
 
 
-        $beritaData = Berita::with('tag')->where('slug', $slug)->get();
+        $beritaData = Berita::with('tag')->where('slug', $slug)->first();
+
+        $otherNewsData = Berita::where('slug', '!=', $slug)
+            ->where('status', 'publish')
+            ->inRandomOrder()
+            ->limit(5)
+            ->get();
         return Inertia::render('Berita/Show', [
-            'berita' => $beritaData
+            'berita' => $beritaData,
+            'otherNews' => $otherNewsData->map(function ($item) {
+                return [
+                    'id' => $item->id,
+                    'judul' => $item->name,
+                    'slug' => $item->slug,
+                    'tag' => $item->tag->name ?? '',
+                    'image' => $item->img,
+                    'see' => $item->views,
+                    'date' => $item->event_date,
+                    'description' => $item->desc,
+                ];
+            })
         ]);
     }
 }
