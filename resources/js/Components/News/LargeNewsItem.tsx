@@ -21,8 +21,11 @@ const LargeNewsItem = (props: NewsItemProps) => {
     const imageLink = props.image ? storage.link + props.image : TestImage
     return (
         <>
-            <div className="bg-white p-5 rounded-3xl shadow-xl">
-                <div onClick={() => handleClick(props.slug)} className="">
+            <div className="bg-white p-3 md:p-5 rounded-xl md:rounded-3xl shadow-xl">
+                <div
+                    onClick={() => handleClick(props.slug)}
+                    className="cursor-pointer"
+                >
                     <p className="rounded-lg bg-main-blue px-2 text-white mb-3  inline-block">
                         {useTranslation(props.tag ?? '')}
                     </p>
@@ -30,13 +33,13 @@ const LargeNewsItem = (props: NewsItemProps) => {
                         <Image
                             src={imageLink}
                             alt={props.title}
-                            className="rounded-2xl aspect-video w-[200px] min-w-[200px] max-w-[400px]"
+                            className="rounded-2xl aspect-square md:aspect-video w-[100px] md:w-[200px] md:min-w-[200px] max-w-[400px]"
                         />
                         <div className=" flex flex-col">
-                            <h3 className="font-bold text-xl">
+                            <h3 className="font-bold text-base md:text-xl">
                                 {useTranslation(props.title)}
                             </h3>
-                            <p>
+                            <p className="text-sm md:text-base font-semibold text-gray-500">
                                 {useTranslation(
                                     DateFormater({ date: props.date })
                                 )}
@@ -44,7 +47,7 @@ const LargeNewsItem = (props: NewsItemProps) => {
                         </div>
                     </div>
                 </div>
-                <div className="flex justify-end items-center gap-5">
+                <div className="flex justify-end items-center gap-2 md:gap-5">
                     <div className="flex items-center gap-1">
                         <EyeIcon size={2} className="text-main-green text-xs" />
                         <span className="font-semibold">{props.see}</span>

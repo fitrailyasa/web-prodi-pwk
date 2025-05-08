@@ -6,6 +6,7 @@ const BgImageComponent = ({
     alt,
     className,
     Possition = 'bg-center',
+    isStorage = true,
     children
 }: BgImageProps) => {
     const { storage } = usePage<{
@@ -15,7 +16,7 @@ const BgImageComponent = ({
         <div
             className={`bg-cover ${Possition} bg-no-repeat ${className}`}
             style={{
-                backgroundImage: `url(${storage.link + src})`
+                backgroundImage: `url(${isStorage ? storage.link + src : src})`
             }}
         >
             {children}

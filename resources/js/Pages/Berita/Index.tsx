@@ -37,7 +37,8 @@ export default function BeritaPage({ berita, tags }: BeritaPageProps) {
     return (
         <AppLayout title={'Berita'}>
             <div className="container mx-auto px-4 py-3 relative">
-                <SectionTrigerScroll id="list-berita" className="mt-10 p-5 ">
+                {/* <SectionTrigerScroll id="list-berita" className="mt-10 p-5 "> */}
+                <div id="list-berita" className="mt-2 md:mt-10 p-3 md:p-5 ">
                     <h2 className="font-bold text-3xl pb-4 border-b">
                         {useTranslation('Berita Terbaru')}
                     </h2>
@@ -54,7 +55,7 @@ export default function BeritaPage({ berita, tags }: BeritaPageProps) {
                             </Button>
                         </div>
                     </div> */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2 md:gap-5">
                         {berita && berita.length > 0 ? (
                             berita.map(item => {
                                 console.log(item)
@@ -75,7 +76,7 @@ export default function BeritaPage({ berita, tags }: BeritaPageProps) {
                             <p>Tidak ada berita tersedia</p>
                         )}
                     </div>
-                </SectionTrigerScroll>
+                </div>
 
                 {tags.length > 0 ? (
                     <div className="mt-10 p-5">

@@ -63,6 +63,7 @@ export type BgImageProps = {
         | 'bg-right-top'
         | 'bg-top'
     className?: string
+    isStorage?: boolean
     alt: string
     children?: React.ReactNode
 }

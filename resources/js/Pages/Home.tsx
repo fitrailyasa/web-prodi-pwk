@@ -6,9 +6,10 @@ import MultyPersonIcon from '@/Components/Icon/MultyPersonIcon'
 import NextIcon from '@/Components/Icon/NextIcon'
 import PrevIcon from '@/Components/Icon/PrevIcon'
 import TargetIcon from '@/Components/Icon/TargetInco'
+import BgImageComponent from '@/Components/Utils/BgImage'
 import EvenContainer from '@/Components/home/EvenContainer'
 import { SliderNews } from '@/Components/home/SliderNews'
-import { TestImage } from '@/Constants'
+import { logoBox, TestImage } from '@/Constants'
 import { DateFormater } from '@/Helper/DateFormater'
 import { useTranslation } from '@/Hooks/useTranslation'
 import AppLayout from '@/Layouts/AppLayout'
@@ -68,29 +69,29 @@ export default function Home({
                             className="flex justify-between pb-2"
                         >
                             <div className="flex gap-2 items-center flex-wrap">
-                                <h1 className="text-2xl font-bold pe-10">
+                                <h1 className="text-sm md:text-2xl font-bold pe-10 text-main-blue-light">
                                     {useTranslation('Berita Terpopuler')}
                                 </h1>
                             </div>
                             <div className="flex gap-2">
                                 <Button
                                     size="sm"
-                                    onClick={() => handleSlideBTN(-1)}
+                                    onPress={() => handleSlideBTN(-1)}
                                     className="bg-gray-200 rounded-full shadow-md hover:bg-gray-200 focus:outline-none"
                                 >
                                     <PrevIcon
                                         className="justify-center flex"
-                                        size={18}
+                                        size={2}
                                     />
                                 </Button>
                                 <Button
                                     size="sm"
-                                    onClick={() => handleSlideBTN(-1)}
+                                    onPress={() => handleSlideBTN(1)}
                                     className="bg-gray-200 rounded-full shadow-md hover:bg-gray-200 focus:outline-none"
                                 >
                                     <NextIcon
                                         className="justify-center flex"
-                                        size={18}
+                                        size={2}
                                     />
                                 </Button>
                             </div>
@@ -114,21 +115,22 @@ export default function Home({
                                         <div className="grid grid-cols-2 rounded-3xl bg-sk">
                                             <div className="relative">
                                                 <div className=" absolute bottom-0 right-0  bg-main-blue bg-opacity-40 self-end h-8 w-10"></div>
-                                                <p className="absolute rounded-3xl w-full bg-white h-full flex flex-1 px-5 items-center text-2xl font-bold z-10">
+                                                <p className="absolute rounded-3xl w-full bg-white h-full flex flex-1 px-5 items-center text-sm md:text-2xl font-bold z-10 text-main-blue-light">
                                                     {useTranslation(
                                                         item.tag ?? ''
                                                     )}
                                                 </p>
                                             </div>
                                             <div className="bg-white  rounded-t-3xl overflow-hidden">
-                                                <div className="bg-main-blue bg-opacity-40 py-4 px-4 flex">
+                                                <div className="bg-main-blue bg-opacity-40 p-2 md:py-4 md:px-4 flex">
                                                     <Button
                                                         onPress={() =>
                                                             handleClick(
                                                                 item.slug
                                                             )
                                                         }
-                                                        className="bg-main-green font-semibold text-white inline-block rounded-lg"
+                                                        // size="md" // Lebih responsif dan readable
+                                                        className="bg-main-green text-sm md:text-base px-4 py-1 md:px-6 md:py-3 text-white font-semibold rounded-lg w-full sm:w-auto"
                                                     >
                                                         {useTranslation(
                                                             'Baca Selengkapnya'
@@ -163,7 +165,7 @@ export default function Home({
                                                     key={index}
                                                     className="col-span-2 relative -end-2 -top-2 md:-top-5 lg:-top-6 aspect-square"
                                                 >
-                                                    <div className="w-[100%] md:w-[90%] rounded-xl md:rounded-3xl overflow-hidden border-3 border-main-green p-2">
+                                                    <div className="w-[100%] md:w-[90%] rounded-xl md:rounded-3xl overflow-hidden border-2 md:border-3 border-main-green p-0.5 md:p-2">
                                                         <Image
                                                             src={imageLink}
                                                             alt={item.title}
@@ -185,71 +187,71 @@ export default function Home({
                 <SectionTrigerScroll
                     id={'statistik'}
                     macControlCenter
-                    className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
+                    className="mt-5 md:mt-10 bg-white p-2 md:p-5 rounded-3xl shadow-xl"
                 >
                     <div className=" grid grid-cols-1 md:grid-cols-2 gap-10 justify-between">
                         <div className=" grid grid-cols-2 gap-5">
                             <div className="flex gap-4 bg-secondary-blue bg-opacity-30 p-4 rounded-3xl">
                                 <MultyPersonIcon
-                                    size={74}
-                                    className="stroke-main-green fill-main-green"
+                                    size={2}
+                                    className="text-md md:text-4xl stroke-main-green fill-main-green"
                                 />
                                 <div className="flex flex-col gap-1">
                                     <CountAnimation
                                         from={0}
                                         to={statistic.total_mahasiswa}
                                         duration={2}
-                                        className="font-bold text-4xl text-main-green"
+                                        className="font-bold text-md md:text-4xl text-main-green"
                                     />
-                                    <p className="font-semibold text-lg">
-                                        Mahasiswa
+                                    <p className="font-semibold text-sm md:text-lg text-main-blue-light">
+                                        {useTranslation('Mahasiswa')}
                                     </p>
                                 </div>
                             </div>
-                            <div className="flex gap-4 bg-secondary-blue bg-opacity-30 p-4 rounded-3xl">
+                            <div className="flex gap-1 md:gap-4 bg-secondary-blue bg-opacity-30 p-4 rounded-3xl">
                                 <MultyPersonIcon
-                                    size={74}
-                                    className="stroke-main-green fill-main-green"
+                                    size={2}
+                                    className="text-md md:text-4xl stroke-main-green fill-main-green"
                                 />
                                 <div className="flex flex-col gap-1">
                                     <CountAnimation
                                         from={0}
                                         to={statistic.total_dosen}
                                         duration={2}
-                                        className="font-bold text-4xl text-main-green"
+                                        className="font-bold text-md md:text-4xl text-main-green"
                                     />
-                                    <p className="font-semibold text-lg">
-                                        Dosen
+                                    <p className="font-semibold text-sm md:text-lg text-main-blue-light">
+                                        {useTranslation('Dosen')}
                                     </p>
                                 </div>
                             </div>
 
                             <div className=" flex col-span-2 gap-4 bg-secondary-blue bg-opacity-30 p-4 rounded-3xl">
                                 <MultyPersonIcon
-                                    size={74}
-                                    className="stroke-main-green fill-main-green"
+                                    size={2}
+                                    className="text-md md:text-4xl stroke-main-green fill-main-green"
                                 />
                                 <div className="flex flex-col gap-1">
                                     <CountAnimation
                                         from={0}
                                         to={statistic.total_tendik}
                                         duration={2}
-                                        className="font-bold text-4xl text-main-green"
+                                        className="font-bold text-md md:text-4xl text-main-green"
                                     />
-                                    <p className="font-semibold text-lg">
-                                        Tenaga Pendidik
+                                    <p className="font-semibold text-sm md:text-lg text-main-blue-light">
+                                        {useTranslation('Staf Akademik')}
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div className="">
-                            <h1 className="font-bold text-4xl">
+                            <h1 className="font-bold text-xl md:text-4xl text-main-blue-light">
                                 Perencanaan Wilayah dan Kota
                             </h1>
-                            <h1 className="font-bold text-4xl text-main-green py-3">
+                            <h1 className="font-bold text-xl md:text-4xl text-main-green py-1 md:py-3">
                                 ITERA
                             </h1>
-                            <p className="py-4 font-semibold text-lg">
+                            <p className="py-4 font-semibold text-md md:text-lg">
                                 {useTranslation(
                                     'We reached here with our hard work and dedication'
                                 )}
@@ -261,28 +263,26 @@ export default function Home({
                 <SectionTrigerScroll
                     id={'tentang'}
                     macControlCenter
-                    className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
+                    className="mt-5 md:mt-10 bg-white p-2 md:p-5 rounded-3xl shadow-xl"
                 >
-                    <h2 className="font-bold text-3xl pb-4 border-b mb-3">
+                    <h2 className="font-bold text-lg md:text-3xl text-main-blue-light pb-4 border-b mb-3">
                         {useTranslation('Tentang PWK ITERA')}
                     </h2>
-                    <div className=" grid grid-cols-2 md:grid-cols-5 gap-10 justify-between">
-                        <div className="col-span-3">
-                            <h1 className="text-4xl font-bold">
+                    <div className=" grid grid-cols-2 md:grid-cols-5 gap-10 justify-center md:justify-between">
+                        <div className="col-span-2 md:col-span-3">
+                            <h1 className="text-xl text-main-blue-light md:text-4xl font-bold">
                                 Perencanaan Wilayah Dan Kota ITERA
                             </h1>
-                            <p className="py-2">
+                            <p className="py-2 text-sm md:text-md">
                                 {useTranslation(aboutPWK.deskripsi)}
                             </p>
                         </div>
-                        <div className="col-span-2">
-                            <div
-                                className="flex-1 h-full border rounded-2xl"
-                                style={{
-                                    background:
-                                        'url(/assets/img/logo-box.png) center top no-repeat'
-                                }}
-                            ></div>
+                        <div className="col-span-2 flex justify-center items-center">
+                            <Image
+                                src={logoBox}
+                                alt="logo_pwak"
+                                className="aspect-video w-full h-full mx-auto rounded-3xl"
+                            />
                         </div>
                     </div>
                 </SectionTrigerScroll>
@@ -290,20 +290,20 @@ export default function Home({
                 <SectionTrigerScroll
                     id={'visi'}
                     macControlCenter
-                    className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
+                    className="mt-5 md:mt-10 bg-white p-2 md:p-5 rounded-3xl shadow-xl"
                 >
-                    <h2 className="font-bold text-3xl pb-4 border-b mb-3">
+                    <h2 className="font-bold text-main-blue-light text-lg md:text-3xl pb-1 md:pb-4 border-b mb-1 md:mb-3 mt-1 md:mt-10">
                         Visi
                     </h2>
                     <div className="  md:grid-cols-5 gap-10 justify-between">
                         <div className="col-span-3">
-                            <p className="py-2">
+                            <p className="py-2 md:text-md text-sm">
                                 {useTranslation(aboutPWK.visi)}
                             </p>
                         </div>
                     </div>
 
-                    <h2 className="font-bold text-3xl pb-4 border-b mb-3 mt-10">
+                    <h2 className="font-bold text-main-blue-light text-lg md:text-3xl pb-1 md:pb-4 border-b mb-1 md:mb-3 mt-1 md:mt-10">
                         Misi
                     </h2>
                     <div className="flex flex-col gap-3 justify-between">
@@ -313,10 +313,10 @@ export default function Home({
                                 className="border p-3 rounded-2xl flex gap-3 items-center"
                             >
                                 <TargetIcon
-                                    size={2.5}
-                                    className="stroke-main-green fill-main-green"
+                                    size={2}
+                                    className="stroke-main-green text-md md:text-3xl fill-main-green w-28"
                                 />
-                                <p className="py-2">
+                                <p className="py-2 md:text-md text-sm">
                                     {useTranslation(item.title)}
                                 </p>
                             </div>
@@ -327,10 +327,10 @@ export default function Home({
                 <SectionTrigerScroll
                     id={'even'}
                     macControlCenter
-                    className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
+                    className="mt-5 md:mt-10 bg-white p-2 md:p-5 rounded-3xl shadow-xl"
                 >
                     <div className="flex justify-between">
-                        <h2 className="font-bold text-3xl pb-4 border-b mb-3">
+                        <h2 className="font-bold text-lg md:text-3xl text-main-blue-light pb-4 border-b mb-3">
                             {useTranslation('Kalender Akademik')}
                         </h2>
 

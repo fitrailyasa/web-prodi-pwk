@@ -67,7 +67,7 @@ export default function ShowBeritaPage({
                             <div className="bg-main-blue bg-opacity-40 col-span-2 rounded-l-3xl rounded-b-3xl p-4">
                                 <div className="grid grid-cols-5 justify-between ">
                                     <div className="col-span-3 overflow-hidden ">
-                                        <ControlCenterMac className="pb-3" />
+                                        <ControlCenterMac className="pb-1 md:pb-3" />
                                         <p className="text-white text-md md:text-4xl font-semibold md:font-bold me-2 md:me-10 overflow-hidden line-clamp-3 pb-1 md:pb-10">
                                             {useTranslation(berita.name)}
                                         </p>
@@ -82,7 +82,7 @@ export default function ShowBeritaPage({
                                         </div>
                                     </div>
                                     <BouncingAnimation className="col-span-2 relative ">
-                                        <div className="w-[100%] rounded-xl md:rounded-3xl overflow-hidden border-3 border-main-green p-2">
+                                        <div className="w-[100%] rounded-xl md:rounded-3xl overflow-hidden border-2 md:border-3 border-main-green p-0.5 md:p-2">
                                             <Image
                                                 src={imageLink}
                                                 alt={berita.slug}
@@ -108,7 +108,7 @@ export default function ShowBeritaPage({
                         </div>
                     </div>
                     <div className="col-span-2">
-                        <SectionTrigerScroll
+                        <div
                             id="list-berita"
                             // macControlCenter
                             className="mt-10 p-5 "
@@ -137,7 +137,7 @@ export default function ShowBeritaPage({
                                     <p>Tidak ada berita tersedia</p>
                                 )}
                             </div>
-                        </SectionTrigerScroll>
+                        </div>
                     </div>
                 </div>
             </div>

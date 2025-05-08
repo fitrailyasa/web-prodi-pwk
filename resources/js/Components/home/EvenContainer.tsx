@@ -49,14 +49,14 @@ const EvenContainer: React.FC<eventTypes> = ({
                 className="border p-3 rounded-2xl flex gap-3 items-center bg-secondary-blue-light flex-1"
             >
                 <div className="flex flex-nowrap gap-3 items-center">
-                    <div className="flex  border-e-2 border-main-green items-center px-3 ">
-                        <span className="text-lg font-bold text-nowrap text-main-green">
+                    <div className="flex border-e-2 border-main-green items-center px-3 ">
+                        <span className="text-sm md:text-lg font-bold text-nowrap text-main-green">
                             {eventStart.date}, {eventStart.month}{' '}
                             {eventEnd &&
                                 ` - ${eventEnd.date}, ${eventEnd.month}`}
                         </span>
                     </div>
-                    <h1 className="text-lg font-bold md:text-nowrap ">
+                    <h1 className="text-sm md:text-lg font-bold text-nowrap text-main-blue-light">
                         {useTranslation(title ?? '')}
                     </h1>
                 </div>
@@ -78,34 +78,43 @@ const EvenContainer: React.FC<eventTypes> = ({
                                 <div className="flex gap-3 items-center py-3">
                                     <ClaenderIcon
                                         size={5}
-                                        className="text-main-green text-lg"
+                                        className="text-main-green text-sm md:text-lg"
                                     />
                                     <div className="">
-                                        <p className="text-lg font-semibold">
+                                        <p className="text-sm md:text-lg font-semibold">
                                             {useTranslation('Tanggal Awal')} :{' '}
                                         </p>
-                                        <span className="text-2xl font-bold text-main-green">
+                                        <span className="text-md md:text-2xl font-bold text-main-green">
                                             {eventStart.date},{' '}
                                             {eventStart.month} {eventStart.year}
                                         </span>
                                     </div>
                                     {eventEnd && (
                                         <div className="">
-                                            <p className="text-lg font-semibold">
+                                            <p className="text-sm md:text-lg font-semibold">
                                                 {useTranslation(
                                                     'Tanggal Akhir'
                                                 )}{' '}
                                                 :{' '}
                                             </p>
-                                            <span className="text-2xl font-bold text-main-green">
+                                            <span className="text-md md:text-2xl font-bold text-main-green">
                                                 {eventEnd.date},{' '}
                                                 {eventEnd.month} {eventEnd.year}
                                             </span>
                                         </div>
                                     )}
                                 </div>
-                                <h1 className="text-2xl font-bold">{title}</h1>
-                                <p>{description}</p>
+                                <h1 className="text-md md:text-2xl font-bold">
+                                    {useTranslation(title)}
+                                </h1>
+                                <p
+                                    className="text-sm md:text-md"
+                                    dangerouslySetInnerHTML={{
+                                        __html: useTranslation(
+                                            description ?? ''
+                                        )
+                                    }}
+                                ></p>
                             </ModalBody>
                             <ModalFooter>
                                 <Button

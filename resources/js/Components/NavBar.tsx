@@ -94,17 +94,17 @@ function AccordionLink(prop: DropdownMenuItem) {
             href={prop.href}
             isExternal={prop.newTab ?? false}
         >
-            {prop.title}
+            {useTranslation(prop.title)}
         </Link>
     )
 }
 function MobileLink(prop: DropdownMenuItem) {
     return (
         <Link
-            className="bg-white text-md text-main-blue-light hover:bg-[#4005e1]/10 mt-0 mb-1 mx-2 p-4 rounded-xl transition-colors duration-200"
+            className="bg-white text-md text-main-blue-light hover:bg-[#4005e1]/10 mt-0 mb-1 mx-2 p-4 rounded-xl transition-colors duration-200 shadow-md"
             href={prop.href}
         >
-            {prop.title}
+            {useTranslation(prop.title)}
         </Link>
     )
 }
@@ -322,7 +322,7 @@ export default function NavBar() {
                         className="hover:bg-[#4005e1]/10 text-md font-medium rounded-lg transition-colors duration-200"
                         key="2"
                         aria-label="Akademik"
-                        title="Akademik"
+                        title={useTranslation('Akademik')}
                     >
                         {AcademicMenu.map((item, index) => (
                             <AccordionLink
@@ -337,7 +337,7 @@ export default function NavBar() {
                         className="hover:bg-[#4005e1]/10 text-md font-medium rounded-lg transition-colors duration-200"
                         key="3"
                         aria-label="Fasilitas"
-                        title="Fasilitas"
+                        title={useTranslation('Fasilitas')}
                     >
                         {FasilityMenu.map((item, index) => (
                             <AccordionLink
@@ -351,6 +351,26 @@ export default function NavBar() {
                 </Accordion>
                 <MobileLink href={route('berita')} title={'Berita'} />
                 <MobileLink href={route('contact')} title={'Kontak'} />
+                <div className="bg-white text-md flex justify-between text-main-blue-light mt-0 mb-1 mx-2 p-4 rounded-xl shadow-md">
+                    {language === 'id' ? 'Bahasa Indonesia' : 'English'}
+                    <Switch
+                        isSelected={language === 'id'}
+                        onValueChange={handleLanguageChange}
+                        color="secondary"
+                        size="lg"
+                        thumbIcon={({ isSelected, className }) =>
+                            isSelected ? (
+                                <IDIcon
+                                    className={`${className} text-main-green p-1`}
+                                />
+                            ) : (
+                                <ENIcon
+                                    className={`${className} text-main-green p-1`}
+                                />
+                            )
+                        }
+                    />
+                </div>
             </NavbarMenu>
         </Navbar>
     )

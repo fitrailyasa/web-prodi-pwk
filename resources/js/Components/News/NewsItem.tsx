@@ -8,21 +8,25 @@ import ShareIcon from '../Icon/ShareInco'
 import { router, usePage } from '@inertiajs/react'
 import { useTranslation } from '@/Hooks/useTranslation'
 import ShareBtn from '../Utils/ShareBtn'
+import { TestImage } from '@/Constants'
 
 const NewsItem = (props: NewsItemProps) => {
     const { storage } = usePage<{
         storage: StorageProps
     }>().props
 
-    const imageLink = props.image ? storage.link + props.image : props.image
+    const imageLink = props.image ? storage.link + props.image : TestImage
     const handleClick = (slug: string) => {
         //navigate to news detail
         router.get(route('berita.show', { slug }))
     }
     return (
-        <div className="bg-white p-5 rounded-3xl shadow-xl">
-            <div className="" onClick={() => handleClick(props.slug)}>
-                <div className="  flex justify-start gap-5">
+        <div className="bg-white p-2 md:p-5 rounded-xl md:rounded-3xl shadow-xl">
+            <div
+                className="cursor-pointer"
+                onClick={() => handleClick(props.slug)}
+            >
+                <div className="flex justify-start gap-5">
                     <Image
                         src={imageLink}
                         alt={props.title}
@@ -31,16 +35,16 @@ const NewsItem = (props: NewsItemProps) => {
                         className="rounded-3xl aspect-square w-[100px] min-w-[100px] max-w-[100px]"
                     />
                     <div className=" flex flex-col">
-                        <h3 className="font-bold text-xl">
+                        <h3 className="font-bold text-md md:text-xl">
                             {useTranslation(props.title)}
                         </h3>
-                        <p>
+                        <p className="text-sm md:text-base font-semibold text-gray-500">
                             {useTranslation(DateFormater({ date: props.date }))}
                         </p>
                     </div>
                 </div>
             </div>
-            <div className="flex justify-end items-center gap-5">
+            <div className="flex justify-end items-center gap-2 md:gap-5">
                 <div className="flex items-center gap-1">
                     <EyeIcon size={2} className="text-main-green text-xs" />
                     <span className="font-semibold">{props.see}</span>

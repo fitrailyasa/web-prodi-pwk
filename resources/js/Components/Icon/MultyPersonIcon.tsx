@@ -1,12 +1,12 @@
 export default function MultyPersonIcon({
-    size = 24,
+    size = 5,
     className = 'text-current',
     ...props
 }: IconProps) {
     return (
         <svg
-            width={size}
-            height={size}
+            width={`${size}em`}
+            height={`${size}em`}
             viewBox="0 0 16 16"
             className={className}
             fill="none"

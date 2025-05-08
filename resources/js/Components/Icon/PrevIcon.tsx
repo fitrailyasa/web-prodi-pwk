@@ -1,12 +1,12 @@
 export default function PrevIcon({
-    size = 24,
+    size = 5,
     className = 'text-current',
     ...props
 }: IconProps) {
     return (
         <svg
-            width={size}
-            height={size}
+            width={`${size}em`}
+            height={`${size}em`}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 350 512"
             className={className}

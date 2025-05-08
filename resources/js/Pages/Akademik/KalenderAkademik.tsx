@@ -8,13 +8,37 @@ import { Button, DateRangePicker, Link } from '@heroui/react'
 import React from 'react'
 
 interface KalenderAkademikProps {
+    year: string
+    events: Array<{
+        id: number
+        name: string
+        slug: string
+        desc?: string
+        img?: string
+        status?: string
+        event_date?: string
+        publish_date?: string
+    }>
     kalender: {
         file: string | null
     } | null
 }
 
-const KalenderAkademik: React.FC<KalenderAkademikProps> = ({ kalender }) => {
-    const evenByBulam = eventsConstants.reduce(
+const KalenderAkademik: React.FC<KalenderAkademikProps> = ({
+    year,
+    events,
+    kalender
+}) => {
+    const reduceEvents: eventTypes[] = events.map(item => {
+        return {
+            title: item.name,
+            dateStart: item.event_date ? new Date(item.event_date) : new Date(),
+            date: item.event_date ? new Date(item.event_date) : new Date(),
+            dateEnd: undefined,
+            description: item.desc || ''
+        }
+    })
+    const evenByBulam = reduceEvents.reduce(
         (acc: evenByBulanType[], item: eventTypes) => {
             const bulan = new Date(item.date).toLocaleString('id-ID', {
                 month: 'long'
@@ -42,7 +66,7 @@ const KalenderAkademik: React.FC<KalenderAkademikProps> = ({ kalender }) => {
                     className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
                 >
                     <h2 className="font-bold text-3xl pb-4 border-b mb-3">
-                        {useTranslation('Kalender Akademik ITERA 2024-2025')}
+                        {useTranslation('Kalender Akademik ITERA ' + year)}
                     </h2>
 
                     {/* <div className=" mb-3 py-2 flex justify-end">
