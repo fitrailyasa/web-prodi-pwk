@@ -35,7 +35,7 @@ const NewsItem = (props: NewsItemProps) => {
                         className="rounded-3xl aspect-square w-[100px] min-w-[100px] max-w-[100px]"
                     />
                     <div className=" flex flex-col">
-                        <h3 className="font-bold text-md md:text-xl">
+                        <h3 className="font-bold text-md md:text-xl text-main-blue-light">
                             {useTranslation(props.title)}
                         </h3>
                         <p className="text-sm md:text-base font-semibold text-gray-500">

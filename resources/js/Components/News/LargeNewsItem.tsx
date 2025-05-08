@@ -36,7 +36,7 @@ const LargeNewsItem = (props: NewsItemProps) => {
                             className="rounded-2xl aspect-square md:aspect-video w-[100px] md:w-[200px] md:min-w-[200px] max-w-[400px]"
                         />
                         <div className=" flex flex-col">
-                            <h3 className="font-bold text-base md:text-xl">
+                            <h3 className="font-bold text-base md:text-xl text-main-blue-light">
                                 {useTranslation(props.title)}
                             </h3>
                             <p className="text-sm md:text-base font-semibold text-gray-500">

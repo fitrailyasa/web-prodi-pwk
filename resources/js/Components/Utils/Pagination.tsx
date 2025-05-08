@@ -4,6 +4,7 @@ import {
     PaginationItemType,
     PaginationItemRenderProps
 } from '@heroui/react'
+import { usePage } from '@inertiajs/react'
 import { SVGProps } from 'react'
 import { JSX } from 'react/jsx-runtime'
 
@@ -37,9 +38,22 @@ type DataPagienation = {
     page_url: string
     las_page: number
     total: number
+    queryPage?: Array<string>
 }
 
 export default function PaginationComponent(DataPagination: DataPagienation) {
+    let q = ''
+    const pageProps = usePage().props
+    if (DataPagination.queryPage && DataPagination.queryPage.length > 0) {
+        q = DataPagination.queryPage
+            .map((item: string, index: number) => {
+                if (index === 0) {
+                    return item + '=' + pageProps[item]
+                }
+                return '&' + item + '=' + pageProps[item]
+            })
+            .join('')
+    }
     const renderItem = ({
         ref,
         key,
@@ -106,7 +120,11 @@ export default function PaginationComponent(DataPagination: DataPagienation) {
     }
 
     const handLeMovePage = (page: number) => {
-        window.location.href = DataPagination.page_url + '?page=' + page
+        if (q !== '') {
+            q = q + '&'
+        }
+        window.location.href =
+            DataPagination.page_url + '?' + q + 'page=' + page
     }
 
     return (

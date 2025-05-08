@@ -90,5 +90,5 @@ export default {
             }
         }
     },
-    plugins: [form, heroui()]
+    plugins: [heroui()]
 }
