@@ -73,7 +73,7 @@
                                     <p>Modul Kuliah</p>
                                 </a>
                             </li>
-                            <li class="nav-item ms-3">
+                            {{-- <li class="nav-item ms-3">
                                 <a href="{{ route('admin.kalender.index') }}"
                                     class="nav-link text-white {{ Request::routeIs('admin.kalender.index') ? 'aktif' : '' }}">
                                     <i class="nav-icon fas fa-calendar-alt"></i>
@@ -86,7 +86,7 @@
                                     <i class="nav-icon fas fa-book-open"></i>
                                     <p>MBKM</p>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
 
