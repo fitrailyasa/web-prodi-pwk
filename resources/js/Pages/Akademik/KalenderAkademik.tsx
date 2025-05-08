@@ -1,6 +1,7 @@
 import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
 import EvenContainer from '@/Components/home/EvenContainer'
 import { eventsConstants } from '@/Constants'
+import { useTranslation } from '@/Hooks/useTranslation'
 import AppLayout from '@/Layouts/AppLayout'
 import { evenByBulanType, eventTypes } from '@/types/PropsType'
 import { Button, DateRangePicker, Link } from '@heroui/react'
@@ -36,15 +37,15 @@ const KalenderAkademik: React.FC<KalenderAkademikProps> = ({ kalender }) => {
         <AppLayout title="Kalender Akademik">
             <div className="container mx-auto px-4 py-3 relative">
                 <SectionTrigerScroll
-                    id={'visi'}
+                    id={'kelander'}
                     macControlCenter
                     className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
                 >
                     <h2 className="font-bold text-3xl pb-4 border-b mb-3">
-                        Kalender Akademik 2024
+                        {useTranslation('Kalender Akademik ITERA 2024-2025')}
                     </h2>
 
-                    <div className=" mb-3 py-2 flex justify-end">
+                    {/* <div className=" mb-3 py-2 flex justify-end">
                         <div className="flex justify-end items-center gap-1 md:gap-5 md:w-1/2">
                             <DateRangePicker
                                 key={'outside-left'}
@@ -56,7 +57,7 @@ const KalenderAkademik: React.FC<KalenderAkademikProps> = ({ kalender }) => {
                                 filter
                             </Button>
                         </div>
-                    </div>
+                    </div> */}
 
                     {evenByBulam.map((item, index) => (
                         <div key={index} className="w-full py-2">
@@ -79,9 +80,9 @@ const KalenderAkademik: React.FC<KalenderAkademikProps> = ({ kalender }) => {
                     ))}
                 </SectionTrigerScroll>
                 <SectionTrigerScroll
-                    id={'visi'}
+                    id={'kalender file'}
                     macControlCenter
-                    className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
+                    className="mt-10 bg-white p-5 rounded-3xl shadow-xl hidden"
                 >
                     <h2 className="font-bold text-3xl pb-4 border-b mb-3">
                         Kalender Akademik ITERA 2024-2025

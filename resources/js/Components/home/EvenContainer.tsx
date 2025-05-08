@@ -13,6 +13,7 @@ import {
 import ClaenderIcon from '../Icon/CalenderIcon'
 import ControlCenterMac from '../ControlCenterMac'
 import ShareIcon from '../Icon/ShareInco'
+import { useTranslation } from '@/Hooks/useTranslation'
 
 const EvenContainer: React.FC<eventTypes> = ({
     title,
@@ -26,6 +27,20 @@ const EvenContainer: React.FC<eventTypes> = ({
     const eventStart = DateExtraktor({ date: dateStart })
 
     const eventEnd = dateEnd && DateExtraktor({ date: dateEnd })
+
+    const format = (d: Date) => d.toISOString().replace(/[-:]|\.\d{3}/g, '') // Format YYYYMMDDTHHmmssZ
+
+    const handleAddToCalendar = () => {
+        const titleData = encodeURIComponent(title)
+        const descriptionData = encodeURIComponent(description)
+        // const locationData = encodeURIComponent('Jl. Contoh No. 1, Jakarta') &location=${location}
+        const startDate = format(new Date(date)) // Format: YYYYMMDDTHHmmssZ (UTC)
+        const endDate = format(dateEnd ? new Date(dateEnd) : new Date(date))
+
+        const calendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}&details=${description}&sf=true&output=xml`
+
+        window.open(calendarUrl, '_blank')
+    }
 
     return (
         <>
@@ -42,7 +57,7 @@ const EvenContainer: React.FC<eventTypes> = ({
                         </span>
                     </div>
                     <h1 className="text-lg font-bold md:text-nowrap ">
-                        {title}
+                        {useTranslation(title ?? '')}
                     </h1>
                 </div>
             </button>
@@ -67,7 +82,7 @@ const EvenContainer: React.FC<eventTypes> = ({
                                     />
                                     <div className="">
                                         <p className="text-lg font-semibold">
-                                            Start Date :{' '}
+                                            {useTranslation('Tanggal Awal')} :{' '}
                                         </p>
                                         <span className="text-2xl font-bold text-main-green">
                                             {eventStart.date},{' '}
@@ -77,7 +92,10 @@ const EvenContainer: React.FC<eventTypes> = ({
                                     {eventEnd && (
                                         <div className="">
                                             <p className="text-lg font-semibold">
-                                                Start Date :{' '}
+                                                {useTranslation(
+                                                    'Tanggal Akhir'
+                                                )}{' '}
+                                                :{' '}
                                             </p>
                                             <span className="text-2xl font-bold text-main-green">
                                                 {eventEnd.date},{' '}
@@ -94,13 +112,13 @@ const EvenContainer: React.FC<eventTypes> = ({
                                     className="bg-red-500 text-white font-semibold"
                                     onPress={onClose}
                                 >
-                                    Close
+                                    {useTranslation('Tutup')}
                                 </Button>
                                 <Button
                                     className="bg-main-green flex gap-1 text-white font-semibold"
-                                    // onPress={onClose}
+                                    onPress={handleAddToCalendar}
                                 >
-                                    Save to Calender
+                                    {useTranslation('Simpan Ke Kalender')}
                                     <ShareIcon size={1} className="text-xl" />
                                 </Button>
                             </ModalFooter>

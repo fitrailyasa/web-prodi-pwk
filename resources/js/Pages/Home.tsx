@@ -250,8 +250,9 @@ export default function Home({
                                 ITERA
                             </h1>
                             <p className="py-4 font-semibold text-lg">
-                                We reached here with our hard work and
-                                dedication
+                                {useTranslation(
+                                    'We reached here with our hard work and dedication'
+                                )}
                             </p>
                         </div>
                     </div>
@@ -263,14 +264,16 @@ export default function Home({
                     className="mt-10 bg-white p-5 rounded-3xl shadow-xl"
                 >
                     <h2 className="font-bold text-3xl pb-4 border-b mb-3">
-                        Tentang PWK ITERA
+                        {useTranslation('Tentang PWK ITERA')}
                     </h2>
                     <div className=" grid grid-cols-2 md:grid-cols-5 gap-10 justify-between">
                         <div className="col-span-3">
                             <h1 className="text-4xl font-bold">
                                 Perencanaan Wilayah Dan Kota ITERA
                             </h1>
-                            <p className="py-2">{aboutPWK.deskripsi}</p>
+                            <p className="py-2">
+                                {useTranslation(aboutPWK.deskripsi)}
+                            </p>
                         </div>
                         <div className="col-span-2">
                             <div
@@ -294,7 +297,9 @@ export default function Home({
                     </h2>
                     <div className="  md:grid-cols-5 gap-10 justify-between">
                         <div className="col-span-3">
-                            <p className="py-2">{aboutPWK.visi}</p>
+                            <p className="py-2">
+                                {useTranslation(aboutPWK.visi)}
+                            </p>
                         </div>
                     </div>
 
@@ -311,7 +316,9 @@ export default function Home({
                                     size={2.5}
                                     className="stroke-main-green fill-main-green"
                                 />
-                                <p className="py-2">{item.title}</p>
+                                <p className="py-2">
+                                    {useTranslation(item.title)}
+                                </p>
                             </div>
                         ))}
                     </div>
@@ -324,12 +331,12 @@ export default function Home({
                 >
                     <div className="flex justify-between">
                         <h2 className="font-bold text-3xl pb-4 border-b mb-3">
-                            Event Terdekat
+                            {useTranslation('Kalender Akademik')}
                         </h2>
 
                         <Link href={route('akademik.kalender-akademik')}>
                             <Button className="bg-main-green font-semibold text-white inline-block">
-                                Lihat Semua
+                                {useTranslation('Lihat Semua')}
                             </Button>
                         </Link>
                     </div>

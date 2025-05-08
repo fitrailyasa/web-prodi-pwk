@@ -160,14 +160,14 @@ export default function NavBar() {
             href: route('akademik.kalender-akademik'),
             description: 'Kalender Akademik Institut Teknologi Sumatera',
             icon: <LightBulbIcon className="fill-[#4005e1]" />
-        },
-        {
-            title: 'MBKM',
-            href: route('akademik.mbkm'),
-            description:
-                'Merdeka Belajar Kampus Merdeka Program Studi Perencanaan Wilayah dan Kota',
-            icon: <LightBulbIcon className="fill-[#4005e1]" />
         }
+        // {
+        //     title: 'MBKM',
+        //     href: route('akademik.mbkm'),
+        //     description:
+        //         'Merdeka Belajar Kampus Merdeka Program Studi Perencanaan Wilayah dan Kota',
+        //     icon: <LightBulbIcon className="fill-[#4005e1]" />
+        // }
     ]
 
     AcademicMenu.push(...otherAcademicMenu)
