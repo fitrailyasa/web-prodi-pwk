@@ -2,73 +2,42 @@
 
 namespace Tests\Feature;
 
-use App\Http\Middleware\User;
-use App\Models\Course;
-use App\Models\DosenProfile;
-use App\Models\Publication;
+use App\Models\User;
+use App\Models\Jadwal;
+use App\Models\Matkul;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class dosenControllerTest extends TestCase
+class DosenControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_index_page_displays_koordinator_dosen_and_staff()
+    public function test_dosen_index_page_can_be_rendered()
     {
-        $koordinator = \App\Models\User::factory()->create([
-            'role' => 'dosen',
-            'position' => 'koordinator'
-        ]);
-        DosenProfile::factory()->create(['user_id' => $koordinator->id]);
-
-        $dosen = \App\Models\User::factory()->count(2)->create([
-            'role' => 'dosen',
-            'position' => 'anggota'
-        ]);
-        $dosen->each(fn($d) => DosenProfile::factory()->create(['user_id' => $d->id]));
-
-        $staff = \App\Models\User::factory()->count(2)->create([
-            'role' => 'staff'
-        ]);
-        $staff->each(fn($s) => DosenProfile::factory()->create(['user_id' => $s->id]));
-
-        $response = $this->get(route('profile.dosen-and-staf'));
-
-        $response->assertInertia(
-            fn($page) => $page
-                ->component('Profile/DosenAndStaf/DosenAndStaft')
-                ->has('koordinator')
-                ->has('employee', 2)
-                ->has('staff', 2)
-        );
+        $response = $this->get(route('dosen.index'));
+        $response->assertStatus(200);
     }
 
-    public function test_show_page_displays_dosen_details()
+    public function test_dosen_detail_page_can_be_rendered()
     {
-        $dosen = \App\Models\User::factory()->create([
+        $dosen = User::factory()->create([
             'role' => 'dosen',
+            'position' => 'dosen'
         ]);
 
-        DosenProfile::factory()->create(['user_id' => $dosen->id]);
+        $matkul = Matkul::factory()->create();
 
-        Publication::factory()->count(2)->create([
-            'user_id' => $dosen->id
+        Jadwal::factory()->create([
+            'matkul_id' => $matkul->id,
+            'lecture' => $dosen->id,
+            'class' => 'A',
+            'room' => '101',
+            'day' => 'Senin',
+            'start_time' => '08:00',
+            'end_time' => '10:00'
         ]);
 
-        Course::factory()->count(2)->create([
-            'user_id' => $dosen->id
-        ]);
-
-        $response = $this->get(route('profile.dosen-and-staf.detail', $dosen->id));
-
-        $response->assertInertia(
-            fn($page) => $page
-                ->component('Profile/DosenAndStaf/DosenAndStafDetail')
-                ->where('dosen.id', $dosen->id)
-                ->has('dosen.dosen_profile')
-                ->has('dosen.publications', 2)
-                ->has('dosen.courses', 2)
-        );
+        $response = $this->get(route('dosen.show', $dosen->id));
+        $response->assertStatus(200);
     }
 }

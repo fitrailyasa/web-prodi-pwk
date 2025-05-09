@@ -41,6 +41,6 @@ class UserSeeder extends Seeder
             ],
         ];
         User::query()->insert($users);
-        \App\Models\User::factory(20)->create();
+        \App\Models\User::factory(10)->create();
     }
 }

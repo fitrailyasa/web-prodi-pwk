@@ -72,9 +72,9 @@ class User extends Authenticatable
         return $this->hasMany(Publication::class);
     }
 
-    public function courses()
+    public function jadwals()
     {
-        return $this->hasMany(Course::class);
+        return $this->hasMany(Jadwal::class, 'lecture', 'id');
     }
 
     public function dosenProfile()
