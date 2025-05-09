@@ -2,6 +2,10 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 import form from '@tailwindcss/forms'
 import { heroui } from '@heroui/react'
 
+const pluginsForm = form({
+    strategy: 'class'
+})
+
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
@@ -90,5 +94,5 @@ export default {
             }
         }
     },
-    plugins: [heroui()]
+    plugins: [pluginsForm, heroui()]
 }
