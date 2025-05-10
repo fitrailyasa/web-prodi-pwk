@@ -13,12 +13,17 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('nip')->nullable();
             $table->string('nidn')->nullable();
+            $table->string('position')->nullable();
+            $table->string('education')->nullable();
+            $table->string('expertise')->nullable();
             $table->string('google_scholar')->nullable();
             $table->string('scopus_id')->nullable();
             $table->string('sinta_id')->nullable();
-            $table->string('orcid_id')->nullable();
             $table->text('research_interests')->nullable();
             $table->text('achievements')->nullable();
+            $table->string('img')->nullable();
+            $table->string('whatsapp')->nullable();
+            $table->string('linkedin')->nullable();
             $table->timestamps();
         });
     }

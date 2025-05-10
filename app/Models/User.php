@@ -24,18 +24,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'nip',
-        'position',
-        'img',
-        'no_hp',
         'password',
         'role',
         'status',
-        'whatsapp',
-        'linkedin',
-        'bio',
-        'education',
-        'expertise'
+        'email_verified_at'
     ];
 
     /**
@@ -46,8 +38,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'role',
-        'acc_verified',
     ];
 
     /**
@@ -56,9 +46,8 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'provider' => 'array',
-        'provider_id' => 'array',
-        'provider_token' => 'array',
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
     ];
 
     public static function setDynamicConnection()

@@ -17,12 +17,14 @@ class DosenSeeder extends Seeder
         $koordinator = User::factory()->create([
             'name' => 'Dr. John Doe',
             'email' => 'koordinator@example.com',
-            'role' => 'dosen',
-            'position' => 'koordinator'
+            'role' => 'dosen'
         ]);
 
         // Create dosen profile for koordinator
-        DosenProfile::factory()->create(['user_id' => $koordinator->id]);
+        DosenProfile::factory()->create([
+            'user_id' => $koordinator->id,
+            'position' => 'koordinator'
+        ]);
 
         // Create publications for koordinator
         Publication::factory(5)->create(['user_id' => $koordinator->id]);
@@ -46,12 +48,14 @@ class DosenSeeder extends Seeder
             $dosen = User::factory()->create([
                 'name' => "Dr. Dosen $i",
                 'email' => "dosen$i@example.com",
-                'role' => 'dosen',
-                'position' => 'dosen'
+                'role' => 'dosen'
             ]);
 
             // Create dosen profile
-            DosenProfile::factory()->create(['user_id' => $dosen->id]);
+            DosenProfile::factory()->create([
+                'user_id' => $dosen->id,
+                'position' => 'dosen'
+            ]);
 
             // Create publications
             Publication::factory(rand(3, 8))->create(['user_id' => $dosen->id]);

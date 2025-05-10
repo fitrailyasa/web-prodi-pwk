@@ -18,22 +18,12 @@
             </div>
             <div class="modal-body text-left">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="mb-2">
                             <label class="form-label">{{ __('Nama') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                 placeholder="nama" name="name" id="name" value="{{ old('name') }}" required>
                             @error('name')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="mb-2">
-                            <label class="form-label">{{ __('No HP') }}</label>
-                            <input type="text" class="form-control @error('no_hp') is-invalid @enderror"
-                                placeholder="no_hp" name="no_hp" id="no_hp" value="{{ old('no_hp') }}">
-                            @error('no_hp')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
@@ -82,7 +72,7 @@
                             <select class="form-select @error('status') is-invalid @enderror" name="status"
                                 id="status" required>
                                 <option value="aktif">Aktif</option>
-                                <option value="tidak aktif">Tidak Aktif</option>
+                                <option value="tidak aktif" selected>Tidak Aktif</option>
                             </select>
                             @error('status')
                                 <div class="invalid-feedback">{{ $message }}</div>

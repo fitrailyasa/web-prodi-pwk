@@ -20,11 +20,7 @@ class UserSeeder extends Seeder
                 'email' => 'super@admin.com',
                 'role' => 'admin',
                 'status' => 'aktif',
-                'no_hp' => '081234567890',
                 'password' => Hash::make('password'),
-                'nip' => fake()->numberBetween(1000000000, 9999999999),
-                'position' => fake()->jobTitle(),
-                'img' => null,
                 'email_verified_at' => now(),
             ],
             [
@@ -32,11 +28,7 @@ class UserSeeder extends Seeder
                 'email' => 'admin@admin.com',
                 'role' => 'admin',
                 'status' => 'aktif',
-                'no_hp' => '081234567890',
                 'password' => Hash::make('password'),
-                'nip' => fake()->numberBetween(1000000000, 9999999999),
-                'position' => fake()->jobTitle(),
-                'img' => null,
                 'email_verified_at' => now(),
             ],
         ];

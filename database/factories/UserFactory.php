@@ -21,26 +21,14 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        $roles = ['admin', 'dosen', 'staff'];
-        $positions = ['koordinator', 'sekretaris', 'bendahara', 'staf', null];
-        $role = $this->faker->randomElement($roles);
-        $position = $role === 'dosen' ? $this->faker->randomElement($positions) : null;
-
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
-            'role' => $role,
-            'position' => $position,
-            'img' => $this->faker->imageUrl(400, 400, 'people'),
-            'whatsapp' => $this->faker->phoneNumber(),
-            'linkedin' => $this->faker->url(),
-            'bio' => $this->faker->paragraphs(2, true),
-            'education' => $this->faker->paragraphs(3, true),
-            'expertise' => $this->faker->words(5, true),
-            'status' => 'aktif',
+            'role' => $this->faker->randomElement(['admin', 'dosen', 'user']),
+            'status' => $this->faker->randomElement(['aktif', 'tidak aktif']),
         ];
     }
 
@@ -58,7 +46,7 @@ class UserFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'role' => 'dosen',
-                'position' => $this->faker->randomElement(['koordinator', 'sekretaris', 'bendahara', null]),
+                'status' => 'aktif'
             ];
         });
     }
@@ -68,7 +56,7 @@ class UserFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'role' => 'staff',
-                'position' => 'staf',
+                'status' => 'aktif'
             ];
         });
     }
@@ -78,7 +66,7 @@ class UserFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'role' => 'admin',
-                'position' => null,
+                'status' => 'aktif'
             ];
         });
     }

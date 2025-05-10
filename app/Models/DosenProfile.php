@@ -13,12 +13,17 @@ class DosenProfile extends Model
         'user_id',
         'nip',
         'nidn',
+        'position',
+        'education',
+        'expertise',
         'google_scholar',
         'scopus_id',
         'sinta_id',
-        'orcid_id',
         'research_interests',
-        'achievements'
+        'achievements',
+        'img',
+        'whatsapp',
+        'linkedin'
     ];
 
     public function user()

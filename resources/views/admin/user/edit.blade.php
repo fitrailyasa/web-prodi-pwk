@@ -21,27 +21,14 @@
             </div>
             <div class="modal-body text-left">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="mb-2">
                             <label class="form-label">{{ __('Nama') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                 placeholder="nama" name="name" id="name" value="{{ old('name', $user->name) }}"
                                 required>
                             @error('name')
-                                <div class="invalid-feedback">{{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="mb-2">
-                            <label class="form-label">{{ __('No HP') }}</label>
-                            <input type="text" class="form-control @error('no_hp') is-invalid @enderror"
-                                placeholder="no_hp" name="no_hp" id="no_hp"
-                                value="{{ old('no_hp', $user->no_hp) }}">
-                            @error('no_hp')
-                                <div class="invalid-feedback">{{ $message }}
-                                </div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
@@ -54,19 +41,17 @@
                                 placeholder="email" name="email" id="email"
                                 value="{{ old('email', $user->email) }}" required>
                             @error('email')
-                                <div class="invalid-feedback">{{ $message }}
-                                </div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Password (Opsional) ') }}</label>
+                            <label class="form-label">{{ __('Password') }}</label>
                             <input type="password" class="form-control @error('password') is-invalid @enderror"
                                 placeholder="password" name="password" id="password">
                             @error('password')
-                                <div class="invalid-feedback">{{ $message }}
-                                </div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
@@ -79,14 +64,12 @@
                                 id="role" required>
                                 @foreach ($roles as $role)
                                     <option value="{{ old('role', $role['id']) }}"
-                                        {{ $role['id'] == $user->role ? 'selected' : '' }}>
-                                        {{ $role['name'] }}
-                                    </option>
+                                        {{ $user->role == $role['id'] ? 'selected' : '' }}>
+                                        {{ $role['name'] }}</option>
                                 @endforeach
                             </select>
                             @error('role')
-                                <div class="invalid-feedback">{{ $message }}
-                                </div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
@@ -95,15 +78,12 @@
                             <label class="form-label">{{ __('Status') }}</label>
                             <select class="form-select @error('status') is-invalid @enderror" name="status"
                                 id="status" required>
-                                <option value="aktif" {{ old('status', $user->status) == 'aktif' ? 'selected' : '' }}>
-                                    Aktif</option>
-                                <option value="tidak aktif"
-                                    {{ old('status', $user->status) == 'tidak aktif' ? 'selected' : '' }}>Tidak Aktif
-                                </option>
+                                <option value="aktif" {{ $user->status == 'aktif' ? 'selected' : '' }}>Aktif</option>
+                                <option value="tidak aktif" {{ $user->status == 'tidak aktif' ? 'selected' : '' }}>
+                                    Tidak Aktif</option>
                             </select>
                             @error('status')
-                                <div class="invalid-feedback">{{ $message }}
-                                </div>
+                                <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>

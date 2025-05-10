@@ -53,26 +53,45 @@ class AdminUserController extends Controller
 
     public function store(UserStoreRequest $request)
     {
-        User::create($request->validated());
+        $validatedData = $request->validated();
+        $validatedData['password'] = Hash::make($validatedData['password']);
+        $validatedData['email_verified_at'] = now();
+        $validatedData['status'] = $validatedData['status'] ?? 'tidak aktif';
+
+        User::create($validatedData);
         return back()->with('alert', 'Berhasil Tambah User!');
     }
 
     public function update(UserUpdateRequest $request, string $id)
     {
-        $user = User::where('id', $id)->first();
-        $userData = $request->validated();
+        $user = User::findOrFail($id);
+        $validatedData = $request->validated();
 
-        if ($request->has('password') && !empty($request->password)) {
-            $userData['password'] = Hash::make($request->password);
+        if ($request->filled('password')) {
+            $validatedData['password'] = Hash::make($validatedData['password']);
+        } else {
+            unset($validatedData['password']);
         }
 
-        $user->update($userData);
+        // Prevent updating super admin role
+        if ($user->email === 'super@admin.com') {
+            unset($validatedData['role']);
+        }
+
+        $user->update($validatedData);
         return back()->with('alert', 'Berhasil Edit User!');
     }
 
     public function destroy(string $id)
     {
-        User::findOrFail($id)->delete();
+        $user = User::findOrFail($id);
+
+        // Prevent deleting super admin
+        if ($user->email === 'super@admin.com') {
+            return back()->with('error', 'Tidak dapat menghapus Super Administrator!');
+        }
+
+        $user->delete();
         return back()->with('alert', 'Berhasil Hapus User!');
     }
 }
