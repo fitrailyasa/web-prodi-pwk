@@ -34,7 +34,7 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'role' => $role,
             'position' => $position,
-            'image' => $this->faker->imageUrl(400, 400, 'people'),
+            'img' => $this->faker->imageUrl(400, 400, 'people'),
             'whatsapp' => $this->faker->phoneNumber(),
             'linkedin' => $this->faker->url(),
             'bio' => $this->faker->paragraphs(2, true),
