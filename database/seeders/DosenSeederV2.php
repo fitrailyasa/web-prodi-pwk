@@ -20,7 +20,7 @@ class DosenSeederV2 extends Seeder
         $DosenData = [
             [
                 'name' => 'Prof. Ibnu Syabri, B.Sc., M.Sc., Ph.D',
-                'email' => 'ibnu@email.com',
+                'email' => 'ibnu@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'expertise' => 'KK Pengelolaan Pembangunan dan Pengembangan Kebijakan',
                 'education' => 'S3 Kochi University Of Technology, KOCHI UNIVERSITY OF - Jepang 2012',
@@ -28,7 +28,7 @@ class DosenSeederV2 extends Seeder
             ],
             [
                 'name' => 'Prof. Ir. Harkunti Pertiwi Rahayu, Ph.D.',
-                'email' => 'hakunti@email.com',
+                'email' => 'hakunti@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'expertise' => 'KK Pengelolaan Pembangunan dan Pengembangan Kebijakan',
                 'education' => 'Kochi University Of Technology, KOCHI UNIVERSITY OF - Jepang 2012',
@@ -36,193 +36,193 @@ class DosenSeederV2 extends Seeder
             ],
             [
                 'name' => 'Dr. Eng. IB. Ilham Malik, S.T., M.T.',
-                'email' => 'ilham@email.com',
+                'email' => 'ilham@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'M. Bobby Rahman., S.T., M.Si (Han)., Ph.D.',
-                'email' => 'bobby@email.com',
+                'email' => 'bobby@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Dr. Asnani, S.Sos.,M.A.',
-                'email' => 'asnani@email.com',
+                'email' => 'asnani@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Dr. M. Zainal Ibad, S.T., M.T.',
-                'email' => 'zainal@email.com',
+                'email' => 'zainal@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Dr. Husna Tiara Putri, S.T., M.T.',
-                'email' => 'husna@email.com',
+                'email' => 'husna@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Shahnaz Nabila Fuady S.T., M.T., Ph.D.',
-                'email' => 'shahnaz@email.com',
+                'email' => 'shahnaz@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Dr. (Cand.) Goldie Melinda Wijayanti, S.T.,M.T.',
-                'email' => 'goldie@email.com',
+                'email' => 'goldie@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Isye Susana Nurhasanah, ST., M.Si (Han), Ph.D (Cand.)',
-                'email' => 'isye@email.com',
+                'email' => 'isye@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Helmia Adita Fitra, S.T., M.T., Ph.D (Cand.)',
-                'email' => 'helmia@email.com',
+                'email' => 'helmia@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Hafi Munirwan,S.T., M.Sc. Ph.D (Cand.)',
-                'email' => 'hafi@email.com',
+                'email' => 'hafi@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Adnin Musadri Asbi, S.Hut.,M.Sc. Ph.D (Cand.)',
-                'email' => 'adnin@email.com',
+                'email' => 'adnin@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Dr. (Cand.) Tetty Harahap, S.T., M.Eng.',
-                'email' => 'tetty@email.com',
+                'email' => 'tetty@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Zulqadri Ansar S.T., M.T., Ph.D (Cand.)',
-                'email' => 'zulqadiri@email.com',
+                'email' => 'zulqadiri@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Dwi Bayu Prasetya, S.Si., M. Eng., Ph.D (Cand.)',
-                'email' => 'dwi@email.com',
+                'email' => 'dwi@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Dr. (Cand.) Zenia F Saraswati, S.T., M.PWK.',
-                'email' => 'zenia@email.com',
+                'email' => 'zenia@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Adinda Sekar Tanjung, S.T., M.T.',
-                'email' => 'adinda@email.com',
+                'email' => 'adinda@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Baiq Rindang Aprildahani, S.T., M.T.',
-                'email' => 'baiq@email.com',
+                'email' => 'baiq@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Chania Rahmah MR, S.P.W.K., M.Sc.',
-                'email' => 'chania@email.com',
+                'email' => 'chania@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Dian Prasetyaning Sukmawati, S.T., M.T.',
-                'email' => 'dian@email.com',
+                'email' => 'dian@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Fachri Muhammad Rasyid, S.P.W.K., M.URP.',
-                'email' => 'fachri@email.com',
+                'email' => 'fachri@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Fran Sinatra, S.P., M.T.',
-                'email' => 'fran@email.com',
+                'email' => 'fran@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Hediyati Anisia Br Sinamo, S.P.W.K., M.P.W.K.',
-                'email' => 'hediyati@email.com',
+                'email' => 'hediyati@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Ir. Jamaludin,S.T., M.Sc.',
-                'email' => 'jamaludin@email.com',
+                'email' => 'jamaludin@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Lestari P. Winata, M.P.W.K.',
-                'email' => 'lestari@email.com',
+                'email' => 'lestari@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Mia Ermawati, S.T., M.T.',
-                'email' => 'mia@email.com',
+                'email' => 'mia@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Muhammad Abdul Mubdi Bindar, S.T., M.T.',
-                'email' => 'muhammadabdul@email.com',
+                'email' => 'muhammadabdul@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Muh. Abdi Danurja Rahman Aziz, S.T., M.R.K.',
-                'email' => 'muhabdi@email.com',
+                'email' => 'muhabdi@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Nela Agustin Kurnianingsih, S.T., M.T.',
-                'email' => 'nela@email.com',
+                'email' => 'nela@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Ryansyah Izhar, S.T., M.P.W.K',
-                'email' => 'ryansyah@email.com',
+                'email' => 'ryansyah@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Valendya Rilansari, S.P.W.K., M.P.W.K.',
-                'email' => 'valenda@email.com',
+                'email' => 'valenda@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Verlina Agustine, S.P.W.K., M.P.W.K.',
-                'email' => 'verlina@email.com',
+                'email' => 'verlina@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Yudha Rahman, S.T., M.T.',
-                'email' => 'yudha@email.com',
+                'email' => 'yudha@pwk.itera.ac.id',
                 'role' => 'dosen',
                 'status' => 'aktif'
             ],
@@ -231,25 +231,25 @@ class DosenSeederV2 extends Seeder
         $dataStaf = [
             [
                 'name' => 'Koko Setiawan, S.Pd',
-                'email' => 'koko@email.com',
+                'email' => 'koko@pwk.itera.ac.id',
                 'role' => 'staff',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Dela Fitriana, S.P.',
-                'email' => 'dela@email.com',
+                'email' => 'dela@pwk.itera.ac.id',
                 'role' => 'staff',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Octa Ardiyansyah, S.Kom',
-                'email' => 'okta@email.com',
+                'email' => 'okta@pwk.itera.ac.id',
                 'role' => 'staff',
                 'status' => 'aktif'
             ],
             [
                 'name' => 'Fachri Muhammad Rasyid, S.P.W.K',
-                'email' => 'fachrimuhammad@email.com',
+                'email' => 'fachrimuhammad@pwk.itera.ac.id',
                 'role' => 'staff',
                 'status' => 'aktif'
             ],

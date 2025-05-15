@@ -42,6 +42,8 @@ class TentangSeeder extends Seeder
             'latitude' => '-5.360070',
             'longitude' => '105.315312',
             'maps_url' => 'https://maps.google.com/?q=-5.360070,105.315312',
+            'semester' => 'ganjil',
+            'year' => '2024/2025',
             'user_id' => 1,
         ]);
     }

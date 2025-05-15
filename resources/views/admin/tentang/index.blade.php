@@ -71,6 +71,36 @@
                                         @enderror
                                     </div>
                                 </div>
+
+                                <!-- Semester -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">{{ __('Semester') }} <span
+                                                class="text-danger">*</span></label>
+                                        <select class="form-select @error('semester') is-invalid @enderror" name="semester"
+                                            id="semester" required>
+                                            <option value="">-- Pilih Semester --</option>
+                                            <option value="ganjil" {{ $tentang->semester == 'ganjil' ? 'selected' : '' }}>Ganjil</option>
+                                            <option value="genap" {{ $tentang->semester == 'genap' ? 'selected' : '' }}>Genap</option>
+                                        </select>
+                                        @error('semester')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <!-- Tahun Ajaran -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">{{ __('Tahun Ajaran') }} <span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" class="form-control @error('year') is-invalid @enderror"
+                                            placeholder="2024/2025" name="year" id="year" value="{{ old('year', $tentang->year) }}" required>
+                                        @error('year')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
                             <div class="text-end mt-3">
                                 <button type="submit" name="section" value="basic" class="btn btn-primary btn-sm">

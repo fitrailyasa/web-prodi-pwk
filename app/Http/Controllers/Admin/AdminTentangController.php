@@ -18,8 +18,20 @@ class AdminTentangController extends Controller
 
     public function update(TentangRequest $request, $id)
     {
-        $tentang = Tentang::first($id);
+        $tentang = Tentang::findOrFail($id);
         $validatedData = $request->validated();
+
+        // Handle image upload
+        if ($request->hasFile('img')) {
+            // Hapus gambar lama jika ada
+            if ($tentang->img && Storage::disk('public')->exists($tentang->img)) {
+                Storage::disk('public')->delete($tentang->img);
+            }
+            $validatedData['img'] = $request->file('img')->store('images', 'public');
+        } else {
+            // Jika tidak upload gambar baru, gunakan gambar lama
+            $validatedData['img'] = $tentang->img;
+        }
 
         $validatedData['user_id'] = $tentang->user_id;
 
@@ -34,7 +46,7 @@ class AdminTentangController extends Controller
         ]);
 
         $path = $request->file('upload')->store('images', 'public');
-        
+
         $url = Storage::url($path);
 
         return response()->json([
