@@ -108,7 +108,7 @@
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label class="form-label">{{ __('Gambar') }}</label>
-                            <input id="image-input" accept="image/*" type="file"
+                            <input id="image-input-{{ $berita->id }}" accept="image/*" type="file"
                                 class="form-control @error('img') is-invalid @enderror" name="img">
                             @error('img')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -119,13 +119,9 @@
                     <!-- Preview Gambar -->
                     <div class="col-md-12 text-center">
                         <div class="mb-3">
-                            @if ($berita->img)
-                                <img class="img-fluid py-3" id="image-preview" width="200px"
-                                    src="{{ asset('storage/' . $berita->img) }}" alt="{{ $berita->name }}">
-                            @else
-                                <img class="img-fluid py-3" id="image-preview" width="200px"
-                                    src="{{ asset('assets/profile/default.png') }}" alt="Image Preview">
-                            @endif
+                            <img class="img-fluid py-3" id="image-preview-{{ $berita->id }}" width="200px"
+                                src="{{ $berita->img ? asset('storage/' . $berita->img) : asset('assets/profile/default.png') }}"
+                                alt="Image Preview">
                         </div>
                     </div>
                 </div>
@@ -143,60 +139,53 @@
 
 <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
 <script>
-    // Image preview
-    document.getElementById('image-input').addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('image-preview').src = e.target.result;
+    document.addEventListener('DOMContentLoaded', function() {
+        // Image preview
+        document.getElementById('image-input-{{ $berita->id }}').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('image-preview-{{ $berita->id }}').src = e.target
+                        .result;
+                }
+                reader.readAsDataURL(file);
             }
-            reader.readAsDataURL(file);
-        }
-    });
-
-    // CKEditor
-    let editor;
-    ClassicEditor
-        .create(document.querySelector('#edit_desc_{{ $berita->id }}'), {
-            ckfinder: {
-                uploadUrl: '{{ route('admin.berita.upload_image') . '?_token=' . csrf_token() }}',
-            },
-            toolbar: {
-                items: [
-                    'heading',
-                    '|',
-                    'bold',
-                    'italic',
-                    'link',
-                    '|',
-                    'bulletedList',
-                    'numberedList',
-                    '|',
-                    'imageUpload',
-                    'blockQuote',
-                    'insertTable',
-                    'undo',
-                    'redo'
-                ]
-            },
-            removePlugins: ['MediaEmbed']
-        })
-        .then(newEditor => {
-            editor = newEditor;
-            // Set editor height
-            const editorElement = editor.ui.getEditableElement();
-            editorElement.style.minHeight = '300px';
-        })
-        .catch(error => {
-            console.error(error);
         });
 
-    // Clean up on modal close
-    document.querySelector('.formEdit{{ $berita->id }}').addEventListener('hidden.bs.modal', function() {
-        if (editor) {
-            const originalContent = `{{ old('desc', $berita->desc) }}`;
-            editor.setData(originalContent);
-        }
+        // CKEditor: Inisialisasi saat modal dibuka
+        let editorInstance = null;
+        $('.formEdit{{ $berita->id }}').on('shown.bs.modal', function() {
+            if (!editorInstance) {
+                ClassicEditor
+                    .create(document.querySelector('#edit_desc_{{ $berita->id }}'), {
+                        ckfinder: {
+                            uploadUrl: '{{ route('admin.berita.upload_image') . '?_token=' . csrf_token() }}',
+                        },
+                        toolbar: {
+                            items: [
+                                'heading', '|', 'bold', 'italic', 'link', '|',
+                                'bulletedList', 'numberedList', '|', 'imageUpload',
+                                'blockQuote', 'insertTable', 'undo', 'redo'
+                            ]
+                        },
+                        removePlugins: ['MediaEmbed']
+                    })
+                    .then(editor => {
+                        editorInstance = editor;
+                        editor.ui.getEditableElement().style.minHeight = '300px';
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }
+        });
+
+        // Reset editor saat modal ditutup
+        $('.formEdit{{ $berita->id }}').on('hidden.bs.modal', function() {
+            if (editorInstance) {
+                editorInstance.setData(`{!! old('desc', $berita->desc) !!}`);
+            }
+        });
     });
 </script>
