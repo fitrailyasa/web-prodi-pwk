@@ -36,7 +36,7 @@
             <tr>
                 <th>{{ __('No') }}</th>
                 <th>{{ __('Judul Event') }}</th>
-                <th>{{ __('Thumbnail') }}</th>
+                {{-- <th>{{ __('Thumbnail') }}</th> --}}
                 <th>{{ __('Status') }}</th>
                 <th>{{ __('Tanggal Pelaksanaan') }}</th>
                 <th>{{ __('Tanggal Publikasi') }}</th>
@@ -50,7 +50,7 @@
                 <tr @if ($event) class="text-muted" @endif>
                     <td>{{ $counter++ }}</td>
                     <td>{{ $event->name ?? '-' }}</td>
-                    <td>
+                    {{-- <td>
                         @if ($event->img == null)
                             <img src="{{ asset('assets/profile/default.png') }}" alt="{{ $event->name }}"
                                 width="100">
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
                         @endif
-                    </td>
+                    </td> --}}
                     <td>
                         @if ($event->status == 'unpublish')
                             <span class="badge bg-secondary">Unpublished</span>
