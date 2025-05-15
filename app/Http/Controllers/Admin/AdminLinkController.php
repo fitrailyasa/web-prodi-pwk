@@ -73,12 +73,12 @@ class AdminLinkController extends Controller
 
     public function update(LinkRequest $request, $id)
     {
-        $Link = Link::findOrFail($id);
+        $link = Link::findOrFail($id);
         $validatedData = $request->validated();
 
-        $validatedData['user_id'] = $Link->user_id;
+        $validatedData['user_id'] = auth()->id();
 
-        $Link->update($validatedData);
+        $link->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Link!');
     }
 

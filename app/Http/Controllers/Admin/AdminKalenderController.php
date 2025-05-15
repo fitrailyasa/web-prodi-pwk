@@ -21,7 +21,7 @@ class AdminKalenderController extends Controller
         $kalender = Kalender::findOrFail($id);
         $validatedData = $request->validated();
 
-        $validatedData['user_id'] = $kalender->user_id;
+        $validatedData['user_id'] = auth()->id();
 
         // upload file
         if ($request->hasFile('file')) {

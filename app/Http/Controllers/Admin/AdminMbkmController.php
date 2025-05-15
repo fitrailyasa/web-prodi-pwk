@@ -50,9 +50,9 @@ class AdminMbkmController extends Controller
 
     public function update(MbkmRequest $request, $id)
     {
-        $Mbkm = Mbkm::findOrFail($id);
+        $mbkm = Mbkm::findOrFail($id);
         $validatedData = $request->validated();
-        $validatedData['user_id'] = $Mbkm->user_id;
+        $validatedData['user_id'] = auth()->id();
 
         // Convert benefits string to array
         if (isset($validatedData['benefits'])) {
@@ -60,7 +60,7 @@ class AdminMbkmController extends Controller
             $validatedData['benefits'] = $benefits;
         }
 
-        $Mbkm->update($validatedData);
+        $mbkm->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Mbkm!');
     }
 

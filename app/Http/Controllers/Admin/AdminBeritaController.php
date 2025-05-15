@@ -77,7 +77,7 @@ class AdminBeritaController extends Controller
         $berita = Berita::findOrFail($id);
         $validatedData = $request->validated();
 
-        $validatedData['user_id'] = $berita->user_id;
+        $validatedData['user_id'] = auth()->id();
 
         if ($request->hasFile('img')) {
             if ($berita->img && Storage::exists('public/' . $berita->img)) {

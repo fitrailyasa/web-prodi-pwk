@@ -73,7 +73,7 @@ class AdminMatkulController extends Controller
         $Matkul = Matkul::findOrFail($id);
         $validatedData = $request->validated();
 
-        $validatedData['user_id'] = $Matkul->user_id;
+        $validatedData['user_id'] = auth()->id();
 
         $Matkul->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Matkul!');

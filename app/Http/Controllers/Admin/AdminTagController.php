@@ -63,12 +63,12 @@ class AdminTagController extends Controller
 
     public function update(TagRequest $request, $id)
     {
-        $Tag = Tag::findOrFail($id);
+        $tag = Tag::findOrFail($id);
         $validatedData = $request->validated();
 
-        $validatedData['user_id'] = $Tag->user_id;
+        $validatedData['user_id'] = auth()->id();
 
-        $Tag->update($validatedData);
+        $tag->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Tag!');
     }
 
