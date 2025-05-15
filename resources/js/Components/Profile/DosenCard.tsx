@@ -19,10 +19,14 @@ const DosenAndStafCard: React.FC<DosenAndStafCardProps> = ({
         >
             <CardBody>
                 <Image
-                    src={staf.image}
+                    src={
+                        staf.image
+                            ? `/${staf.image}`
+                            : '/assets/profile/default.png'
+                    }
                     alt={`foto-${staf.name}`}
                     width={'100%'}
-                    className="aspect-[4/3] rounded-xl"
+                    className="aspect-[4/3] rounded-xl object-cover"
                 />
                 <h3 className="font-bold text-center text-wrap text-lg pt-3 pb-1 text-main-blue-light">
                     {staf.name}

@@ -1,9 +1,5 @@
 import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
-import { Button } from '@heroui/react'
 import { useTranslation } from '@/Hooks/useTranslation'
-import { StorageProps } from '@/types'
-import { usePage } from '@inertiajs/react'
-import { TestImage } from '@/Constants'
 
 type TabResumeProps = {
     data: {

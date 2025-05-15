@@ -1,5 +1,4 @@
 import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
-import { Button } from '@heroui/react'
 import { useTranslation } from '@/Hooks/useTranslation'
 
 type TabCourseProps = {

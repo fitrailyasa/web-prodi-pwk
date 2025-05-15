@@ -12,13 +12,14 @@ import React from 'react'
 import { useTranslation } from '@/Hooks/useTranslation'
 import { usePage } from '@inertiajs/react'
 import { StorageProps } from '@/types'
-import { TestImage } from '@/Constants'
 
 const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
     const { storage } = usePage<{
         storage: StorageProps
     }>().props
-    const imageLink = dosen.image ? storage.link + dosen.image : TestImage
+    const imageLink = dosen.image
+        ? `/${dosen.image}`
+        : '/assets/profile/default.png'
     const pageTitle = useTranslation('Detail Dosen & Staf')
     const resumeText = useTranslation('Ringkasan')
     const publicationText = useTranslation('Penelitian Dan Publikasi')

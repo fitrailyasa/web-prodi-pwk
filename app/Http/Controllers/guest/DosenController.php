@@ -26,10 +26,20 @@ class DosenController extends Controller
             ->with(['dosenProfile'])
             ->get();
 
+        // Transform data for frontend
+        $transformData = function ($user) {
+            return [
+                'id' => $user->id,
+                'name' => $user->name,
+                'position' => $user->dosenProfile?->position ?? $user->position,
+                'image' => $user->dosenProfile?->img ? 'profile/' . $user->dosenProfile->img : null,
+            ];
+        };
+
         return Inertia::render('Profile/DosenAndStaf/DosenAndStaft', [
-            'koordinator' => $koordinator,
-            'employee' => $dosen,
-            'staff' => $staff
+            'koordinator' => $koordinator ? $transformData($koordinator) : null,
+            'employee' => $dosen->map($transformData),
+            'staff' => $staff->map($transformData)
         ]);
     }
 
@@ -80,7 +90,7 @@ class DosenController extends Controller
             'bio' => $dosen->dosenProfile?->bio ?? '',
             'education' => $dosen->dosenProfile?->education ?? '',
             'expertise' => $dosen->dosenProfile?->expertise ?? '',
-            'image' => $dosen->dosenProfile?->img ? 'storage/profile/' . $dosen->dosenProfile->img : null,
+            'image' => $dosen->dosenProfile?->img ? 'profile/' . $dosen->dosenProfile->img : null,
             'linkedin' => $dosen->dosenProfile?->linkedin ?? '',
             'dosenProfile' => [
                 'nip' => $dosen->dosenProfile?->nip ?? '',
