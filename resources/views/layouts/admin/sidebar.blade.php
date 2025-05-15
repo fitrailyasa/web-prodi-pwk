@@ -69,8 +69,15 @@
                             <li class="nav-item ms-3">
                                 <a href="{{ route('admin.modul.index') }}"
                                     class="nav-link text-white {{ Request::routeIs('admin.modul.index') ? 'aktif' : '' }}">
-                                    <i class="nav-icon fas fa-book"></i>
+                                    <i class="nav-icon fas fa-file"></i>
                                     <p>Modul Kuliah</p>
+                                </a>
+                            </li>
+                            <li class="nav-item ms-3">
+                                <a href="{{ route('admin.event.index') }}"
+                                    class="nav-link text-white {{ Request::routeIs('admin.event.index') ? 'aktif' : '' }}">
+                                    <i class="nav-icon fas fa-calendar-check"></i>
+                                    <p>Kalender Event</p>
                                 </a>
                             </li>
                             {{-- <li class="nav-item ms-3">
@@ -107,13 +114,6 @@
                                     class="nav-link text-white {{ Request::routeIs('admin.berita.index') ? 'aktif' : '' }}">
                                     <i class="nav-icon fas fa-newspaper"></i>
                                     <p>Berita</p>
-                                </a>
-                            </li>
-                            <li class="nav-item ms-3">
-                                <a href="{{ route('admin.event.index') }}"
-                                    class="nav-link text-white {{ Request::routeIs('admin.event.index') ? 'aktif' : '' }}">
-                                    <i class="nav-icon fas fa-calendar-check"></i>
-                                    <p>Event</p>
                                 </a>
                             </li>
                             <li class="nav-item ms-3">
