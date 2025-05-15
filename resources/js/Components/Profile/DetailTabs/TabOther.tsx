@@ -3,7 +3,9 @@ import { Button } from '@heroui/react'
 import { useTranslation } from '@/Hooks/useTranslation'
 
 type TabOtherProps = {
-    data: any
+    data: {
+        other?: string
+    }
 }
 
 const TabOther: React.FC<TabOtherProps> = ({ data }) => {
@@ -20,7 +22,13 @@ const TabOther: React.FC<TabOtherProps> = ({ data }) => {
                 <h2 className="font-bold text-3xl pb-4 border-b mb-3 text-main-blue-light">
                     {otherTitle}
                 </h2>
-                <p className="text-main-blue-light">{placeholderText}</p>
+                {data.other ? (
+                    <div className="text-main-blue-light whitespace-pre-wrap">
+                        {data.other}
+                    </div>
+                ) : (
+                    <p className="text-main-blue-light">{placeholderText}</p>
+                )}
             </SectionTrigerScroll>
         </>
     )

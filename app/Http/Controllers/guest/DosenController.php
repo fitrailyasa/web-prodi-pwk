@@ -92,7 +92,8 @@ class DosenController extends Controller
                 'achievements' => $dosen->dosenProfile?->achievements ?? '',
             ],
             'publications' => $dosen->publications,
-            'courses' => $courses
+            'courses' => $courses,
+            'other' => $dosen->dosenProfile?->other ?? ''
         ];
 
         return Inertia::render('Profile/DosenAndStaf/DosenAndStafDetail', [
