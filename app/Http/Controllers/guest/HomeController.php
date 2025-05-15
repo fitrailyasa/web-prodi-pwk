@@ -28,7 +28,7 @@ class HomeController extends Controller
                 'tag' => $item->tag->name ?? '',
                 'image' => $item->img,
                 'see' => $item->views,
-                'date' => $item->publish_date,
+                'date' => $item->event_date,
                 'description' => $item->desc,
             ];
         });
