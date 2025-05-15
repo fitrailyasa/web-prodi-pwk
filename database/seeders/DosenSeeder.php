@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Jadwal;
 use App\Models\Matkul;
-use App\Models\Publication;
+use App\Models\Publikasi;
 use App\Models\DosenProfile;
 use Illuminate\Database\Seeder;
 
@@ -30,8 +30,8 @@ class DosenSeeder extends Seeder
             'img' => 'https://ui-avatars.com/api/?name=John+Doe&background=random'
         ]);
 
-        // Create publications for koordinator
-        Publication::factory(5)->create(['user_id' => $koordinator->id]);
+        // Create publikasis for koordinator
+        Publikasi::factory(5)->create(['user_id' => $koordinator->id]);
 
         // Create jadwals for koordinator
         $matkuls = Matkul::take(3)->get();
@@ -64,8 +64,8 @@ class DosenSeeder extends Seeder
                 'img' => "https://ui-avatars.com/api/?name=Dosen+$i&background=random"
             ]);
 
-            // Create publications
-            Publication::factory(rand(3, 8))->create(['user_id' => $dosen->id]);
+            // Create publikasis
+            Publikasi::factory(rand(3, 8))->create(['user_id' => $dosen->id]);
 
             // Create jadwals for each dosen
             $matkuls = Matkul::inRandomOrder()->take(rand(2, 4))->get();

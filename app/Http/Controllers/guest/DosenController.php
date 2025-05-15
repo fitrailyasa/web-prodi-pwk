@@ -49,7 +49,7 @@ class DosenController extends Controller
             ->where('id', $id)
             ->with([
                 'dosenProfile',
-                'publications' => function ($query) {
+                'publikasis' => function ($query) {
                     $query->orderBy('year', 'desc');
                 }
             ])
@@ -101,7 +101,7 @@ class DosenController extends Controller
                 'research_interests' => $dosen->dosenProfile?->research_interests ?? '',
                 'achievements' => $dosen->dosenProfile?->achievements ?? '',
             ],
-            'publications' => $dosen->publications,
+            'publikasis' => $dosen->publikasis,
             'courses' => $courses,
             'other' => $dosen->dosenProfile?->other ?? ''
         ];

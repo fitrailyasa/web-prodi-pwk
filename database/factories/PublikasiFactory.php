@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Publication;
+use App\Models\Publikasi;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PublicationFactory extends Factory
+class PublikasiFactory extends Factory
 {
-    protected $model = Publication::class;
+    protected $model = Publikasi::class;
 
     public function definition()
     {
-        $types = ['journal', 'conference', 'book', 'patent'];
+        $types = ['jurnal', 'konferensi', 'buku', 'paten'];
         $year = $this->faker->numberBetween(2010, 2024);
 
         return [

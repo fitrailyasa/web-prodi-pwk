@@ -3,7 +3,7 @@ import { useTranslation } from '@/Hooks/useTranslation'
 
 type TabPublicationProps = {
     data: {
-        publications: Array<{
+        publikasis: Array<{
             id: number
             title: string
             type: string
@@ -36,9 +36,9 @@ const TabPublication: React.FC<TabPublicationProps> = ({ data }) => {
                 {publicationText}
             </h2>
 
-            {data.publications && data.publications.length > 0 ? (
+            {data.publikasis && data.publikasis.length > 0 ? (
                 <div className="space-y-6">
-                    {data.publications.map((pub, index) => (
+                    {data.publikasis.map((pub, index) => (
                         <div key={index} className="border-b pb-4">
                             <h3 className="font-semibold text-xl mb-2 text-main-blue-light">
                                 {useTranslation(pub.title)}

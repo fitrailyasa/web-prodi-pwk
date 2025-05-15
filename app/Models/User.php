@@ -56,9 +56,9 @@ class User extends Authenticatable
         // DB::setDefaultConnection(env('DB2_CONNECTION'));
     }
 
-    public function publications()
+    public function publikasis()
     {
-        return $this->hasMany(Publication::class);
+        return $this->hasMany(Publikasi::class);
     }
 
     public function jadwals()
