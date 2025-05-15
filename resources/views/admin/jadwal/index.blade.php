@@ -22,7 +22,7 @@
 
     <!-- Button Delete All -->
     <x-slot name="deleteAll">
-        {{-- @include('admin.jadwal.deleteAll') --}}
+        @include('admin.jadwal.deleteAll')
     </x-slot>
 
     <!-- Search & Pagination -->

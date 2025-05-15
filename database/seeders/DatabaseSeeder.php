@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(KalenderSeeder::class);
         $this->call(ChatbotSeeder::class);
         $this->call(KelompokKeahlianSeeder::class);
-        $this->call(MbkmSeeder::class);
+        // $this->call(MbkmSeeder::class);
         $this->call(SejarahSeeder::class);
         $this->call(DosenSeeder::class);
     }

@@ -22,7 +22,7 @@
 
     <!-- Button Delete All -->
     <x-slot name="deleteAll">
-        @include('admin.matkul.deleteAll')
+        {{-- @include('admin.matkul.deleteAll') --}}
     </x-slot>
 
     <!-- Search & Pagination -->
