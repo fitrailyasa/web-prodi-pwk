@@ -28,7 +28,7 @@ class AdminMatkulController extends Controller
 
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
-        $query = Matkul::query();
+        // $query = Matkul::query();
 
         // If user is a lecturer, only show courses from their schedules
         // if (auth()->user()->role === 'dosen') {
@@ -37,7 +37,16 @@ class AdminMatkulController extends Controller
         //     });
         // }
 
-        $matkuls = $query->orderBy('name', 'asc')->paginate($validPerPage);
+        // $matkuls = $query->orderBy('name', 'asc')->paginate($validPerPage);
+        // $counter = ($matkuls->currentPage() - 1) * $matkuls->perPage() + 1;
+
+        if ($search) {
+            $matkuls = Matkul::where('name', 'like', "%{$search}%")
+                ->paginate($validPerPage);
+        } else {
+            $matkuls = Matkul::paginate($validPerPage);
+        }
+
         $counter = ($matkuls->currentPage() - 1) * $matkuls->perPage() + 1;
 
         return view("admin.matkul.index", compact('matkuls', 'counter', 'search', 'perPage'));

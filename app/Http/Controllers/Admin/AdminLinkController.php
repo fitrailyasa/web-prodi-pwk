@@ -41,7 +41,6 @@ class AdminLinkController extends Controller
         }
 
         $counter = ($links->currentPage() - 1) * $links->perPage() + 1;
-        // dd($links, $categories);
 
         return view("admin.link.index", compact('links', 'categories', 'counter', 'search', 'perPage'));
     }
