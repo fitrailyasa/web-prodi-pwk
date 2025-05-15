@@ -228,22 +228,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <!-- Address -->
-                                <div class="col-md-12">
-                                    <div class="mb-3">
-                                        <label class="form-label fw-bold">{{ __('Alamat') }}</label>
-                                        <div class="input-group">
-                                            <textarea class="form-control @error('address') is-invalid @enderror" name="address" rows="2" maxlength="255">{{ old('address', $tentang->address) }}</textarea>
-                                            <span class="input-group-text"><i
-                                                    class="fas fa-map-marker-alt"></i></span>
-                                        </div>
-                                        @error('address')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label fw-bold">{{ __('Telepon') }}</label>
                                         <div class="input-group">
@@ -259,7 +244,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label fw-bold">{{ __('Email') }}</label>
                                         <div class="input-group">
@@ -270,6 +255,20 @@
                                             <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                         </div>
                                         @error('email')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">{{ __('Alamat') }}</label>
+                                        <div class="input-group">
+                                            <textarea class="form-control @error('address') is-invalid @enderror" name="address" rows="2" maxlength="255">{{ old('address', $tentang->address) }}</textarea>
+                                            <span class="input-group-text"><i
+                                                    class="fas fa-map-marker-alt"></i></span>
+                                        </div>
+                                        @error('address')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -361,7 +360,7 @@
                 </div>
 
                 <!-- Informasi Lokasi -->
-                <div class="col-12 mb-2">
+                {{-- <div class="col-12 mb-2">
                     <div class="card shadow-sm">
                         <div class="card-header bg-secondary text-white">
                             <h5 class="mb-0"><i class="fas fa-map me-2"></i>{{ __('Informasi Lokasi') }}
@@ -428,7 +427,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
 
