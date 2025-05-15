@@ -56,6 +56,7 @@ class DosenProfileController extends Controller
             $profile->img = $imageName;
         }
 
+        $profile->bio = $request->bio;
         $profile->nip = $request->nip;
         $profile->nidn = $request->nidn;
         $profile->position = $request->position;
@@ -68,6 +69,7 @@ class DosenProfileController extends Controller
         $profile->achievements = $request->achievements;
         $profile->whatsapp = $request->whatsapp;
         $profile->linkedin = $request->linkedin;
+        $profile->other = $request->other;
 
         $profile->save();
 
