@@ -32,4 +32,9 @@ class Matkul extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function jadwals()
+    {
+        return $this->hasMany(Jadwal::class);
+    }
 }

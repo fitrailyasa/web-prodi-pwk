@@ -42,15 +42,18 @@ class AdminJadwalController extends Controller
             ELSE 8 END";
 
         // Query with search and ordering
-        if ($search) {
-            $jadwals = Jadwal::where('name', 'like', "%{$search}%")
-                ->orderByRaw($dayOrder)
-                ->paginate($validPerPage);
-        } else {
-            $jadwals = Jadwal::orderByRaw($dayOrder)
-                ->paginate($validPerPage);
+        $query = Jadwal::query();
+
+        // If user is a lecturer, only show their schedules
+        if (auth()->user()->role === 'dosen') {
+            $query->where('user_id', auth()->id());
         }
 
+        if ($search) {
+            $query->where('name', 'like', "%{$search}%");
+        }
+
+        $jadwals = $query->orderByRaw($dayOrder)->paginate($validPerPage);
         $counter = ($jadwals->currentPage() - 1) * $jadwals->perPage() + 1;
 
         return view("admin.jadwal.index", compact('jadwals', 'matkuls', 'days', 'lectures', 'counter', 'search', 'perPage'));

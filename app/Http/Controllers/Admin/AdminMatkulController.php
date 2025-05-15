@@ -23,13 +23,21 @@ class AdminMatkulController extends Controller
             'perPage' => 'nullable|integer|in:10,50,100',
         ]);
 
-
         $search = $request->input('search');
         $perPage = (int) $request->input('perPage', 10);
 
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
-        $matkuls = Matkul::orderBy('name', 'asc')->paginate($validPerPage);
+        $query = Matkul::query();
+
+        // If user is a lecturer, only show courses from their schedules
+        if (auth()->user()->role === 'dosen') {
+            $query->whereHas('jadwals', function ($q) {
+                $q->where('user_id', auth()->id());
+            });
+        }
+
+        $matkuls = $query->orderBy('name', 'asc')->paginate($validPerPage);
         $counter = ($matkuls->currentPage() - 1) * $matkuls->perPage() + 1;
 
         return view("admin.matkul.index", compact('matkuls', 'counter', 'search', 'perPage'));
