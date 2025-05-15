@@ -24,7 +24,8 @@ class DosenProfile extends Model
         'achievements',
         'img',
         'whatsapp',
-        'linkedin'
+        'linkedin',
+        'other'
     ];
 
     public function user()

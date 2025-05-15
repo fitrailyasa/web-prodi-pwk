@@ -32,7 +32,8 @@ class DosenProfileController extends Controller
             'achievements' => 'nullable|string|max:1000',
             'whatsapp' => 'nullable|string|max:20',
             'linkedin' => 'nullable|url|max:255',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+            'img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'other' => 'nullable|string|max:1000',
         ]);
 
         $profile = Auth::user()->dosenProfile;

@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('img')->nullable();
             $table->string('whatsapp')->nullable();
             $table->string('linkedin')->nullable();
+            $table->text('other')->nullable();
             $table->timestamps();
         });
     }

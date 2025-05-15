@@ -27,7 +27,8 @@ class DosenProfileFactory extends Factory
             'achievements' => $this->faker->paragraphs(3, true),
             'img' => $this->faker->imageUrl(640, 480, 'people'),
             'whatsapp' => $this->faker->phoneNumber(),
-            'linkedin' => $this->faker->url()
+            'linkedin' => $this->faker->url(),
+            'other' => $this->faker->paragraphs(3, true),
         ];
     }
 }
