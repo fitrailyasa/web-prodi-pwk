@@ -75,7 +75,7 @@ export default function ShowBeritaPage({
                                             <p className="text-black text-xs md:text-sm ">
                                                 {useTranslation(
                                                     DateFormater({
-                                                        date: new Date()
+                                                        date: berita.event_date
                                                     })
                                                 )}
                                             </p>
