@@ -31,11 +31,11 @@ class AdminMatkulController extends Controller
         $query = Matkul::query();
 
         // If user is a lecturer, only show courses from their schedules
-        if (auth()->user()->role === 'dosen') {
-            $query->whereHas('jadwals', function ($q) {
-                $q->where('user_id', auth()->id());
-            });
-        }
+        // if (auth()->user()->role === 'dosen') {
+        //     $query->whereHas('jadwals', function ($q) {
+        //         $q->where('user_id', auth()->id());
+        //     });
+        // }
 
         $matkuls = $query->orderBy('name', 'asc')->paginate($validPerPage);
         $counter = ($matkuls->currentPage() - 1) * $matkuls->perPage() + 1;
