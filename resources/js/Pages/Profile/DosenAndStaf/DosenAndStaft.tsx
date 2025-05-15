@@ -23,7 +23,10 @@ const Section: React.FC<SectionProps> = ({
     if (!users || users.length === 0) return null
 
     return (
-        <SectionTrigerScroll id="list-berita" className={`mt-10 ${className}`}>
+        <SectionTrigerScroll
+            id="list-dosenand-staf"
+            className={`mt-10 ${className}`}
+        >
             <div className="text-center mb-8">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
                     {translatedTitle}
@@ -67,17 +70,17 @@ const DosenAndStaf: React.FC<EmployePageProps> = ({
 
     return (
         <AppLayout title={pageTitle}>
-                {koordinator && (
-                    <Section
-                        title={koordinatorTitle}
-                        users={[koordinator]}
-                        className="flex flex-col items-center max-w-4xl mx-auto"
-                        isCoordinator={true}
-                    />
-                )}
-                <Section title={pengurusTitle} users={pengurus} />
-                <Section title={dosenTitle} users={dosen} />
-                <Section title={tendikTitle} users={staff || []} />
+            {koordinator && (
+                <Section
+                    title={koordinatorTitle}
+                    users={[koordinator]}
+                    className="flex flex-col items-center max-w-4xl mx-auto"
+                    isCoordinator={true}
+                />
+            )}
+            <Section title={pengurusTitle} users={pengurus} />
+            <Section title={dosenTitle} users={dosen} />
+            <Section title={tendikTitle} users={staff || []} />
         </AppLayout>
     )
 }
