@@ -163,28 +163,4 @@ class AdminModulController extends Controller
             return back()->with('error', 'Gagal menghapus semua data: ' . $e->getMessage());
         }
     }
-
-    public function import(Request $request)
-    {
-        try {
-            $request->validate([
-                'file' => 'required|mimes:xlsx,xls',
-            ]);
-
-            $file = $request->file('file');
-            Excel::import(new ModulImport, $file);
-            return back()->with('alert', 'Berhasil Import Data Modul!');
-        } catch (\Exception $e) {
-            return back()->with('error', 'Gagal import data: ' . $e->getMessage());
-        }
-    }
-
-    public function export()
-    {
-        try {
-            return Excel::download(new ModulExport, 'Data Modul.xlsx');
-        } catch (\Exception $e) {
-            return back()->with('error', 'Gagal export data: ' . $e->getMessage());
-        }
-    }
 }
