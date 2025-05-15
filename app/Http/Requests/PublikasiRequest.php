@@ -33,7 +33,7 @@ class PublikasiRequest extends FormRequest
             'publisher' => 'required|max:100',
             'year' => 'required|max:100',
             'link' => 'required|max:100',
-            'description' => 'required|max:255',
+            'description' => 'nullable|max:255',
         ];
     }
 
@@ -50,7 +50,6 @@ class PublikasiRequest extends FormRequest
             'year.max' => 'Tahun maksimal 100 karakter!',
             'link.required' => 'Link tidak boleh kosong!',
             'link.max' => 'Link maksimal 100 karakter!',
-            'description.required' => 'Deskripsi tidak boleh kosong!',
             'description.max' => 'Deskripsi maksimal 255 karakter!',
         ];
     }

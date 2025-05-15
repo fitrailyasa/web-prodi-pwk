@@ -19,6 +19,8 @@ use App\Http\Controllers\Admin\AdminModulController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminTagController;
 use App\Http\Controllers\Admin\AdminMbkmController;
+use App\Http\Controllers\Dosen\DosenProfileController;
+use App\Http\Controllers\Dosen\DosenPublikasiController;
 use App\Http\Controllers\Auth\ProviderController;
 
 use App\Http\Controllers\NavbarController;
@@ -163,8 +165,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
         // Profile Management
-        Route::get('/profile', [App\Http\Controllers\Dosen\DosenProfileController::class, 'index'])->name('profile.index');
-        Route::put('/profile', [App\Http\Controllers\Dosen\DosenProfileController::class, 'update'])->name('profile.update');
+        Route::get('/profile', [DosenProfileController::class, 'index'])->name('profile.index');
+        Route::put('/profile', [DosenProfileController::class, 'update'])->name('profile.update');
+
+        // CRUD PUBLIKASI
+        Route::get('/publikasi', [DosenPublikasiController::class, 'index'])->name('publikasi.index');
+        Route::post('/publikasi', [DosenPublikasiController::class, 'store'])->name('publikasi.store');
+        Route::put('/publikasi/{id}/update', [DosenPublikasiController::class, 'update'])->name('publikasi.update');
+        Route::delete('/publikasi/{id}/destroy', [DosenPublikasiController::class, 'destroy'])->name('publikasi.destroy');
 
         // CRUD JADWAL
         Route::get('/jadwal', [AdminJadwalController::class, 'index'])->name('jadwal.index');

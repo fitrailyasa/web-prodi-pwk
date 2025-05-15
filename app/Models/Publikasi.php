@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Publikasi extends Model
 {
@@ -18,6 +19,12 @@ class Publikasi extends Model
         'link',
         'description'
     ];
+
+    public static function setDynamicConnection()
+    {
+        DB::setDefaultConnection(env('DB_CONNECTION'));
+        // DB::setDefaultConnection(env('DB2_CONNECTION'));
+    }
 
     public function user()
     {

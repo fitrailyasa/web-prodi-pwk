@@ -160,15 +160,6 @@
                         </a>
                     </li>
                 @elseif (auth()->user()->role == 'dosen')
-                    <!-- Dashboard Dosen -->
-                    <li class="nav-item">
-                        <a href="{{ route('dosen.dashboard') }}"
-                            class="nav-link text-white {{ Request::routeIs('dosen.dashboard') ? 'aktif' : '' }}">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>Dashboard</p>
-                        </a>
-                    </li>
-
                     <!-- Menu Dosen -->
                     <li class="nav-header text-white">MENU DOSEN</li>
                     <li class="nav-item">
@@ -183,6 +174,13 @@
                             class="nav-link text-white {{ Request::routeIs('dosen.matkul.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-book"></i>
                             <p>Mata Kuliah</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('dosen.publikasi.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('dosen.publikasi.index') ? 'aktif' : '' }}">
+                            <i class="nav-icon fas fa-pen"></i>
+                            <p>Publikasi</p>
                         </a>
                     </li>
                 @endif
