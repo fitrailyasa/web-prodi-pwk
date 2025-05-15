@@ -105,7 +105,7 @@
                     </div>
 
                     <!-- Gambar (Image) -->
-                    <div class="col-md-12">
+                    {{-- <div class="col-md-12">
                         <div class="mb-3">
                             <label class="form-label">{{ __('Gambar') }}</label>
                             <input id="image-input" accept="image/*" type="file"
@@ -114,10 +114,10 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                    </div>
+                    </div> --}}
 
                     <!-- Preview Gambar -->
-                    <div class="col-md-12 text-center">
+                    {{-- <div class="col-md-12 text-center">
                         <div class="mb-3">
                             @if ($event->img)
                                 <img class="img-fluid py-3" id="image-preview" width="200px"
@@ -127,7 +127,7 @@
                                     src="{{ asset('assets/profile/default.png') }}" alt="Image Preview">
                             @endif
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="modal-footer">
