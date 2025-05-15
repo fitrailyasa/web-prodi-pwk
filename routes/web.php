@@ -147,7 +147,7 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/chatbot/{id}/update', [AdminChatbotController::class, 'update'])->name('chatbot.update');
         Route::delete('/chatbot/{id}/destroy', [AdminChatbotController::class, 'destroy'])->name('chatbot.destroy');
         Route::delete('/chatbot/deleteAll', [AdminChatbotController::class, 'destroyAll'])->name('chatbot.destroyAll');
-        
+
         // CRUD MBKM
         Route::get('/mbkm', [AdminMbkmController::class, 'index'])->name('mbkm.index');
         Route::get('/mbkm/{id}', [AdminMbkmController::class, 'show'])->name('mbkm.show');
@@ -161,6 +161,10 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware([Dosen::class])->name('dosen.')->prefix('dosen')->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('beranda');
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+
+        // Profile Management
+        Route::get('/profile', [App\Http\Controllers\Dosen\DosenProfileController::class, 'index'])->name('profile.index');
+        Route::put('/profile', [App\Http\Controllers\Dosen\DosenProfileController::class, 'update'])->name('profile.update');
 
         // CRUD JADWAL
         Route::get('/jadwal', [AdminJadwalController::class, 'index'])->name('jadwal.index');

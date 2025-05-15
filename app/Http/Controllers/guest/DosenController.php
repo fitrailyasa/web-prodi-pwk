@@ -71,10 +71,32 @@ class DosenController extends Controller
             })
             ->values();
 
-        $dosen->courses = $courses;
+        // Transform data untuk frontend
+        $dosenData = [
+            'id' => $dosen->id,
+            'name' => $dosen->name,
+            'email' => $dosen->email,
+            'position' => $dosen->dosenProfile?->position ?? $dosen->position,
+            'bio' => $dosen->dosenProfile?->bio ?? '',
+            'education' => $dosen->dosenProfile?->education ?? '',
+            'expertise' => $dosen->dosenProfile?->expertise ?? '',
+            'image' => $dosen->dosenProfile?->img ? 'storage/profile/' . $dosen->dosenProfile->img : null,
+            'linkedin' => $dosen->dosenProfile?->linkedin ?? '',
+            'dosenProfile' => [
+                'nip' => $dosen->dosenProfile?->nip ?? '',
+                'nidn' => $dosen->dosenProfile?->nidn ?? '',
+                'google_scholar' => $dosen->dosenProfile?->google_scholar ?? '',
+                'scopus_id' => $dosen->dosenProfile?->scopus_id ?? '',
+                'sinta_id' => $dosen->dosenProfile?->sinta_id ?? '',
+                'research_interests' => $dosen->dosenProfile?->research_interests ?? '',
+                'achievements' => $dosen->dosenProfile?->achievements ?? '',
+            ],
+            'publications' => $dosen->publications,
+            'courses' => $courses
+        ];
 
         return Inertia::render('Profile/DosenAndStaf/DosenAndStafDetail', [
-            'dosen' => $dosen
+            'dosen' => $dosenData
         ]);
     }
 }

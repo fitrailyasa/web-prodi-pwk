@@ -11,11 +11,12 @@ return new class extends Migration
         Schema::create('dosen_profiles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->text('bio')->nullable();
             $table->string('nip')->nullable();
             $table->string('nidn')->nullable();
             $table->string('position')->nullable();
-            $table->string('education')->nullable();
-            $table->string('expertise')->nullable();
+            $table->text('education')->nullable();
+            $table->text('expertise')->nullable();
             $table->string('google_scholar')->nullable();
             $table->string('scopus_id')->nullable();
             $table->string('sinta_id')->nullable();

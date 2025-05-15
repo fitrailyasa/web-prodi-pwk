@@ -72,22 +72,32 @@ const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
                             </div>
                             <div className="flex flex-wrap gap-5 items-center mt-2">
                                 <div className="flex items-center gap-3">
-                                    <EmailIcon
-                                        size={2}
-                                        className="text-main-green text-xs"
-                                    />
-                                    <span className="font-semibold text-main-blue-light">
+                                    <a
+                                        href={`mailto:${dosen.email}`}
+                                        className="flex items-center gap-2 font-semibold text-main-blue-light hover:underline"
+                                    >
+                                        <EmailIcon
+                                            size={2}
+                                            className="text-main-green text-xs"
+                                        />
                                         {dosen.email}
-                                    </span>
+                                    </a>
                                 </div>
                                 <div className="flex items-center gap-3">
-                                    <LinkedInIcon
-                                        size={2}
-                                        className="text-main-green text-xs"
-                                    />
-                                    <span className="font-semibold text-main-blue-light">
-                                        {dosen.linkedin}
-                                    </span>
+                                    {dosen.linkedin && (
+                                        <a
+                                            href={dosen.linkedin}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-2 font-semibold text-main-blue-light hover:underline"
+                                        >
+                                            <LinkedInIcon
+                                                size={2}
+                                                className="text-main-green text-xs"
+                                            />
+                                            {dosen.linkedin}
+                                        </a>
+                                    )}
                                 </div>
                             </div>
                         </div>

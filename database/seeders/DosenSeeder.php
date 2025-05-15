@@ -17,13 +17,17 @@ class DosenSeeder extends Seeder
         $koordinator = User::factory()->create([
             'name' => 'Dr. John Doe',
             'email' => 'koordinator@example.com',
-            'role' => 'dosen'
+            'role' => 'dosen',
+            'status' => 'aktif'
         ]);
 
         // Create dosen profile for koordinator
         DosenProfile::factory()->create([
             'user_id' => $koordinator->id,
-            'position' => 'koordinator'
+            'position' => 'koordinator',
+            'education' => 'S3',
+            'expertise' => 'Perencanaan Wilayah dan Kota',
+            'img' => 'https://ui-avatars.com/api/?name=John+Doe&background=random'
         ]);
 
         // Create publications for koordinator
@@ -39,7 +43,8 @@ class DosenSeeder extends Seeder
                 'room' => '101',
                 'day' => 'Senin',
                 'start_time' => '08:00',
-                'end_time' => '10:00'
+                'end_time' => '10:00',
+                'user_id' => $koordinator->id
             ]);
         }
 
@@ -48,13 +53,15 @@ class DosenSeeder extends Seeder
             $dosen = User::factory()->create([
                 'name' => "Dr. Dosen $i",
                 'email' => "dosen$i@example.com",
-                'role' => 'dosen'
+                'role' => 'dosen',
+                'status' => 'aktif'
             ]);
 
             // Create dosen profile
             DosenProfile::factory()->create([
                 'user_id' => $dosen->id,
-                'position' => 'dosen'
+                'position' => 'dosen',
+                'img' => "https://ui-avatars.com/api/?name=Dosen+$i&background=random"
             ]);
 
             // Create publications
@@ -70,7 +77,8 @@ class DosenSeeder extends Seeder
                     'room' => rand(101, 105),
                     'day' => ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'][rand(0, 4)],
                     'start_time' => ['08:00', '10:00', '13:00', '15:00'][rand(0, 3)],
-                    'end_time' => ['10:00', '12:00', '15:00', '17:00'][rand(0, 3)]
+                    'end_time' => ['10:00', '12:00', '15:00', '17:00'][rand(0, 3)],
+                    'user_id' => $dosen->id
                 ]);
             }
         }
