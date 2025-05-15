@@ -112,9 +112,18 @@ class BeritaController extends Controller
 
     public function show($slug)
     {
-
-
         $beritaData = Berita::with('tag')->where('slug', $slug)->first();
+
+        if ($beritaData) {
+            $ipAddress = request()->ip();
+            $cacheKey = "news_view_{$beritaData->id}_{$ipAddress}";
+            
+            if (!cache()->has($cacheKey)) {
+                $beritaData->increment('views');
+                cache()->put($cacheKey, true, now()->addHours(24));
+                $beritaData->refresh();
+            }
+        }
 
         $otherNewsData = Berita::where('slug', '!=', $slug)
             ->where('status', 'publish')
