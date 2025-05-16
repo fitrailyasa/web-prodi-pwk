@@ -4,10 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Modul;
+use App\Models\Jadwal;
 use App\Models\Matkul;
 
-class ModulSeeder extends Seeder
+class JadwalSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,11 +17,14 @@ class ModulSeeder extends Seeder
         // Get all matkul IDs
         $matkulIds = Matkul::pluck('id')->toArray();
 
-        // Generate 5 modules for each matkul
+        // Generate 3 schedules for each matkul
         foreach ($matkulIds as $matkulId) {
-            Modul::factory(5)->create([
-                'matkul_id' => $matkulId
-            ]);
+            // Generate 3 different schedules for each matkul
+            for ($i = 0; $i < 3; $i++) {
+                Jadwal::factory()->create([
+                    'matkul_id' => $matkulId,
+                ]);
+            }
         }
     }
 }

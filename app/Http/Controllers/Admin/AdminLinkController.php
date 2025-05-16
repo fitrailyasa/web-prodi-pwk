@@ -25,12 +25,8 @@ class AdminLinkController extends Controller
         $validPerPage = in_array($perPage, [10, 50, 100]) ? $perPage : 10;
 
         $categories = [
-            ['id' => 'home', 'name' => 'Beranda'],
-            ['id' => 'profile', 'name' => 'Profile'],
-            ['id' => 'academic', 'name' => 'Akademik'],
-            ['id' => 'facility', 'name' => 'Fasilitas'],
-            ['id' => 'news', 'name' => 'Berita & Informasi'],
-            ['id' => 'contact', 'name' => 'Kontak'],
+            ['id' => 'akademik', 'name' => 'Akademik'],
+            ['id' => 'fasilitas', 'name' => 'Fasilitas'],
         ];
         
         $categories = array_map(function ($category) {
@@ -45,7 +41,6 @@ class AdminLinkController extends Controller
         }
 
         $counter = ($links->currentPage() - 1) * $links->perPage() + 1;
-        // dd($links, $categories);
 
         return view("admin.link.index", compact('links', 'categories', 'counter', 'search', 'perPage'));
     }
@@ -77,12 +72,12 @@ class AdminLinkController extends Controller
 
     public function update(LinkRequest $request, $id)
     {
-        $Link = Link::findOrFail($id);
+        $link = Link::findOrFail($id);
         $validatedData = $request->validated();
 
-        $validatedData['user_id'] = $Link->user_id;
+        $validatedData['user_id'] = auth()->id();
 
-        $Link->update($validatedData);
+        $link->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Link!');
     }
 

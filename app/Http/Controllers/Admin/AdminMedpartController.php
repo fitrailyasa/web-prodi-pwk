@@ -71,7 +71,7 @@ class AdminMedpartController extends Controller
         $medpart = Medpart::findOrFail($id);
         $validatedData = $request->validated();
 
-        $validatedData['user_id'] = $medpart->user_id;
+        $validatedData['user_id'] = auth()->id();
 
         if ($request->hasFile('img')) {
             if ($medpart->img && Storage::exists('public/' . $medpart->img)) {

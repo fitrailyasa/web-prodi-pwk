@@ -33,11 +33,12 @@ class Tentang extends Model
         'tiktok_url',
         'latitude',
         'longitude',
-        'maps_url'
+        'maps_url',
+        'semester',
+        'year',
     ];
+    
     protected $dates = ['created_at', 'updated_at'];
-
-    // kurang summary
 
     public static function setDynamicConnection()
     {

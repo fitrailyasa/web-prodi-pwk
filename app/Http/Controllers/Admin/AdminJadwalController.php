@@ -86,12 +86,12 @@ class AdminJadwalController extends Controller
 
     public function update(JadwalRequest $request, $id)
     {
-        $Jadwal = Jadwal::findOrFail($id);
+        $jadwal = Jadwal::findOrFail($id);
         $validatedData = $request->validated();
 
-        $validatedData['user_id'] = $Jadwal->user_id;
+        $validatedData['user_id'] = auth()->id();
 
-        $Jadwal->update($validatedData);
+        $jadwal->update($validatedData);
         return back()->with('alert', 'Berhasil Edit Data Jadwal!');
     }
 

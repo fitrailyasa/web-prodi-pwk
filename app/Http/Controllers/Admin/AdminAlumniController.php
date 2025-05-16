@@ -71,7 +71,7 @@ class AdminAlumniController extends Controller
         $alumni = Alumni::findOrFail($id);
         $validatedData = $request->validated();
 
-        $validatedData['user_id'] = $alumni->user_id;
+        $validatedData['user_id'] = auth()->id();
 
         if ($request->hasFile('img')) {
             if ($alumni->img && Storage::exists('public/' . $alumni->img)) {

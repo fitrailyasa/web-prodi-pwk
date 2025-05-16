@@ -51,10 +51,13 @@
                     <td>{{ $matkul->credits ?? '-' }}</td>
                     <td>{{ $matkul->semester ?? '-' }}</td>
                     <td class="manage-row text-center">
-                        @if (auth()->user()->role == 'admin' || auth()->user()->role == 'dosen')
+                        @if (auth()->user()->role == 'admin')
                             <!-- Edit and Delete Buttons -->
                             @include('admin.matkul.edit')
                             @include('admin.matkul.delete')
+                        @elseif (auth()->user()->role == 'dosen')
+                            <!-- Edit Button -->
+                            @include('admin.matkul.edit')
                         @endif
                     </td>
                 </tr>

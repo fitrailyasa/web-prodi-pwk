@@ -421,7 +421,7 @@ export default function Kurikulum() {
                                 <TableColumn className="w-[90px]">
                                     {translations.ruang}
                                 </TableColumn>
-                                <TableColumn className="w-[200px]">
+                                <TableColumn className="w-[400px]">
                                     {translations.dosen}
                                 </TableColumn>
                                 <TableColumn className="w-[120px]">

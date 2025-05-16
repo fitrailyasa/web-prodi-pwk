@@ -21,6 +21,8 @@ return new class extends Migration
             $table->integer('total_student')->nullable();
             $table->integer('total_teaching_staff')->nullable();
             $table->string('img')->nullable();
+            $table->string('semester')->nullable();
+            $table->string('year')->nullable();
 
             // Contact Information
             $table->string('address')->nullable();

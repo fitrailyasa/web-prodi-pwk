@@ -19,7 +19,7 @@ class MedpartFactory extends Factory
         return [
             'name' => fake()->name(),
             'link' => fake()->url(),
-            'img' => null,
+            'img' => 'logo.png',
             'user_id' => 1
         ];
     }

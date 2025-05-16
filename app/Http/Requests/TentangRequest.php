@@ -35,6 +35,18 @@ class TentangRequest extends FormRequest
             'total_lecture' => 'required',
             'total_student' => 'required',
             'total_teaching_staff' => 'required',
+            'address' => 'nullable|max:100',
+            'phone' => 'nullable|max:100',
+            'email' => 'nullable|max:100',
+            'description' => 'nullable|max:1000',
+            'instagram_url' => 'nullable|max:100',
+            'youtube_url' => 'nullable|max:100',
+            'tiktok_url' => 'nullable|max:100',
+            'latitude' => 'nullable|max:100',
+            'longitude' => 'nullable|max:100',
+            'maps_url' => 'nullable|max:100',
+            'semester' => 'required|max:100',
+            'year' => 'required|max:100',
         ];
     }
 

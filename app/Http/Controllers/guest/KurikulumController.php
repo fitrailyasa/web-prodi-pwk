@@ -5,6 +5,7 @@ namespace App\Http\Controllers\guest;
 use App\Http\Controllers\Controller;
 use App\Models\Matkul;
 use App\Models\Jadwal;
+use App\Models\Tentang;
 use Inertia\Inertia;
 
 class KurikulumController extends Controller
@@ -29,8 +30,8 @@ class KurikulumController extends Controller
                     'end_time' => $item->end_time,
                 ];
             }),
-            'semesters' => 'ganjil', // ganjil/genap
-            'tahun_ajaran' => '2023/2024', // tahun ajaran
+            'semesters' => Tentang::first()->semester,
+            'tahun_ajaran' => Tentang::first()->tahun_ajaran
         ]);
     }
 }

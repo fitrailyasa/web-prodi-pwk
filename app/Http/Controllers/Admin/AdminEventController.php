@@ -77,7 +77,7 @@ class AdminEventController extends Controller
         $event = Event::findOrFail($id);
         $validatedData = $request->validated();
 
-        $validatedData['user_id'] = $event->user_id;
+        $validatedData['user_id'] = auth()->id();
 
         if ($request->hasFile('img')) {
             if ($event->img && Storage::exists('public/' . $event->img)) {

@@ -66,7 +66,7 @@
 
         <!-- Recent Activity -->
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Recent Berita</h3>
@@ -88,7 +88,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Recent Events</h3>
@@ -102,28 +102,6 @@
                                             {{ $event->judul }}
                                             <span
                                                 class="badge badge-info float-right">{{ $event->created_at->diffForHumans() }}</span>
-                                        </a>
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Recent Jadwal</h3>
-                    </div>
-                    <div class="card-body p-0">
-                        <ul class="products-list product-list-in-card pl-2 pr-2">
-                            @foreach ($recentJadwal as $jadwal)
-                                <li class="item">
-                                    <div class="product-info">
-                                        <a href="{{ route('admin.jadwal.index') }}" class="product-title">
-                                            {{ $jadwal->judul }}
-                                            <span
-                                                class="badge badge-info float-right">{{ $jadwal->created_at->diffForHumans() }}</span>
                                         </a>
                                     </div>
                                 </li>
@@ -157,12 +135,6 @@
                                 label: 'Events',
                                 data: @json($monthlyEvents),
                                 borderColor: 'rgb(255, 159, 64)',
-                                tension: 0.1,
-                                fill: false
-                            }, {
-                                label: 'Jadwal',
-                                data: @json($monthlyJadwal),
-                                borderColor: 'rgb(255, 99, 132)',
                                 tension: 0.1,
                                 fill: false
                             }]

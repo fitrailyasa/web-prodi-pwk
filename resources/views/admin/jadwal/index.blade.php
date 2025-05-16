@@ -22,7 +22,9 @@
 
     <!-- Button Delete All -->
     <x-slot name="deleteAll">
-        @include('admin.jadwal.deleteAll')
+        @if (auth()->user()->role == 'admin')
+            @include('admin.jadwal.deleteAll')
+        @endif
     </x-slot>
 
     <!-- Search & Pagination -->
