@@ -147,7 +147,7 @@ export default function Home({
                             autoSlide={isInView}
                             ref={sliderRef}
                             getPageIndicator={setPageIndicator}
-                            className="h-56 md:h-96 "
+                            className="sm:h-72 h-56 md:h-72 lg:h-96"
                         >
                             {popularNews.map((item, index) => {
                                 const imageLink = item.image
@@ -156,7 +156,7 @@ export default function Home({
                                 return (
                                     <div
                                         key={index}
-                                        className="w-full h-56 md:h-96 bg-cover bg-center rounded-3xl overflow-hidden border shadow-xl bg-white"
+                                        className="w-full sm:h-72 h-56 md:h-72 lg:h-96 bg-cover bg-center rounded-3xl overflow-hidden border shadow-xl bg-white"
                                     >
                                         <div className="grid grid-cols-2 rounded-3xl bg-sk">
                                             <div className="relative">
@@ -185,11 +185,11 @@ export default function Home({
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="bg-main-blue bg-opacity-40 col-span-2 rounded-l-3xl rounded-b-3xl p-4">
+                                        <div className="bg-main-blue bg-opacity-40 col-span-2 rounded-l-3xl rounded-b-3xl p-4 border h-full">
                                             <div className="grid grid-cols-5 justify-between ">
                                                 <div className="col-span-3 overflow-hidden h-full">
                                                     <ControlCenterMac className="pb-3" />
-                                                    <p className="text-white  text-md md:text-4xl pb-1 md:pb-10 font-semibold md:font-bold me-2 md:me-10 overflow-hidden line-clamp-3">
+                                                    <p className="text-white  text-md md:text-2xl lg:text-4xl pb-1 md:pb-10 font-semibold md:font-bold me-2 md:me-10 overflow-hidden line-clamp-3">
                                                         {useTranslation(
                                                             item.title
                                                         )}
@@ -219,6 +219,7 @@ export default function Home({
                                                         />
                                                     </div>
                                                     <div className="absolute -left-8 top-0 md:-left-12 md:top-10 lg:-left-20 w-20 h-20 lg:w-40 lg:h-40 bg-main-blue shadow-lg shadow-black/25 backdrop-blur-md rounded-full opacity-65 z-0"></div>
+
                                                     <div className="absolute -bottom-3 left-2 md:left-10 w-10 h-10 lg:w-28 lg:h-28 bg-yellow-400 shadow-lg shadow-black/25 backdrop-blur-md opacity-80  rounded-tl-[70%] rounded-tr-full rounded-br-[30%] -z-1"></div>
                                                 </BouncingAnimation>
                                             </div>
