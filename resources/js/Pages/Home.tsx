@@ -6,15 +6,18 @@ import MultyPersonIcon from '@/Components/Icon/MultyPersonIcon'
 import NextIcon from '@/Components/Icon/NextIcon'
 import PrevIcon from '@/Components/Icon/PrevIcon'
 import TargetIcon from '@/Components/Icon/TargetInco'
+import { Slider } from '@/Components/Slider'
 import BgImageComponent from '@/Components/Utils/BgImage'
 import EvenContainer from '@/Components/home/EvenContainer'
+import PathnerContainer from '@/Components/home/PathnerContainer'
 import { SliderNews } from '@/Components/home/SliderNews'
 import { logoBox, TestImage } from '@/Constants'
 import { DateFormater } from '@/Helper/DateFormater'
 import { useTranslation } from '@/Hooks/useTranslation'
 import AppLayout from '@/Layouts/AppLayout'
+import { useVisitor } from '@/Providers/VisitorProvider'
 import { HomeProps, StorageProps } from '@/types'
-import { Button, Image, Link } from '@heroui/react'
+import { Button, image, Image, Link } from '@heroui/react'
 import { router, usePage } from '@inertiajs/react'
 import { useScroll } from 'framer-motion'
 import { ReactNode, useEffect, useRef, useState } from 'react'
@@ -23,7 +26,8 @@ export default function Home({
     popularNews,
     statistic,
     aboutPWK,
-    event
+    event,
+    patner
 }: HomeProps) {
     const [pageIndicator, setPageIndicator] = useState<ReactNode>(null)
     const sliderRef = useRef<{
@@ -32,6 +36,10 @@ export default function Home({
     const { storage } = usePage<{
         storage: StorageProps
     }>().props
+
+    const visitorCount = useVisitor()
+
+    // console.log('visitorCount', visitorCount)
 
     const newsCurentRef = useRef(null)
     const [isInView, setIsInView] = useState(false)
@@ -58,6 +66,44 @@ export default function Home({
         //navigate to news detail
         router.get(route('berita.show', { slug }))
     }
+
+    const pathner = [
+        {
+            title: 'Universitas Indonesia',
+            image: TestImage,
+            link: 'https://www.ui.ac.id/'
+        },
+        {
+            title: 'Institut Teknologi Bandung',
+            image: TestImage,
+            link: 'https://www.itb.ac.id/'
+        },
+        {
+            title: 'Universitas Diponegoro',
+            image: TestImage,
+            link: 'https://www.undip.ac.id/'
+        },
+        {
+            title: 'Universitas Kristen Satya Wacana',
+            image: TestImage,
+            link: 'https://www.uksw.edu/'
+        },
+        {
+            title: 'Universitas Kristen Satya Wacana',
+            image: TestImage,
+            link: 'https://www.uksw.edu/'
+        },
+        {
+            title: 'Universitas Kristen Satya Wacana',
+            image: TestImage,
+            link: 'https://www.uksw.edu/'
+        },
+        {
+            title: 'Universitas Kristen Satya Wacana',
+            image: TestImage,
+            link: 'https://www.uksw.edu/'
+        }
+    ]
 
     return (
         <AppLayout title="home">
@@ -169,11 +215,11 @@ export default function Home({
                                                         <Image
                                                             src={imageLink}
                                                             alt={item.title}
-                                                            className=" aspect-video object-cover object-bottom rounded-xl md:rounded-3xl"
+                                                            className=" aspect-square md:aspect-video object-cover rounded-xl md:rounded-3xl bg-white"
                                                         />
                                                     </div>
                                                     <div className="absolute -left-8 top-0 md:-left-12 md:top-10 lg:-left-20 w-20 h-20 lg:w-40 lg:h-40 bg-main-blue shadow-lg shadow-black/25 backdrop-blur-md rounded-full opacity-65 z-0"></div>
-                                                    <div className="absolute bottom-0 left-2 md:left-10 w-10 h-10 lg:w-28 lg:h-28 bg-yellow-400 shadow-lg shadow-black/25 backdrop-blur-md opacity-80  rounded-tl-[70%] rounded-tr-full rounded-br-[30%] z-10"></div>
+                                                    <div className="absolute -bottom-3 left-2 md:left-10 w-10 h-10 lg:w-28 lg:h-28 bg-yellow-400 shadow-lg shadow-black/25 backdrop-blur-md opacity-80  rounded-tl-[70%] rounded-tr-full rounded-br-[30%] -z-1"></div>
                                                 </BouncingAnimation>
                                             </div>
                                         </div>
@@ -324,6 +370,43 @@ export default function Home({
                     </div>
                 </SectionTrigerScroll>
 
+                <SectionTrigerScroll
+                    id={'Patner'}
+                    macControlCenter
+                    className="mt-5 md:mt-10 bg-white p-2 md:p-5 rounded-3xl shadow-xl"
+                >
+                    <div className="flex justify-between">
+                        <h2 className="font-bold text-lg md:text-3xl text-main-blue-light pb-4 border-b mb-3">
+                            {useTranslation('Patner Kerjasama')}
+                        </h2>
+
+                        {/* <Link href={route('akademik.kalender-akademik')}>
+                            <Button className="bg-main-green font-semibold text-white inline-block">
+                                {useTranslation('Lihat Semua')}
+                            </Button>
+                        </Link> */}
+                    </div>
+                    {/* <Slider> */}
+                    <div className="flex flex-wrap gap-5 justify-center items-start">
+                        {patner && patner.length > 0 ? (
+                            patner.map((item, index) => (
+                                <PathnerContainer
+                                    key={index}
+                                    title={item.title}
+                                    link={item.link}
+                                    image={item.image}
+                                />
+                            ))
+                        ) : (
+                            <div className="flex justify-center items-center">
+                                <p className="text-sm md:text-lg font-semibold text-main-blue-light">
+                                    {useTranslation('Tidak ada data')}
+                                </p>
+                            </div>
+                        )}
+                        {/* </Slider> */}
+                    </div>
+                </SectionTrigerScroll>
                 <SectionTrigerScroll
                     id={'even'}
                     macControlCenter

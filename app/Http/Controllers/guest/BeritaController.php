@@ -17,7 +17,7 @@ class BeritaController extends Controller
         $beritaData = Berita::with(['tag'])
             ->where('status', 'publish')
             ->orderBy('event_date', 'desc')
-            ->limit(10)
+            ->limit(4)
             ->get();
 
         $tagsData = Tag::all();
@@ -117,7 +117,7 @@ class BeritaController extends Controller
         if ($beritaData) {
             $ipAddress = request()->ip();
             $cacheKey = "news_view_{$beritaData->id}_{$ipAddress}";
-            
+
             if (!cache()->has($cacheKey)) {
                 $beritaData->increment('views');
                 cache()->put($cacheKey, true, now()->addHours(24));

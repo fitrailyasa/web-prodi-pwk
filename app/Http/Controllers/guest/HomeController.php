@@ -5,6 +5,7 @@ namespace App\Http\Controllers\guest;
 use App\Http\Controllers\Controller;
 use App\Models\Berita;
 use App\Models\Event;
+use App\Models\Medpart;
 use App\Models\Tentang;
 use Inertia\Inertia;
 
@@ -20,6 +21,14 @@ class HomeController extends Controller
 
         $evenData = Event::where('status', 'publish')->orderBy('event_date', 'desc')->limit(10)->get();
 
+        $patner = Medpart::all();
+        $patnerResponse = $patner->map(function ($item) {
+            return [
+                'title' => $item->name,
+                'link' => $item->link,
+                'image' => $item->img,
+            ];
+        });
         $popularNews = $News->map(function ($item) {
             return [
                 'id' => $item->id,
@@ -65,6 +74,7 @@ class HomeController extends Controller
             ],
             'aboutPWK' => $aboutPWK,
             'event' => $events,
+            'patner' => $patnerResponse,
         ]);
     }
 }

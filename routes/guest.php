@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\VisitorController;
 use App\Http\Controllers\guest\HomeController;
 use App\Http\Controllers\guest\VisiMisiController;
 use App\Http\Controllers\guest\SejarahController;
@@ -38,3 +39,8 @@ Route::get('/berita/{slug}', [BeritaController::class, 'show'])->name('berita.sh
 
 // Contact routes
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+Route::group(['prefix' => 'api', 'as' => 'api.'], function () {
+    Route::post('/post-visitor', [VisitorController::class, 'store'])->name('visitor.store');
+    Route::get('/count-visitor', [VisitorController::class, 'count'])->name('visitor.count');
+});

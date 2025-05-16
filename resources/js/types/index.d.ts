@@ -113,11 +113,18 @@ export type aboutPWK = {
     misi: MisiType[]
 }
 
+export type PatnerProps = {
+    title: string
+    image: string
+    link?: string
+}
+
 export type HomeProps = {
     popularNews: NewsItemProps[]
     statistic: statustic
     aboutPWK: aboutPWK
     event: eventTypes[]
+    patner: PatnerProps[]
 }
 
 export type EmployePageProps = {

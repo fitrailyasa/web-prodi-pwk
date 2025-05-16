@@ -21,6 +21,14 @@ export function VisitorProvider({ children }: { children: React.ReactNode }) {
     const [visitorCount, setVisitorCount] = useState<number>(0)
 
     useEffect(() => {
+        const fetchVisitorCount = async () => {
+            try {
+                const response = await axios.get(route('api.visitor.count'))
+                setVisitorCount(response.data.total_visitors)
+            } catch (error) {
+                console.error('Error fetching visitor count:', error)
+            }
+        }
         const fetchVisitorData = async () => {
             try {
                 // Fetch IP from an external API
@@ -36,14 +44,20 @@ export function VisitorProvider({ children }: { children: React.ReactNode }) {
 
                 const isNewVisitor = localStorage.getItem('visitor') === null
 
+                // console.log('isNewVisitor', ipResponse.data.ip, userAgent)
                 if (isNewVisitor) {
                     localStorage.setItem('visitor', 'visited')
+                    await axios.post(route('api.visitor.store'), {
+                        ip_address: ipResponse.data.ip,
+                        user_agent: userAgent
+                    })
                     setVisitorCount(prev => prev + 1)
                 }
             } catch (error) {
                 console.error('Error fetching visitor data:', error)
             }
         }
+        fetchVisitorCount()
 
         fetchVisitorData()
     }, [])
