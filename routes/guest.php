@@ -41,6 +41,7 @@ Route::get('/berita/{slug}', [BeritaController::class, 'show'])->name('berita.sh
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 Route::group(['prefix' => 'api', 'as' => 'api.'], function () {
+    Route::get('/chart-visitor', [VisitorController::class, 'chartVisitor'])->name('visitor.chart');
     Route::post('/post-visitor', [VisitorController::class, 'store'])->name('visitor.store');
     Route::get('/count-visitor', [VisitorController::class, 'count'])->name('visitor.count');
 });

@@ -7,6 +7,8 @@ import {
 } from 'react-icons/fa'
 import { Link, Image } from '@heroui/react'
 import { useTranslation } from '@/Hooks/useTranslation'
+import { useVisitor } from '@/Providers/VisitorProvider'
+import EyeIcon from './Icon/EyeInco'
 
 interface FooterProps {
     tentang?: {
@@ -23,6 +25,8 @@ interface FooterProps {
 export function Footer({ tentang }: FooterProps) {
     const Logo_img = '/assets/img/logo.png'
     const translate = useTranslation
+
+    const visitor = useVisitor().visitorCount
 
     if (!tentang) {
         return (
@@ -146,6 +150,22 @@ export function Footer({ tentang }: FooterProps) {
                             >
                                 {translate('Kontak')}
                             </Link>
+                            {/* <div className="block text-main-blue-light hover:text-main-green transition-colors">
+                                {visitor + ' ' + translate('Pengunjung')}
+                            </div> */}
+
+                            <h3 className="text-xl font-bold text-main-blue-light pt-3">
+                                {translate('Pengunjung')}
+                            </h3>
+                            <div className="flex gap-3 items-center">
+                                <EyeIcon
+                                    size={2}
+                                    className="text-main-blue text-lg"
+                                />
+                                <p className="text-main-blue-light text-lg font-bold">
+                                    {visitor}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

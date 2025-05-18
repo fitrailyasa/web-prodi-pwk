@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
 import AppLayout from '@/Layouts/AppLayout'
 import { Head } from '@inertiajs/react'
-import {
-    FaMapMarkerAlt,
-    FaPhone,
-    FaEnvelope,
-} from 'react-icons/fa'
+import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa'
 import { Button } from '@heroui/react'
 import { useTranslation } from '@/Hooks/useTranslation'
+import VisitorChatDashboard from '@/Components/BarVisitorChart'
 
 interface ContactProps {
     title: string
@@ -158,6 +155,19 @@ Pesan: ${formData.message}
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
                             ></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="mb-12">
+                    <div className="bg-white p-6 rounded-3xl shadow-xl">
+                        <h2 className="text-xl font-bold text-main-blue-light mb-6">
+                            {translate(
+                                'Pengunjung Baru Dalam Seminggu Terakhir'
+                            )}
+                        </h2>
+                        <div className="w-full h-[400px] rounded-xl overflow-hidden">
+                            <VisitorChatDashboard />
                         </div>
                     </div>
                 </div>

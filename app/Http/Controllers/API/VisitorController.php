@@ -4,21 +4,36 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Visitor;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class VisitorController extends Controller
 {
-    public function countVisitor(Request $request)
+    public function chartVisitor(Request $request)
     {
+        Visitor::setDynamicConnection();
         // Set the dynamic connection
-        // hitung visistor setiap hari nya
+        $startOfWeek = Carbon::now()->startOfWeek(); // Senin
+        $endOfWeek = Carbon::now()->endOfWeek();     // Minggu
 
+        $visitors = Visitor::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
 
+        $grouped = $visitors->groupBy(function ($item) {
+            return Carbon::parse($item->created_at)->locale('id')->isoFormat('dddd'); // nama hari
+        });
 
-        // Get the visitor data
-        $visitor = \App\Models\Visitor::all();
+        $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
 
-        return response()->json($visitor);
+        $data = collect($days)->map(function ($day) use ($grouped) {
+            $visits = $grouped[$day] ?? collect();
+
+            return [
+                'day' => $day,
+                'total' => $visits->count(),
+            ];
+        });
+
+        return response()->json($data);
     }
 
     public function store(Request $request)
