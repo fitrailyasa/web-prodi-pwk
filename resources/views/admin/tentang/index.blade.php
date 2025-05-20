@@ -66,7 +66,7 @@
 
         <div class="mb-4">
             <label for="edit_mission" class="form-label">Misi</label>
-            <textarea name="mission" id="edit_mission" class="form-control @error('mission') is-invalid @enderror" rows="6">{{ old('mission', $tentang->mission) }}</textarea>
+            <textarea name="mission" id="edit_mission" class="form-control @error('mission') is-invalid @enderror" rows="6">{{ old('mission', is_array($tentang->mission) ? implode("\n", $tentang->mission) : $tentang->mission) }}</textarea>
             @error('mission')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -74,7 +74,7 @@
 
         <div class="mb-4">
             <label for="edit_goals" class="form-label">Tujuan</label>
-            <textarea name="goals" id="edit_goals" class="form-control @error('goals') is-invalid @enderror" rows="6">{{ old('goals', $tentang->goals) }}</textarea>
+            <textarea name="goals" id="edit_goals" class="form-control @error('goals') is-invalid @enderror" rows="6">{{ old('goals', is_array($tentang->goals) ? implode("\n", $tentang->goals) : $tentang->goals) }}</textarea>
             @error('goals')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -177,40 +177,4 @@
         </div>
     </form>
 
-    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#edit_mission'), {
-                ckfinder: {
-                    uploadUrl: '{{ route('admin.tentang.upload_image') . '?_token=' . csrf_token() }}',
-                },
-                toolbar: [
-                    'heading', '|',
-                    'bold', 'italic', 'link', '|',
-                    'bulletedList', 'numberedList', '|',
-                    'imageUpload',
-                    'blockQuote', 'undo', 'redo'
-                ]
-            })
-            .catch(error => {
-                console.error(error);
-            });
-
-        ClassicEditor
-            .create(document.querySelector('#edit_goals'), {
-                ckfinder: {
-                    uploadUrl: '{{ route('admin.tentang.upload_image') . '?_token=' . csrf_token() }}',
-                },
-                toolbar: [
-                    'heading', '|',
-                    'bold', 'italic', 'link', '|',
-                    'bulletedList', 'numberedList', '|',
-                    'imageUpload',
-                    'blockQuote', 'undo', 'redo'
-                ]
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
 </x-admin-layout>

@@ -20,9 +20,17 @@ class AdminTentangController extends Controller
     {
         $tentang = Tentang::findOrFail($id);
         $validatedData = $request->validated();
+
+        $validatedData['mission'] = explode("\n", trim($validatedData['mission'] ?? ''));
+        $validatedData['goals'] = explode("\n", trim($validatedData['goals'] ?? ''));
+
+        $validatedData['mission'] = array_filter(array_map('trim', $validatedData['mission']));
+        $validatedData['goals'] = array_filter(array_map('trim', $validatedData['goals']));
+
         $validatedData['user_id'] = $tentang->user_id;
 
         $tentang->update($validatedData);
+
         return back()->with('alert', 'Berhasil Edit Data Tentang!');
     }
 
