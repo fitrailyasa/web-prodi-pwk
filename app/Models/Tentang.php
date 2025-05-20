@@ -41,4 +41,25 @@ class Tentang extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    
+    public function getMissionAttribute($value)
+    {
+        return json_decode($value, true) ?? [];
+    }
+
+    public function setMissionAttribute($value)
+    {
+        $this->attributes['mission'] = is_array($value) ? json_encode($value) : $value;
+    }
+
+    public function getGoalsAttribute($value)
+    {
+        return json_decode($value, true) ?? [];
+    }
+
+    public function setGoalsAttribute($value)
+    {
+        $this->attributes['goals'] = is_array($value) ? json_encode($value) : $value;
+    }
 }
