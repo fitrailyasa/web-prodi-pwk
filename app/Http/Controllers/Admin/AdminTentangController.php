@@ -21,21 +21,16 @@ class AdminTentangController extends Controller
         $tentang = Tentang::findOrFail($id);
         $validatedData = $request->validated();
 
-        // Handle image upload
-        if ($request->hasFile('img')) {
-            // Hapus gambar lama jika ada
-            if ($tentang->img && Storage::disk('public')->exists($tentang->img)) {
-                Storage::disk('public')->delete($tentang->img);
-            }
-            $validatedData['img'] = $request->file('img')->store('images', 'public');
-        } else {
-            // Jika tidak upload gambar baru, gunakan gambar lama
-            $validatedData['img'] = $tentang->img;
-        }
+        $validatedData['mission'] = explode("\n", trim($validatedData['mission'] ?? ''));
+        $validatedData['goals'] = explode("\n", trim($validatedData['goals'] ?? ''));
+
+        $validatedData['mission'] = array_filter(array_map('trim', $validatedData['mission']));
+        $validatedData['goals'] = array_filter(array_map('trim', $validatedData['goals']));
 
         $validatedData['user_id'] = $tentang->user_id;
 
         $tentang->update($validatedData);
+
         return back()->with('alert', 'Berhasil Edit Data Tentang!');
     }
 
