@@ -75,11 +75,15 @@ function NavDropdown({ title, icon, item }: propsDropdown) {
                         href={item.href}
                         target={item.newTab ? '_blank' : '_self'}
                         key={index}
-                        description={item.description ?? null}
+                        description={
+                            item.description
+                                ? useTranslation(item.description)
+                                : null
+                        }
                         startContent={item.icon ?? null}
                         className="hover:bg-[#4005e1]/10 rounded-lg transition-colors duration-200"
                     >
-                        {item.title}
+                        {useTranslation(item.title)}
                     </DropdownItem>
                 ))}
             </DropdownMenu>
