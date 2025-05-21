@@ -5,6 +5,8 @@ namespace Tests\Feature;
 use App\Models\User;
 use App\Models\Jadwal;
 use App\Models\Matkul;
+use App\Models\DosenProfile;
+use App\Models\Publikasi;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -14,16 +16,34 @@ class DosenControllerTest extends TestCase
 
     public function test_dosen_index_page_can_be_rendered()
     {
-        $response = $this->get(route('dosen.index'));
+        // Arrange
+        User::factory()->dosen('koordinator')->has(DosenProfile::factory())->create();
+
+        User::factory(2)->dosen('dosen')->has(DosenProfile::factory())->create();
+
+        User::factory()->staff()->has(DosenProfile::factory())->create();
+
+        // Act
+        $response = $this->get(route('profile.dosen-and-staf'));
+
+        // Assert
         $response->assertStatus(200);
+        $response->assertInertia(
+            fn($page) => $page
+                ->component('Profile/DosenAndStaf/DosenAndStaft')
+                ->has('koordinator')
+                ->has('employee.0.name')
+                ->has('staff.0.name')
+        );
     }
 
     public function test_dosen_detail_page_can_be_rendered()
     {
-        $dosen = User::factory()->create([
-            'role' => 'dosen',
-            'position' => 'dosen'
-        ]);
+        // Arrange
+        $dosen = User::factory()
+            ->dosen('dosen')
+            ->has(DosenProfile::factory())
+            ->create();
 
         $matkul = Matkul::factory()->create();
 
@@ -37,7 +57,22 @@ class DosenControllerTest extends TestCase
             'end_time' => '10:00'
         ]);
 
-        $response = $this->get(route('dosen.show', $dosen->id));
+        Publikasi::factory()->count(2)->create([
+            'user_id' => $dosen->id,
+        ]);
+
+        // Act
+        $response = $this->get(route('profile.dosen-and-staf.detail', $dosen->id));
+
+        // Assert
         $response->assertStatus(200);
+        $response->assertInertia(
+            fn($page) => $page
+                ->component('Profile/DosenAndStaf/DosenAndStafDetail')
+                ->has('dosen.name')
+                ->has('dosen.dosenProfile.nidn')
+                ->has('dosen.publikasis')
+                ->has('dosen.courses.0.jadwals')
+        );
     }
 }

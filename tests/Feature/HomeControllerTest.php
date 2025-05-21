@@ -4,10 +4,11 @@ namespace Tests\Feature;
 
 use App\Models\Berita;
 use App\Models\Event;
+use App\Models\Medpart;
 use App\Models\Tag;
 use App\Models\Tentang;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class HomeControllerTest extends TestCase
@@ -17,43 +18,38 @@ class HomeControllerTest extends TestCase
     /** @test */
     public function it_displays_homepage_with_correct_structure()
     {
-        // Setup: Data dummy
-        $user = \App\Models\User::factory()->create(['id' => 1]);
-        $tag = Tag::factory()->create(['name' => 'Infrastruktur', 'slug' => 'infrastruktur', 'user_id' => $user->id]);
-        $berita = Berita::factory()->create([
+        // Arrange
+        $user = User::factory()->create();
+        $tag = Tag::factory()->create(['user_id' => $user->id]);
+
+        Berita::factory()->create([
             'status' => 'publish',
             'views' => 100,
             'tag_id' => $tag->id,
+            'name' => 'Judul Berita',
+            'desc' => 'Deskripsi Berita',
         ]);
 
-        $tentang = Tentang::factory()->create([
-            'name' => 'Perencanaan Wilayah Kota dan ITERA',
-            'description' => 'Deskripsi Singkat',
-            'vision' => 'Menjadi terbaik',
-            'mission' => ['A', 'B', 'C'],
-            'total_teaching_staff' => 10,
-            'total_student' => 100,
-            'total_lecture' => 5,
-            'address' => 'Jl. Terusan Ryacudu, Way Huwi, Kec. Jati Agung, Kabupaten Lampung Selatan, Lampung 35365',
-            'phone' => '(0721) 8030188',
-            'email' => 'pwk@itera.ac.id',
-            'instagram_url' => 'https://instagram.com/pwk_itera',
-            'youtube_url' => 'https://youtube.com/@pwk_itera',
-            'tiktok_url' => 'https://tiktok.com/@pwk_itera',
-            'latitude' => '-5.360070',
-            'longitude' => '105.315312',
-            'maps_url' => 'https://maps.google.com/?q=-5.360070,105.315312',
+        Tentang::factory()->create([
             'user_id' => $user->id,
+            'mission' => ['Misi A', 'Misi B'],
+            'vision' => 'Visi Hebat',
         ]);
 
-        $event = Event::factory()->create([
+        Event::factory()->create([
             'status' => 'publish',
-            'event_date' => now(),
-            // 'event_date_end' => now()->addDays(2),
+            'name' => 'Event Pertama',
+            'desc' => 'Deskripsi Event',
+        ]);
+
+        Medpart::factory()->create([
+            'name' => 'Mitra A',
+            'link' => 'https://example.com',
+            'img' => 'mitra.png',
         ]);
 
         // Act
-        $response = $this->get(route('home')); // asumsi route('home') -> HomeController@index
+        $response = $this->get(route('home'));
 
         // Assert
         $response->assertStatus(200);
@@ -61,18 +57,24 @@ class HomeControllerTest extends TestCase
             fn($page) => $page
                 ->component('Home')
                 ->has('popularNews.0.title')
+                ->has('popularNews.0.tag')
                 ->has('statistic.total_tendik')
+                ->has('statistic.total_mahasiswa')
+                ->has('statistic.total_dosen')
                 ->has('aboutPWK.deskripsi')
                 ->has('aboutPWK.visi')
-                ->has('aboutPWK.misi')
+                ->has('aboutPWK.misi.0.title')
                 ->has('event.0.title')
+                ->has('patner.0.title')
+                ->has('patner.0.link')
+                ->has('patner.0.image')
         );
     }
 
     /** @test */
     public function it_handles_missing_tentang_data_gracefully()
     {
-        // No Tentang record
+        // Tanpa Tentang data
         $response = $this->get(route('home'));
 
         $response->assertStatus(200);
@@ -82,6 +84,8 @@ class HomeControllerTest extends TestCase
                 ->where('aboutPWK.deskripsi', fn($desc) => str_contains($desc, 'Lorem ipsum'))
                 ->where('aboutPWK.visi', 'Visi belum tersedia')
                 ->where('statistic.total_tendik', 0)
+                ->where('statistic.total_mahasiswa', 0)
+                ->where('statistic.total_dosen', 0)
         );
     }
 }

@@ -14,6 +14,7 @@ class KurikulumController extends Controller
     {
         $matkuls = Matkul::with('moduls')->get();
         $jadwals = Jadwal::with('dosen')->get();
+        $tentang = Tentang::first();
 
         return Inertia::render('Akademik/Kurikulum', [
             'title' => __('Kurikulum Program Studi'),
@@ -30,8 +31,8 @@ class KurikulumController extends Controller
                     'end_time' => $item->end_time,
                 ];
             }),
-            'semesters' => Tentang::first()->semester,
-            'tahun_ajaran' => Tentang::first()->tahun_ajaran
+            'semesters' => $tentang->semester ?? '-',
+            'tahun_ajaran' => $tentang->tahun_ajaran ?? '-',
         ]);
     }
 }
