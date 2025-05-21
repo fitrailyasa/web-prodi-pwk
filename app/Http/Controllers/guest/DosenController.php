@@ -20,7 +20,7 @@ class DosenController extends Controller
             ->first();
 
         $dosen = User::where('role', 'dosen')
-            ->where('dosenProfile.position', '!=', 'koordinator')
+            ->where('position', '!=', 'koordinator')
             ->with(['dosenProfile'])
             ->get();
 
