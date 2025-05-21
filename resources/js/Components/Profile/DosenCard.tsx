@@ -1,6 +1,8 @@
-import { DosenCardType } from '@/types'
+import { DosenCardType, StorageProps } from '@/types'
 import { Button, Card, CardBody, Image, Link } from '@heroui/react'
 import { useTranslation } from '@/Hooks/useTranslation'
+import { usePage } from '@inertiajs/react'
+import { TestImage } from '@/Constants'
 
 interface DosenAndStafCardProps {
     staf: DosenCardType
@@ -11,7 +13,12 @@ const DosenAndStafCard: React.FC<DosenAndStafCardProps> = ({
     staf,
     isCoordinator = false
 }) => {
+    const { storage } = usePage<{
+        storage: StorageProps
+    }>().props
     const detailText = useTranslation('Detail')
+
+    const imageLink = staf.image ? storage.link + staf.image : TestImage
 
     return (
         <Card
@@ -19,11 +26,7 @@ const DosenAndStafCard: React.FC<DosenAndStafCardProps> = ({
         >
             <CardBody>
                 <Image
-                    src={
-                        staf.image
-                            ? `/${staf.image}`
-                            : '/assets/profile/default.png'
-                    }
+                    src={imageLink}
                     alt={`foto-${staf.name}`}
                     width={'100%'}
                     className="aspect-[4/3] rounded-xl object-cover"
