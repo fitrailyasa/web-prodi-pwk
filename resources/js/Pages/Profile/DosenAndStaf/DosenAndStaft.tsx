@@ -63,7 +63,10 @@ const DosenAndStaf: React.FC<EmployePageProps> = ({
 
     const pengurus =
         employee?.filter(
-            item => item.position && item.position.toLowerCase() !== 'staf'
+            item =>
+                item.position &&
+                item.position.toLowerCase() !== 'staf' &&
+                item.position.toLowerCase() !== 'koordinator'
         ) || []
 
     const dosen = employee?.filter(item => !item.position) || []
