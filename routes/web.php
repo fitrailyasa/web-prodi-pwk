@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\AdminTentangController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminEventController;
 use App\Http\Controllers\Admin\AdminKalenderController;
+use App\Http\Controllers\Admin\AdminLayananController;
 use App\Http\Controllers\Admin\AdminModulController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminTagController;
@@ -115,6 +116,12 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/modul', [AdminModulController::class, 'store'])->name('modul.store');
         Route::put('/modul/{id}/update', [AdminModulController::class, 'update'])->name('modul.update');
         Route::delete('/modul/{id}/destroy', [AdminModulController::class, 'destroy'])->name('modul.destroy');
+        
+        // CRUD LAYANAN MAHASISWA
+        Route::get('/layanan', [AdminLayananController::class, 'index'])->name('layanan.index');
+        Route::post('/layanan', [AdminLayananController::class, 'store'])->name('layanan.store');
+        Route::put('/layanan/{id}/update', [AdminLayananController::class, 'update'])->name('layanan.update');
+        Route::delete('/layanan/{id}/destroy', [AdminLayananController::class, 'destroy'])->name('layanan.destroy');
 
         // CRUD MEDIA PARTNER
         Route::get('/medpart', [AdminMedpartController::class, 'index'])->name('medpart.index');

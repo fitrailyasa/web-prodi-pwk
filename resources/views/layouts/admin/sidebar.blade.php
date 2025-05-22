@@ -146,6 +146,13 @@
                     <!-- Layanan -->
                     <li class="nav-header text-white">LAYANAN</li>
                     <li class="nav-item">
+                        <a href="{{ route('admin.layanan.index') }}"
+                            class="nav-link text-white {{ Request::routeIs('admin.layanan.index') ? 'aktif' : '' }}">
+                            <i class="nav-icon fas fa-user-tag"></i>
+                            <p>Layanan Mahasiswa</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('admin.chatbot.index') }}"
                             class="nav-link text-white {{ Request::routeIs('admin.chatbot.index') ? 'aktif' : '' }}">
                             <i class="nav-icon fas fa-robot"></i>
