@@ -15,8 +15,6 @@ return new class extends Migration
             $table->string('nip')->nullable();
             $table->string('nidn')->nullable();
             $table->string('position')->nullable();
-            $table->string('rank')->nullable();
-            $table->string('group')->nullable();
             $table->text('education')->nullable();
             $table->text('expertise')->nullable();
             $table->string('google_scholar')->nullable();
