@@ -187,7 +187,7 @@ export default function Kurikulum() {
                 return acc
             },
             {} as Record<string, Jadwal[]>
-        ) // <-- tambahkan typing di sini
+        )
 
         const grouped = filteredJadwals.reduce((acc, item) => {
             acc[item.day].push(item)
@@ -267,13 +267,7 @@ export default function Kurikulum() {
                     </p>
                 </motion.div>
                 {/* Semester Selection */}
-                <SectionTrigerScroll
-                    id="data"
-                    // initial={{ opacity: 0, y: 20 }}
-                    // animate={{ opacity: 1, y: 0 }}
-                    // transition={{ duration: 0.5, delay: 0.2 }}
-                    className="mb-6 sm:mb-8"
-                >
+                <SectionTrigerScroll id="data" className="mb-6 sm:mb-8">
                     <div className="w-full overflow-x-auto no-scrollbar">
                         <div className="min-w-[800px] flex justify-center">
                             <Tabs
@@ -302,7 +296,7 @@ export default function Kurikulum() {
                 </SectionTrigerScroll>
 
                 <SectionTrigerScroll
-                    id={'beritaslider'}
+                    id={'tab_list'}
                     className="mb-8 sm:mb-12 px-2 sm:px-0"
                 >
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 gap-2 sm:gap-0">
@@ -411,7 +405,7 @@ export default function Kurikulum() {
                     </div>
                 </SectionTrigerScroll>
                 <SectionTrigerScroll
-                    id={'beritaslider'}
+                    id={'jadwal_list'}
                     className="px-2 sm:px-0"
                 >
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 gap-2 sm:gap-0">
@@ -500,7 +494,7 @@ export default function Kurikulum() {
                     )
                     return (
                         <SectionTrigerScroll
-                            id={'beritaslider'}
+                            id={`jadwal${day}`}
                             className="pt-10"
                         >
                             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 gap-2 sm:gap-0">

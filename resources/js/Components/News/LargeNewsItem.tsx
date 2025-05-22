@@ -15,16 +15,15 @@ const LargeNewsItem = (props: NewsItemProps) => {
         storage: StorageProps
     }>().props
     const handleClick = (slug: string) => {
-        //navigate to news detail
         router.get(route('berita.show', { slug }))
     }
     const imageLink = props.image ? storage.link + props.image : TestImage
     return (
         <>
-            <div className="bg-white p-3 md:p-5 rounded-xl md:rounded-3xl shadow-xl">
+            <div className="bg-white p-3 md:p-5 rounded-xl flex flex-col justify-between md:rounded-3xl shadow-xl">
                 <div
                     onClick={() => handleClick(props.slug)}
-                    className="cursor-pointer"
+                    className="cursor-pointer overflow-hidden"
                 >
                     <p className="rounded-lg bg-main-blue px-2 text-white mb-3  inline-block">
                         {useTranslation(props.tag ?? '')}
@@ -33,13 +32,13 @@ const LargeNewsItem = (props: NewsItemProps) => {
                         <Image
                             src={imageLink}
                             alt={props.title}
-                            className="rounded-2xl aspect-square md:aspect-video w-[100px] md:w-[200px] md:min-w-[200px] max-w-[400px]"
+                            className="rounded-2xl aspect-square lg:aspect-video w-[100px] md:w-[120px] lg:w-[200px] md:min-w-[120px] lg:min-w-[200px] max-w-[400px]"
                         />
                         <div className=" flex flex-col">
-                            <h3 className="font-bold text-base md:text-xl text-main-blue-light">
+                            <h3 className="font-bold text-base md:text-lg lg:text-xl text-main-blue-light">
                                 {useTranslation(props.title)}
                             </h3>
-                            <p className="text-sm md:text-base font-semibold text-gray-500">
+                            <p className="text-sm lg:text-base font-semibold text-gray-500">
                                 {useTranslation(
                                     DateFormater({ date: props.date })
                                 )}

@@ -21,7 +21,7 @@ const NewsItem = (props: NewsItemProps) => {
         router.get(route('berita.show', { slug }))
     }
     return (
-        <div className="bg-white p-2 md:p-5 rounded-xl md:rounded-3xl shadow-xl">
+        <div className="bg-white p-2 md:p-5 rounded-xl md:rounded-3xl shadow-xl overflow-hidden">
             <div
                 className="cursor-pointer"
                 onClick={() => handleClick(props.slug)}
@@ -32,13 +32,13 @@ const NewsItem = (props: NewsItemProps) => {
                         alt={props.title}
                         // width={100}
                         // height={100}
-                        className="rounded-3xl aspect-square w-[100px] min-w-[100px] max-w-[100px]"
+                        className="rounded-3xl aspect-square bg-white sm:w-[100px] md:w-[80px] max-w-[100px]"
                     />
                     <div className=" flex flex-col">
-                        <h3 className="font-bold text-md md:text-xl text-main-blue-light">
+                        <h3 className="font-bold text-md md:text-lg text-main-blue-light">
                             {useTranslation(props.title)}
                         </h3>
-                        <p className="text-sm md:text-base font-semibold text-gray-500">
+                        <p className="text-sm  font-semibold text-gray-500">
                             {useTranslation(DateFormater({ date: props.date }))}
                         </p>
                     </div>
