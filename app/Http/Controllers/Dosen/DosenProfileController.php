@@ -23,6 +23,8 @@ class DosenProfileController extends Controller
             'nip' => 'nullable|string|max:20',
             'nidn' => 'nullable|string|max:20',
             'position' => 'nullable|string|max:100',
+            'rank' => 'nullable|string|max:100',
+            'group' => 'nullable|string|max:100',
             'education' => 'nullable|string|max:1000',
             'expertise' => 'nullable|string|max:1000',
             'google_scholar' => 'nullable|url|max:255',
@@ -32,7 +34,7 @@ class DosenProfileController extends Controller
             'achievements' => 'nullable|string|max:1000',
             'whatsapp' => 'nullable|string|max:20',
             'linkedin' => 'nullable|url|max:255',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg|max:5048',
             'other' => 'nullable|string|max:1000',
         ]);
 
@@ -60,6 +62,8 @@ class DosenProfileController extends Controller
         $profile->nip = $request->nip;
         $profile->nidn = $request->nidn;
         $profile->position = $request->position;
+        $profile->rank = $request->rank;
+        $profile->group = $request->group;
         $profile->education = $request->education;
         $profile->expertise = $request->expertise;
         $profile->google_scholar = $request->google_scholar;

@@ -49,6 +49,18 @@
                                     value="{{ $profile->position ?? old('position') }}">
                             </div>
 
+                            <div class="form-group col-md-6">
+                                <label for="rank">Pangkat</label>
+                                <input type="text" class="form-control" id="rank" name="rank"
+                                    value="{{ $profile->rank ?? old('rank') }}">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="group">Golongan</label>
+                                <input type="text" class="form-control" id="group" name="group"
+                                    value="{{ $profile->group ?? old('group') }}">
+                            </div>
+
                             <div class="form-group col-md-12">
                                 <label for="bio">Tentang</label>
                                 <textarea class="form-control" id="bio" name="bio" rows="3">{{ $profile->bio ?? old('bio') }}</textarea>

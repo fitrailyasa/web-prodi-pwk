@@ -15,6 +15,8 @@ class DosenProfile extends Model
         'nip',
         'nidn',
         'position',
+        'rank',
+        'group',
         'education',
         'expertise',
         'google_scholar',
