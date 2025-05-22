@@ -14,7 +14,7 @@ class DosenController extends Controller
     {
         $koordinator = User::where('role', 'dosen')
             ->whereHas('dosenProfile', function ($query) {
-                $query->where('position', 'koordinator');
+                $query->whereRaw('LOWER(position) = ?', ['koordinator']);
             })
             ->with('dosenProfile')
             ->first();
@@ -97,6 +97,7 @@ class DosenController extends Controller
             'dosenProfile' => [
                 'nip' => $dosen->dosenProfile?->nip ?? '',
                 'nidn' => $dosen->dosenProfile?->nidn ?? '',
+                'goloangan' => $dosen->dosenProfile?->goloangan ?? "belum ada data", // tambah data golongan
                 'google_scholar' => $dosen->dosenProfile?->google_scholar ?? '',
                 'scopus_id' => $dosen->dosenProfile?->scopus_id ?? '',
                 'sinta_id' => $dosen->dosenProfile?->sinta_id ?? '',

@@ -29,7 +29,7 @@ const DosenAndStafCard: React.FC<DosenAndStafCardProps> = ({
                     src={imageLink}
                     alt={`foto-${staf.name}`}
                     width={'100%'}
-                    className="aspect-[4/3] rounded-xl object-cover"
+                    className="aspect-[3/4] rounded-xl object-cover"
                 />
                 <h3 className="font-bold text-center text-wrap text-lg pt-3 pb-1 text-main-blue-light">
                     {staf.name}

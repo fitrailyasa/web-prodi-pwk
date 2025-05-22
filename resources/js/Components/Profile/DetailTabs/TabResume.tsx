@@ -11,6 +11,7 @@ type TabResumeProps = {
         dosenProfile: {
             nip: string
             nidn: string
+            golongan?: string
             google_scholar: string
             scopus_id: string
             sinta_id: string
@@ -86,6 +87,15 @@ const TabResume: React.FC<TabResumeProps> = ({ data }) => {
                             <td className="text-main-blue-light">:</td>
                             <td className="text-main-blue-light">
                                 {data.dosenProfile?.nidn || '-'}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="font-bold pe-10 text-main-blue-light">
+                                Pangkat/Golongan
+                            </td>
+                            <td className="text-main-blue-light">:</td>
+                            <td className="text-main-blue-light">
+                                {data.dosenProfile?.golongan || '-'}
                             </td>
                         </tr>
                         <tr>

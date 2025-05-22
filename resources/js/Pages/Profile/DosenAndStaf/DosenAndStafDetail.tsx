@@ -59,7 +59,7 @@ const DosenAndStafDetail: React.FC<{ dosen: any }> = ({ dosen }) => {
                                 Possition="bg-bottom"
                                 src={imageLink}
                                 alt={`foto-${dosen.name}`}
-                                className="rounded-xl md:rounded-3xl min-w-20 w-full h-full"
+                                className="aspect-[3/4] rounded-xl md:rounded-3xl min-w-20 w-full h-full"
                             />
                         </div>
                         <div className="flex flex-1 flex-col justify-center pl-5">
