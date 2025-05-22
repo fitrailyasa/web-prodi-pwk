@@ -176,8 +176,6 @@ export default function NavBar() {
 
     AcademicMenu.push(...otherAcademicMenu)
 
-    // console.log(FasilityMenu)
-
     const DropdwonProfleMenu: DropdownMenuItem[] = [
         {
             title: 'Visi & Misi',
@@ -211,6 +209,16 @@ export default function NavBar() {
             href: route('profile.alumni'),
             description:
                 'Alumni Program Studi Perencanaan Wilayah dan Kota Institut Teknologi Sumatera',
+            icon: <LightBulbIcon className="fill-[#4005e1]" />
+        }
+    ]
+
+    const DropdwonMahasiswaMenu: DropdownMenuItem[] = [
+        {
+            title: 'Form Layanan Mahasiswa',
+            href: route('kemahasiswaan.form-layanan'),
+            description:
+                'Form Layanan Mahasiswa Program Studi Perencanaan Wilayah dan Kota',
             icon: <LightBulbIcon className="fill-[#4005e1]" />
         }
     ]
@@ -263,6 +271,12 @@ export default function NavBar() {
                     />
                 </NavbarItem>
                 <NavbarItem>
+                    <NavDropdown
+                        title={translate('Kemahasiswaan')}
+                        item={DropdwonMahasiswaMenu}
+                    />
+                </NavbarItem>
+                <NavbarItem>
                     <Link
                         className="text-main-blue-light text-md font-medium hover:text-[#4005e1] transition-colors duration-200"
                         href={route('berita')}
@@ -308,10 +322,14 @@ export default function NavBar() {
                 <MobileLink href={route('home')} title={'Beranda'} />
                 <Accordion variant="splitted" className="px-2">
                     <AccordionItem
-                        className="hover:bg-[#4005e1]/10 text-md font-medium rounded-lg transition-colors duration-200"
+                        className="bg-white text-md text-main-blue-light hover:bg-[#4005e1]/10 rounded-xl transition-colors duration-200 shadow-md"
                         key="1"
                         aria-label="Profile"
-                        title="Profile"
+                        title={
+                            <span className="text-main-blue-light font-normal">
+                                {useTranslation('Profile')}
+                            </span>
+                        }
                     >
                         {DropdwonProfleMenu.map((item, index) => (
                             <AccordionLink
@@ -323,10 +341,14 @@ export default function NavBar() {
                         ))}
                     </AccordionItem>
                     <AccordionItem
-                        className="hover:bg-[#4005e1]/10 text-md font-medium rounded-lg transition-colors duration-200"
+                        className="bg-white text-md text-main-blue-light hover:bg-[#4005e1]/10 rounded-xl transition-colors duration-200 shadow-md"
                         key="2"
                         aria-label="Akademik"
-                        title={useTranslation('Akademik')}
+                        title={
+                            <span className="text-main-blue-light font-normal">
+                                {useTranslation('Akademik')}
+                            </span>
+                        }
                     >
                         {AcademicMenu.map((item, index) => (
                             <AccordionLink
@@ -338,12 +360,35 @@ export default function NavBar() {
                         ))}
                     </AccordionItem>
                     <AccordionItem
-                        className="hover:bg-[#4005e1]/10 text-md font-medium rounded-lg transition-colors duration-200"
+                        className="bg-white text-md text-main-blue-light hover:bg-[#4005e1]/10 rounded-xl transition-colors duration-200 shadow-md"
                         key="3"
                         aria-label="Fasilitas"
-                        title={useTranslation('Fasilitas')}
+                        title={
+                            <span className="text-main-blue-light font-normal">
+                                {useTranslation('Fasilitas')}
+                            </span>
+                        }
                     >
                         {FasilityMenu.map((item, index) => (
+                            <AccordionLink
+                                key={index}
+                                href={item.href}
+                                newTab={item.newTab ?? false}
+                                title={item.title}
+                            />
+                        ))}
+                    </AccordionItem>
+                    <AccordionItem
+                        className="bg-white text-md text-main-blue-light hover:bg-[#4005e1]/10 rounded-xl transition-colors duration-200 shadow-md"
+                        key="4"
+                        aria-label="kemahasiswaan"
+                        title={
+                            <span className="text-main-blue-light font-normal">
+                                {useTranslation('Kemahasiswaan')}
+                            </span>
+                        }
+                    >
+                        {DropdwonMahasiswaMenu.map((item, index) => (
                             <AccordionLink
                                 key={index}
                                 href={item.href}

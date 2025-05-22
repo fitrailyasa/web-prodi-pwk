@@ -12,7 +12,9 @@ use App\Http\Controllers\guest\KalenderAkademikController;
 use App\Http\Controllers\guest\MbkmController;
 use App\Http\Controllers\guest\BeritaController;
 use App\Http\Controllers\guest\ContactController;
+use App\Http\Controllers\guest\FormLayananController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -44,4 +46,8 @@ Route::group(['prefix' => 'api', 'as' => 'api.'], function () {
     Route::get('/chart-visitor', [VisitorController::class, 'chartVisitor'])->name('visitor.chart');
     Route::post('/post-visitor', [VisitorController::class, 'store'])->name('visitor.store');
     Route::get('/count-visitor', [VisitorController::class, 'count'])->name('visitor.count');
+});
+
+Route::group(['prefix' => 'kemahasiswaan', 'as' => 'kemahasiswaan.'], function () {
+    Route::get('/form-layanan', [FormLayananController::class, 'index'])->name('form-layanan');
 });
