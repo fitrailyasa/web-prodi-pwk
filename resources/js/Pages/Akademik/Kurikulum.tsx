@@ -5,13 +5,9 @@ import {
     Card,
     CardHeader,
     CardBody,
-    CardFooter,
     Divider,
-    Image,
-    Button,
     Tabs,
     Tab,
-    Chip,
     Spinner,
     Accordion,
     AccordionItem,
@@ -26,7 +22,8 @@ import {
 } from '@heroui/react'
 import { motion } from 'framer-motion'
 import { useTranslation } from '@/Hooks/useTranslation'
-import { useLanguage } from '@/Providers/LanguageProvider'
+// import { useLanguage } from '@/Providers/LanguageProvider'
+import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
 
 interface Modul {
     id: number
@@ -62,9 +59,42 @@ interface PageProps {
     tahun_ajaran: string
 }
 
+const createJadwalRows = (
+    filteredJadwals: Jadwal[],
+    matkuls: Matkul[],
+    days: string[],
+    dayMapping: Record<string, string>,
+    renderFn: (
+        jadwal: Jadwal,
+        matkul: Matkul,
+        translatedDay: string
+    ) => React.ReactNode
+) => {
+    return days.flatMap(translatedDay => {
+        const originalDay = Object.entries(dayMapping).find(
+            ([_, translated]) => translated === translatedDay
+        )?.[0]
+
+        if (!originalDay) return []
+
+        const dayJadwals = filteredJadwals.filter(
+            jadwal => jadwal.day === originalDay
+        )
+        if (dayJadwals.length === 0) return []
+
+        return dayJadwals
+            .map(jadwal => {
+                const matkul = matkuls.find(m => m.id === jadwal.matkul_id)
+                if (!matkul) return null
+                return renderFn(jadwal, matkul, translatedDay)
+            })
+            .filter((row): row is JSX.Element => row !== null)
+    })
+}
+
 export default function Kurikulum() {
     const { props } = usePage<{ props: PageProps }>()
-    const { language } = useLanguage()
+    // const { language } = useLanguage()
     const [selectedSemester, setSelectedSemester] = useState<number>(1)
     const [isLoading, setIsLoading] = useState(true)
 
@@ -116,7 +146,7 @@ export default function Kurikulum() {
         [matkuls, selectedSemester]
     )
 
-    const dayMapping = {
+    const dayMapping: { [key: string]: string } = {
         Senin: translations.senin,
         Selasa: translations.selasa,
         Rabu: translations.rabu,
@@ -149,61 +179,66 @@ export default function Kurikulum() {
         [jadwals, matkuls, selectedSemester]
     )
 
-    const jadwalRows = useMemo(() => {
-        return days.flatMap(translatedDay => {
-            // Find the original day value that matches this translation
-            const originalDay = Object.entries(dayMapping).find(
-                ([_, translated]) => translated === translatedDay
-            )?.[0]
+    const allDays = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']
+    const groupedJadwal = useMemo(() => {
+        const initial: Record<string, Jadwal[]> = allDays.reduce(
+            (acc, day) => {
+                acc[day] = []
+                return acc
+            },
+            {} as Record<string, Jadwal[]>
+        ) // <-- tambahkan typing di sini
 
-            if (!originalDay) return []
+        const grouped = filteredJadwals.reduce((acc, item) => {
+            acc[item.day].push(item)
+            return acc
+        }, initial)
 
-            const dayJadwals = filteredJadwals.filter(
-                (jadwal: Jadwal) => jadwal.day === originalDay
+        allDays.forEach(day => {
+            grouped[day].sort((a, b) =>
+                a.start_time.localeCompare(b.start_time)
             )
-            if (dayJadwals.length === 0) return []
-
-            return dayJadwals
-                .map((jadwal: Jadwal) => {
-                    const matkul = matkuls.find(
-                        (m: Matkul) => m.id === jadwal.matkul_id
-                    )
-                    if (!matkul) return null
-
-                    return (
-                        <TableRow key={jadwal.id}>
-                            <TableCell>
-                                <Badge
-                                    color="primary"
-                                    variant="flat"
-                                    className="bg-[#003366] text-white text-xs sm:text-sm"
-                                >
-                                    {translatedDay}
-                                </Badge>
-                            </TableCell>
-                            <TableCell className="font-medium text-[#003366] line-clamp-1">
-                                {matkul.name}
-                            </TableCell>
-                            <TableCell>{jadwal.class}</TableCell>
-                            <TableCell>{jadwal.room}</TableCell>
-                            <TableCell className="line-clamp-1">
-                                {jadwal.lecture}
-                            </TableCell>
-                            <TableCell>
-                                <Badge
-                                    color="secondary"
-                                    variant="flat"
-                                    className="bg-[#FFD700] text-[#003366] text-xs sm:text-sm"
-                                >
-                                    {jadwal.start_time} - {jadwal.end_time}
-                                </Badge>
-                            </TableCell>
-                        </TableRow>
-                    )
-                })
-                .filter((row): row is JSX.Element => row !== null)
         })
-    }, [days, filteredJadwals, matkuls, dayMapping])
+
+        return grouped
+    }, [filteredJadwals, allDays])
+
+    console.log(groupedJadwal)
+
+    const jadwalRows = createJadwalRows(
+        filteredJadwals,
+        matkuls,
+        days,
+        dayMapping,
+        (jadwal, matkul, translatedDay) => (
+            <TableRow key={jadwal.id}>
+                <TableCell>
+                    <Badge
+                        color="primary"
+                        variant="flat"
+                        className="bg-[#003366] text-white text-xs sm:text-sm"
+                    >
+                        {translatedDay}
+                    </Badge>
+                </TableCell>
+                <TableCell className="font-medium text-[#003366] line-clamp-1">
+                    {matkul.name}
+                </TableCell>
+                <TableCell>{jadwal.class}</TableCell>
+                <TableCell>{jadwal.room}</TableCell>
+                <TableCell className="line-clamp-1">{jadwal.lecture}</TableCell>
+                <TableCell>
+                    <Badge
+                        color="secondary"
+                        variant="flat"
+                        className="bg-[#FFD700] text-[#003366] text-xs sm:text-sm"
+                    >
+                        {jadwal.start_time} - {jadwal.end_time}
+                    </Badge>
+                </TableCell>
+            </TableRow>
+        )
+    )
 
     if (isLoading) {
         return (
@@ -231,12 +266,12 @@ export default function Kurikulum() {
                         {translations.description}
                     </p>
                 </motion.div>
-
                 {/* Semester Selection */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
+                <SectionTrigerScroll
+                    id="data"
+                    // initial={{ opacity: 0, y: 20 }}
+                    // animate={{ opacity: 1, y: 0 }}
+                    // transition={{ duration: 0.5, delay: 0.2 }}
                     className="mb-6 sm:mb-8"
                 >
                     <div className="w-full overflow-x-auto no-scrollbar">
@@ -264,13 +299,10 @@ export default function Kurikulum() {
                             </Tabs>
                         </div>
                     </div>
-                </motion.div>
+                </SectionTrigerScroll>
 
-                {/* Mata Kuliah Section */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
+                <SectionTrigerScroll
+                    id={'beritaslider'}
                     className="mb-8 sm:mb-12 px-2 sm:px-0"
                 >
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 gap-2 sm:gap-0">
@@ -377,13 +409,9 @@ export default function Kurikulum() {
                             )
                         )}
                     </div>
-                </motion.div>
-
-                {/* Jadwal Section */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.6 }}
+                </SectionTrigerScroll>
+                <SectionTrigerScroll
+                    id={'beritaslider'}
                     className="px-2 sm:px-0"
                 >
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 gap-2 sm:gap-0">
@@ -431,7 +459,98 @@ export default function Kurikulum() {
                             <TableBody>{jadwalRows}</TableBody>
                         </Table>
                     </div>
-                </motion.div>
+                </SectionTrigerScroll>
+                {/* // grouped jadwal */}
+                {allDays.map(day => {
+                    const tableRows = createJadwalRows(
+                        groupedJadwal[day],
+                        matkuls,
+                        days,
+                        dayMapping,
+                        (jadwal, matkul, translatedDay) => (
+                            <TableRow key={jadwal.id}>
+                                {/* <TableCell>
+                                    <Badge
+                                        color="primary"
+                                        variant="flat"
+                                        className="bg-[#003366] text-white text-xs sm:text-sm"
+                                    >
+                                        {translatedDay}
+                                    </Badge>
+                                </TableCell> */}
+                                <TableCell className="font-medium text-[#003366] line-clamp-1">
+                                    {matkul.name}
+                                </TableCell>
+                                <TableCell>{jadwal.class}</TableCell>
+                                <TableCell>{jadwal.room}</TableCell>
+                                <TableCell className="line-clamp-1">
+                                    {jadwal.lecture}
+                                </TableCell>
+                                <TableCell>
+                                    <Badge
+                                        color="secondary"
+                                        variant="flat"
+                                        className="bg-[#FFD700] text-[#003366] text-xs sm:text-sm"
+                                    >
+                                        {jadwal.start_time} - {jadwal.end_time}
+                                    </Badge>
+                                </TableCell>
+                            </TableRow>
+                        )
+                    )
+                    return (
+                        <SectionTrigerScroll
+                            id={'beritaslider'}
+                            className="pt-10"
+                        >
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 gap-2 sm:gap-0">
+                                <h2 className="text-xl sm:text-2xl font-bold text-[#003366]">
+                                    {dayMapping[day]}
+                                </h2>
+                                <Badge
+                                    color="primary"
+                                    variant="flat"
+                                    className="bg-[#003366] text-white text-sm sm:text-base"
+                                >
+                                    {translations.semester} {selectedSemester}
+                                </Badge>
+                            </div>
+                            <div className="overflow-x-auto rounded-lg shadow-md">
+                                <Table
+                                    aria-label={translations.jadwalPerkuliahan}
+                                    classNames={{
+                                        wrapper: 'rounded-lg min-w-[800px]',
+                                        th: 'bg-[#003366] text-white text-xs sm:text-sm',
+                                        tr: '[&:nth-child(odd)]:bg-white [&:nth-child(even)]:bg-[#003366]/5 hover:bg-[#FFD700]/10',
+                                        td: 'text-xs sm:text-sm'
+                                    }}
+                                >
+                                    <TableHeader>
+                                        {/* <TableColumn className="w-[100px]">
+                                            {translations.hari}
+                                        </TableColumn> */}
+                                        <TableColumn>
+                                            {translations.mataKuliah}
+                                        </TableColumn>
+                                        <TableColumn className="w-[80px]">
+                                            {translations.kelas}
+                                        </TableColumn>
+                                        <TableColumn className="w-[90px]">
+                                            {translations.ruang}
+                                        </TableColumn>
+                                        <TableColumn className="w-[400px]">
+                                            {translations.dosen}
+                                        </TableColumn>
+                                        <TableColumn className="w-[120px]">
+                                            {translations.waktu}
+                                        </TableColumn>
+                                    </TableHeader>
+                                    <TableBody>{tableRows}</TableBody>
+                                </Table>
+                            </div>
+                        </SectionTrigerScroll>
+                    )
+                })}
             </div>
         </AppLayout>
     )
