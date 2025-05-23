@@ -158,7 +158,9 @@ const FormLayanan: React.FC<FormLayananProps> = ({
 
     const translation = {
         download: useTranslation('Download'),
-        open: useTranslation('Buka Link')
+        open: useTranslation('Buka Link'),
+        Formulir: useTranslation('Formulir'),
+        Surat: useTranslation('Surat')
     }
 
     const documentRows = createDocumentRows(paginatedDocuments, 4, (doc, i) => (
@@ -169,7 +171,7 @@ const FormLayanan: React.FC<FormLayananProps> = ({
             <TableCell className="font-medium text-[#003366] text-wrap">
                 {doc.name}
             </TableCell>
-            <TableCell>{doc.type}</TableCell>
+            <TableCell>{translation[doc.type]}</TableCell>
             <TableCell>
                 <a
                     href={doc.link}
@@ -215,7 +217,7 @@ const FormLayanan: React.FC<FormLayananProps> = ({
                 >
                     <div className="flex justify-end sm:flex-row  items-center mb-4 gap-4">
                         <Input
-                            placeholder="Cari nama formulir..."
+                            placeholder={useTranslation('Cari Formulir ...')}
                             value={searchQuery}
                             onChange={e => {
                                 setSearchQuery(e.target.value)
