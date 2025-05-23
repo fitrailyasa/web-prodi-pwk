@@ -97,7 +97,8 @@ class DosenController extends Controller
             'dosenProfile' => [
                 'nip' => $dosen->dosenProfile?->nip ?? '',
                 'nidn' => $dosen->dosenProfile?->nidn ?? '',
-                'goloangan' => $dosen->dosenProfile?->goloangan ?? "belum ada data", // tambah data golongan
+                'golongan' => $dosen->dosenProfile?->group ?? "", // tambah data golongan
+                'pangkat' => $dosen->dosenProfile?->rank ?? "", // tambah data pangkat
                 'google_scholar' => $dosen->dosenProfile?->google_scholar ?? '',
                 'scopus_id' => $dosen->dosenProfile?->scopus_id ?? '',
                 'sinta_id' => $dosen->dosenProfile?->sinta_id ?? '',
