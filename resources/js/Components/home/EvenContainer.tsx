@@ -48,15 +48,15 @@ const EvenContainer: React.FC<eventTypes> = ({
                 onClick={onOpen}
                 className="border p-3 rounded-2xl flex gap-3 items-center bg-secondary-blue-light flex-1"
             >
-                <div className="flex flex-nowrap gap-3 items-center">
+                <div className="flex md:flex-nowrap gap-3 items-center">
                     <div className="flex border-e-2 border-main-green items-center px-3 ">
                         <span className="text-sm md:text-lg font-bold text-nowrap text-main-green">
-                            {eventStart.date}, {eventStart.month}{' '}
+                            {eventStart.date} {eventStart.month}{' '}
                             {eventEnd &&
                                 ` - ${eventEnd.date}, ${eventEnd.month}`}
                         </span>
                     </div>
-                    <h1 className="text-sm md:text-lg font-bold text-nowrap text-main-blue-light">
+                    <h1 className="text-sm md:text-lg sm:text-wrap md:text-nowrap font-bold text-nowrap text-main-blue-light">
                         {useTranslation(title ?? '')}
                     </h1>
                 </div>
