@@ -180,6 +180,7 @@ const FormLayanan: React.FC<FormLayananProps> = ({
                             ? 'text-blue-600'
                             : 'text-green-600'
                     }`}
+                    {...(doc.linkType === 'file' ? { download: true } : {})}
                 >
                     {doc.linkType === 'file'
                         ? translation.download

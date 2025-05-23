@@ -223,6 +223,18 @@ export default function NavBar() {
         }
     ]
 
+    const MahasiswaMenu: DropdownMenuItem[] = nav_link
+        .filter(item => item.category.toLowerCase() === 'kemahasiswaan')
+        .map(item => {
+            return {
+                title: item.title,
+                href: item.href,
+                description: item.description,
+                icon: <LightBulbIcon className="fill-[#4005e1]" />
+            }
+        })
+    MahasiswaMenu.push(...DropdwonMahasiswaMenu)
+
     return (
         <Navbar
             maxWidth="2xl"
@@ -273,7 +285,7 @@ export default function NavBar() {
                 <NavbarItem>
                     <NavDropdown
                         title={translate('Kemahasiswaan')}
-                        item={DropdwonMahasiswaMenu}
+                        item={MahasiswaMenu}
                     />
                 </NavbarItem>
                 <NavbarItem>
@@ -388,7 +400,7 @@ export default function NavBar() {
                             </span>
                         }
                     >
-                        {DropdwonMahasiswaMenu.map((item, index) => (
+                        {MahasiswaMenu.map((item, index) => (
                             <AccordionLink
                                 key={index}
                                 href={item.href}

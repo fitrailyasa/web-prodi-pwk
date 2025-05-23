@@ -15,14 +15,14 @@ class FormLayananController extends Controller
             [
                 'id' => 1,
                 'name' => 'Formulir layanan Pengantar Kerja Praktik',
-                'link' => 'Download',
+                'link' => '/assets/img/defaultImage.png',
                 'linkType' => 'file',
                 'type' => 'Formulir'
             ],
             [
                 'id' => 2,
                 'name' => 'Surat Pengantar Kerja Praktik',
-                'link' => 'Buka',
+                'link' => 'http://if.itera.ac.id/',
                 'linkType' => 'url',
                 'type' => 'Surat'
             ],
