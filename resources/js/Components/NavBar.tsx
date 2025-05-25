@@ -255,7 +255,7 @@ export default function NavBar() {
                     />
                 </Link>
             </NavbarBrand>
-            <NavbarContent className="hidden md:flex gap-6" justify="center">
+            <NavbarContent className="hidden lg:flex gap-6" justify="center">
                 <NavbarItem>
                     <Link
                         className="text-main-blue-light text-md font-medium hover:text-[#4005e1] transition-colors duration-200"
@@ -324,7 +324,7 @@ export default function NavBar() {
                     />
                 </div>
             </NavbarContent>
-            <NavbarContent className="md:hidden" justify="end">
+            <NavbarContent className="lg:hidden" justify="end">
                 <NavbarMenuToggle
                     aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
                     className="text-main-blue-light hover:text-[#4005e1] transition-colors duration-200"

@@ -67,44 +67,6 @@ export default function Home({
         router.get(route('berita.show', { slug }))
     }
 
-    const pathner = [
-        {
-            title: 'Universitas Indonesia',
-            image: TestImage,
-            link: 'https://www.ui.ac.id/'
-        },
-        {
-            title: 'Institut Teknologi Bandung',
-            image: TestImage,
-            link: 'https://www.itb.ac.id/'
-        },
-        {
-            title: 'Universitas Diponegoro',
-            image: TestImage,
-            link: 'https://www.undip.ac.id/'
-        },
-        {
-            title: 'Universitas Kristen Satya Wacana',
-            image: TestImage,
-            link: 'https://www.uksw.edu/'
-        },
-        {
-            title: 'Universitas Kristen Satya Wacana',
-            image: TestImage,
-            link: 'https://www.uksw.edu/'
-        },
-        {
-            title: 'Universitas Kristen Satya Wacana',
-            image: TestImage,
-            link: 'https://www.uksw.edu/'
-        },
-        {
-            title: 'Universitas Kristen Satya Wacana',
-            image: TestImage,
-            link: 'https://www.uksw.edu/'
-        }
-    ]
-
     return (
         <AppLayout title="home">
             <div className="container mx-auto px-4 py-3 relative">
@@ -238,23 +200,6 @@ export default function Home({
                 >
                     <div className=" grid grid-cols-1 md:grid-cols-2 gap-10 justify-between">
                         <div className=" grid grid-cols-2 gap-5">
-                            <div className="flex gap-4 bg-secondary-blue bg-opacity-30 p-4 rounded-3xl">
-                                <MultyPersonIcon
-                                    size={2}
-                                    className="text-md md:text-4xl stroke-main-green fill-main-green"
-                                />
-                                <div className="flex flex-col gap-1">
-                                    <CountAnimation
-                                        from={0}
-                                        to={statistic.total_mahasiswa}
-                                        duration={2}
-                                        className="font-bold text-md md:text-4xl text-main-green"
-                                    />
-                                    <p className="font-semibold text-sm md:text-lg text-main-blue-light">
-                                        {useTranslation('Mahasiswa')}
-                                    </p>
-                                </div>
-                            </div>
                             <div className="flex gap-1 md:gap-4 bg-secondary-blue bg-opacity-30 p-4 rounded-3xl">
                                 <MultyPersonIcon
                                     size={2}
@@ -272,8 +217,7 @@ export default function Home({
                                     </p>
                                 </div>
                             </div>
-
-                            <div className=" flex col-span-2 gap-4 bg-secondary-blue bg-opacity-30 p-4 rounded-3xl">
+                            <div className="flex gap-4 bg-secondary-blue bg-opacity-30 p-4 rounded-3xl">
                                 <MultyPersonIcon
                                     size={2}
                                     className="text-md md:text-4xl stroke-main-green fill-main-green"
@@ -286,7 +230,26 @@ export default function Home({
                                         className="font-bold text-md md:text-4xl text-main-green"
                                     />
                                     <p className="font-semibold text-sm md:text-lg text-main-blue-light">
-                                        {useTranslation('Staf Akademik')}
+                                        {useTranslation('Tendik')}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className=" flex col-span-2 gap-4 bg-secondary-blue bg-opacity-30 p-4 rounded-3xl">
+                                <MultyPersonIcon
+                                    size={2}
+                                    className="text-md md:text-4xl stroke-main-green fill-main-green"
+                                />
+
+                                <div className="flex flex-col gap-1">
+                                    <CountAnimation
+                                        from={0}
+                                        to={statistic.total_mahasiswa}
+                                        duration={2}
+                                        className="font-bold text-md md:text-4xl text-main-green"
+                                    />
+                                    <p className="font-semibold text-sm md:text-lg text-main-blue-light">
+                                        {useTranslation('Mahasiswa')}
                                     </p>
                                 </div>
                             </div>

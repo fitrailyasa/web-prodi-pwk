@@ -141,3 +141,11 @@ export type AlumniPageProps = {
 export type StorageProps = {
     link: string
 }
+
+export interface Document {
+    id: number
+    name: string
+    link: string
+    linkType: 'file' | 'url'
+    type: string
+}

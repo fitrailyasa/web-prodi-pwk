@@ -40,6 +40,70 @@ type DataPagienation = {
     total: number
     queryPage?: Array<string>
 }
+export const paginateRenderItem = ({
+    ref,
+    key,
+    value,
+    isActive,
+    onNext,
+    onPrevious,
+    setPage,
+    className
+}: PaginationItemRenderProps) => {
+    if (value === PaginationItemType.NEXT) {
+        return (
+            <button
+                key={key}
+                className={cn(
+                    className,
+                    'bg-main-blue/10 text-main-blue-light hover:bg-main-blue/20 min-w-8 w-8 h-8'
+                )}
+                onClick={onNext}
+            >
+                <ChevronIcon className="rotate-180" />
+            </button>
+        )
+    }
+
+    if (value === PaginationItemType.PREV) {
+        return (
+            <button
+                key={key}
+                className={cn(
+                    className,
+                    'bg-main-blue/10 text-main-blue-light hover:bg-main-blue/20 min-w-8 w-8 h-8'
+                )}
+                onClick={onPrevious}
+            >
+                <ChevronIcon />
+            </button>
+        )
+    }
+
+    if (value === PaginationItemType.DOTS) {
+        return (
+            <button key={key} className={cn(className, 'text-main-blue')}>
+                ...
+            </button>
+        )
+    }
+
+    return (
+        <button
+            key={key}
+            ref={ref}
+            className={cn(
+                className,
+                isActive
+                    ? 'bg-main-blue text-white font-bold'
+                    : 'text-main-blue-light hover:bg-main-yellow/20'
+            )}
+            onClick={() => setPage(value)}
+        >
+            {value}
+        </button>
+    )
+}
 
 export default function PaginationComponent(DataPagination: DataPagienation) {
     let q = ''
@@ -53,70 +117,6 @@ export default function PaginationComponent(DataPagination: DataPagienation) {
                 return '&' + item + '=' + pageProps[item]
             })
             .join('')
-    }
-    const renderItem = ({
-        ref,
-        key,
-        value,
-        isActive,
-        onNext,
-        onPrevious,
-        setPage,
-        className
-    }: PaginationItemRenderProps) => {
-        if (value === PaginationItemType.NEXT) {
-            return (
-                <button
-                    key={key}
-                    className={cn(
-                        className,
-                        'bg-main-blue/10 text-main-blue-light hover:bg-main-blue/20 min-w-8 w-8 h-8'
-                    )}
-                    onClick={onNext}
-                >
-                    <ChevronIcon className="rotate-180" />
-                </button>
-            )
-        }
-
-        if (value === PaginationItemType.PREV) {
-            return (
-                <button
-                    key={key}
-                    className={cn(
-                        className,
-                        'bg-main-blue/10 text-main-blue-light hover:bg-main-blue/20 min-w-8 w-8 h-8'
-                    )}
-                    onClick={onPrevious}
-                >
-                    <ChevronIcon />
-                </button>
-            )
-        }
-
-        if (value === PaginationItemType.DOTS) {
-            return (
-                <button key={key} className={cn(className, 'text-main-blue')}>
-                    ...
-                </button>
-            )
-        }
-
-        return (
-            <button
-                key={key}
-                ref={ref}
-                className={cn(
-                    className,
-                    isActive
-                        ? 'bg-main-blue text-white font-bold'
-                        : 'text-main-blue-light hover:bg-main-yellow/20'
-                )}
-                onClick={() => setPage(value)}
-            >
-                {value}
-            </button>
-        )
     }
 
     const handLeMovePage = (page: number) => {
@@ -139,7 +139,7 @@ export default function PaginationComponent(DataPagination: DataPagienation) {
                 className="gap-2"
                 initialPage={DataPagination.current_page}
                 radius="full"
-                renderItem={renderItem}
+                renderItem={paginateRenderItem}
                 total={DataPagination.las_page}
                 page={DataPagination.current_page}
                 onChange={page => handLeMovePage(page)}

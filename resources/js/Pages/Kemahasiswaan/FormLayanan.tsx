@@ -1,5 +1,5 @@
 import { SectionTrigerScroll } from '@/Animation/SectionDebounceAnimation'
-import { ChevronIcon } from '@/Components/Utils/Pagination'
+import { ChevronIcon, paginateRenderItem } from '@/Components/Utils/Pagination'
 import { useTranslation } from '@/Hooks/useTranslation'
 import AppLayout from '@/Layouts/AppLayout'
 import {
@@ -18,14 +18,8 @@ import {
 } from '@heroui/react'
 
 import { ReactElement, useEffect, useMemo, useState } from 'react'
-
-interface Document {
-    id: number
-    name: string
-    link: string
-    linkType: 'file' | 'url'
-    type: 'Formulir' | 'Surat'
-}
+import { Document } from '@/types'
+import { useTranslatedFomrlayanans } from '@/Hooks/useTranslatedDocuments'
 
 interface FormLayananProps {
     title?: string
@@ -38,11 +32,14 @@ function createDocumentRows<T extends Document>(
     columnCount: number,
     renderRow: (document: T, index: number) => ReactElement
 ): ReactElement[] {
+    const textNoData = useTranslation(
+        'Tidak ada data yang tersedia untuk ditampilkan.'
+    )
     if (documents.length < 1) {
         return [
             <TableRow key="no-data">
                 <TableCell colSpan={columnCount} className="text-center py-4">
-                    Tidak ada data tersedia.
+                    {textNoData}
                 </TableCell>
             </TableRow>
         ]
@@ -59,13 +56,15 @@ const FormLayanan: React.FC<FormLayananProps> = ({
     const [currentPage, setCurrentPage] = useState(1)
     const [debouncedQuery, setDebouncedQuery] = useState('')
     useState<Document[]>(documents ?? [])
+    // useState<Document[]>(translatedDoc ?? [])
     const itemsPerPage = 10
+    const { translatedDocs } = useTranslatedFomrlayanans(documents)
 
     const filteredDocuments = useMemo(() => {
-        return documents.filter(doc =>
+        return translatedDocs.filter((doc: Document) =>
             doc.name.toLowerCase().includes(debouncedQuery.toLowerCase())
         )
-    }, [debouncedQuery])
+    }, [translatedDocs, debouncedQuery])
 
     const totalPages = Math.ceil(filteredDocuments.length / itemsPerPage)
 
@@ -79,7 +78,6 @@ const FormLayanan: React.FC<FormLayananProps> = ({
         current_page: currentPage,
         last_page: totalPages
     }
-
     const handleMovePage = (page: number) => {
         setCurrentPage(page)
     }
@@ -87,80 +85,12 @@ const FormLayanan: React.FC<FormLayananProps> = ({
         const timeout = setTimeout(() => {
             setDebouncedQuery(searchQuery)
         }, 500) // 500ms debounce
-
         return () => clearTimeout(timeout) // bersihkan timeout jika input berubah
     }, [searchQuery])
 
-    const renderItem = ({
-        ref,
-        key,
-        value,
-        isActive,
-        onNext,
-        onPrevious,
-        setPage,
-        className
-    }: PaginationItemRenderProps) => {
-        if (value === PaginationItemType.NEXT) {
-            return (
-                <button
-                    key={key}
-                    className={cn(
-                        className,
-                        'bg-main-blue/10 text-main-blue-light hover:bg-main-blue/20 min-w-8 w-8 h-8'
-                    )}
-                    onClick={onNext}
-                >
-                    <ChevronIcon className="rotate-180" />
-                </button>
-            )
-        }
-
-        if (value === PaginationItemType.PREV) {
-            return (
-                <button
-                    key={key}
-                    className={cn(
-                        className,
-                        'bg-main-blue/10 text-main-blue-light hover:bg-main-blue/20 min-w-8 w-8 h-8'
-                    )}
-                    onClick={onPrevious}
-                >
-                    <ChevronIcon />
-                </button>
-            )
-        }
-
-        if (value === PaginationItemType.DOTS) {
-            return (
-                <button key={key} className={cn(className, 'text-main-blue')}>
-                    ...
-                </button>
-            )
-        }
-
-        return (
-            <button
-                key={key}
-                ref={ref}
-                className={cn(
-                    className,
-                    isActive
-                        ? 'bg-main-blue text-white font-bold'
-                        : 'text-main-blue-light hover:bg-main-yellow/20'
-                )}
-                onClick={() => setPage(value)}
-            >
-                {value}
-            </button>
-        )
-    }
-
     const translation = {
         download: useTranslation('Download'),
-        open: useTranslation('Buka Link'),
-        Formulir: useTranslation('Formulir'),
-        Surat: useTranslation('Surat')
+        open: useTranslation('Buka Link')
     }
 
     const documentRows = createDocumentRows(paginatedDocuments, 4, (doc, i) => (
@@ -171,7 +101,7 @@ const FormLayanan: React.FC<FormLayananProps> = ({
             <TableCell className="font-medium text-[#003366] text-wrap">
                 {doc.name}
             </TableCell>
-            <TableCell>{translation[doc.type]}</TableCell>
+            <TableCell>{doc.type}</TableCell>
             <TableCell>
                 <a
                     href={doc.link}
@@ -265,7 +195,7 @@ const FormLayanan: React.FC<FormLayananProps> = ({
                                 className="gap-2"
                                 initialPage={DataPagination.current_page}
                                 radius="full"
-                                renderItem={renderItem}
+                                renderItem={paginateRenderItem}
                                 total={DataPagination.last_page}
                                 page={DataPagination.current_page}
                                 onChange={handleMovePage}

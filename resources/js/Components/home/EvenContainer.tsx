@@ -46,7 +46,7 @@ const EvenContainer: React.FC<eventTypes> = ({
         <>
             <button
                 onClick={onOpen}
-                className="border p-3 rounded-2xl flex gap-3 items-center bg-secondary-blue-light w-full md:w-fit"
+                className="border p-3 rounded-2xl flex gap-3 items-center bg-secondary-blue-light w-full lg:w-fit"
             >
                 <div className="flex md:flex-nowrap gap-3 items-center">
                     <div className="flex border-e-2 border-main-green items-center px-3 ">
