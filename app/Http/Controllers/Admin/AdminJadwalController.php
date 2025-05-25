@@ -44,10 +44,7 @@ class AdminJadwalController extends Controller
         // Query with search and ordering
         $query = Jadwal::query();
 
-        // If user is a lecturer, only show their schedules
-        if (auth()->user()->role === 'dosen') {
-            $query->where('user_id', auth()->id());
-        }
+        $query->where('user_id', auth()->id());
 
         if ($search) {
             $query->where('name', 'like', "%{$search}%");
