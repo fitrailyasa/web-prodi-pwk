@@ -43,7 +43,7 @@
                     <!-- Akademik -->
                     <li class="nav-header text-white">AKADEMIK</li>
                     <li
-                        class="nav-item has-treeview {{ Request::routeIs('admin.matkul.index', 'admin.jadwal.index', 'admin.modul.index', 'admin.kalender.index', 'admin.mbkm.index') ? 'menu-open' : '' }}">
+                        class="nav-item has-treeview {{ Request::routeIs('admin.matkul.index', 'admin.jadwal.index', 'admin.modul.index', 'admin.event.index', 'admin.mbkm.index') ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link text-white">
                             <i class="nav-icon fas fa-graduation-cap"></i>
                             <p>
@@ -100,7 +100,7 @@
                     <!-- Konten dan Informasi -->
                     <li class="nav-header text-white">KONTEN DAN INFORMASI</li>
                     <li
-                        class="nav-item has-treeview {{ Request::routeIs('admin.berita.index', 'admin.event.index', 'admin.tag.index') ? 'menu-open' : '' }}">
+                        class="nav-item has-treeview {{ Request::routeIs('admin.berita.index', 'admin.tag.index') ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link text-white">
                             <i class="nav-icon fas fa-newspaper"></i>
                             <p>
