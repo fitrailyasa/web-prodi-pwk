@@ -13,7 +13,7 @@ class Layanan extends Model
     protected $connection;
     protected $table = 'layanans';
     protected $primaryKey = 'id';
-    protected $fillable = ['id', 'name', 'file', 'user_id'];
+    protected $fillable = ['id', 'name', 'file', 'link', 'linkType', 'type', 'user_id'];
     protected $dates = ['created_at', 'updated_at'];
 
     public static function setDynamicConnection()
