@@ -36,31 +36,46 @@
                             <div class="form-group col-md-4">
                                 <label for="nip">NIP<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="nip" name="nip"
-                                    value="{{ $profile->nip ?? old('nip') }}">
+                                    value="{{ $profile->nip ?? old('nip') }}" placeholder="198005172009031001">
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="nidn">NIDN<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="nidn" name="nidn"
-                                    value="{{ $profile->nidn ?? old('nidn') }}">
+                                    value="{{ $profile->nidn ?? old('nidn') }}" placeholder="0110058801">
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="position">Jabatan<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="position" name="position"
-                                    value="{{ $profile->position ?? old('position') }}">
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="rank">Pangkat<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="rank" name="rank"
-                                    value="{{ $profile->rank ?? old('rank') }}">
+                                    value="{{ $profile->position ?? old('position') }}" placeholder="Dosen">
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="group">Golongan<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="group" name="group"
-                                    value="{{ $profile->group ?? old('group') }}">
+                                <select class="form-control" id="group" name="group" required>
+                                    <option value="">-- Pilih Golongan --</option>
+                                    <option value="I"
+                                        {{ ($profile->group ?? old('group')) == 'I' ? 'selected' : '' }}>Golongan I
+                                    </option>
+                                    <option value="II"
+                                        {{ ($profile->group ?? old('group')) == 'II' ? 'selected' : '' }}>Golongan II
+                                    </option>
+                                    <option value="III"
+                                        {{ ($profile->group ?? old('group')) == 'III' ? 'selected' : '' }}>Golongan
+                                        III</option>
+                                    <option value="IV"
+                                        {{ ($profile->group ?? old('group')) == 'IV' ? 'selected' : '' }}>Golongan IV
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="rank">Pangkat<span class="text-danger">*</span></label>
+                                <select class="form-control" id="rank" name="rank" required>
+                                    <option value="">-- Pilih Pangkat --</option>
+                                    <!-- Options akan diisi lewat JS -->
+                                </select>
                             </div>
 
                             <div class="form-group col-md-12">
@@ -97,7 +112,8 @@
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="research_interests">Minat Penelitian<span class="text-danger">*</span></label>
+                                <label for="research_interests">Minat Penelitian<span
+                                        class="text-danger">*</span></label>
                                 <textarea class="form-control" id="research_interests" name="research_interests" rows="3">{{ $profile->research_interests ?? old('research_interests') }}</textarea>
                             </div>
 
@@ -130,4 +146,65 @@
             </div>
         </div>
     </div>
+
+    <script>
+    const pangkatOptions = {
+        I: [
+            {value: 'I/a', text: 'I/a - Juru'},
+            {value: 'I/b', text: 'I/b - Juru Tingkat I'},
+            {value: 'I/c', text: 'I/c - Juru Muda'},
+            {value: 'I/d', text: 'I/d - Juru Muda Tingkat I'}
+        ],
+        II: [
+            {value: 'II/a', text: 'II/a - Pengatur Muda'},
+            {value: 'II/b', text: 'II/b - Pengatur Muda Tingkat I'},
+            {value: 'II/c', text: 'II/c - Pengatur'},
+            {value: 'II/d', text: 'II/d - Pengatur Tingkat I'}
+        ],
+        III: [
+            {value: 'III/a', text: 'III/a - Penata Muda'},
+            {value: 'III/b', text: 'III/b - Penata Muda Tingkat I'},
+            {value: 'III/c', text: 'III/c - Penata'},
+            {value: 'III/d', text: 'III/d - Penata Tingkat I'}
+        ],
+        IV: [
+            {value: 'IV/a', text: 'IV/a - Pembina'},
+            {value: 'IV/b', text: 'IV/b - Pembina Tingkat I'},
+            {value: 'IV/c', text: 'IV/c - Pembina Utama Muda'},
+            {value: 'IV/d', text: 'IV/d - Pembina Utama Madya'},
+            {value: 'IV/e', text: 'IV/e - Pembina Utama'}
+        ]
+    };
+
+    const groupSelect = document.getElementById('group');
+    const rankSelect = document.getElementById('rank');
+
+    function populateRanks(selectedGroup, selectedRank = '') {
+        rankSelect.innerHTML = '<option value="">-- Pilih Pangkat --</option>';
+        if (selectedGroup && pangkatOptions[selectedGroup]) {
+            pangkatOptions[selectedGroup].forEach(pangkat => {
+                const option = document.createElement('option');
+                option.value = pangkat.value;
+                option.textContent = pangkat.text;
+                if (pangkat.value === selectedRank) {
+                    option.selected = true;
+                }
+                rankSelect.appendChild(option);
+            });
+            rankSelect.disabled = false;
+        } else {
+            rankSelect.disabled = true;
+        }
+    }
+
+    groupSelect.addEventListener('change', function() {
+        populateRanks(this.value);
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectedGroup = groupSelect.value;
+        const selectedRank = "{{ $profile->rank ?? old('rank') ?? '' }}";
+        populateRanks(selectedGroup, selectedRank);
+    });
+</script>
 </x-admin-layout>
