@@ -33,18 +33,29 @@
                 </div>
             </div>
             @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            html: `{!! implode('<br>', $errors->all()) !!}`,
+                            confirmButtonColor: '#d33',
+                        });
+                    });
+                </script>
             @endif
+
             @if (session('alert'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('alert') }}
-                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil!',
+                            text: '{{ session('alert') }}',
+                            confirmButtonColor: '#28a745',
+                        });
+                    });
+                </script>
             @endif
             <div class="table-responsive">
                 {{ $search ?? '' }}
