@@ -80,63 +80,63 @@
 
                             <div class="form-group col-md-12">
                                 <label for="bio">Tentang<span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="bio" name="bio" rows="3">{{ $profile->bio ?? old('bio') }}</textarea>
+                                <textarea class="form-control" id="bio" name="bio" rows="3" placeholder="Tuliskan tentang diri Anda...">{{ $profile->bio ?? old('bio') }}</textarea>
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="education">Pendidikan<span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="education" name="education" rows="3">{{ $profile->education ?? old('education') }}</textarea>
+                                <textarea class="form-control" id="education" name="education" rows="3" placeholder="Tuliskan riwayat pendidikan Anda...">{{ $profile->education ?? old('education') }}</textarea>
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="expertise">Bidang Keahlian<span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="expertise" name="expertise" rows="3">{{ $profile->expertise ?? old('expertise') }}</textarea>
+                                <textarea class="form-control" id="expertise" name="expertise" rows="3" placeholder="Tuliskan bidang keahlian Anda...">{{ $profile->expertise ?? old('expertise') }}</textarea>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="google_scholar">Google Scholar<span class="text-danger">*</span></label>
                                 <input type="url" class="form-control" id="google_scholar" name="google_scholar"
-                                    value="{{ $profile->google_scholar ?? old('google_scholar') }}">
+                                    value="{{ $profile->google_scholar ?? old('google_scholar') }}" placeholder="https://scholar.google.com/citations?user=1234567890">
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="scopus_id">Scopus ID<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="scopus_id" name="scopus_id"
-                                    value="{{ $profile->scopus_id ?? old('scopus_id') }}">
+                                    value="{{ $profile->scopus_id ?? old('scopus_id') }}" placeholder="1234567890abcdef">
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="sinta_id">SINTA ID<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="sinta_id" name="sinta_id"
-                                    value="{{ $profile->sinta_id ?? old('sinta_id') }}">
+                                    value="{{ $profile->sinta_id ?? old('sinta_id') }}" placeholder="98765432">
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="research_interests">Minat Penelitian<span
                                         class="text-danger">*</span></label>
-                                <textarea class="form-control" id="research_interests" name="research_interests" rows="3">{{ $profile->research_interests ?? old('research_interests') }}</textarea>
+                                <textarea class="form-control" id="research_interests" name="research_interests" rows="3" placeholder="Tuliskan minat penelitian Anda...">{{ $profile->research_interests ?? old('research_interests') }}</textarea>
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="achievements">Pencapaian<span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="achievements" name="achievements" rows="3">{{ $profile->achievements ?? old('achievements') }}</textarea>
+                                <textarea class="form-control" id="achievements" name="achievements" rows="3" placeholder="Tuliskan pencapaian Anda...">{{ $profile->achievements ?? old('achievements') }}</textarea>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="whatsapp">WhatsApp<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="whatsapp" name="whatsapp"
-                                    value="{{ $profile->whatsapp ?? old('whatsapp') }}">
+                                    value="{{ $profile->whatsapp ?? old('whatsapp') }}" placeholder="+6281234567890">
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="linkedin">LinkedIn<span class="text-danger">*</span></label>
                                 <input type="url" class="form-control" id="linkedin" name="linkedin"
-                                    value="{{ $profile->linkedin ?? old('linkedin') }}">
+                                    value="{{ $profile->linkedin ?? old('linkedin') }}" placeholder="https://linkedin.com/in/username">
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="other">Lainnya</label>
-                                <textarea class="form-control" id="other" name="other" rows="3">{{ $profile->other ?? old('other') }}</textarea>
+                                <textarea class="form-control" id="other" name="other" rows="3" placeholder="Tuliskan informasi lainnya...">{{ $profile->other ?? old('other') }}</textarea>
                             </div>
                         </div>
 
