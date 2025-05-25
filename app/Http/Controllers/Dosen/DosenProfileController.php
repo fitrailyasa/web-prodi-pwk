@@ -77,6 +77,6 @@ class DosenProfileController extends Controller
 
         $profile->save();
 
-        return redirect()->route('dosen.profile.index')->with('success', 'Profile updated successfully');
+        return redirect()->route('dosen.profile.index')->with('alert', 'Profile berhasil diperbarui.');
     }
 }
