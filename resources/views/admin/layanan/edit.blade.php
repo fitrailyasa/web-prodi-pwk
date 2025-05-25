@@ -48,7 +48,7 @@
                             <label class="form-label">{{ __('Tipe dokumen') }}<span class="text-danger">*</span></label>
                             <select class="form-control @error('linkType') is-invalid @enderror"
                                     name="linkType" id="linkType{{ $layanan->id }}">
-                                <option value="" disabled>Pilih tipe dokumen</option>
+                                <option value="" disabled {{ old('linkType', $layanan->linkType) ? '' : 'selected' }}>Pilih tipe dokumen</option>
                                 <option value="url" {{ old('linkType', $layanan->linkType) == 'url' ? 'selected' : '' }}>Url</option>
                                 <option value="file" {{ old('linkType', $layanan->linkType) == 'file' ? 'selected' : '' }}>File</option>
                             </select>
@@ -93,25 +93,38 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const id = @json($layanan->id);
-        const linkTypeSelect = document.getElementById("linkType" + id);
-        const fileGroup = document.getElementById("fileGroup" + id);
-        const linkGroup = document.getElementById("linkGroup" + id);
+        @foreach($layanans as $layanan)
+            (function () {
+                const id = {{ $layanan->id }};
+                const linkTypeSelect = document.getElementById("linkType" + id);
+                const fileGroup = document.getElementById("fileGroup" + id);
+                const linkGroup = document.getElementById("linkGroup" + id);
 
-        function toggleFields() {
-            const selectedType = linkTypeSelect.value;
+                if (!linkTypeSelect) return;
 
-            fileGroup.style.display = "none";
-            linkGroup.style.display = "none";
+                const fileInput = fileGroup.querySelector('input[type="file"]');
+                const linkInput = linkGroup.querySelector('input[type="text"]');
 
-            if (selectedType === "url") {
-                linkGroup.style.display = "block";
-            } else if (selectedType === "file") {
-                fileGroup.style.display = "block";
-            }
-        }
+                function toggleFields() {
+                    const selectedType = linkTypeSelect.value;
 
-        linkTypeSelect.addEventListener("change", toggleFields);
-        toggleFields();
+                    fileGroup.style.display = "none";
+                    linkGroup.style.display = "none";
+                    fileInput.removeAttribute("required");
+                    linkInput.removeAttribute("required");
+
+                    if (selectedType === "url") {
+                        linkGroup.style.display = "block";
+                        linkInput.setAttribute("required", "required");
+                    } else if (selectedType === "file") {
+                        fileGroup.style.display = "block";
+                        fileInput.setAttribute("required", "required");
+                    }
+                }
+
+                linkTypeSelect.addEventListener("change", toggleFields);
+                toggleFields();
+            })();
+        @endforeach
     });
 </script>

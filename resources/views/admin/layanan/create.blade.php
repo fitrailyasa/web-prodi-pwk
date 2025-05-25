@@ -92,17 +92,23 @@
         const linkTypeSelect = document.getElementById("linkType");
         const fileGroup = document.getElementById("fileGroup");
         const linkGroup = document.getElementById("linkGroup");
+        const fileInput = document.getElementById("file");
+        const linkInput = document.getElementById("link");
 
         function toggleFields() {
             const selectedType = linkTypeSelect.value;
 
             fileGroup.style.display = "none";
             linkGroup.style.display = "none";
+            fileInput.removeAttribute("required");
+            linkInput.removeAttribute("required");
 
             if (selectedType === "url") {
                 linkGroup.style.display = "block";
+                linkInput.setAttribute("required", "required");
             } else if (selectedType === "file") {
                 fileGroup.style.display = "block";
+                fileInput.setAttribute("required", "required");
             }
         }
 
@@ -110,3 +116,4 @@
         toggleFields();
     });
 </script>
+
