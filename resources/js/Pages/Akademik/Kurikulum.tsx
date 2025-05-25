@@ -95,6 +95,8 @@ const createJadwalRows = (
 export default function Kurikulum() {
     const { props } = usePage<{ props: PageProps }>()
     // const { language } = useLanguage()
+    const [selectedMatkulSemester, setSelectedMatkulSemester] =
+        useState<number>(1)
     const [selectedSemester, setSelectedSemester] = useState<number>(1)
     const [isLoading, setIsLoading] = useState(true)
 
@@ -108,6 +110,9 @@ export default function Kurikulum() {
         mataKuliah: useTranslation('Mata Kuliah'),
         modulPembelajaran: useTranslation('Modul Pembelajaran'),
         jadwalPerkuliahan: useTranslation('Jadwal Perkuliahan'),
+        jadwalPerkuliahanDesc: useTranslation(
+            'Jadwal perkuliahan lengkap untuk setiap hari dan kelas, termasuk informasi dosen dan ruang kuliah.'
+        ),
         hari: useTranslation('Hari'),
         kelas: useTranslation('Kelas'),
         ruang: useTranslation('Ruang'),
@@ -125,6 +130,7 @@ export default function Kurikulum() {
     const jadwals: Jadwal[] = Array.isArray(props.jadwals) ? props.jadwals : []
 
     let semesterArr = [1, 2, 3, 4, 5, 6, 7, 8]
+    const matkulSemesters = semesterArr
 
     if (props.semesters === 'ganjil') {
         semesterArr = [1, 3, 5, 7]
@@ -141,9 +147,9 @@ export default function Kurikulum() {
     const filteredMatkuls = useMemo(
         () =>
             matkuls.filter(
-                (matkul: Matkul) => matkul.semester === selectedSemester
+                (matkul: Matkul) => matkul.semester === selectedMatkulSemester
             ),
-        [matkuls, selectedSemester]
+        [matkuls, selectedMatkulSemester]
     )
 
     const dayMapping: { [key: string]: string } = {
@@ -199,46 +205,8 @@ export default function Kurikulum() {
                 a.start_time.localeCompare(b.start_time)
             )
         })
-
         return grouped
     }, [filteredJadwals, allDays])
-
-    console.log(groupedJadwal)
-
-    const jadwalRows = createJadwalRows(
-        filteredJadwals,
-        matkuls,
-        days,
-        dayMapping,
-        (jadwal, matkul, translatedDay) => (
-            <TableRow key={jadwal.id}>
-                <TableCell>
-                    <Badge
-                        color="primary"
-                        variant="flat"
-                        className="bg-[#003366] text-white text-xs sm:text-sm"
-                    >
-                        {translatedDay}
-                    </Badge>
-                </TableCell>
-                <TableCell className="font-medium text-[#003366] line-clamp-1">
-                    {matkul.name}
-                </TableCell>
-                <TableCell>{jadwal.class}</TableCell>
-                <TableCell>{jadwal.room}</TableCell>
-                <TableCell className="line-clamp-1">{jadwal.lecture}</TableCell>
-                <TableCell>
-                    <Badge
-                        color="secondary"
-                        variant="flat"
-                        className="bg-[#FFD700] text-[#003366] text-xs sm:text-sm"
-                    >
-                        {jadwal.start_time} - {jadwal.end_time}
-                    </Badge>
-                </TableCell>
-            </TableRow>
-        )
-    )
 
     if (isLoading) {
         return (
@@ -271,9 +239,9 @@ export default function Kurikulum() {
                     <div className="w-full overflow-x-auto no-scrollbar">
                         <div className="min-w-[800px] flex justify-center">
                             <Tabs
-                                selectedKey={selectedSemester.toString()}
+                                selectedKey={selectedMatkulSemester.toString()}
                                 onSelectionChange={key =>
-                                    setSelectedSemester(Number(key))
+                                    setSelectedMatkulSemester(Number(key))
                                 }
                                 variant="bordered"
                                 classNames={{
@@ -284,7 +252,7 @@ export default function Kurikulum() {
                                     base: 'w-full'
                                 }}
                             >
-                                {semesterArr.map(semester => (
+                                {matkulSemesters.map(semester => (
                                     <Tab
                                         key={semester}
                                         title={`${translations.semester} ${semester}`}
@@ -301,7 +269,8 @@ export default function Kurikulum() {
                 >
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 gap-2 sm:gap-0">
                         <h2 className="text-xl sm:text-2xl font-bold text-[#003366]">
-                            {translations.mataKuliah} {selectedSemester}
+                            {translations.mataKuliah} Semester{' '}
+                            {selectedMatkulSemester}
                         </h2>
                         <Badge
                             color="primary"
@@ -404,57 +373,49 @@ export default function Kurikulum() {
                         )}
                     </div>
                 </SectionTrigerScroll>
-                <SectionTrigerScroll
-                    id={'jadwal_list'}
-                    className="px-2 sm:px-0"
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="text-center mb-8 sm:mb-12 px-2 sm:px-0"
                 >
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 gap-2 sm:gap-0">
-                        <h2 className="text-xl sm:text-2xl font-bold text-[#003366]">
-                            {translations.jadwalPerkuliahan}
-                        </h2>
-                        <Badge
-                            color="primary"
-                            variant="flat"
-                            className="bg-[#003366] text-white text-sm sm:text-base"
-                        >
-                            {translations.semester} {selectedSemester}
-                        </Badge>
-                    </div>
-                    <div className="overflow-x-auto rounded-lg shadow-md">
-                        <Table
-                            aria-label={translations.jadwalPerkuliahan}
-                            classNames={{
-                                wrapper: 'rounded-lg min-w-[800px]',
-                                th: 'bg-[#003366] text-white text-xs sm:text-sm',
-                                tr: '[&:nth-child(odd)]:bg-white [&:nth-child(even)]:bg-[#003366]/5 hover:bg-[#FFD700]/10',
-                                td: 'text-xs sm:text-sm'
-                            }}
-                        >
-                            <TableHeader>
-                                <TableColumn className="w-[100px]">
-                                    {translations.hari}
-                                </TableColumn>
-                                <TableColumn>
-                                    {translations.mataKuliah}
-                                </TableColumn>
-                                <TableColumn className="w-[80px]">
-                                    {translations.kelas}
-                                </TableColumn>
-                                <TableColumn className="w-[90px]">
-                                    {translations.ruang}
-                                </TableColumn>
-                                <TableColumn className="w-[400px]">
-                                    {translations.dosen}
-                                </TableColumn>
-                                <TableColumn className="w-[120px]">
-                                    {translations.waktu}
-                                </TableColumn>
-                            </TableHeader>
-                            <TableBody>{jadwalRows}</TableBody>
-                        </Table>
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 bg-gradient-to-r text-main-blue-light bg-clip-text">
+                        {translations.jadwalPerkuliahan}
+                    </h1>
+                    <div className="w-full max-w-[100px] h-1 bg-gradient-to-r from-main-blue to-main-green mx-auto rounded-full"></div>
+                    <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-2xl mx-auto mt-2">
+                        {translations.jadwalPerkuliahanDesc}
+                    </p>
+                </motion.div>
+
+                <SectionTrigerScroll id="data" className="mb-6 sm:mb-8">
+                    <div className="w-full overflow-x-auto no-scrollbar">
+                        <div className="min-w-[800px] flex justify-center">
+                            <Tabs
+                                selectedKey={selectedSemester.toString()}
+                                onSelectionChange={key =>
+                                    setSelectedSemester(Number(key))
+                                }
+                                variant="bordered"
+                                classNames={{
+                                    tabList:
+                                        'gap-1 w-full flex justify-between px-2',
+                                    tab: 'px-2 py-2 text-sm sm:text-base font-medium min-w-[100px]',
+                                    cursor: 'bg-[#003366]',
+                                    base: 'w-full'
+                                }}
+                            >
+                                {semesterArr.map(semester => (
+                                    <Tab
+                                        key={semester}
+                                        title={`${translations.semester} ${semester}`}
+                                    />
+                                ))}
+                            </Tabs>
+                        </div>
                     </div>
                 </SectionTrigerScroll>
-                {/* // grouped jadwal */}
                 {allDays.map(day => {
                     const tableRows = createJadwalRows(
                         groupedJadwal[day],

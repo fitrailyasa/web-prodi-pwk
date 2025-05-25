@@ -76,7 +76,7 @@ class LinkSeeder extends Seeder
                 'name' => 'Kemahasiswaan',
                 'desc' => 'Kemahasiswaan Institut Teknologi Sumatera',
                 'link' => 'https://kemahasiswaan.itera.ac.id/',
-                'category' => 'fasilitas',
+                'category' => 'kemahasiswaan',
                 'user_id' => 1,
             ],
             [

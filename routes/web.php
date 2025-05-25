@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\Admin;
 use App\Http\Middleware\Dosen;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminAlumniController;
 use App\Http\Controllers\Admin\AdminBeritaController;
 use App\Http\Controllers\Admin\AdminJadwalController;
@@ -49,7 +48,7 @@ Route::middleware(['auth'])->group(function () {
 
     // CMS ADMINITRASTOR
     Route::middleware([Admin::class])->name('admin.')->prefix('admin')->group(function () {
-        Route::get('/', [HomeController::class, 'index'])->name('beranda');
+        // Route::get('/', [HomeController::class, 'index'])->name('beranda');
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
         // CRUD USER
@@ -116,7 +115,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/modul', [AdminModulController::class, 'store'])->name('modul.store');
         Route::put('/modul/{id}/update', [AdminModulController::class, 'update'])->name('modul.update');
         Route::delete('/modul/{id}/destroy', [AdminModulController::class, 'destroy'])->name('modul.destroy');
-        
+
         // CRUD LAYANAN MAHASISWA
         Route::get('/layanan', [AdminLayananController::class, 'index'])->name('layanan.index');
         Route::post('/layanan', [AdminLayananController::class, 'store'])->name('layanan.store');
@@ -168,7 +167,7 @@ Route::middleware(['auth'])->group(function () {
 
     // CMS DOSEN
     Route::middleware([Dosen::class])->name('dosen.')->prefix('dosen')->group(function () {
-        Route::get('/', [HomeController::class, 'index'])->name('beranda');
+        // Route::get('/', [HomeController::class, 'index'])->name('beranda');
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
         // Profile Management

@@ -27,8 +27,9 @@ class AdminLinkController extends Controller
         $categories = [
             ['id' => 'akademik', 'name' => 'Akademik'],
             ['id' => 'fasilitas', 'name' => 'Fasilitas'],
+            ['id' => 'kemahasiswaan', 'name' => 'Kemahasiswaan'],
         ];
-        
+
         $categories = array_map(function ($category) {
             return (object) $category;
         }, $categories);
