@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Nama') }}</label>
+                            <label class="form-label">{{ __('Nama') }}<span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('title') is-invalid @enderror"
                                 placeholder="nama" name="title" id="title"
                                 value="{{ old('title', $publikasi->title) }}" required>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Tipe') }}</label>
+                            <label class="form-label">{{ __('Tipe') }}<span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('type') is-invalid @enderror"
                                 placeholder="tipe" name="type" id="type"
                                 value="{{ old('type', $publikasi->type) }}" required>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Tahun') }}</label>
+                            <label class="form-label">{{ __('Tahun') }}<span class="text-danger">*</span></label>
                             <input type="number" class="form-control @error('year') is-invalid @enderror"
                                 placeholder="tahun" name="year" id="year"
                                 value="{{ old('year', $publikasi->year) }}" required>
@@ -57,7 +57,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Penerbit') }}</label>
+                            <label class="form-label">{{ __('Penerbit') }}<span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('publisher') is-invalid @enderror"
                                 placeholder="penerbit" name="publisher" id="publisher"
                                 value="{{ old('publisher', $publikasi->publisher) }}" required>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Link') }}</label>
+                            <label class="form-label">{{ __('Link') }}<span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('link') is-invalid @enderror"
                                 placeholder="link" name="link" id="link"
                                 value="{{ old('link', $publikasi->link) }}" required>
@@ -79,7 +79,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Deskripsi') }}</label>
+                            <label class="form-label">{{ __('Deskripsi') }}<span class="text-danger">*</span></label>
                             <textarea class="form-control @error('description') is-invalid @enderror" placeholder="deskripsi" name="description"
                                 id="description">{{ old('description', $publikasi->description) }}</textarea>
                             @error('description')

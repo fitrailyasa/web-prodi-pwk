@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Judul Event') }}</label>
+                            <label class="form-label">{{ __('Judul Event') }}<span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                 placeholder="Judul event" name="name" id="name"
                                 value="{{ old('name', $event->name) }}" required>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Konten Event') }}</label>
+                            <label class="form-label">{{ __('Konten Event') }}<span class="text-danger">*</span></label>
                             <textarea class="form-control @error('desc') is-invalid @enderror" placeholder="deskripsi..." name="desc"
                                 id="edit_desc_{{ $event->id }}">{{ old('desc', $event->desc) }}</textarea>
                             @error('desc')
@@ -45,7 +45,8 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Tanggal Pelaksanaan') }}</label>
+                            <label class="form-label">{{ __('Tanggal Pelaksanaan') }}<span
+                                    class="text-danger">*</span></label>
                             <input type="date" class="form-control @error('event_date') is-invalid @enderror"
                                 placeholder="Tanggal Pelaksanaan" name="event_date" id="event_date"
                                 value="{{ old('event_date', $event->event_date) }}" required>
@@ -56,7 +57,8 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Tanggal Publikasi') }}</label>
+                            <label class="form-label">{{ __('Tanggal Publikasi') }}<span
+                                    class="text-danger">*</span></label>
                             <input type="date" class="form-control @error('publish_date') is-invalid @enderror"
                                 placeholder="Tanggal Publikasi" name="publish_date" id="publish_date"
                                 value="{{ old('publish_date', $event->publish_date) }}" required>
@@ -67,7 +69,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Status') }}</label>
+                            <label class="form-label">{{ __('Status') }}<span class="text-danger">*</span></label>
                             <select class="form-select @error('status') is-invalid @enderror" name="status"
                                 id="status" required>
                                 <option value="">-- Pilih Status --</option>
@@ -87,7 +89,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Tag event') }}</label>
+                            <label class="form-label">{{ __('Tag event') }}<span class="text-danger">*</span></label>
                             <select class="form-select @error('tag_id') is-invalid @enderror" name="tag_id"
                                 id="tag_id" required>
                                 <option value="">-- Pilih Tag --</option>
@@ -107,7 +109,7 @@
                     <!-- Gambar (Image) -->
                     {{-- <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Gambar') }}</label>
+                            <label class="form-label">{{ __('Gambar') }}<span class="text-danger">*</span></label>
                             <input id="image-input" accept="image/*" type="file"
                                 class="form-control @error('img') is-invalid @enderror" name="img">
                             @error('img')
@@ -131,8 +133,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"
-                    data-bs-dismiss="modal">{{ __('Tutup') }}</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Tutup') }}</button>
                 <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>
                     {{ __('Simpan') }}</button>
             </div>

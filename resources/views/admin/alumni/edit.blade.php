@@ -25,7 +25,7 @@
                     <!-- Nama -->
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Nama') }}</label>
+                            <label class="form-label">{{ __('Nama') }}<span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                 placeholder="Nama" name="name" id="name"
                                 value="{{ old('name', $alumni->name) }}" required>
@@ -38,7 +38,7 @@
                     <!-- Tahun Masuk (Class Year) -->
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Tahun Masuk') }}</label>
+                            <label class="form-label">{{ __('Tahun Masuk') }}<span class="text-danger">*</span></label>
                             <input type="number" class="form-control @error('class_year') is-invalid @enderror"
                                 placeholder="2020" name="class_year" id="class_year"
                                 value="{{ old('class_year', $alumni->class_year) }}" required>
@@ -51,7 +51,7 @@
                     <!-- Tahun Lulus (Graduation Year) -->
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Tahun Lulus') }}</label>
+                            <label class="form-label">{{ __('Tahun Lulus') }}<span class="text-danger">*</span></label>
                             <input type="number" class="form-control @error('graduation_year') is-invalid @enderror"
                                 placeholder="2024" name="graduation_year" id="graduation_year"
                                 value="{{ old('graduation_year', $alumni->graduation_year) }}" required>
@@ -115,7 +115,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Tutup') }}</button>
+                <button type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal">{{ __('Tutup') }}</button>
                 <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>
                     {{ __('Simpan') }}</button>
             </div>

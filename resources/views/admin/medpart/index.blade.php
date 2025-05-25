@@ -36,7 +36,7 @@
             <tr>
                 <th>{{ __('No') }}</th>
                 <th>{{ __('Nama') }}</th>
-                <th>{{ __('Gambar') }}</th>
+                <th>{{ __('Logo') }}</th>
                 <th>{{ __('Tautan') }}</th>
                 <th>{{ __('Oleh') }}</th>
                 <th class="text-center">{{ __('Aksi') }}</th>
@@ -80,7 +80,7 @@
                                                     <a href="{{ asset('storage/' . $medpart->img) }}"
                                                         download="{{ $medpart->img }}"
                                                         class="btn btn-success mt-2 col-12">Download
-                                                        Gambar</a>
+                                                        Logo</a>
                                                 </div>
                                             </div>
                                         </div>

@@ -20,7 +20,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label class="form-label">{{ __('Pertanyaan') }}</label>
+                                    <label class="form-label">{{ __('Pertanyaan') }}<span
+                                            class="text-danger">*</span></label>
                                     <input type="text"
                                         class="form-control @error('question_text') is-invalid @enderror"
                                         placeholder="Pertanyaan" name="question_text"
@@ -32,7 +33,8 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label class="form-label">{{ __('Kata Kunci') }}</label>
+                                    <label class="form-label">{{ __('Kata Kunci') }}<span
+                                            class="text-danger">*</span></label>
                                     <input type="text" class="form-control @error('keywords') is-invalid @enderror"
                                         placeholder="Kata kunci (pisahkan dengan koma)" name="keywords"
                                         value="{{ old('keywords', $chatbot->keywords) }}" required>
@@ -43,7 +45,8 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label class="form-label">{{ __('Jawaban') }}</label>
+                                    <label class="form-label">{{ __('Jawaban') }}<span
+                                            class="text-danger">*</span></label>
                                     <textarea class="form-control @error('answers') is-invalid @enderror" placeholder="Jawaban (satu per baris)"
                                         name="answers[]" rows="5" required>{{ old('answers', $chatbot->answers->pluck('answer_text')->implode("\n")) }}</textarea>
                                     @error('answers')

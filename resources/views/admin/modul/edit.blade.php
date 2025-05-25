@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Nama Modul') }}</label>
+                            <label class="form-label">{{ __('Nama Modul') }}<span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                 placeholder="Masukkan nama modul" name="name" id="name"
                                 value="{{ old('name', $modul->name) }}" required>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Mata Kuliah') }}</label>
+                            <label class="form-label">{{ __('Mata Kuliah') }}<span class="text-danger">*</span></label>
                             <select class="form-select @error('matkul_id') is-invalid @enderror" name="matkul_id"
                                 id="matkul_id" required>
                                 <option value="">-- Pilih Mata Kuliah --</option>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('File Modul') }}</label>
+                            <label class="form-label">{{ __('File Modul') }}<span class="text-danger">*</span></label>
                             @if ($modul->file)
                                 <div class="mb-2">
                                     <a href="{{ asset('storage/' . $modul->file) }}" target="_blank"

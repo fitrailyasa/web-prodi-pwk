@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Nama') }}</label>
+                            <label class="form-label">{{ __('Nama') }}<span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                 placeholder="nama" name="name" id="name" value="{{ old('name', $link->name) }}"
                                 required>
@@ -34,9 +34,10 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Tautan') }}</label>
+                            <label class="form-label">{{ __('Tautan') }}<span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('link') is-invalid @enderror"
-                                placeholder="https://google.com" name="link" id="link" value="{{ old('link', $link->link) }}" required>
+                                placeholder="https://google.com" name="link" id="link"
+                                value="{{ old('link', $link->link) }}" required>
                             @error('link')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -44,11 +45,14 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Kategori') }}</label>
-                            <select class="form-select @error('category') is-invalid @enderror" name="category" id="category">
+                            <label class="form-label">{{ __('Kategori') }}<span class="text-danger">*</span></label>
+                            <select class="form-select @error('category') is-invalid @enderror" name="category"
+                                id="category">
                                 <option value="">-- Pilih Kategori --</option>
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}" {{ old('category', $link->category) == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}"
+                                        {{ old('category', $link->category) == $category->id ? 'selected' : '' }}>
+                                        {{ $category->name }}</option>
                                 @endforeach
                             </select>
                             @error('category')
@@ -58,7 +62,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Deskripsi') }}</label>
+                            <label class="form-label">{{ __('Deskripsi') }}<span class="text-danger">*</span></label>
                             <textarea class="form-control @error('desc') is-invalid @enderror" placeholder="deskripsi" name="desc" id="desc"
                                 rows="3">{{ old('desc', $link->desc) }}</textarea>
                             @error('desc')

@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Mata Kuliah') }}</label>
+                            <label class="form-label">{{ __('Mata Kuliah') }}<span class="text-danger">*</span></label>
                             <select class="form-select @error('matkul_id') is-invalid @enderror" name="matkul_id"
                                 id="matkul_id">
                                 <option value="">-- Pilih Mata Kuliah --</option>
@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Hari') }}</label>
+                            <label class="form-label">{{ __('Hari') }}<span class="text-danger">*</span></label>
                             <select class="form-select @error('day') is-invalid @enderror" name="day"
                                 id="day">
                                 <option value="">-- Pilih Hari --</option>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Waktu Mulai') }}</label>
+                            <label class="form-label">{{ __('Waktu Mulai') }}<span class="text-danger">*</span></label>
                             <input type="time" class="form-control @error('start_time') is-invalid @enderror"
                                 name="start_time" id="start_time" value="{{ old('start_time', $jadwal->start_time) }}"
                                 required>
@@ -70,7 +70,8 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Waktu Selesai') }}</label>
+                            <label class="form-label">{{ __('Waktu Selesai') }}<span
+                                    class="text-danger">*</span></label>
                             <input type="time" class="form-control @error('end_time') is-invalid @enderror"
                                 name="end_time" id="end_time" value="{{ old('end_time', $jadwal->end_time) }}"
                                 required>
@@ -78,7 +79,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Dosen') }}</label>
+                            <label class="form-label">{{ __('Dosen') }}<span class="text-danger">*</span></label>
                             <select class="form-select @error('lecture') is-invalid @enderror" name="lecture"
                                 id="lecture">
                                 <option value="">-- Pilih Dosen --</option>
@@ -96,7 +97,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Ruangan') }}</label>
+                            <label class="form-label">{{ __('Ruangan') }}<span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('room') is-invalid @enderror"
                                 name="room" id="room" placeholder="GK1-111"
                                 value="{{ old('room', $jadwal->room) }}" required>
@@ -107,7 +108,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Kelas') }}</label>
+                            <label class="form-label">{{ __('Kelas') }}<span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('class') is-invalid @enderror"
                                 name="class" id="class" placeholder="RA"
                                 value="{{ old('class', $jadwal->class) }}" required>
@@ -119,7 +120,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Tutup') }}</button>
+                <button type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal">{{ __('Tutup') }}</button>
                 <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>
                     {{ __('Simpan') }}</button>
             </div>

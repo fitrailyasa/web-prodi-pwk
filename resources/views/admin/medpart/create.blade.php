@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Nama') }}</label>
+                            <label class="form-label">{{ __('Nama') }}<span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                 placeholder="nama" name="name" id="name" value="{{ old('name') }}" required>
                             @error('name')
@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Gambar') }}</label>
+                            <label class="form-label">{{ __('Logo') }}<span class="text-danger">*</span></label>
                             <input id="image-input" accept="image/*" type="file"
                                 class="form-control @error('img') is-invalid @enderror" placeholder="img" name="img"
                                 id="img" value="{{ old('img') }}">
@@ -41,9 +41,10 @@
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Tautan') }}</label>
+                            <label class="form-label">{{ __('Tautan') }}<span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('link') is-invalid @enderror"
-                                placeholder="https://google.com" name="link" id="link" value="{{ old('link') }}" required>
+                                placeholder="https://google.com" name="link" id="link"
+                                value="{{ old('link') }}" required>
                             @error('link')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

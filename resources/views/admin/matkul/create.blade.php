@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Nama Matkul') }}</label>
+                            <label class="form-label">{{ __('Nama Matkul') }}<span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                 placeholder="Matematika Dasar 1B" name="name" id="name"
                                 value="{{ old('name') }}" required>
@@ -33,7 +33,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Kode Matkul') }}</label>
+                            <label class="form-label">{{ __('Kode Matkul') }}<span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('code') is-invalid @enderror"
                                 placeholder="MA1104" name="code" id="code" value="{{ old('code') }}" required>
                             @error('code')
@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Jumlah SKS') }}</label>
+                            <label class="form-label">{{ __('Jumlah SKS') }}<span class="text-danger">*</span></label>
                             <input type="number" class="form-control @error('credits') is-invalid @enderror"
                                 placeholder="3" name="credits" id="credits" value="{{ old('credits') }}" required>
                             @error('credits')
@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Semester') }}</label>
+                            <label class="form-label">{{ __('Semester') }}<span class="text-danger">*</span></label>
                             <input type="number" class="form-control @error('semester') is-invalid @enderror"
                                 placeholder="3" name="semester" id="semester" value="{{ old('semester') }}" required>
                             @error('semester')

@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Judul Berita') }}</label>
+                            <label class="form-label">{{ __('Judul Berita') }}<span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
                                 placeholder="Judul Berita" name="name" id="name"
                                 value="{{ old('name', $berita->name) }}" required>
@@ -35,7 +35,8 @@
                     </div>
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Konten Berita') }}</label>
+                            <label class="form-label">{{ __('Konten Berita') }}<span
+                                    class="text-danger">*</span></label>
                             <textarea class="form-control @error('desc') is-invalid @enderror" placeholder="deskripsi..." name="desc"
                                 id="edit_desc_{{ $berita->id }}">{{ old('desc', $berita->desc) }}</textarea>
                             @error('desc')
@@ -45,7 +46,8 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Tanggal Pelaksanaan') }}</label>
+                            <label class="form-label">{{ __('Tanggal Pelaksanaan') }}<span
+                                    class="text-danger">*</span></label>
                             <input type="date" class="form-control @error('event_date') is-invalid @enderror"
                                 placeholder="Tanggal Pelaksanaan" name="event_date" id="event_date"
                                 value="{{ old('event_date', $berita->event_date) }}" required>
@@ -56,7 +58,8 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Tanggal Publikasi') }}</label>
+                            <label class="form-label">{{ __('Tanggal Publikasi') }}<span
+                                    class="text-danger">*</span></label>
                             <input type="date" class="form-control @error('publish_date') is-invalid @enderror"
                                 placeholder="Tanggal Publikasi" name="publish_date" id="publish_date"
                                 value="{{ old('publish_date', $berita->publish_date) }}" required>
@@ -67,7 +70,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Status') }}</label>
+                            <label class="form-label">{{ __('Status') }}<span class="text-danger">*</span></label>
                             <select class="form-select @error('status') is-invalid @enderror" name="status"
                                 id="status" required>
                                 <option value="">-- Pilih Status --</option>
@@ -87,7 +90,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Tag Berita') }}</label>
+                            <label class="form-label">{{ __('Tag Berita') }}<span class="text-danger">*</span></label>
                             <select class="form-select @error('tag_id') is-invalid @enderror" name="tag_id"
                                 id="tag_id" required>
                                 <option value="">-- Pilih Tag --</option>
@@ -107,7 +110,7 @@
                     <!-- Gambar (Image) -->
                     <div class="col-md-12">
                         <div class="mb-3">
-                            <label class="form-label">{{ __('Gambar') }}</label>
+                            <label class="form-label">{{ __('Gambar') }}<span class="text-danger">*</span></label>
                             <input id="image-input-{{ $berita->id }}" accept="image/*" type="file"
                                 class="form-control @error('img') is-invalid @enderror" name="img">
                             @error('img')
