@@ -1,5 +1,4 @@
 <x-admin-table>
-
     <!-- Title -->
     <x-slot name="title">
         Layanan Kuliah
@@ -16,42 +15,52 @@
     </x-slot>
 
     <!-- Table -->
-    <table id="" class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>{{ __('No') }}</th>
-                <th>{{ __('Nama') }}</th>
-                <th>{{ __('File') }}</th>
+                <th>{{ __('Nama Layanan') }}</th>
+                <th>{{ __('Tipe') }}</th>
+                <th>{{ __('Dokumen') }}</th>
                 <th class="text-center">{{ __('Aksi') }}</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($layanans as $layanan)
+            @forelse ($layanans as $layanan)
                 <tr>
-                    <td>{{ $counter++ }}</td>
+                    <td>{{ $loop->iteration + ($layanans->currentPage() - 1) * $layanans->perPage() }}</td>
+                    <td><strong>{{ $layanan->name ?? '-' }}</strong></td>
+                    <td class="text-capitalize">{{ $layanan->linkType ?? '-' }}</td>
                     <td>
-                        <strong>{{ $layanan->name ?? '-' }}</strong>
-                    </td>
-                    <td>
-                        @if ($layanan->file)
-                            <a href="{{ asset('storage/' . $layanan->file) }}" target="_blank"
-                                class="btn btn-sm btn-info">
-                                <i class="fas fa-file"></i> Lihat File
+                        @if ($layanan->linkType === 'file' && $layanan->file)
+                            <a href="{{ asset('storage/' . $layanan->file) }}" target="_blank" class="btn btn-sm btn-info">
+                                <i class="fas fa-file-alt"></i> Lihat File
+                            </a>
+                        @elseif ($layanan->linkType === 'url' && $layanan->link)
+                            <a href="{{ $layanan->link }}" target="_blank" class="btn btn-sm btn-success">
+                                <i class="fas fa-link"></i> Kunjungi Link
                             </a>
                         @else
                             <span class="text-muted">-</span>
                         @endif
                     </td>
-                    <td class="manage-row text-center">
-                        @if (auth()->user()->role == 'admin')
+                    <td class="text-center">
+                        @if (auth()->user()->role === 'admin')
                             @include('admin.layanan.edit')
                             @include('admin.layanan.delete')
                         @endif
                     </td>
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan="5" class="text-center text-muted">Tidak ada data layanan tersedia.</td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
-    {{ $layanans->appends(['perPage' => $perPage, 'search' => $search])->links() }}
 
+    <!-- Pagination -->
+    <div class="d-flex justify-content-end">
+        {{ $layanans->appends(['perPage' => $perPage, 'search' => $search])->links() }}
+    </div>
 </x-admin-table>
