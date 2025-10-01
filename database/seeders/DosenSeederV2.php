@@ -19,6 +19,15 @@ class DosenSeederV2 extends Seeder
     {
         $DosenData = [
             [
+                'name' => 'Dr. Asirin, S.T., M.T.',
+                'email' => 'asirin@pwk.itera.ac.id',
+                'role' => 'dosen',
+                'position' => 'koordinator',
+                'expertise' => '-',
+                'education' => 'Doktor (S3) Ilmu Perencanaan Pembangunan Wilayah dan Perdesaan, IPB University (2024/On Going)',
+                'status' => 'aktif'
+            ],
+            [
                 'name' => 'Prof. Ibnu Syabri, B.Sc., M.Sc., Ph.D',
                 'email' => 'ibnu@pwk.itera.ac.id',
                 'role' => 'dosen',
@@ -306,7 +315,7 @@ class DosenSeederV2 extends Seeder
                 'expertise' => $dosen['expertise'] ?? null,
                 'education' => $dosen['education'] ?? null,
                 'user_id' => $dosens->id,
-                'position' => null,
+                'position' => $dosen['position'] ?? null,
                 // 'img' => "null"
                 'img' => "https://ui-avatars.com/api/?name=Dosen+$dosens->id&background=random"
             ]);
