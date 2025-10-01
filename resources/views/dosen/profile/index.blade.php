@@ -33,16 +33,22 @@
                                     PNG</small>
                             </div>
 
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label for="nip">NIP<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="nip" name="nip"
                                     value="{{ $profile->nip ?? old('nip') }}" placeholder="198005172009031001">
                             </div>
 
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label for="nidn">NIDN<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="nidn" name="nidn"
                                     value="{{ $profile->nidn ?? old('nidn') }}" placeholder="0110058801">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="position">Jabatan<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="position" name="position"
+                                    value="{{ $profile->position ?? old('position') }}" placeholder="Dosen">
                             </div>
 
                             <div class="form-group col-md-6">
