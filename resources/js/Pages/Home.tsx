@@ -68,7 +68,7 @@ export default function Home({
     }
 
     return (
-        <AppLayout title="home">
+        <AppLayout title="Home">
             <div className="container mx-auto px-4 py-3 relative">
                 <SectionTrigerScroll id={'beritaslider'} className="">
                     <div ref={newsCurentRef}>
