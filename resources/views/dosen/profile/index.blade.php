@@ -33,22 +33,16 @@
                                     PNG</small>
                             </div>
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-6">
                                 <label for="nip">NIP<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="nip" name="nip"
                                     value="{{ $profile->nip ?? old('nip') }}" placeholder="198005172009031001">
                             </div>
 
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-6">
                                 <label for="nidn">NIDN<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="nidn" name="nidn"
                                     value="{{ $profile->nidn ?? old('nidn') }}" placeholder="0110058801">
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="position">Jabatan<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="position" name="position"
-                                    value="{{ $profile->position ?? old('position') }}" placeholder="Dosen">
                             </div>
 
                             <div class="form-group col-md-6">
@@ -85,24 +79,28 @@
 
                             <div class="form-group col-md-12">
                                 <label for="education">Pendidikan<span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="education" name="education" rows="3" placeholder="Tuliskan riwayat pendidikan Anda...">{{ $profile->education ?? old('education') }}</textarea>
+                                <textarea class="form-control" id="education" name="education" rows="3"
+                                    placeholder="Tuliskan riwayat pendidikan Anda...">{{ $profile->education ?? old('education') }}</textarea>
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="expertise">Bidang Keahlian<span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="expertise" name="expertise" rows="3" placeholder="Tuliskan bidang keahlian Anda...">{{ $profile->expertise ?? old('expertise') }}</textarea>
+                                <textarea class="form-control" id="expertise" name="expertise" rows="3"
+                                    placeholder="Tuliskan bidang keahlian Anda...">{{ $profile->expertise ?? old('expertise') }}</textarea>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="google_scholar">Google Scholar<span class="text-danger">*</span></label>
                                 <input type="url" class="form-control" id="google_scholar" name="google_scholar"
-                                    value="{{ $profile->google_scholar ?? old('google_scholar') }}" placeholder="https://scholar.google.com/citations?user=1234567890">
+                                    value="{{ $profile->google_scholar ?? old('google_scholar') }}"
+                                    placeholder="https://scholar.google.com/citations?user=1234567890">
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="scopus_id">Scopus ID<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="scopus_id" name="scopus_id"
-                                    value="{{ $profile->scopus_id ?? old('scopus_id') }}" placeholder="1234567890abcdef">
+                                    value="{{ $profile->scopus_id ?? old('scopus_id') }}"
+                                    placeholder="1234567890abcdef">
                             </div>
 
                             <div class="form-group col-md-4">
@@ -114,12 +112,14 @@
                             <div class="form-group col-md-12">
                                 <label for="research_interests">Minat Penelitian<span
                                         class="text-danger">*</span></label>
-                                <textarea class="form-control" id="research_interests" name="research_interests" rows="3" placeholder="Tuliskan minat penelitian Anda...">{{ $profile->research_interests ?? old('research_interests') }}</textarea>
+                                <textarea class="form-control" id="research_interests" name="research_interests" rows="3"
+                                    placeholder="Tuliskan minat penelitian Anda...">{{ $profile->research_interests ?? old('research_interests') }}</textarea>
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="achievements">Pencapaian<span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="achievements" name="achievements" rows="3" placeholder="Tuliskan pencapaian Anda...">{{ $profile->achievements ?? old('achievements') }}</textarea>
+                                <textarea class="form-control" id="achievements" name="achievements" rows="3"
+                                    placeholder="Tuliskan pencapaian Anda...">{{ $profile->achievements ?? old('achievements') }}</textarea>
                             </div>
 
                             <div class="form-group col-md-6">
@@ -131,12 +131,14 @@
                             <div class="form-group col-md-6">
                                 <label for="linkedin">LinkedIn<span class="text-danger">*</span></label>
                                 <input type="url" class="form-control" id="linkedin" name="linkedin"
-                                    value="{{ $profile->linkedin ?? old('linkedin') }}" placeholder="https://linkedin.com/in/username">
+                                    value="{{ $profile->linkedin ?? old('linkedin') }}"
+                                    placeholder="https://linkedin.com/in/username">
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="other">Lainnya</label>
-                                <textarea class="form-control" id="other" name="other" rows="3" placeholder="Tuliskan informasi lainnya...">{{ $profile->other ?? old('other') }}</textarea>
+                                <textarea class="form-control" id="other" name="other" rows="3"
+                                    placeholder="Tuliskan informasi lainnya...">{{ $profile->other ?? old('other') }}</textarea>
                             </div>
                         </div>
 
@@ -148,63 +150,110 @@
     </div>
 
     <script>
-    const pangkatOptions = {
-        I: [
-            {value: 'I/a', text: 'I/a - Juru'},
-            {value: 'I/b', text: 'I/b - Juru Tingkat I'},
-            {value: 'I/c', text: 'I/c - Juru Muda'},
-            {value: 'I/d', text: 'I/d - Juru Muda Tingkat I'}
-        ],
-        II: [
-            {value: 'II/a', text: 'II/a - Pengatur Muda'},
-            {value: 'II/b', text: 'II/b - Pengatur Muda Tingkat I'},
-            {value: 'II/c', text: 'II/c - Pengatur'},
-            {value: 'II/d', text: 'II/d - Pengatur Tingkat I'}
-        ],
-        III: [
-            {value: 'III/a', text: 'III/a - Penata Muda'},
-            {value: 'III/b', text: 'III/b - Penata Muda Tingkat I'},
-            {value: 'III/c', text: 'III/c - Penata'},
-            {value: 'III/d', text: 'III/d - Penata Tingkat I'}
-        ],
-        IV: [
-            {value: 'IV/a', text: 'IV/a - Pembina'},
-            {value: 'IV/b', text: 'IV/b - Pembina Tingkat I'},
-            {value: 'IV/c', text: 'IV/c - Pembina Utama Muda'},
-            {value: 'IV/d', text: 'IV/d - Pembina Utama Madya'},
-            {value: 'IV/e', text: 'IV/e - Pembina Utama'}
-        ]
-    };
-
-    const groupSelect = document.getElementById('group');
-    const rankSelect = document.getElementById('rank');
-
-    function populateRanks(selectedGroup, selectedRank = '') {
-        rankSelect.innerHTML = '<option value="">-- Pilih Pangkat --</option>';
-        if (selectedGroup && pangkatOptions[selectedGroup]) {
-            pangkatOptions[selectedGroup].forEach(pangkat => {
-                const option = document.createElement('option');
-                option.value = pangkat.value;
-                option.textContent = pangkat.text;
-                if (pangkat.value === selectedRank) {
-                    option.selected = true;
+        const pangkatOptions = {
+            I: [{
+                    value: 'I/a',
+                    text: 'I/a - Juru'
+                },
+                {
+                    value: 'I/b',
+                    text: 'I/b - Juru Tingkat I'
+                },
+                {
+                    value: 'I/c',
+                    text: 'I/c - Juru Muda'
+                },
+                {
+                    value: 'I/d',
+                    text: 'I/d - Juru Muda Tingkat I'
                 }
-                rankSelect.appendChild(option);
-            });
-            rankSelect.disabled = false;
-        } else {
-            rankSelect.disabled = true;
+            ],
+            II: [{
+                    value: 'II/a',
+                    text: 'II/a - Pengatur Muda'
+                },
+                {
+                    value: 'II/b',
+                    text: 'II/b - Pengatur Muda Tingkat I'
+                },
+                {
+                    value: 'II/c',
+                    text: 'II/c - Pengatur'
+                },
+                {
+                    value: 'II/d',
+                    text: 'II/d - Pengatur Tingkat I'
+                }
+            ],
+            III: [{
+                    value: 'III/a',
+                    text: 'III/a - Penata Muda'
+                },
+                {
+                    value: 'III/b',
+                    text: 'III/b - Penata Muda Tingkat I'
+                },
+                {
+                    value: 'III/c',
+                    text: 'III/c - Penata'
+                },
+                {
+                    value: 'III/d',
+                    text: 'III/d - Penata Tingkat I'
+                }
+            ],
+            IV: [{
+                    value: 'IV/a',
+                    text: 'IV/a - Pembina'
+                },
+                {
+                    value: 'IV/b',
+                    text: 'IV/b - Pembina Tingkat I'
+                },
+                {
+                    value: 'IV/c',
+                    text: 'IV/c - Pembina Utama Muda'
+                },
+                {
+                    value: 'IV/d',
+                    text: 'IV/d - Pembina Utama Madya'
+                },
+                {
+                    value: 'IV/e',
+                    text: 'IV/e - Pembina Utama'
+                }
+            ]
+        };
+
+        const groupSelect = document.getElementById('group');
+        const rankSelect = document.getElementById('rank');
+
+        function populateRanks(selectedGroup, selectedRank = '') {
+            rankSelect.innerHTML = '<option value="">-- Pilih Pangkat --</option>';
+            if (selectedGroup && pangkatOptions[selectedGroup]) {
+                pangkatOptions[selectedGroup].forEach(pangkat => {
+                    const option = document.createElement('option');
+                    option.value = pangkat.value;
+                    option.textContent = pangkat.text;
+                    if (pangkat.value === selectedRank) {
+                        option.selected = true;
+                    }
+                    rankSelect.appendChild(option);
+                });
+                rankSelect.disabled = false;
+            } else {
+                rankSelect.disabled = true;
+            }
         }
-    }
 
-    groupSelect.addEventListener('change', function() {
-        populateRanks(this.value);
-    });
+        groupSelect.addEventListener('change', function() {
+            populateRanks(this.value);
+        });
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const selectedGroup = groupSelect.value;
-        const selectedRank = "{{ $profile->rank ?? old('rank') ?? '' }}";
-        populateRanks(selectedGroup, selectedRank);
-    });
-</script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectedGroup = groupSelect.value;
+            const selectedRank = "{{ $profile->rank ?? (old('rank') ?? '') }}";
+            populateRanks(selectedGroup, selectedRank);
+        });
+    </script>
 </x-admin-layout>
