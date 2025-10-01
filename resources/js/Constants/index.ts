@@ -106,7 +106,7 @@ export const misiConstants: MisiType[] = [
     }
 ]
 
-export const logoBox = '/assets/img/logo-box.png'
+export const logoBox = '/assets/img/logo.png'
 
 export const TestImage = '/assets/img/defaultImage.png'
 
