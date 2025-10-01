@@ -31,7 +31,7 @@ class UserStoreRequest extends FormRequest
                 Rule::unique('users', 'email')->ignore($id),
             ],
             'password' => 'required|min:8',
-            'role' => 'required|in:admin,dosen,user',
+            'role' => 'required|in:admin,dosen,staff,user',
             'status' => 'required|in:aktif,tidak aktif',
         ];
     }

@@ -32,7 +32,7 @@ class UserUpdateRequest extends FormRequest
             ],
             'no_hp' => 'max:255',
             'password' => 'nullable|min:8',
-            'role' => 'required|in:admin,dosen,user',
+            'role' => 'required|in:admin,dosen,staff,user',
             'status' => 'required|in:aktif,tidak aktif',
         ];
     }
